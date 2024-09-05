@@ -161,7 +161,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 	}
 
 	function updateTheme(value: string) {
-		const theme = value === "system" ? systemTheme : value;
+		const theme = value === "system" ? "light" : value; 
 		document.documentElement.classList.remove("light", "dark");
 		document.documentElement.classList.add(theme);
 		localStorage.setItem("theme", value);
@@ -174,14 +174,14 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 		updateTheme(select.value);
 	});
 
-	// Deshabilitar modo oscuro al imprimir
+	// Disable dark mode when printing
 	window.addEventListener("beforeprint", () => {
 		document.documentElement.classList.remove("dark");
 	});
 
-	// Restaurar el modo oscuro después de imprimir
+	// Restore the theme after printing
 	window.addEventListener("afterprint", () => {
-		if (select.value === "dark" || (select.value === "system" && systemTheme === "dark")) {
+		if (select.value === "dark" || (select.value === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)) { 
 			document.documentElement.classList.add("dark");
 		}
 	});
