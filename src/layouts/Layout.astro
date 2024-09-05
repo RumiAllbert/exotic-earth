@@ -123,6 +123,14 @@ const { image, summary, url, theme } = basics;
 					break-inside: avoid;
 				}
 			}
+
+			.core-competency {
+				@apply bg-blue-200 text-blue-800 text-base;
+			}
+
+			:global(.dark) .core-competency {
+				@apply bg-blue-800 text-blue-200;
+			}
 		</style>
 	</body>
 </html>
