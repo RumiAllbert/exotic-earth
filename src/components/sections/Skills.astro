@@ -13,7 +13,7 @@ const skillCategories = [
 	"Databases & Data Storage"
 ];
 
-const iconMap = {
+export const iconMap = {
   javascript: "simple-icons:javascript",
   python: "simple-icons:python",
   react: "simple-icons:react",
@@ -21,6 +21,7 @@ const iconMap = {
   typescript: "simple-icons:typescript",
   html: "simple-icons:html5",
   css: "simple-icons:css3",
+  fastapi: "simple-icons:fastapi",
   sass: "simple-icons:sass",
   git: "simple-icons:git",
   github: "simple-icons:github",
@@ -50,6 +51,7 @@ const iconMap = {
   nuxtjs: "simple-icons:nuxtdotjs",
   gatsby: "simple-icons:gatsby",
   webpack: "simple-icons:webpack",
+  googlecloud: "simple-icons:googlecloud",
   babel: "simple-icons:babel",
   eslint: "simple-icons:eslint",
   jest: "simple-icons:jest",
@@ -114,8 +116,12 @@ function getIconName(keyword: string) {
 						.map((keyword) => {
 							const iconName = getIconName(keyword);
 							return (
-								<li class="bg-skin-button-accent/20 text-skin-base dark:text-white text-sm rounded px-2 py-1 flex items-center gap-1">
-									{iconName && <Icon name={iconName} class="w-4 h-4" />}
+								<li class={`text-sm rounded px-2 py-1 flex items-center gap-1 ${
+									category === "Core Competencies"
+										? "core-competency bg-blue-200 text-blue-800 text-base"
+										: "bg-skin-button-accent/20 text-skin-base dark:text-white"
+								}`}>
+									{iconName && <Icon name={iconName} class={`w-4 h-4 ${category === "Core Competencies" ? "w-5 h-5" : ""}`} />}
 									{keyword}
 								</li>
 							);
