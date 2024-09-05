@@ -76,22 +76,25 @@
       "url": "https://www.theepochtimes.com/",
       "startDate": "2022-01-01",
       "endDate": "2024-02-29",
-      "summary": "Led data science initiatives, including predictive modeling, data pipeline engineering, and NLP implementations.",
+      "summary": "Spearheaded data science initiatives, focusing on predictive modeling, data pipeline engineering, and NLP implementations.",
       "highlights": [
-        "Reduced subscriber churn by 20% through predictive modeling",
-        "Increased operational efficiency by 25% with scalable data pipelines",
-        "Implemented BERT and custom clustering algorithms for unstructured data analysis",
-        "Designed an automated reporting system for real-time analytics"
+        "Developed predictive models using advanced statistical techniques, resulting in a 20% reduction in subscriber churn",
+        "Engineered scalable data pipelines using Python and Hive, increasing operational efficiency by 25% and enhancing data integrity",
+        "Implemented state-of-the-art NLP models, including BERT and custom clustering algorithms, to extract actionable insights from unstructured data",
+        "Designed and deployed an automated reporting system, providing real-time analytics to C-level executives and informing strategic decisions"
       ],
       "responsibilities": [
-        "Developed and maintained backend services using Python and Django.",
-        "Worked closely with front-end developers to integrate user-facing elements with server-side logic.",
-        "Participated in daily stand-ups and bi-weekly sprint planning meetings to ensure alignment with project goals."
+        "Led end-to-end data science projects from conception to deployment",
+        "Collaborated with cross-functional teams to integrate data-driven solutions into business processes",
+        "Presented findings and recommendations to stakeholders, translating complex analyses into actionable insights"
       ],
-      "achievements": [
-        "Successfully implemented a feature that enhanced user authentication, improving security measures."
-      ],
-      "skills": ["Python", "Hive", "MySQL", "Git"]
+      "skills": [
+        "Python",
+        "Hive",
+        "MySQL",
+        "Apache Superset",
+        "Machine Learning"
+      ]
     },
     {
       "name": "Students for Falun Gong",
