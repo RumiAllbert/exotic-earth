@@ -1,0 +1,124 @@
+<nav class="floating-nav active">
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<style>
+  .floating-nav {
+    position: fixed;
+    top: 15%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: rgba(var(--color), 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px 0 0 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    width: 120px;
+    overflow: hidden;
+  }
+
+  .floating-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background-color: rgb(var(--color));
+    border-radius: 3px 0 0 3px;
+  }
+
+  .nav-links {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .floating-nav.inactive {
+    width: 6px;
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .floating-nav.inactive .nav-links {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .nav-links a {
+    color: rgb(var(--color-text-base));
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: rgb(var(--color));
+  }
+</style>
+
+<script>
+  const nav = document.querySelector('.floating-nav') as HTMLElement | null;
+  let scrollTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function updateNavVisibility() {
+    if (nav) {
+      if (window.scrollY > 0) {
+        nav.classList.add('inactive');
+      } else {
+        nav.classList.remove('inactive');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    if (scrollTimer !== null) {
+      clearTimeout(scrollTimer);
+    }
+    scrollTimer = setTimeout(updateNavVisibility, 150);
+  });
+
+  if (nav) {
+    nav.addEventListener('mouseenter', () => {
+      nav.classList.remove('inactive');
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      updateNavVisibility();
+    });
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+          updateNavVisibility();
+        } else {
+          console.error(`Element with id ${targetId} not found`);
+        }
+      }
+    });
+  });
+
+  // Initial visibility check
+  updateNavVisibility();
+</script>
