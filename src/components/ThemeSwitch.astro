@@ -34,6 +34,8 @@ import Theme from "@/icons/themeSwitch.astro";
 			const theme = value === "system" ? systemTheme : value;
 			document.documentElement.classList.remove("light", "dark");
 			document.documentElement.classList.add(theme);
+			document.body.classList.remove("light", "dark");
+			document.body.classList.add(theme);
 			localStorage.setItem("theme", value);
 		}
 

@@ -59,9 +59,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
 ---
 
 <footer id="normal-footer" class="no-print flex flex-col gap-2 text-command-palette-text">
-	<div>
-		Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.
-	</div>
+  <div class="command-palette-text">
+    Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.
+  </div>
 </footer>
 
 <div class="footer-button no-print">
@@ -234,7 +234,8 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
 	}
-	.text-command-palette-text {
+	.text-command-palette-text,
+	.command-palette-text {
 		color: rgb(var(--color-command-palette-text));
 	}
 </style>
