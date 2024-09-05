@@ -393,46 +393,55 @@
 
   "projects": [
     {
-      "name": "Personal Portfolio",
-      "isActive": false,
-      "description": "A personal portfolio website to showcase my projects and skills.",
-      "highlights": [
-        "Built with React and Tailwind CSS",
-        "Includes a blog and contact form"
-      ],
-      "url": "https://johndoe.dev",
-      "github": "https://github.com"
-    },
-    {
-      "name": "Weather App",
+      "name": "LLM Abliterator",
       "isActive": true,
-      "description": "A web application that provides weather information for any location.",
+      "description": "An open-source library for ablating or inducing personalities in Large Language Models (LLMs) using activation engineering techniques.",
       "highlights": [
-        "Built with JavaScript and OpenWeatherMap API",
-        "Responsive design"
+        "Developed a novel approach to identify and manipulate personality-related activation directions in LLMs",
+        "Implemented dynamic fine-tuning of LLM personalities on-the-fly",
+        "Explored ethical implications and enhanced interpretability of LLMs",
+        "Built upon research like 'Refusal in LLMs is Mediated by a Single Direction' and 'Steering GPT-2-XL by Adding an Activation Vector'"
       ],
-      "url": "https://weatherapp.com"
+      "url": "https://community.wolfram.com/groups/-/m/t/3210605",
+      "github": "https://github.com/RumiAllbert/llm-abliterator"
     },
     {
-      "name": "Task Manager",
+      "name": "Ancient Greek Resources",
       "isActive": true,
-      "description": "A simple task management app to keep track of daily tasks.",
+      "description": "A comprehensive website that aggregates various resources for learning Ancient Greek, utilized by universities and students worldwide.",
       "highlights": [
-        "Built with Node.js and MongoDB",
-        "User authentication and CRUD operations"
+        "Curated collection of learning materials, including textbooks, grammar guides, and vocabulary lists",
+        "Anki flashcards to reinforce language learning",
+        "Regularly updated with new resources and study tools"
       ],
-      "url": "https://taskmanager.com",
-      "github": "https://github.com"
+      "url": "https://www.ancientgreek.rumiallbert.com/",
+      "github": ""
     },
     {
-      "name": "E-commerce Site",
-      "isActive": false,
-      "description": "An online store built with Next.js and Stripe for payment processing.",
+      "name": "Go NLP Bot",
+      "isActive": true,
+      "description": "A Slack bot that uses natural language processing and Wolfram Alpha to answer user queries.",
       "highlights": [
-        "Product management and shopping cart functionality",
-        "Secure payment integration"
+        "Integrates with Slack API for seamless messaging interaction",
+        "Utilizes Wit.ai for intent and entity extraction from user messages",
+        "Leverages Wolfram Alpha API to provide accurate answers to queries",
+        "Implements Go for efficient and concurrent processing"
       ],
-      "url": "https://ecommerce.com"
+      "url": "",
+      "github": "https://github.com/RumiAllbert/go-nlp-bot"
+    },
+    {
+      "name": "FIFA Player Value Prediction",
+      "isActive": true,
+      "description": "A data analysis project using linear regression to predict FIFA player values based on their attributes.",
+      "highlights": [
+        "Employed linear regression and diagnostic methods to fit the best reduced model",
+        "Identified key features impacting player value prediction, including overall rating, age, and reputation",
+        "Achieved an R² score of 0.98, indicating high model accuracy",
+        "Utilized various regression diagnostics and techniques to optimize the model"
+      ],
+      "url": "https://github.com/RumiAllbert/FIFA-Linear-Analysis/blob/master/reports/Rumi%20Allbert%20-%20FIFA%20Player%20Analysis.pdf",
+      "github": "https://github.com/RumiAllbert/FIFA-Linear-Analysis/tree/master"
     }
   ]
 }
