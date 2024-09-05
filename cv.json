@@ -1,6 +1,6 @@
 {
   "basics": {
-    "name": "Rumi Alexander Allbert",
+    "name": "Rumi Allbert",
     "label": "AI Engineer",
     "email": "rumiallbert@gmail.com",
     "phone": "845-321-4234",
@@ -66,7 +66,7 @@
       "responsibilities": [
         "Coordinating, implementing, and deploying various AI models to production"
       ],
-      "skills": ["Python", "HuggingFace", "PyTorch"]
+      "skills": ["Python", "HuggingFace", "PyTorch", "FastAPI"]
     },
     {
       "name": "The Epoch Times",
@@ -91,7 +91,7 @@
       "achievements": [
         "Successfully implemented a feature that enhanced user authentication, improving security measures."
       ],
-      "skills": ["Python", "Django", "SQL", "Git"]
+      "skills": ["Python", "Django", "MySQL", "Git"]
     },
     {
       "name": "UD Social Neuroscience Lab",
@@ -167,7 +167,12 @@
       "startDate": "2022-09-01",
       "endDate": "2024-05-01",
       "score": "4.0",
-      "courses": []
+      "courses": [],
+      "highlights": [
+        "Full-tuition scholarship recipient",
+        "Completed intensive Greek Language Residency",
+        "Participated in educational trips to Greece and Turkey"
+      ]
     },
     {
       "institution": "Fei Tian College Middletown",
@@ -181,6 +186,19 @@
       "highlights": [
         "First Place Hackathon Champion",
         "Academic Excellence Recipient"
+      ]
+    },
+    {
+      "institution": "Wolfram Summer School",
+      "url": "https://education.wolfram.com/summer-school/",
+      "area": "Artificial Intelligence & Philosophy",
+      "startDate": "2024",
+      "endDate": "2024",
+      "studyType": "Certificate",
+      "highlights": [
+        "Conducted research and experiments in Artificial Intelligence & Large Language Models",
+        "Collaborated with peers on cutting-edge AI projects",
+        "Gained hands-on experience with Wolfram Language for AI applications"
       ]
     },
     {
@@ -234,7 +252,9 @@
         "Artificial Intelligence",
         "Machine Learning",
         "Statistical Analysis",
-        "Software Engineering"
+        "Software Engineering",
+        "Research & Development",
+        "Project Management"
       ]
     },
     {
@@ -289,19 +309,22 @@
   ],
   "languages": [
     {
-      "language": "English"
+      "language": "🇺🇸 English"
     },
     {
-      "language": "Spanish"
+      "language": "🇲🇽 Spanish"
     },
     {
-      "language": "Greek"
+      "language": "📜 Latin"
     },
     {
-      "language": "Ancient Greek"
+      "language": "🇬🇷 Greek"
     },
     {
-      "language": "Mandarin Chinese"
+      "language": "🏛️ Ancient Greek"
+    },
+    {
+      "language": "🇹🇼 Mandarin Chinese"
     }
   ],
   "interests": [
