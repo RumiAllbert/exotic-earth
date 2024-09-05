@@ -21,13 +21,16 @@ import Languages from "@/components/sections/Languages.astro";
 	<main class="relative grid max-w-7xl gap-12 p-8 max-sm:py-16 md:grid-cols-6 md:p-16 xl:gap-24 print:max-w-none print:grid-cols-1 print:gap-6">
 		<div class="space-y-6 md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0">
 			<Hero />
+			<div class="separator"></div>
 			<About />
+			<div class="separator"></div>
 			<Languages />
 		</div>
 		<div class="space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0">
 			<Experience className="print:col-span-3" />
-			<Projects className="print:hidden" />
+			<div class="separator"></div>
 			<Skills className="print:hidden" />
+			<div class="separator print:hidden"></div>
 			<Education className="order-first" />
 		</div>
 	</main>
@@ -43,5 +46,15 @@ import Languages from "@/components/sections/Languages.astro";
 	main {
 		margin: auto;
 		width: 100%;
+	}
+	.separator {
+		border-bottom: 1px solid rgba(var(--color-text-muted), 0.2);
+		margin: 1.5rem 0;
+		width: 100%;
+	}
+	@media print {
+		.separator {
+			display: none;
+		}
 	}
 </style>
