@@ -57,6 +57,21 @@
       --color-button-muted: 249, 239, 6;
     }
   }
+  
+  .light {
+    --color-text-base: 0, 0, 0;
+    --color-text-muted: 120, 120, 120;
+    --color-text-inverted: 255, 255, 255;
+    --color-fill: 245, 245, 245;
+    --muted: 200, 200, 200;
+    --color: 75, 0, 130;
+    --color-button-accent: 147, 112, 219;
+    --color-button-accent-hover: 147, 112, 219;
+    --color-button-muted: 230, 225, 235;
+    --color-skill-bubble: 75, 0, 130;
+    --color-command-palette-text: 255, 255, 255;
+  }
+  
   .dark {
     --color-text-base: 255, 255, 255;
     --color-text-muted: 150, 150, 150;

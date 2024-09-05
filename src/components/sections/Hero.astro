@@ -152,12 +152,12 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 <script>
 	const select = document.getElementById("themeSwitch") as HTMLSelectElement;
 	const theme = localStorage.getItem("theme");
-	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 	if (theme !== null) {
 		select.value = theme;
 	} else {
-		select.value = systemTheme;
+		select.value = "light";
+		localStorage.setItem("theme", "light");
 	}
 
 	function updateTheme(value: string) {
