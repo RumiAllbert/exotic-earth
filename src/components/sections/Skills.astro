@@ -1,58 +1,127 @@
 ---
 import Section from "../Section.astro";
-import HTML from "@/icons/html.astro";
-import CSS from "@/icons/css.astro";
-import JavaScript from "@/icons/javascript.astro";
-import TypeScript from "@/icons/type.astro";
-import React from "@/icons/react.astro";
-import Node from "@/icons/node.astro";
-import MySQL from "@/icons/sql.astro";
-import Git from "@/icons/git.astro";
-import GitHub from "@/icons/GitHub.astro";
-import Tailwind from "@/icons/tailwind.astro";
-import Next from "@/icons/next.astro";
 import { skills } from "@cv";
-import Swift from "@/icons/swift.astro";
-import SwiftUI from "@/icons/swiftui.astro";
-import Kotlin from "@/icons/kotlin.astro";
-import Flutter from "@/icons/flutter.astro";
-import Figma from "@/icons/Figma.astro";
-import Gitlab from "@/icons/Gitlab.astro";
+import { Icon } from 'astro-icon/components';
 
-const SKILLS_ICONS: Record<string, any> = {
-	HTML,
-	CSS,
-	JavaScript,
-	TypeScript,
-	React,
-	Node,
-	MySQL,
-	Git,
-	GitHub,
-	Next,
-	Tailwind,
-	Swift,
-	SwiftUI,
-	Kotlin,
-	Flutter,
-	Figma,
-	Gitlab,
+const skillCategories = [
+	"Core Competencies",
+	"Programming & Scripting Languages",
+	"Machine Learning & AI",
+	"Data Science & Analytics",
+	"Big Data & Cloud Technologies",
+	"Software Development & DevOps",
+	"Databases & Data Storage"
+];
+
+const iconMap = {
+  javascript: "simple-icons:javascript",
+  python: "simple-icons:python",
+  react: "simple-icons:react",
+  nodejs: "simple-icons:nodedotjs",
+  typescript: "simple-icons:typescript",
+  html: "simple-icons:html5",
+  css: "simple-icons:css3",
+  sass: "simple-icons:sass",
+  git: "simple-icons:git",
+  github: "simple-icons:github",
+  gitlab: "simple-icons:gitlab",
+  docker: "simple-icons:docker",
+  kubernetes: "simple-icons:kubernetes",
+  hive: "simple-icons:apachehive",
+  aws: "simple-icons:amazonaws",
+  azure: "simple-icons:microsoftazure",
+  gcp: "simple-icons:googlecloud",
+  mysql: "simple-icons:mysql",
+  postgresql: "simple-icons:postgresql",
+  mongodb: "simple-icons:mongodb",
+  redis: "simple-icons:redis",
+  graphql: "simple-icons:graphql",
+  rest: "simple-icons:openapiinitiative",
+  java: "simple-icons:java",
+  csharp: "simple-icons:csharp",
+  cpp: "simple-icons:cplusplus",
+  swift: "simple-icons:swift",
+  kotlin: "simple-icons:kotlin",
+  flutter: "simple-icons:flutter",
+  angular: "simple-icons:angular",
+  vue: "simple-icons:vuedotjs",
+  svelte: "simple-icons:svelte",
+  nextjs: "simple-icons:nextdotjs",
+  nuxtjs: "simple-icons:nuxtdotjs",
+  gatsby: "simple-icons:gatsby",
+  webpack: "simple-icons:webpack",
+  babel: "simple-icons:babel",
+  eslint: "simple-icons:eslint",
+  jest: "simple-icons:jest",
+  mocha: "simple-icons:mocha",
+  cypress: "simple-icons:cypress",
+  selenium: "simple-icons:selenium",
+  jenkins: "simple-icons:jenkins",
+  travis: "simple-icons:travisci",
+  circleci: "simple-icons:circleci",
+  nginx: "simple-icons:nginx",
+  apache: "simple-icons:apache",
+  linux: "simple-icons:linux",
+  ubuntu: "simple-icons:ubuntu",
+  centos: "simple-icons:centos",
+  bash: "simple-icons:gnubash",
+  powershell: "simple-icons:powershell",
+  tensorflow: "simple-icons:tensorflow",
+  mathematica: "simple-icons:wolframmathematica",
+  go: "simple-icons:go",
+  huggingface: "simple-icons:huggingface",
+  openai: "simple-icons:openai",
+  pytorch: "simple-icons:pytorch",
+  pandas: "simple-icons:pandas",
+  numpy: "simple-icons:numpy",
+  scikitlearn: "simple-icons:scikitlearn",
+  jupyter: "simple-icons:jupyter",
+  tableau: "simple-icons:tableau",
+  powerbi: "simple-icons:powerbi",
+  r: "simple-icons:r",
+  scala: "simple-icons:scala",
+  hadoop: "simple-icons:apachehadoop",
+  spark: "simple-icons:apachespark",
+  kafka: "simple-icons:apachekafka",
+  elasticsearch: "simple-icons:elasticsearch",
+  kibana: "simple-icons:kibana",
+  logstash: "simple-icons:logstash",
+  jira: "simple-icons:jira",
+  confluence: "simple-icons:confluence",
+  trello: "simple-icons:trello",
+  slack: "simple-icons:slack",
+  figma: "simple-icons:figma",
+  adobexd: "simple-icons:adobexd",
+  sketch: "simple-icons:sketch",
+  photoshop: "simple-icons:adobephotoshop",
+  illustrator: "simple-icons:adobeillustrator",
 };
+
+function getIconName(keyword: string) {
+	const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, '');
+	return iconMap[lowercaseKeyword] || null;
+}
 ---
 
 <Section className={Astro.props.className} title="Skills">
-	<ul class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-6 [&>li>svg]:size-5 [&>li]:text-sm">
-		{
-			skills.map(({ name }) => {
-				const iconName = name === "Next.js" ? "Next" : name;
-				const Icon = SKILLS_ICONS[iconName];
-
-				return (
-					<li class="border-skin-hue/20s bg-skin-button-accent/20s borders border-solids flex items-center gap-1 rounded-md px-2 py-0.5 text-xs text-skin-muted print:border-none print:bg-transparent print:p-0 print:text-zinc-800">
-						{Icon && <Icon />} <span>{name}</span>
-					</li>
-				);
-			})
-		}
-	</ul>
+	{skillCategories.map((category) => (
+		<div class="mb-4">
+				<h3 class="text-lg font-semibold mb-2">{category}</h3>
+				<ul class="inline-flex flex-wrap gap-2">
+					{skills
+						.filter(skill => skill.name === category)
+						.flatMap(({ keywords }) => keywords)
+						.map((keyword) => {
+							const iconName = getIconName(keyword);
+							return (
+								<li class="bg-skin-button-accent/20 text-skin-base dark:text-white text-sm rounded px-2 py-1 flex items-center gap-1">
+									{iconName && <Icon name={iconName} class="w-4 h-4" />}
+									{keyword}
+								</li>
+							);
+						})
+					}
+				</ul>
+		</div>
+	))}
 </Section>

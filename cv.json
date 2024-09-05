@@ -1,76 +1,87 @@
 {
   "basics": {
-    "name": "John Doe",
-    "label": "Junior Full Stack Developer",
+    "name": "Rumi Alexander Allbert",
+    "label": "AI Engineer",
+    "email": "rumiallbert@gmail.com",
+    "phone": "845-321-4234",
     "image": "/me_avatar.jpg",
-    "email": "john.doe@example.com",
-    "phone": "+1 555-555-5555",
-    "url": "https://johndoe.dev",
-    "summary": "Junior Full Stack Developer with a passion for building web applications. Currently seeking opportunities to further develop my skills in a professional setting.",
+    "url": "https://rumiallbert.com",
+    "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics.",
     "theme": "default",
     "location": {
       "address": "",
-      "postalCode": "10001",
-      "city": "Auckland",
-      "countryCode": "NZ",
-      "region": "New Zealand"
+      "postalCode": "10940",
+      "city": "New York",
+      "countryCode": "US",
+      "region": "New York"
     },
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "john-doe",
-        "url": "https://linkedin.com/in/john-doe"
-      },
-      {
-        "network": "X",
-        "username": "john-doe",
-        "url": "https://x.com/john-doe"
+        "username": "rumi-allbert",
+        "url": "https://linkedin.com/in/rumi-allbert"
       },
       {
         "network": "GitHub",
-        "username": "johndoe",
-        "url": "https://github.com/johndoe"
+        "username": "RumiAllbert",
+        "url": "https://github.com/RumiAllbert"
       }
     ]
   },
   "work": [
     {
-      "name": "Tech Startup",
-      "position": "Junior Web Developer",
-      "location_type": "On site",
-      "location": "Auckland, New Zealand",
-      "url": "https://techstartup.com",
-      "startDate": "2024-01-01",
+      "name": "Wolfram Institute",
+      "position": "Affiliate Researcher",
+      "location_type": "Remote",
+      "location": "New York, NY",
+      "url": "https://wolframinstitute.org/",
+      "startDate": "2024-06-01",
       "endDate": null,
-      "summary": "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs.",
+      "summary": "Researching Minds, Machines & Intelligence, focusing on Deep Learning/Artificial Intelligence Conceptual Spaces, AI Philosophy, and Consciousness Science.",
       "highlights": [
-        "Improved website performance by optimizing code"
+        "Exploring ethical, moral, and societal implications of AI development",
+        "Investigating machine ethics, AI bias, and explainability of AI decisions",
+        "Contributing to the development of ethical frameworks for responsible AI creation and deployment"
       ],
       "responsibilities": [
-        "Collaborated with senior developers to design and implement web applications using modern JavaScript frameworks.",
-        "Assisted in debugging and optimizing front-end code to ensure smooth user experiences.",
-        "Participated in code reviews and contributed to improving coding standards within the team."
+        "Conducting interdisciplinary research on AI philosophy and consciousness science",
+        "Collaborating with fellow researchers on projects related to machine intelligence and cognitive functions",
+        "Utilizing Mathematica and various machine learning and AI libraries for advanced computational analysis"
       ],
-      "achievements": [
-        "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs."
-      ],
-      "skills": [
-        "React",
-        "Tailwind",
-        "GitHub"
-      ]
+      "skills": ["Mathematica", "AI", "Machine Learning", "Ethics in AI"]
     },
     {
-      "name": "Innovative Solutions",
-      "position": "Junior Software Developer",
-      "location_type": "Hybrid",
-      "location": "Wellington, New Zealand",
-      "url": "https://innovativesolutions.com",
-      "startDate": "2022-06-01",
-      "endDate": "2023-06-01",
-      "summary": "Assisting in the development and maintenance of software applications using Python and Django. Collaborating with cross-functional teams to ensure quality and timely delivery of software solutions.",
+      "name": "Stealth",
+      "position": "AI Engineer",
+      "location_type": "On site",
+      "location": "New York, NY",
+      "url": "https://stealth.com",
+      "startDate": "2024-05-01",
+      "endDate": null,
+      "summary": "Architecting and implementing cutting-edge Large Language Models and AI recommendation systems.",
       "highlights": [
-        "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
+        "Architected and implemented cutting-edge Large Language Models, resulting in a 40% improvement in natural language understanding across multiple domains",
+        "Pioneered an AI recommendation evaluation platform, leveraging advanced ML techniques to boost recommendation accuracy by 30%"
+      ],
+      "responsibilities": [
+        "Coordinating, implementing, and deploying various AI models to production"
+      ],
+      "skills": ["Python", "HuggingFace", "PyTorch"]
+    },
+    {
+      "name": "The Epoch Times",
+      "position": "Data Scientist",
+      "location_type": "Hybrid",
+      "location": "New York, NY",
+      "url": "https://www.theepochtimes.com/",
+      "startDate": "2022-01-01",
+      "endDate": "2024-02-29",
+      "summary": "Led data science initiatives, including predictive modeling, data pipeline engineering, and NLP implementations.",
+      "highlights": [
+        "Reduced subscriber churn by 20% through predictive modeling",
+        "Increased operational efficiency by 25% with scalable data pipelines",
+        "Implemented BERT and custom clustering algorithms for unstructured data analysis",
+        "Designed an automated reporting system for real-time analytics"
       ],
       "responsibilities": [
         "Developed and maintained backend services using Python and Django.",
@@ -80,28 +91,60 @@
       "achievements": [
         "Successfully implemented a feature that enhanced user authentication, improving security measures."
       ],
-      "skills": [
-        "Python",
-        "Django",
-        "SQL",
-        "Git"
-      ]
+      "skills": ["Python", "Django", "SQL", "Git"]
     },
     {
-      "name": "Web Agency",
-      "position": "Intern Web Developer",
+      "name": "UD Social Neuroscience Lab",
+      "position": "Data Analytics Research Assistant",
       "location_type": "Remote",
-      "location": "Sydney, Australia",
-      "startDate": "2022-06-01",
+      "location": "Delaware",
+      "startDate": "2021-12-01",
       "endDate": "2022-12-01",
-      "summary": "Assisted in developing client websites and applications. Gained hands-on experience with front-end and back-end technologies.",
+      "summary": "Conducted complex statistical analyses using Python, uncovering key insights that shaped the direction of multiple research projects.",
       "highlights": [
-        "Completed several client projects successfully"
+        "Developed and optimized a suite of Python scripts for PsychoPy, accelerating the data analysis pipeline by 30% and eliminating processing bottlenecks"
       ],
-      "skills": [
-        "HTML",
-        "CSS"
-      ]
+      "skills": ["HTML", "CSS"]
+    },
+    {
+      "name": "Litespeed Technologies",
+      "position": "Data Scientist",
+      "location_type": "Intern",
+      "url": "https://www.litespeedtech.com/",
+      "location": "Middletown, NY",
+      "startDate": "2021-05-01",
+      "endDate": "2021-11-01",
+      "summary": "Developed data-driven reports for the VP & CEO, highlighting key findings from extensive data mining efforts.",
+      "highlights": [
+        "Engineered high-performance data mining scripts, achieving a 200% improvement in processing efficiency and a 50% reduction in execution time",
+        "Implemented distributed computing solutions for big data algorithms, enabling real-time analysis of 5+ company data streams"
+      ],
+      "skills": ["HTML", "CSS"]
+    },
+    {
+      "name": "NASA",
+      "position": "Data Analytics Alumni",
+      "location_type": "Remote",
+      "location": "Middletown, NY",
+      "url": "https://www.nasa.gov/",
+      "startDate": "2019-08-01",
+      "endDate": "2020-06-01",
+      "summary": "Applied advanced data science techniques to real-world projects, including time series forecasting and geospatial analysis.",
+      "highlights": [
+        "Created user-friendly data visualizations and accessible USGS geospatial maps under the mentorship of NASA, the United Nations, USGS, and other organizations"
+      ],
+      "skills": ["HTML", "CSS"]
+    },
+    {
+      "name": "The Werking Title Gallery",
+      "position": "Full-Stack Developer & Assistant Creative Director",
+      "location_type": "Remote",
+      "location": "San Diego, CA",
+      "startDate": "2020-01-01",
+      "endDate": "2020-06-01",
+      "summary": "Architected and implemented a responsive web platform, driving a 20% increase in user engagement and online visibility.",
+      "highlights": ["Completed several client projects successfully"],
+      "skills": ["HTML", "CSS"]
     }
   ],
   "volunteer": [
@@ -112,203 +155,159 @@
       "startDate": "2021-01-01",
       "endDate": "2022-01-01",
       "summary": "Helped organize coding workshops and mentored new members.",
-      "highlights": [
-        "Awarded 'Volunteer of the Month'"
-      ]
+      "highlights": ["Awarded 'Volunteer of the Month'"]
     }
   ],
   "education": [
     {
-      "institution": "State University",
-      "url": "https://stateuniversity.edu",
-      "area": "Computer Science",
-      "studyType": "Bachelor",
+      "institution": "Ralston College",
+      "url": "https://ralston.ac/",
+      "area": "Humanities",
+      "studyType": "Master of Arts",
+      "startDate": "2022-09-01",
+      "endDate": "2024-05-01",
+      "score": "4.0",
+      "courses": []
+    },
+    {
+      "institution": "Fei Tian College Middletown",
+      "url": "https://feitian.edu/",
+      "area": "Data Science",
+      "studyType": "Bachelor of Science",
       "startDate": "2018-09-01",
       "endDate": "2022-05-01",
-      "score": "3.8",
-      "courses": [
-        "CS101 - Introduction to Computer Science",
-        "CS102 - Data Structures"
-      ]
-    },
-    {
-      "institution": "Tech Institute",
-      "url": "https://techinstitute.edu",
-      "area": "Software Engineering",
-      "studyType": "Master",
-      "startDate": "2020-09-01",
-      "endDate": "2022-12-01",
-      "score": "3.9",
-      "courses": [
-        "SE201 - Advanced Software Development",
-        "SE202 - Software Architecture and Design"
-      ]
-    },
-    {
-      "institution": "City College",
-      "url": "https://citycollege.edu",
-      "area": "Information Technology",
-      "studyType": "Associate Degree",
-      "startDate": "2017-01-01",
-      "endDate": "2019-12-01",
       "score": "3.7",
-      "courses": [
-        "IT101 - Networking Fundamentals",
-        "IT102 - Database Management Systems"
+      "courses": [],
+      "highlights": [
+        "First Place Hackathon Champion",
+        "Academic Excellence Recipient"
       ]
+    },
+    {
+      "institution": "National Taiwan Normal University",
+      "url": "https://ntnu.edu.tw",
+      "area": "Mandarin Chinese",
+      "studyType": "Language Studies",
+      "startDate": "2017-09-01",
+      "endDate": "2018-05-01",
+      "score": "3.7",
+      "courses": []
     }
   ],
   "certificates": [
     {
-      "name": "Full Stack Web Development",
-      "date": "2023-05-01",
-      "issuer": "Online University",
-      "url": "https://onlineuniversity.com/certificates/fullstack"
+      "name": "Neural Networks & Deep Learning",
+      "date": "2023-01-01",
+      "issuer": "Coursera",
+      "url": "https://coursera.org/certificates/neural-networks-deep-learning"
+    },
+    {
+      "name": "Database Structures & Management",
+      "date": "2022-06-01",
+      "issuer": "Udacity",
+      "url": "https://udacity.com/certificates/database-structures-management"
+    },
+    {
+      "name": "Advanced Google Analytics",
+      "date": "2022-03-01",
+      "issuer": "Google",
+      "url": "https://analytics.google.com/certificates/advanced-google-analytics"
+    },
+    {
+      "name": "Version Control",
+      "date": "2021-09-01",
+      "issuer": "DataCamp",
+      "url": "https://datacamp.com/certificates/version-control"
+    },
+    {
+      "name": "R for Finance",
+      "date": "2021-07-01",
+      "issuer": "DataCamp",
+      "url": "https://datacamp.com/certificates/r-for-finance"
     }
   ],
   "skills": [
     {
-      "name": "Figma",
-      "level": "Expert",
+      "name": "Core Competencies",
       "keywords": [
-        "Design",
-        "UI"
+        "Data Science",
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Statistical Analysis",
+        "Software Engineering"
       ]
     },
     {
-      "name": "Gitlab",
-      "level": "Intermediate",
+      "name": "Programming & Scripting Languages",
+      "keywords": ["Python", "R", "JavaScript", "Go", "Mathematica"]
+    },
+    {
+      "name": "Machine Learning & AI",
       "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
+        "TensorFlow",
+        "PyTorch",
+        "Hugging Face",
+        "Scikit-learn",
+        "NLTK",
+        "SpaCy",
+        "Gensim",
+        "PyCaret"
       ]
     },
     {
-      "name": "HTML",
-      "level": "Intermediate",
+      "name": "Data Science & Analytics",
       "keywords": [
-        "Web Development",
-        "Frontend"
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Tableau",
+        "Power BI",
+        "Mathematica"
       ]
     },
     {
-      "name": "CSS",
-      "level": "Intermediate",
+      "name": "Big Data & Cloud Technologies",
+      "keywords": ["Hadoop", "Spark", "Hive", "AWS", "Azure", "Google Cloud"]
+    },
+    {
+      "name": "Software Development & DevOps",
       "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
+        "Git",
+        "GitHub",
+        "GitLab",
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "Agile Methodologies"
       ]
     },
     {
-      "name": "JavaScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ]
-    },
-    {
-      "name": "Tailwind",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "CSS Framework",
-        "Responsive Design"
-      ]
-    },
-    {
-      "name": "TypeScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
-    },
-    {
-      "name": "Node",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript",
-        "Server"
-      ]
-    },
-    {
-      "name": "MySQL",
-      "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
-      ]
-    },
-    {
-      "name": "Git",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
-    },
-    {
-      "name": "GitHub",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
-    },
-    {
-      "name": "Next.js",
-      "level": "Beginner",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
-    },
-    {
-      "name": "React",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
+      "name": "Databases & Data Storage",
+      "keywords": ["MySQL", "MongoDB", "PostgreSQL", "Redis"]
     }
   ],
   "languages": [
     {
-      "language": "English",
-      "fluency": "Native speaker"
+      "language": "English"
     },
     {
-      "language": "Spanish",
-      "fluency": "Intermediate"
+      "language": "Spanish"
+    },
+    {
+      "language": "Greek"
+    },
+    {
+      "language": "Ancient Greek"
+    },
+    {
+      "language": "Mandarin Chinese"
     }
   ],
   "interests": [
     {
       "name": "Technology",
-      "keywords": [
-        "AI",
-        "Blockchain"
-      ]
+      "keywords": ["AI", "Blockchain"]
     }
   ],
   "references": [
@@ -317,6 +316,7 @@
       "reference": "Reference…"
     }
   ],
+
   "projects": [
     {
       "name": "Personal Portfolio",

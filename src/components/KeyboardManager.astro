@@ -58,7 +58,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 });
 ---
 
-<footer id="normal-footer" class="no-print flex flex-col gap-2">
+<footer id="normal-footer" class="no-print flex flex-col gap-2 text-command-palette-text">
 	<div>
 		Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.
 	</div>
@@ -188,6 +188,11 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		animation: linear 0.3s fadeIn;
 		animation-timeline: --revealing;
 		animation-range: entry 100% cover 10%;
+
+		/* Add transparency and blur here */
+		background-color: rgba(var(--color-button-accent), 0.6);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px); /* For Safari */
 	}
 	kbd {
 		@apply bg-skin-muted;
@@ -197,20 +202,39 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	}
 	#hotkeypad {
 		--hotkeypad-bg-kbd: rgb(var(--muted));
-		--hotkeypad-bg-backdrop: rgb(var(--color-fill));
-		--hotkeypad-bg-container: rgb(var(--color-fill));
+		--hotkeypad-bg-backdrop: rgba(var(--color-fill), 0.8);
+		--hotkeypad-bg-container: rgba(var(--color-fill), 0.9);
 		--hotkeypad-bg-item-hover: rgba(var(--color-text), 20%);
 		--hotkeypad-border-container: rgb(var(--muted));
 		--hotkeypad-border-container-hover: rgb(var(--color-fill));
 		--hotkeypad-fg-muted: rgb(var(--muted));
 		@media (prefers-color-scheme: dark) {
 			--hotkeypad-bg-kbd: rgb(var(--muted));
-			--hotkeypad-bg-backdrop: rgb(var(--color-fill));
-			--hotkeypad-bg-container: rgb(var(--color-fill));
+			--hotkeypad-bg-backdrop: rgba(var(--color-fill), 0.8);
+			--hotkeypad-bg-container: rgba(var(--color-fill), 0.9);
 			--hotkeypad-bg-item-hover: rgba(var(--color), 10%);
 			--hotkeypad-border-container: rgb(var(--muted));
 			--hotkeypad-border-container-hover: rgb(var(--color-fill));
 			--hotkeypad-fg-muted: rgb(var(--color-text-base));
 		}
+	}
+	#hotkeypad [data-container] {
+		background: linear-gradient(
+			to bottom,
+			rgba(var(--color-fill), 0.2) 0%,
+			rgba(var(--color-fill), 0.6) 30%,
+			rgba(var(--color-fill), 0.9) 100%
+		);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+	}
+
+	#hotkeypad [data-item] {
+		background-color: rgba(var(--color-fill), 0.6);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+	}
+	.text-command-palette-text {
+		color: rgb(var(--color-command-palette-text));
 	}
 </style>

@@ -13,6 +13,8 @@ import ThemeSwitch from "@/components/ThemeSwitch.astro";
 
 import { basics } from "@cv";
 const { name, label } = basics;
+
+import Languages from "@/components/sections/Languages.astro";
 ---
 
 <Layout title={`${name} Portafolio - ${label}`}>
@@ -20,7 +22,7 @@ const { name, label } = basics;
 		<div class="space-y-6 md:col-span-2 print:col-span-1 print:grid print:grid-cols-2 print:gap-5 print:space-y-0">
 			<Hero />
 			<About />
-			<ThemeSwitch />
+			<Languages />
 		</div>
 		<div class="space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0">
 			<Experience className="print:col-span-3" />
@@ -28,7 +30,6 @@ const { name, label } = basics;
 			<Skills className="print:hidden" />
 			<Education className="order-first" />
 		</div>
-		<Tail />
 	</main>
 
 	<KeyboardManager />

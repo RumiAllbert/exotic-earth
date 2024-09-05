@@ -6,10 +6,12 @@
     --color-text-inverted: 255, 255, 255;
     --color-fill: 245, 245, 245;
     --muted: 200, 200, 200;
-    --color: 249, 115, 22;
-    --color-button-accent: 249, 115, 22;
-    --color-button-accent-hover: 55, 55, 55;
-    --color-button-muted: 244, 239, 238;
+    --color: 75, 0, 130;
+    --color-button-accent: 147, 112, 219; // Lavender purple with 30% opacity
+    --color-button-accent-hover: 147, 112, 219; // Lavender purple for hover with 50% opacity
+    --color-button-muted: 230, 225, 235;
+    --color-skill-bubble: 75, 0, 130; // Keep the original purple for skill bubbles
+    --color-command-palette-text: 255, 255, 255; // White text for command palette
     [data-theme="blue"] {
       --color-text-base: 15, 23, 42;
       --color-text-muted: 100, 116, 139;
@@ -61,10 +63,12 @@
     --color-text-inverted: 255, 255, 255;
     --color-fill: 18, 18, 18;
     --muted: 36, 36, 36;
-    --color: 227, 77, 10;
-    --color-button-accent: 227, 77, 10;
-    --color-button-accent-hover: 231, 121, 43;
-    --color-button-muted: 26, 26, 26;
+    --color: 147, 112, 219;
+    --color-button-accent: 147, 112, 219; // Lavender purple with 30% opacity
+    --color-button-accent-hover: 147, 112, 219; // Lavender purple for hover with 50% opacity
+    --color-button-muted: 40, 30, 50;
+    --color-skill-bubble: 147, 112, 219; // Keep the original purple for skill bubbles in dark mode
+    --color-command-palette-text: 255, 255, 255; // White text for command palette
     [data-theme="blue"] {
       --color-text-base: 248, 250, 252;
       --color-text-muted: 148, 163, 184;
@@ -109,4 +113,5 @@
       --color-button-accent-hover: 0, 185, 255;
       --color-button-muted: 25, 81, 86;
     }
+  }
 }
