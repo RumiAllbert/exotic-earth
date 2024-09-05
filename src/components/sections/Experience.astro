@@ -1,40 +1,10 @@
 ---
 import Section from "../Section.astro"
 import { work } from "@cv"
+import { Icon } from 'astro-icon/components'
+import { iconMap } from './Skills.astro'
 
-import HTML from "@/icons/html.astro"
-import CSS from "@/icons/css.astro"
-import JavaScript from "@/icons/javascript.astro"
-import TypeScript from "@/icons/type.astro"
-import React from "@/icons/react.astro"
-import Node from "@/icons/node.astro"
-import MySQL from "@/icons/sql.astro"
-import Git from "@/icons/git.astro"
-import GitHub from "@/icons/GitHub.astro"
-import Tailwind from "@/icons/tailwind.astro"
-import Next from "@/icons/next.astro"
-import Swift from "@/icons/swift.astro"
-import SwiftUI from "@/icons/swiftui.astro"
-import Kotlin from "@/icons/kotlin.astro"
-import Flutter from "@/icons/flutter.astro"
-
-const SKILLS_ICONS: Record<string, any> = {
-  HTML,
-  CSS,
-  JavaScript,
-  TypeScript,
-  React,
-  Node,
-  MySQL,
-  Git,
-  GitHub,
-  Next,
-  Tailwind,
-  Swift,
-  SwiftUI,
-  Kotlin,
-  Flutter,
-}
+// Remove all individual icon imports and the SKILLS_ICONS constant
 ---
 <Section className={Astro.props.className} title="Experience">
   <ul class="flex flex-col">
@@ -132,11 +102,11 @@ const SKILLS_ICONS: Record<string, any> = {
 
                 <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
                   {skills && skills.map(skill => {
-                    const iconName = skill === "Next.js" ? "Next" : skill
-                    const Icon = SKILLS_ICONS[iconName]
+                    const iconName = iconMap[skill.toLowerCase().replace(/\s+/g, '')];
                     return (
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs">
-                        {Icon && <Icon />} <span>{skill}</span>
+                        {iconName && <Icon name={iconName} class="w-4 h-4" />}
+                        <span>{skill}</span>
                       </li>
                     )
                   })}
