@@ -32,6 +32,10 @@ export default {
           hue: withOpacity("--color"),
           muted: withOpacity("--muted"),
         },
+        blue: {
+          200: '#BFDBFE',
+          800: '#1E40AF',
+        },
       },
       ringColor: {
         skin: {
