@@ -8,7 +8,7 @@ import { certificates } from "@cv";
 <Section className={Astro.props.className} title="Education">
 	<ul class="space-y-4 py-3 print:space-y-0">
 		{
-			education.map(({ institution, startDate, endDate, area, url }) => {
+			education.map(({ institution, startDate, endDate, area, url, studyType, highlights }) => {
 				const startYear = new Date(startDate).getFullYear();
 				const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual";
 				const years = `${startYear} - ${endYear}`;
@@ -26,8 +26,15 @@ import { certificates } from "@cv";
 									{institution}
 								</a>
 							</h3>
-							<div class="text-sm text-skin-muted">{area}</div>
+							<div class="text-sm text-skin-muted">{studyType} in {area}</div>
 							<time class="right-0 top-0 text-xs text-skin-muted md:absolute md:block">{years}</time>
+							{highlights && highlights.length > 0 && (
+								<ul class="mt-2 list-disc pl-5 text-sm text-skin-muted">
+									{highlights.map((highlight) => (
+										<li>{highlight}</li>
+									))}
+								</ul>
+							)}
 						</div>
 					</div>
 				);
