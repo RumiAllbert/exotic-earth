@@ -6,7 +6,7 @@
     "phone": "845-321-4234",
     "image": "/me_avatar.jpg",
     "url": "https://rumiallbert.com",
-    "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics.",
+    "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics. I also dabble in classics, philosophy, and music.",
     "theme": "default",
     "location": {
       "address": "",
@@ -91,7 +91,7 @@
       "achievements": [
         "Successfully implemented a feature that enhanced user authentication, improving security measures."
       ],
-      "skills": ["Python", "Django", "MySQL", "Git"]
+      "skills": ["Python", "Hive", "MySQL", "Git"]
     },
     {
       "name": "Students for Falun Gong",
@@ -131,7 +131,7 @@
       "highlights": [
         "Developed and optimized a suite of Python scripts for PsychoPy, accelerating the data analysis pipeline by 30% and eliminating processing bottlenecks"
       ],
-      "skills": ["HTML", "CSS"]
+      "skills": ["Python", "PsychoPy", "Statistics"]
     },
     {
       "name": "Litespeed Technologies",
@@ -146,7 +146,7 @@
         "Engineered high-performance data mining scripts, achieving a 200% improvement in processing efficiency and a 50% reduction in execution time",
         "Implemented distributed computing solutions for big data algorithms, enabling real-time analysis of 5+ company data streams"
       ],
-      "skills": ["HTML", "CSS"]
+      "skills": ["Go", "Python", "MongoDB", "PHP", "Data Mining"]
     },
     {
       "name": "NASA",
@@ -160,18 +160,19 @@
       "highlights": [
         "Created user-friendly data visualizations and accessible USGS geospatial maps under the mentorship of NASA, the United Nations, USGS, and other organizations"
       ],
-      "skills": ["HTML", "CSS"]
+      "skills": ["QGIS", "Geospatial Analysis", "Data Visualization"]
     },
     {
       "name": "The Werking Title Gallery",
       "position": "Full-Stack Developer & Assistant Creative Director",
       "location_type": "Remote",
       "location": "San Diego, CA",
+      "url": "https://www.werkingtitlegallery.com/",
       "startDate": "2020-01-01",
       "endDate": "2020-06-01",
       "summary": "Architected and implemented a responsive web platform, driving a 20% increase in user engagement and online visibility.",
       "highlights": ["Completed several client projects successfully"],
-      "skills": ["HTML", "CSS"]
+      "skills": ["JavaScript", "React", "Node.js"]
     }
   ],
   "volunteer": [
@@ -256,15 +257,15 @@
   "certificates": [
     {
       "name": "Neural Networks & Deep Learning",
-      "date": "2023-01-01",
-      "issuer": "Coursera",
-      "url": "https://coursera.org/certificates/neural-networks-deep-learning"
+      "date": "2022-01-01",
+      "issuer": "DeepLearning.AI",
+      "url": "https://www.coursera.org/account/accomplishments/certificate/VKALNK6QS5N4"
     },
     {
       "name": "Database Structures & Management",
       "date": "2022-06-01",
-      "issuer": "Udacity",
-      "url": "https://udacity.com/certificates/database-structures-management"
+      "issuer": "Meta",
+      "url": "https://www.coursera.org/account/accomplishments/certificate/RWUE8B3LQSGW"
     },
     {
       "name": "Advanced Google Analytics",
@@ -274,15 +275,21 @@
     },
     {
       "name": "Version Control",
-      "date": "2021-09-01",
-      "issuer": "DataCamp",
-      "url": "https://datacamp.com/certificates/version-control"
+      "date": "2022-09-01",
+      "issuer": "Meta",
+      "url": "https://www.coursera.org/account/accomplishments/verify/9QAWBQ3VVB2T"
     },
     {
       "name": "R for Finance",
-      "date": "2021-07-01",
+      "date": "2020-07-01",
       "issuer": "DataCamp",
-      "url": "https://datacamp.com/certificates/r-for-finance"
+      "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/5e5e092c02b95553ac1363517c0a1ef892a2070b"
+    },
+    {
+      "name": "Life Coaching",
+      "date": "2019-07-01",
+      "issuer": "The Academy of Modern Applied Psychology",
+      "url": ""
     }
   ],
   "skills": [

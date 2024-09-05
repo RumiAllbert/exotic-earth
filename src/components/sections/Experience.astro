@@ -2,14 +2,19 @@
 import Section from "../Section.astro"
 import { work } from "@cv"
 import { Icon } from 'astro-icon/components'
+import { iconMap } from "./Skills.astro"
 
 type IconMap = {
   [key: string]: string;
 };
 
-const iconMap: IconMap = {
-  // ... existing iconMap entries
-};
+function getIconName(keyword: string) {
+	const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, '');
+	console.log(`Lowercase Keyword: ${lowercaseKeyword}`); // Debugging
+	const iconName = (iconMap as IconMap)[lowercaseKeyword];
+	console.log(`Icon Name: ${iconName}`); // Debugging
+	return iconName || null;
+}
 ---
 <Section className={Astro.props.className} title="Experience">
   <ul class="flex flex-col">
@@ -103,20 +108,22 @@ const iconMap: IconMap = {
                   <span x-text="expanded ? 'Show less' : 'Show more'">Show more</span>
                   <svg class="w-4 h-4 group-hover/more:translate-y-0.5 duration-200 ease-out" :class="{ 'rotate-180': expanded }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
+                )}
+                
 
-
-                <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
-                  {skills && skills.map(skill => {
-                    const iconName = iconMap[skill.toLowerCase().replace(/\s+/g, '')] || null;
-                    return (
-                      <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs">
-                        {iconName && <Icon name={iconName} class="w-4 h-4" />}
-                        <span>{skill}</span>
-                      </li>
-                    )
-                  })}
-                </ul>
-)}
+                {skills && skills.length > 0 && (
+                  <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
+                    {skills.map(skill => {
+                      const iconName = getIconName(skill);
+                      return (
+                        <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs">
+                          {iconName && <Icon name={iconName} class="w-4 h-4" />}
+                          <span>{skill}</span>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                )}
               </div>
             </div>
         </div>
