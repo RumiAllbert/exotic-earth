@@ -94,6 +94,33 @@
       "skills": ["Python", "Django", "MySQL", "Git"]
     },
     {
+      "name": "Students for Falun Gong",
+      "position": "CTO & Executive Board Member",
+      "location_type": "Remote",
+      "location": "Remote",
+      "url": "https://studentsforfg.org/",
+      "startDate": "2019-10-01",
+      "endDate": null,
+      "summary": "Leading technical initiatives and strategic planning for an international non-profit organization.",
+      "highlights": [
+        "Led development and maintenance of multilingual websites, ensuring optimal performance and user experience",
+        "Managed server infrastructure, prioritizing system reliability and efficiency",
+        "Organized and hosted international conferences, enhancing network and outreach",
+        "Engaged in advocacy at the International Religious Freedom Summit, supported by diverse media and community collaborations"
+      ],
+      "responsibilities": [
+        "Overseeing all technical aspects of the organization's digital presence",
+        "Collaborating with international teams to implement strategic initiatives",
+        "Representing the organization at high-level conferences and summits"
+      ],
+      "skills": [
+        "Web Development",
+        "Server Management",
+        "Event Organization",
+        "Advocacy"
+      ]
+    },
+    {
       "name": "UD Social Neuroscience Lab",
       "position": "Data Analytics Research Assistant",
       "location_type": "Remote",
@@ -203,13 +230,27 @@
     },
     {
       "institution": "National Taiwan Normal University",
-      "url": "https://ntnu.edu.tw",
+      "url": "https://mtc.ntnu.edu.tw/eng/",
       "area": "Mandarin Chinese",
       "studyType": "Language Studies",
       "startDate": "2017-09-01",
       "endDate": "2018-05-01",
       "score": "3.7",
-      "courses": []
+      "courses": [],
+      "highlights": ["Recipient of the prestigious Huayu Scholarship"]
+    },
+    {
+      "institution": "Center for Hellenic Studies, Harvard University",
+      "url": "https://chs.harvard.edu/",
+      "area": "Greek Studies",
+      "studyType": "Visiting Greek Scholar",
+      "startDate": "2023-09-01",
+      "endDate": "2023-10-31",
+      "location": "Návplion, Peloponnese, Greece",
+      "highlights": [
+        "Full-time Greek Language Residency",
+        "Collaborated with international scholars in Hellenic studies"
+      ]
     }
   ],
   "certificates": [
