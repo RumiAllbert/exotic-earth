@@ -6,11 +6,14 @@ import KeyboardManager from '../components/KeyboardManager.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = basics.summary } = Astro.props;
 
 const { image, summary, url, theme } = basics;
+
+const ogImage = '/og-image.jpg';
 ---
 
 <!doctype html>
@@ -18,23 +21,25 @@ const { image, summary, url, theme } = basics;
 	<head>
 		<meta charset="UTF-8" />
 		<title>{title}</title>
-		<meta name="description" content={summary} />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={Astro.url} />
 		<link rel="preload" as="image" href={image} />
 
-		<meta property="og:url" content={url} />
+		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={title} />
-		<meta property="og:description" content={summary} />
-		<meta property="og:image" content="" />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
-		<meta property="twitter:url" content={url} />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={summary} />
-		<meta name="twitter:image" content="" />
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={ogImage} />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim" />
 
