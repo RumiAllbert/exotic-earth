@@ -76,7 +76,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
   data-placeholder="Search Command" 
   data-info={JSON.stringify(profilesInfo)}
   data-email={basics.email}
-  data-name={basics.name}
 ></div>
 
 <canvas id="rainbow-background"></canvas>
@@ -100,10 +99,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	const info = hotkeypadElement.getAttribute("data-info") ?? "[]";
 	const parsedInfo = JSON.parse(info) as Info[];
 	const email = hotkeypadElement.getAttribute("data-email") ?? "";
-	const name = hotkeypadElement.getAttribute("data-name") ?? "";
 
 	let partyMode = false;
-	let ripples = [];
+	let ripples: Array<{ x: number; y: number; size: number; alpha: number }> = [];
 	let time = 0;
 
 	function togglePartyMode() {
@@ -111,7 +109,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		if (partyMode) {
 			document.body.classList.add('party-mode');
 			const rainbowBackground = document.getElementById('rainbow-background');
-			rainbowBackground.style.display = 'block';
+			if (rainbowBackground) {
+				rainbowBackground.style.display = 'block';
+			}
 			
 			// First confetti burst
 			confetti({
@@ -137,7 +137,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
 			setTimeout(() => {
 				document.body.classList.remove('party-mode');
-				rainbowBackground.style.display = 'none';
+				if (rainbowBackground) {
+					rainbowBackground.style.display = 'none';
+				}
 				document.removeEventListener('mousemove', handleMouseMove);
 				partyMode = false;
 				ripples = [];
@@ -145,23 +147,25 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		} else {
 			document.body.classList.remove('party-mode');
 			const rainbowBackground = document.getElementById('rainbow-background');
-			rainbowBackground.style.display = 'none';
+			if (rainbowBackground) {
+				rainbowBackground.style.display = 'none';
+			}
 			document.removeEventListener('mousemove', handleMouseMove);
 			ripples = [];
 		}
 	}
 
-	function handleMouseMove(e) {
+	function handleMouseMove(e: MouseEvent) {
 		createRipple(e.clientX, e.clientY);
 	}
 
-	function createRipple(x, y) {
-		ripples.push({ x, y, size: 0, opacity: 1 });
+	function createRipple(x: number, y: number) {
+		ripples.push({ x, y, size: 0, alpha: 1 });
 	}
 
 	function animateBackground() {
-		const canvas = document.getElementById('rainbow-background');
-		const ctx = canvas.getContext('2d');
+		const canvas = document.getElementById('rainbow-background') as HTMLCanvasElement;
+		const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
@@ -196,13 +200,13 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		ripples.forEach((ripple, index) => {
 			ctx.beginPath();
 			ctx.arc(ripple.x, ripple.y, ripple.size, 0, 2 * Math.PI);
-			ctx.strokeStyle = `rgba(255, 255, 255, ${ripple.opacity})`;
+			ctx.strokeStyle = `rgba(255, 255, 255, ${ripple.alpha})`;
 			ctx.stroke();
 
 			ripple.size += 2;
-			ripple.opacity -= 0.02;
+			ripple.alpha -= 0.02;
 
-			if (ripple.opacity <= 0) {
+			if (ripple.alpha <= 0) {
 				ripples.splice(index, 1);
 			}
 		});
@@ -302,7 +306,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		const section = document.getElementById(sectionId);
 		if (section) {
 			const yOffset = -60; // Adjust this value to account for any fixed headers
-			const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
 			window.scrollTo({top: y, behavior: 'smooth'});
 		}
 	}

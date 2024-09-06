@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@iconify-json/simple-icons": "^1.2.1",
+    "@types/canvas-confetti": "^1.6.4",
     "astro-icon": "^1.1.1",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0"
