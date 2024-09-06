@@ -11,7 +11,7 @@ import { projects } from "@cv";
 		{
 			projects.map(({ url, description, highlights, name, isActive, github }) => {
 				return (
-					<div role="contentinfo" class="grid-span-1 ring-skin-muted relative flex flex-col rounded-lg bg-skin-button-muted/50 p-6 shadow-md ring-1 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+					<div role="contentinfo" class="project-card grid-span-1 ring-skin-muted relative flex flex-col rounded-lg bg-skin-button-muted/50 p-6 shadow-md ring-1 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
 						<div class="flex items-center justify-between space-x-[10px] mb-3">
 							<div class="flex items-center gap-2">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder size-5 text-skin-hue">
@@ -75,4 +75,54 @@ import { projects } from "@cv";
 	[role="contentinfo"] {
 		animation: fadeIn 0.5s ease-out;
 	}
+
+	.project-card {
+		position: relative;
+		overflow: hidden;
+		transition: all 0.3s ease;
+	}
+
+	.project-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: radial-gradient(
+			circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+			rgba(200, 180, 255, 0.8) 0%, 
+			rgba(200, 180, 255, 0) 50%
+		);
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.project-card:hover::before {
+		opacity: 1;
+	}
+
+	.project-card > * {
+		position: relative;
+		z-index: 1;
+	}
 </style>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const projectCards = document.querySelectorAll('.project-card');
+		
+		projectCards.forEach(card => {
+			card.addEventListener('mousemove', (e) => {
+				const rect = card.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
+				
+				card.style.setProperty('--mouse-x', `${x}px`);
+				card.style.setProperty('--mouse-y', `${y}px`);
+			});
+		});
+	});
+</script>
