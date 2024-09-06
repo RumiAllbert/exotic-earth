@@ -72,7 +72,16 @@
       "responsibilities": [
         "Coordinating, implementing, and deploying various AI models to production"
       ],
-      "skills": ["Python", "HuggingFace", "PyTorch", "FastAPI", "Ollama"]
+      "skills": [
+        "Python",
+        "HuggingFace",
+        "PyTorch",
+        "Docker",
+        "Redis",
+        "wandb",
+        "FastAPI",
+        "Ollama"
+      ]
     },
     {
       "name": "The Epoch Times",
@@ -171,7 +180,12 @@
       "highlights": [
         "Created user-friendly data visualizations and accessible USGS geospatial maps under the mentorship of NASA, the United Nations, USGS, and other organizations"
       ],
-      "skills": ["QGIS", "Geospatial Analysis", "Data Visualization"]
+      "skills": [
+        "QGIS",
+        "JavaScript",
+        "Geospatial Analysis",
+        "Data Visualization"
+      ]
     },
     {
       "name": "The Werking Title Gallery",
@@ -320,6 +334,7 @@
         "TensorFlow",
         "PyTorch",
         "Hugging Face",
+        "wandb",
         "Scikit-learn",
         "TransformerLens",
         "NLTK",
@@ -332,8 +347,10 @@
       "name": "Data Science & Analytics",
       "keywords": [
         "Pandas",
+        "Polars",
         "NumPy",
         "Plotly",
+        "Streamlit",
         "Matplotlib",
         "Seaborn",
         "Tableau",
@@ -359,7 +376,7 @@
     },
     {
       "name": "Databases & Data Storage",
-      "keywords": ["MySQL", "MongoDB", "PostgreSQL", "Redis"]
+      "keywords": ["MySQL", "MongoDB", "PostgreSQL", "SQLite", "Redis"]
     }
   ],
   "languages": [
