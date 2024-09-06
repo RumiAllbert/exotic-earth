@@ -136,7 +136,7 @@ function getIconName(keyword: string) {
 						.map((keyword) => {
 							const iconName = getIconName(keyword);
 							return (
-								<li class={`text-sm rounded px-2 py-1 flex items-center gap-1 ${
+								<li class={`skill-item text-sm rounded px-2 py-1 flex items-center gap-1 ${
 									category === "Core Competencies"
 										? "core-competency bg-blue-200 text-blue-800 text-base"
 										: "bg-skin-button-accent/20 text-skin-base dark:text-white"
@@ -151,3 +151,58 @@ function getIconName(keyword: string) {
 		</div>
 	))}
 </Section>
+
+<style>
+  .skill-item {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #6366f1, #3b82f6);
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .skill-item:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+  }
+
+  .skill-item:hover::before {
+    opacity: .7;
+    background-position: var(--x, 0) var(--y, 0);
+    transition: background-position 0.3s ease;
+  }
+
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.skill-item').forEach(item => {
+    item.addEventListener('mousemove', (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      item.style.setProperty('--x', `${x}px`);
+      item.style.setProperty('--y', `${y}px`);
+    });
+  });
+</script>
