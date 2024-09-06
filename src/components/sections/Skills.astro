@@ -196,12 +196,12 @@ function getIconName(keyword: string) {
 
 <script>
   document.querySelectorAll('.skill-item').forEach(item => {
-    item.addEventListener('mousemove', (e: MouseEvent) => {
+    item.addEventListener('mousemove', ((e: MouseEvent) => {
       const rect = item.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       (item as HTMLElement).style.setProperty('--x', `${x}px`);
       (item as HTMLElement).style.setProperty('--y', `${y}px`);
-    });
+    }) as EventListener);
   });
 </script>
