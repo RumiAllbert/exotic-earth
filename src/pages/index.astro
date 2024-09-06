@@ -24,13 +24,21 @@ const { name, label } = basics;
 			<Languages />
 		</div>
 		<div class="space-y-12 md:col-span-4 print:col-span-1 print:grid print:grid-cols-4 print:gap-2 print:space-y-0">
-			<Experience id="experience" className="print:col-span-3" />
+			<section id="experience">
+				<Experience className="print:col-span-3" />
+			</section>
 			<div class="separator"></div>
-			<Skills id="skills" className="print:hidden" />
+			<section id="skills">
+				<Skills className="print:hidden" />
+			</section>
 			<div class="separator print:hidden"></div>
-			<Education id="education" className="order-first" />
+			<section id="education">
+				<Education className="order-first" />
+			</section>
 			<div class="separator"></div>
-			<Projects id="projects" />
+			<section id="projects">
+				<Projects />
+			</section>
 		</div>
 	</main>
 
