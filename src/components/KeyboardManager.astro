@@ -58,7 +58,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 });
 ---
 
-<footer id="normal-footer" class="no-print flex flex-col gap-2 text-command-palette-text">
+<footer id="normal-footer" class="no-print">
   <div class="command-palette-text">
     Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.
   </div>
@@ -213,6 +213,17 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		}
 	}
 
+	@keyframes slideIn {
+		from {
+			opacity: 0;
+			transform: translate(-50%, 100%);
+		}
+		to {
+			opacity: 1;
+			transform: translate(-50%, 0);
+		}
+	}
+
 	@media (min-width: 601px) {
 		.footer-button {
 			display: none;
@@ -241,31 +252,31 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	}
 
 	footer {
-		@apply bg-skin-button-accent;
 		position: fixed;
-		bottom: 0px;
-		width: 100%;
-		padding-block: 8px;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: auto;
+		max-width: 80%;
+		padding: 6px 12px;
 		text-align: center;
-		font-size: 0.85rem;
+		font-size: 0.8rem;
+		border-radius: 16px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-		view-timeline-name: --revealing;
-		view-timeline-axis: block;
-
-		animation: linear 0.3s fadeIn;
-		animation-timeline: --revealing;
-		animation-range: entry 100% cover 10%;
-
-		/* Add transparency and blur here */
-		background-color: rgba(var(--color-button-accent), 0.6);
+		background-color: rgba(var(--color-button-accent), 0.8);
 		backdrop-filter: blur(8px);
-		-webkit-backdrop-filter: blur(8px); /* For Safari */
+		-webkit-backdrop-filter: blur(8px);
+
+		animation: slideIn 0.5s ease-out forwards;
 	}
 	kbd {
-		@apply bg-skin-muted;
-		border-radius: 4px;
-		padding: 2px 4px;
-		font-size: 12px;
+		background-color: rgba(var(--color-fill), 0.3);
+		border-radius: 3px;
+		padding: 1px 3px;
+		font-size: 11px;
+		font-weight: bold;
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 	}
 	#hotkeypad {
 		--hotkeypad-bg-kbd: rgb(var(--muted));
