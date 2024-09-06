@@ -65,7 +65,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
   </div>
 </footer>
 
-<div class="footer-button no-print">
+<div class="footer-button no-print" id="floating-palette">
 	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-command" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round">
 		<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 		<path d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"></path>
@@ -311,7 +311,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		}
 	}
 
-	const footerButtons = document.querySelectorAll(".footer-button");
+	const footerButtons = document.querySelectorAll(".footer-button, #normal-footer");
 	footerButtons.forEach((button) => {
 		button.addEventListener("click", () => {
 			var event = new KeyboardEvent("keydown", {
@@ -374,6 +374,11 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
+			transition: transform 0.3s ease;
+		}
+
+		.footer-button:hover {
+			transform: scale(1.1);
 		}
 	}
 
@@ -395,7 +400,16 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		-webkit-backdrop-filter: blur(8px);
 
 		animation: slideIn 0.5s ease-out forwards;
+		cursor: pointer;
+		transition: transform 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
 	}
+
+	footer:hover {
+		transform: translateX(-50%) scale(1.05);
+		padding: 8px 14px;
+		font-size: 0.85rem;
+	}
+
 	kbd {
 		background-color: rgba(var(--color-fill), 0.3);
 		border-radius: 3px;
