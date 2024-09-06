@@ -100,8 +100,8 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 				</div>
 			</footer>
 		</div>
-		<figure class="print:hidden w-fit relative">
-			<img class="shadow-lg shadow-skin-hues" src={image} alt={name} />
+		<figure class="print:hidden w-fit relative tilt-container">
+			<img class="tilt-image relative z-10" src={image} alt={name} />
 			<div class="pointer-events-none absolute -inset-2">
 				<div class="absolute -inset-y-8 right-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
 				<div class="absolute -inset-y-8 left-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
@@ -162,6 +162,20 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 			@apply md:mx-auto;
 		}
 	}
+
+	.tilt-container {
+		perspective: 1000px;
+		transform-style: preserve-3d;
+		position: relative;
+		overflow: visible;
+	}
+
+	.tilt-image {
+		transition: transform 0.1s ease;
+		transform: rotateX(0) rotateY(0);
+		position: relative;
+		z-index: 10;
+	}
 </style>
 
 <script>
@@ -200,4 +214,25 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 			document.documentElement.classList.add("dark");
 		}
 	});
+
+	// Add tilt effect
+	const tiltContainer = document.querySelector('.tilt-container') as HTMLElement;
+	const tiltImage = document.querySelector('.tilt-image') as HTMLElement;
+
+	if (tiltContainer && tiltImage) {
+		tiltContainer.addEventListener('mousemove', (e: MouseEvent) => {
+			const { left, top, width, height } = tiltContainer.getBoundingClientRect();
+			const x = (e.clientX - left) / width;
+			const y = (e.clientY - top) / height;
+			
+			const tiltX = (y - 0.5) * 20;
+			const tiltY = (x - 0.5) * -20;
+
+			tiltImage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+		});
+
+		tiltContainer.addEventListener('mouseleave', () => {
+			tiltImage.style.transform = 'rotateX(0) rotateY(0)';
+		});
+	}
 </script>
