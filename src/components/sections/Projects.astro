@@ -7,43 +7,48 @@ import { projects } from "@cv";
 ---
 
 <Section className={Astro.props.className} title="Projects">
-	<div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
+	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 print:flex print:flex-col">
 		{
 			projects.map(({ url, description, highlights, name, isActive, github }) => {
 				return (
-					<div role="contentinfo" class="grid-span-1 ring-skin-muted relative flex flex-col rounded-md bg-skin-button-muted/50 p-5 shadow-sm ring-1">
-						<div class="flex items-center justify-between space-x-[10px]">
+					<div role="contentinfo" class="grid-span-1 ring-skin-muted relative flex flex-col rounded-lg bg-skin-button-muted/50 p-6 shadow-md ring-1 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+						<div class="flex items-center justify-between space-x-[10px] mb-3">
 							<div class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder size-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder size-5 text-skin-hue">
 									<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
 								</svg>
-								<div class="flex items-center gap-[6px]">
-									{isActive ? (
-										<a class="hover:text-skin-hue group flex items-center gap-[6px] text-lg decoration-dotted underline-offset-[5px] hover:underline" href={url} title={`Ver ${name}`} target="_blank">
-											{name}
-											<span class="text-skin-hue transition ease-linear group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-												<Arrow />
-											</span>
-										</a>
-									) : (
-										<span>{name}</span>
-									)}
-								</div>
+								<h3 class="text-xl font-semibold text-skin-base">{name}</h3>
 							</div>
-
 							{github && (
-								<a href={github} title="View slug repository on GitHub" target="_blank" rel="noopener" class="opacity-75 transition-opacity duration-100 hover:opacity-100">
-									<Git />
+								<a href={github} title="View repository on GitHub" target="_blank" rel="noopener" class="text-skin-muted hover:text-skin-hue transition-colors duration-300">
+									<Git class="w-6 h-6" />
 								</a>
 							)}
 						</div>
 
-						<p class="py-3 text-sm text-skin-base">{description}</p>
-						<ul class="mt-1 text-sm text-skin-muted">
-							{highlights.map((highlight) => {
-								return <li>{highlight}</li>;
-							})}
+						<p class="text-sm text-skin-base mb-4">{description}</p>
+						<ul class="mb-4 text-sm text-skin-muted space-y-1">
+							{highlights.map((highlight) => (
+								<li class="flex items-center">
+									<span class="mr-2">•</span>
+									{highlight}
+								</li>
+							))}
 						</ul>
+
+						<div class="mt-auto flex justify-between items-center">
+							{isActive && (
+								<a
+									class="group inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-skin-button-accent text-skin-inverted rounded-md transition-colors duration-300 hover:bg-skin-button-accent-hover"
+									href={url}
+									title={`View ${name}`}
+									target="_blank"
+								>
+									View Project
+									<Arrow class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
+								</a>
+							)}
+						</div>
 					</div>
 				);
 			})
@@ -53,36 +58,21 @@ import { projects } from "@cv";
 
 <style>
 	ul {
-		@apply ml-4 list-disc space-y-1;
-		li {
-			@apply text-skin-muted;
+		@apply ml-4 list-none;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 
-	footer {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 4px;
-		font-size: 0.6rem;
-	}
-
-	footer span {
-		border-radius: 6px;
-		background: #eee;
-		color: #444;
-		font-size: 0.6rem;
-		font-weight: 500;
-		padding: 0.2rem 0.6rem;
-	}
-	@keyframes flicker {
-		0% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0.25;
-		}
-		100% {
-			opacity: 1;
-		}
+	[role="contentinfo"] {
+		animation: fadeIn 0.5s ease-out;
 	}
 </style>
