@@ -6,7 +6,7 @@
     "phone": "+18453214234",
     "image": "/me_avatar.jpg",
     "url": "https://rumiallbert.com",
-    "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics. I also dabble in classics, philosophy, and music.",
+    "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics. My interdisciplinary interests extend to classics, philosophy, and music.",
     "theme": "default",
     "location": {
       "address": "",
@@ -370,6 +370,9 @@
       "language": "🇲🇽 Spanish"
     },
     {
+      "language": "🇹🇼 Chinese"
+    },
+    {
       "language": "📜 Latin"
     },
     {
@@ -377,9 +380,6 @@
     },
     {
       "language": "🏛️ Ancient Greek"
-    },
-    {
-      "language": "🇹🇼 Mandarin Chinese"
     }
   ],
   "interests": [
