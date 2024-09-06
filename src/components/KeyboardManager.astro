@@ -4,7 +4,7 @@ import "hotkeypad/index.css";
 import { type SocialIcon } from "@/types";
 import { basics } from "@cv";
 
-const { profiles } = basics;
+const { profiles, email } = basics;
 
 const SOCIAL_ICONS: SocialIcon = {
 	GitHub: `<svg
@@ -71,7 +71,12 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	</svg>
 </div>
 
-<div id="hotkeypad" data-placeholder="Search Command" data-info={JSON.stringify(profilesInfo)}></div>
+<div id="hotkeypad" 
+  data-placeholder="Search Command" 
+  data-info={JSON.stringify(profilesInfo)}
+  data-email={basics.email}
+  data-name={basics.name}
+></div>
 
 <script>
 	interface Info {
@@ -87,8 +92,11 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	import HotKeyPad from "hotkeypad";
 
 	const hotkeypad = new HotKeyPad();
-	const info = hotkeypad.instance.getAttribute("data-info") ?? "[]";
+	const hotkeypadElement = hotkeypad.instance;
+	const info = hotkeypadElement.getAttribute("data-info") ?? "[]";
 	const parsedInfo = JSON.parse(info) as Info[];
+	const email = hotkeypadElement.getAttribute("data-email") ?? "";
+	const name = hotkeypadElement.getAttribute("data-name") ?? "";
 
 	const data = parsedInfo.map(({ url, hotkey, icon, id, section, title }) => {
 		return {
@@ -115,8 +123,67 @@ const profilesInfo = profiles.map(({ network, url }) => {
 				window.open('/resume.pdf', '_blank');
 			},
 		},
+		{
+			id: "goto-experience",
+			title: "Go to Experience",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+			hotkey: "ctrl+E",
+			section: "Navigation",
+			handler: () => {
+				scrollToSection('experience');
+			},
+		},
+		{
+			id: "goto-skills",
+			title: "Go to Skills",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+			hotkey: "ctrl+S",
+			section: "Navigation",
+			handler: () => {
+				scrollToSection('skills');
+			},
+		},
+		{
+			id: "goto-education",
+			title: "Go to Education",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+			hotkey: "ctrl+U",
+			section: "Navigation",
+			handler: () => {
+				scrollToSection('education');
+			},
+		},
+		{
+			id: "goto-projects",
+			title: "Go to Projects",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>`,
+			hotkey: "ctrl+P",
+			section: "Navigation",
+			handler: () => {
+				scrollToSection('projects');
+			},
+		},
+		{
+			id: "connect-with-me",
+			title: "Connect with me",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
+			hotkey: "ctrl+C",
+			section: "Social",
+			handler: () => {
+				window.location.href = `mailto:${email}?subject=Connection%20Request&body=Hello%20${name},%0D%0A%0D%0AI'd%20like%20to%20connect%20with%20you.`;
+			},
+		},
 		...data,
 	]);
+
+	function scrollToSection(sectionId: string) {
+		const section = document.getElementById(sectionId);
+		if (section) {
+			const yOffset = -60; // Adjust this value to account for any fixed headers
+			const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+			window.scrollTo({top: y, behavior: 'smooth'});
+		}
+	}
 
 	const footerButtons = document.querySelectorAll(".footer-button");
 	footerButtons.forEach((button) => {
