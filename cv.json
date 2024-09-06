@@ -48,14 +48,20 @@
         "Collaborating with fellow researchers on projects related to machine intelligence and cognitive functions",
         "Utilizing Mathematica and various machine learning and AI libraries for advanced computational analysis"
       ],
-      "skills": ["Mathematica", "AI", "Machine Learning", "Ethics in AI"]
+      "skills": [
+        "Mathematica",
+        "Python",
+        "AI",
+        "Machine Learning",
+        "Ethics in AI"
+      ]
     },
     {
       "name": "Stealth",
       "position": "AI Engineer",
       "location_type": "On site",
       "location": "New York, NY",
-      "url": "https://stealth.com",
+      "url": "/",
       "startDate": "2024-05-01",
       "endDate": null,
       "summary": "Architecting and implementing cutting-edge Large Language Models and AI recommendation systems.",
@@ -129,13 +135,14 @@
       "position": "Data Analytics Research Assistant",
       "location_type": "Remote",
       "location": "Delaware",
+      "url": "/",
       "startDate": "2021-12-01",
       "endDate": "2022-12-01",
       "summary": "Conducted complex statistical analyses using Python, uncovering key insights that shaped the direction of multiple research projects.",
       "highlights": [
         "Developed and optimized a suite of Python scripts for PsychoPy, accelerating the data analysis pipeline by 30% and eliminating processing bottlenecks"
       ],
-      "skills": ["Python", "PsychoPy", "Statistics"]
+      "skills": ["Python", "PsychoPy", "Statistics", "Research"]
     },
     {
       "name": "Litespeed Technologies",
