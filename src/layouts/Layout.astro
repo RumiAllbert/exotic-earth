@@ -177,9 +177,9 @@ const ogImage = '/og-image.jpg';
 				
 				const centerX = 150; // Increased center coordinates
 				const centerY = 150;
-				const numShapes = 8;
-				const minPoints = 3;
-				const maxPoints = 10;
+				const numShapes = 4;
+				const minPoints = 2;
+				const maxPoints = 7;
 				const nodes: Array<{ x: number; y: number; }> = [];
 				const edges: Array<{ path: SVGPathElement; start: { x: number; y: number; }; end: { x: number; y: number; }; type: 'curve' | 'line'; }> = [];
 
@@ -238,7 +238,7 @@ const ogImage = '/og-image.jpg';
 				}
 
 				// Add cross-connections with curves
-				const maxCrossConnections = Math.floor(nodes.length * 0.8);
+				const maxCrossConnections = Math.floor(nodes.length * 0.4);
 				let crossConnections = 0;
 				while (crossConnections < maxCrossConnections) {
 					const i = Math.floor(Math.random() * nodes.length);
