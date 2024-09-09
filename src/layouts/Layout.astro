@@ -13,7 +13,7 @@ const { title, description = basics.summary } = Astro.props;
 
 const { image, url, theme } = basics;
 
-const ogImage = '/og-image.jpg';
+const ogImage = new URL('/og-image.jpg', Astro.url).toString();
 ---
 
 <!doctype html>
