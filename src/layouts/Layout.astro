@@ -29,17 +29,17 @@ const ogImage = new URL('/og-image.jpg', Astro.url).toString();
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
+		<meta property="og:url" content={import.meta.env.SITE ?? Astro.url} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={ogImage} />
+		<meta property="og:image" content={new URL(ogImage, import.meta.env.SITE ?? Astro.url)} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:url" content={import.meta.env.SITE ?? Astro.url} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={ogImage} />
+		<meta property="twitter:image" content={new URL(ogImage, import.meta.env.SITE ?? Astro.url)} />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim" />
 
