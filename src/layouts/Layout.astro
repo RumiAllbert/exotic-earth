@@ -11,7 +11,7 @@ interface Props {
 
 const { title, description = basics.summary } = Astro.props;
 
-const { image, summary, url, theme } = basics;
+const { image, url, theme } = basics;
 
 const ogImage = '/og-image.jpg';
 ---
@@ -137,6 +137,187 @@ const ogImage = '/og-image.jpg';
 			:global(.dark) .core-competency {
 				@apply bg-blue-800 text-blue-200;
 			}
+
+			#loader {
+				transition: opacity 0.5s ease-out;
+			}
+
+			#loader.fade-out {
+				opacity: 0;
+			}
+
+			.hypergraph-loader {
+				animation: rotate 10s linear infinite;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			#main-content {
+				opacity: 0;
+				transition: opacity 0.5s ease-out, filter 0.5s ease-out;
+			}
+
+			body {
+				overflow-x: hidden;
+			}
 		</style>
+		<script>
+			function createHypergraph() {
+				const svg = document.querySelector('.hypergraph-loader') as SVGSVGElement;
+				const numNodes = 20;
+				const numEdges = 30;
+				const nodes: Array<{
+					x: number;
+					y: number;
+					dx: number;
+					dy: number;
+					radius: number;
+					pulseSpeed: number;
+					pulseOffset: number;
+				}> = [];
+
+				// Create nodes
+				for (let i = 0; i < numNodes; i++) {
+					const x = Math.random() * 200;
+					const y = Math.random() * 200;
+					const baseRadius = 3;
+					nodes.push({ 
+						x, 
+						y, 
+						dx: (Math.random() - 0.5) * 0.5, 
+						dy: (Math.random() - 0.5) * 0.5,
+						radius: baseRadius,
+						pulseSpeed: Math.random() * 0.05 + 0.02,
+						pulseOffset: Math.random() * Math.PI * 2
+					});
+					const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+					circle.setAttribute('cx', x.toString());
+					circle.setAttribute('cy', y.toString());
+					circle.setAttribute('r', baseRadius.toString());
+					circle.setAttribute('fill', 'rgba(168, 85, 247, 0.5)');
+					svg.appendChild(circle);
+				}
+
+				// Create edges
+				const edges: Array<{
+					path: SVGPathElement;
+					start: typeof nodes[0];
+					end: typeof nodes[0];
+				}> = [];
+				for (let i = 0; i < numEdges; i++) {
+					const start = nodes[Math.floor(Math.random() * nodes.length)];
+					const end = nodes[Math.floor(Math.random() * nodes.length)];
+					const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+					path.setAttribute('d', `M${start.x},${start.y} L${end.x},${end.y}`);
+					path.setAttribute('stroke', 'rgba(168, 85, 247, 0.3)');
+					path.setAttribute('stroke-width', '2');
+					path.setAttribute('fill', 'none');
+					svg.appendChild(path);
+					edges.push({ path, start, end });
+				}
+
+				return { nodes, edges };
+			}
+
+			function animateHypergraph(nodes: ReturnType<typeof createHypergraph>['nodes'], edges: ReturnType<typeof createHypergraph>['edges']) {
+				let time = 0;
+				function update() {
+					time += 0.016;
+
+					nodes.forEach(node => {
+						node.x += node.dx;
+						node.y += node.dy;
+						if (node.x < 0 || node.x > 200) node.dx *= -1;
+						if (node.y < 0 || node.y > 200) node.dy *= -1;
+						node.radius = 3 + Math.sin(time * node.pulseSpeed + node.pulseOffset) * 0.5;
+					});
+
+					const circles = document.querySelectorAll('.hypergraph-loader circle');
+					circles.forEach((circle, i) => {
+						circle.setAttribute('cx', nodes[i].x.toString());
+						circle.setAttribute('cy', nodes[i].y.toString());
+						circle.setAttribute('r', nodes[i].radius.toString());
+					});
+
+					edges.forEach(edge => {
+						edge.path.setAttribute('d', `M${edge.start.x},${edge.start.y} L${edge.end.x},${edge.end.y}`);
+					});
+
+					requestAnimationFrame(update);
+				}
+
+				update();
+			}
+
+			function animateLoader(edges: ReturnType<typeof createHypergraph>['edges']) {
+				const minDuration = 2000;
+				const maxDuration = 3000;
+				const duration = Math.random() * (maxDuration - minDuration) + minDuration;
+				const interval = 50;
+				const steps = duration / interval;
+				let currentStep = 0;
+
+				disableScroll();
+
+				const animationInterval = setInterval(() => {
+					currentStep++;
+					const progress = currentStep / steps;
+
+					edges.forEach((edge, index) => {
+						if (index / edges.length < progress) {
+							edge.path.setAttribute('stroke', 'rgba(107, 33, 168, 1)');
+							edge.path.setAttribute('stroke-width', '3');
+						}
+					});
+
+					const mainContent = document.getElementById('main-content');
+					if (mainContent) {
+						const blurAmount = 5 * (1 - progress);
+						mainContent.style.filter = `blur(${blurAmount}px)`;
+					}
+
+					if (progress >= 1) {
+						clearInterval(animationInterval);
+						const loader = document.getElementById('loader');
+						if (loader) {
+							loader.classList.add('fade-out');
+							setTimeout(() => {
+								if (loader) loader.style.display = 'none';
+								const mainContent = document.getElementById('main-content');
+								if (mainContent) mainContent.style.filter = 'none';
+								enableScroll();
+							}, 500);
+						}
+					}
+				}, interval);
+			}
+
+			window.addEventListener('load', () => {
+				const { nodes, edges } = createHypergraph();
+				animateHypergraph(nodes, edges);
+				animateLoader(edges);
+				
+				const mainContent = document.getElementById('main-content');
+				if (mainContent) {
+					mainContent.style.opacity = '1';
+					mainContent.style.filter = 'blur(5px)';
+				}
+			});
+
+			function disableScroll() {
+				document.body.style.overflow = 'hidden';
+			}
+
+			function enableScroll() {
+				document.body.style.overflow = '';
+			}
+		</script>
 	</body>
 </html>
