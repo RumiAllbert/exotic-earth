@@ -171,7 +171,10 @@ const ogImage = '/og-image.jpg';
 		<script>
 			function createHypergraph() {
 				const svg = document.querySelector('.hypergraph-loader') as SVGSVGElement;
-				const numNodes = 20;
+				svg.setAttribute('viewBox', '-10 -10 220 220'); // Add padding to the viewBox
+				svg.setAttribute('width', '200');
+				svg.setAttribute('height', '200');
+				const numNodes = 30;
 				const numEdges = 30;
 				const nodes: Array<{
 					x: number;
@@ -182,6 +185,28 @@ const ogImage = '/og-image.jpg';
 					pulseSpeed: number;
 					pulseOffset: number;
 				}> = [];
+
+				// Create gradient
+				const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+				gradient.setAttribute('id', 'nodeGradient');
+				gradient.innerHTML = `
+					<stop offset="0%" stop-color="rgba(168, 85, 247, 0.8)" />
+					<stop offset="100%" stop-color="rgba(107, 33, 168, 0.8)" />
+				`;
+				svg.appendChild(gradient);
+
+				// Add glow effect
+				const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+				defs.innerHTML = `
+					<filter id="glow">
+						<feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+						<feMerge>
+							<feMergeNode in="coloredBlur"/>
+							<feMergeNode in="SourceGraphic"/>
+						</feMerge>
+					</filter>
+				`;
+				svg.appendChild(defs);
 
 				// Create nodes
 				for (let i = 0; i < numNodes; i++) {
@@ -201,7 +226,8 @@ const ogImage = '/og-image.jpg';
 					circle.setAttribute('cx', x.toString());
 					circle.setAttribute('cy', y.toString());
 					circle.setAttribute('r', baseRadius.toString());
-					circle.setAttribute('fill', 'rgba(168, 85, 247, 0.5)');
+					circle.setAttribute('fill', 'url(#nodeGradient)');
+					circle.setAttribute('filter', 'url(#glow)');
 					svg.appendChild(circle);
 				}
 
@@ -216,7 +242,7 @@ const ogImage = '/og-image.jpg';
 					const end = nodes[Math.floor(Math.random() * nodes.length)];
 					const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 					path.setAttribute('d', `M${start.x},${start.y} L${end.x},${end.y}`);
-					path.setAttribute('stroke', 'rgba(168, 85, 247, 0.3)');
+					path.setAttribute('stroke', 'rgba(168, 85, 247, 0.2)'); // Lighter, more transparent purple for unloaded edges
 					path.setAttribute('stroke-width', '2');
 					path.setAttribute('fill', 'none');
 					svg.appendChild(path);
@@ -256,7 +282,7 @@ const ogImage = '/og-image.jpg';
 				update();
 			}
 
-			function animateLoader(edges: ReturnType<typeof createHypergraph>['edges']) {
+			function animateLoader(nodes: ReturnType<typeof createHypergraph>['nodes'], edges: ReturnType<typeof createHypergraph>['edges']) {
 				const minDuration = 2000;
 				const maxDuration = 3000;
 				const duration = Math.random() * (maxDuration - minDuration) + minDuration;
@@ -272,8 +298,9 @@ const ogImage = '/og-image.jpg';
 
 					edges.forEach((edge, index) => {
 						if (index / edges.length < progress) {
-							edge.path.setAttribute('stroke', 'rgba(107, 33, 168, 1)');
+							edge.path.setAttribute('stroke', 'rgba(107, 33, 168, 1)'); // Dark purple for loaded edges
 							edge.path.setAttribute('stroke-width', '3');
+							edge.path.setAttribute('filter', 'url(#glow)');
 						}
 					});
 
@@ -282,6 +309,44 @@ const ogImage = '/og-image.jpg';
 						const blurAmount = 5 * (1 - progress);
 						mainContent.style.filter = `blur(${blurAmount}px)`;
 					}
+
+					if (progress >= 1) {
+						clearInterval(animationInterval);
+						convergenceAnimation(nodes, edges);
+					}
+				}, interval);
+			}
+
+			function convergenceAnimation(nodes: ReturnType<typeof createHypergraph>['nodes'], edges: ReturnType<typeof createHypergraph>['edges']) {
+				const centerX = 100;
+				const centerY = 100;
+				const duration = 1000; // 1 second
+				const fps = 60;
+				const totalFrames = duration / (1000 / fps);
+				let currentFrame = 0;
+
+				const animationInterval = setInterval(() => {
+					currentFrame++;
+					const progress = currentFrame / totalFrames;
+
+					nodes.forEach(node => {
+						node.x = node.x + (centerX - node.x) * progress;
+						node.y = node.y + (centerY - node.y) * progress;
+						node.radius = node.radius * (1 - progress);
+					});
+
+					const circles = document.querySelectorAll('.hypergraph-loader circle');
+					circles.forEach((circle, i) => {
+						circle.setAttribute('cx', nodes[i].x.toString());
+						circle.setAttribute('cy', nodes[i].y.toString());
+						circle.setAttribute('r', nodes[i].radius.toString());
+						circle.setAttribute('opacity', (1 - progress).toString());
+					});
+
+					edges.forEach(edge => {
+						edge.path.setAttribute('d', `M${edge.start.x},${edge.start.y} L${edge.end.x},${edge.end.y}`);
+						edge.path.setAttribute('opacity', (1 - progress).toString());
+					});
 
 					if (progress >= 1) {
 						clearInterval(animationInterval);
@@ -296,13 +361,13 @@ const ogImage = '/og-image.jpg';
 							}, 500);
 						}
 					}
-				}, interval);
+				}, 1000 / fps);
 			}
 
 			window.addEventListener('load', () => {
 				const { nodes, edges } = createHypergraph();
 				animateHypergraph(nodes, edges);
-				animateLoader(edges);
+				animateLoader(nodes, edges);
 				
 				const mainContent = document.getElementById('main-content');
 				if (mainContent) {
@@ -319,5 +384,33 @@ const ogImage = '/og-image.jpg';
 				document.body.style.overflow = '';
 			}
 		</script>
+		<style>
+			#loader {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: var(--color-fill);
+			}
+
+			.hypergraph-loader {
+				width: 200px;
+				height: 200px;
+				animation: rotate 10s linear infinite;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
 	</body>
 </html>
