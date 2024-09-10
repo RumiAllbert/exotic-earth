@@ -3,6 +3,8 @@ import { basics } from "@cv";
 import Vengeance from "@/layouts/Vengeance.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import KeyboardManager from '../components/KeyboardManager.astro';
+import ogImageSrc from '/public/og-image.jpeg';
+import faviconSrc from '/public/favicon.svg';
 
 interface Props {
 	title: string;
@@ -13,7 +15,7 @@ const { title, description = basics.summary } = Astro.props;
 
 const { image, url, theme } = basics;
 
-const ogImage = '/og-image.jpeg';
+const ogImage = ogImageSrc;
 ---
 
 <!doctype html>
@@ -23,7 +25,7 @@ const ogImage = '/og-image.jpeg';
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={faviconSrc} />
 		<link rel="canonical" href={Astro.url} />
 		<link rel="preload" as="image" href={image} />
 
