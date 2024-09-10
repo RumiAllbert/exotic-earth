@@ -10,9 +10,9 @@ interface Props {
 }
 
 const { title, description = basics.summary } = Astro.props;
+
 const { image, url, theme, summary } = basics;
 
-const ogImage = "/og-image.png";
 ---
 
 <!doctype html>
@@ -21,24 +21,27 @@ const ogImage = "/og-image.png";
 		<meta charset="UTF-8" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
-		
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preload" as="image" href={ogImage} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="preload" as="image" href="/og-image.png" />
 
+		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={url} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={summary} />
-		<meta property="og:image" content={ogImage} />
+		<meta property="og:image" content="/og-image.png" />
 
+		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:domain" content={url.split("//")[1] ?? ""} />
 		<meta property="twitter:url" content={url} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={summary} />
-		<meta property="twitter:image" content={ogImage} />
+		<meta property="twitter:image" content="/og-image.png" />
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim" />
+
 		<link rel="stylesheet" href="/themes/themes.css" />
 		<Vengeance />
 	</head>
@@ -55,18 +58,426 @@ const ogImage = "/og-image.png";
 				margin: 0;
 				padding: 0;
 			}
+
 			a {
 				text-decoration: none;
-			}
+				}
 			ul {
 				list-style: none;
 				margin: 0;
 				padding: 0;
 			}
+
 			*,
 			*::before,
 			*::after {
 				box-sizing: border-box;
+			}
+
+			h1,
+			h2,
+			h3,
+			h4 {
+				@apply text-skin-base;
+				margin: 0;
+				font-family:
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					"Segoe UI",
+					Roboto,
+					Oxygen,
+					Ubuntu,
+					Cantarell,
+					"Open Sans",
+					"Helvetica Neue",
+					sans-serif;
+			}
+
+			p {
+				@apply text-sm text-skin-muted;
+				line-height: 1.5;
+				text-wrap: pretty;
+			}
+
+			.print {
+				display: none !important;
+			}
+
+			.dev * {
+				@apply border border-red-500/50 bg-red-500/5;
+			}
+			#hotkeypad [data-backdrop] {
+				@apply !bg-zinc-800 !opacity-80;
+			}
+
+			@media print {
+				.no-print {
+					display: none !important;
+				}
+
+				.print {
+					display: block !important;
+				}
+
+				astro-dev-toolbar {
+					display: none !important;
+				}
+
+				article {
+					break-inside: avoid;
+				}
+			}
+
+			.core-competency {
+				@apply bg-blue-200 text-blue-800 text-base;
+			}
+
+			:global(.dark) .core-competency {
+				@apply bg-blue-800 text-blue-200;
+			}
+
+			#loader {
+				transition: opacity 0.3s ease-out;
+			}
+
+			#loader.fade-out {
+				opacity: 0;
+			}
+
+			.hypergraph-loader {
+				animation: rotate 10s linear infinite;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			#main-content {
+				opacity: 0;
+				transition: opacity 0.3s ease-out, filter 0.3s ease-out;
+			}
+
+			body {
+				overflow-x: hidden;
+			}
+		</style>
+		<script>
+			function createGeometricPattern() {
+				const svg = document.querySelector('.hypergraph-loader') as SVGSVGElement;
+				
+				// We'll set these values after generating the pattern
+				let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+				
+				const centerX = 150; // Increased center coordinates
+				const centerY = 150;
+				const numShapes = 4;
+				const minPoints = 3;
+				const maxPoints = 7;
+				const nodes: Array<{ x: number; y: number; }> = [];
+				const edges: Array<{ path: SVGPathElement; start: { x: number; y: number; }; end: { x: number; y: number; }; type: 'curve' | 'line'; }> = [];
+
+				// Create gradient
+				const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+				gradient.setAttribute('id', 'nodeGradient');
+				gradient.innerHTML = `
+					<stop offset="0%" stop-color="rgba(168, 85, 247, 0.9)" />
+					<stop offset="50%" stop-color="rgba(139, 92, 246, 0.9)" />
+					<stop offset="100%" stop-color="rgba(107, 33, 168, 0.9)" />
+				`;
+				svg.appendChild(gradient);
+
+				// Add glow effect
+				const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+				defs.innerHTML = `
+					<filter id="glow">
+						<feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+						<feMerge>
+							<feMergeNode in="coloredBlur"/>
+							<feMergeNode in="SourceGraphic"/>
+						</feMerge>
+					</filter>
+				`;
+				svg.appendChild(defs);
+
+				// Generate shapes
+				for (let s = 0; s < numShapes; s++) {
+					const radius = 30 + s * 25; // Increased radius for larger pattern
+					const numPoints = Math.floor(Math.random() * (maxPoints - minPoints + 1)) + minPoints;
+					const shapeNodes: Array<{ x: number; y: number; }> = [];
+
+					for (let i = 0; i < numPoints; i++) {
+						const angle = (i / numPoints) * Math.PI * 2;
+						const randomOffset = (Math.random() - 0.5) * 10;
+						const x = centerX + (Math.cos(angle) * radius) + randomOffset;
+						const y = centerY + (Math.sin(angle) * radius) + randomOffset;
+						shapeNodes.push({ x, y });
+						addNode(svg, x, y);
+						
+						// Update min and max coordinates
+						minX = Math.min(minX, x);
+						minY = Math.min(minY, y);
+						maxX = Math.max(maxX, x);
+						maxY = Math.max(maxY, y);
+					}
+
+					// Connect nodes to form the shape
+					for (let i = 0; i < numPoints; i++) {
+						const start = shapeNodes[i];
+						const end = shapeNodes[(i + 1) % numPoints];
+						addEdge(svg, start, end, edges, 'line'); // Use straight lines for shape outlines
+					}
+
+					nodes.push(...shapeNodes);
+				}
+
+				// Add cross-connections with curves
+				const maxCrossConnections = Math.floor(nodes.length * 0.4);
+				let crossConnections = 0;
+				while (crossConnections < maxCrossConnections) {
+					const i = Math.floor(Math.random() * nodes.length);
+					const j = Math.floor(Math.random() * nodes.length);
+					if (i !== j && !edgeExists(edges, nodes[i], nodes[j])) {
+						addEdge(svg, nodes[i], nodes[j], edges, 'curve'); // Use curves for cross-connections
+						crossConnections++;
+					}
+				}
+
+				// Add padding to the viewBox
+				const padding = 20;
+				const viewBoxWidth = maxX - minX + padding * 2;
+				const viewBoxHeight = maxY - minY + padding * 2;
+				svg.setAttribute('viewBox', `${minX - padding} ${minY - padding} ${viewBoxWidth} ${viewBoxHeight}`);
+				
+				// Set width and height to maintain aspect ratio
+				const maxDimension = Math.max(viewBoxWidth, viewBoxHeight);
+				svg.setAttribute('width', maxDimension.toString());
+				svg.setAttribute('height', maxDimension.toString());
+
+				return { nodes, edges };
+			}
+
+			function addNode(svg: SVGSVGElement, x: number, y: number) {
+				const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+				circle.setAttribute('cx', x.toString());
+				circle.setAttribute('cy', y.toString());
+				circle.setAttribute('r', '3'); // Keep node size consistent
+				circle.setAttribute('fill', 'url(#nodeGradient)');
+				circle.setAttribute('filter', 'url(#glow)');
+				svg.appendChild(circle);
+			}
+
+			function addEdge(svg: SVGSVGElement, start: { x: number; y: number }, end: { x: number; y: number }, edges: Array<{ path: SVGPathElement; start: { x: number; y: number }; end: { x: number; y: number }; type: 'curve' | 'line'; }>, type: 'curve' | 'line') {
+				const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+				let d;
+				if (type === 'curve') {
+					const midX = (start.x + end.x) / 2;
+					const midY = (start.y + end.y) / 2;
+					const ctrlX = midX + (Math.random() - 0.5) * 50;
+					const ctrlY = midY + (Math.random() - 0.5) * 50;
+					d = `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`;
+				} else {
+					d = `M${start.x},${start.y} L${end.x},${end.y}`;
+				}
+				path.setAttribute('d', d);
+				path.setAttribute('stroke', 'rgba(168, 85, 247, 0.2)');
+				path.setAttribute('stroke-width', '1');
+				path.setAttribute('fill', 'none');
+				svg.appendChild(path);
+				edges.push({ path, start, end, type });
+			}
+
+			function edgeExists(edges: Array<{ start: { x: number; y: number }; end: { x: number; y: number }; }>, start: { x: number; y: number }, end: { x: number; y: number }) {
+				return edges.some(edge => 
+					(edge.start.x === start.x && edge.start.y === start.y && edge.end.x === end.x && edge.end.y === end.y) ||
+					(edge.start.x === end.x && edge.start.y === end.y && edge.end.x === start.x && edge.end.y === start.y)
+				);
+			}
+
+			function animateGeometricPattern(nodes: ReturnType<typeof createGeometricPattern>['nodes'], edges: ReturnType<typeof createGeometricPattern>['edges']) {
+				let time = 0;
+				function update() {
+					time += 0.016;
+
+					edges.forEach((edge, i) => {
+						const opacity = 0.2 + Math.sin(time * 3 + i * 0.2) * 0.1;
+						edge.path.setAttribute('stroke', `rgba(168, 85, 247, ${opacity})`);
+						
+						if (edge.type === 'curve') {
+							// Animate only curved paths
+							const start = edge.start;
+							const end = edge.end;
+							const midX = (start.x + end.x) / 2;
+							const midY = (start.y + end.y) / 2;
+							const ctrlX = midX + Math.sin(time * 2 + i) * 25;
+							const ctrlY = midY + Math.cos(time * 2 + i) * 25;
+							edge.path.setAttribute('d', `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`);
+						}
+					});
+
+					requestAnimationFrame(update);
+				}
+
+				update();
+			}
+
+			function animateLoader(nodes: ReturnType<typeof createGeometricPattern>['nodes'], edges: ReturnType<typeof createGeometricPattern>['edges']) {
+				const minDuration = 2000;
+				const maxDuration = 3000;
+				const duration = Math.random() * (maxDuration - minDuration) + minDuration;
+				const interval = 50;
+				const steps = duration / interval;
+				let currentStep = 0;
+
+				disableScroll();
+
+				const animationInterval = setInterval(() => {
+					currentStep++;
+					const progress = currentStep / steps;
+
+					edges.forEach((edge, index) => {
+						if (index / edges.length < progress) {
+							edge.path.setAttribute('stroke', 'rgba(107, 33, 168, 1)');
+							edge.path.setAttribute('stroke-width', '4');
+							edge.path.setAttribute('filter', 'url(#glow)');
+						}
+					});
+
+					if (progress >= 1) {
+						clearInterval(animationInterval);
+						convergenceAnimation(nodes, edges);
+					}
+				}, interval);
+			}
+
+			function convergenceAnimation(nodes: ReturnType<typeof createGeometricPattern>['nodes'], edges: ReturnType<typeof createGeometricPattern>['edges']) {
+				// Calculate the true center of the pattern
+				let sumX = 0, sumY = 0;
+				nodes.forEach(node => {
+					sumX += node.x;
+					sumY += node.y;
+				});
+				const centerX = sumX / nodes.length;
+				const centerY = sumY / nodes.length;
+
+				const duration = 1000;
+				const fps = 60;
+				const totalFrames = duration / (1000 / fps);
+				let currentFrame = 0;
+
+				const animationInterval = setInterval(() => {
+					currentFrame++;
+					const progress = currentFrame / totalFrames;
+
+					nodes.forEach(node => {
+						node.x = node.x + (centerX - node.x) * progress;
+						node.y = node.y + (centerY - node.y) * progress;
+					});
+
+					const circles = document.querySelectorAll('.hypergraph-loader circle');
+					circles.forEach((circle, i) => {
+						circle.setAttribute('cx', nodes[i].x.toString());
+						circle.setAttribute('cy', nodes[i].y.toString());
+						circle.setAttribute('opacity', (1 - progress).toString());
+					});
+
+					edges.forEach(edge => {
+						edge.path.setAttribute('d', `M${edge.start.x},${edge.start.y} L${edge.end.x},${edge.end.y}`);
+						edge.path.setAttribute('opacity', (1 - progress).toString());
+					});
+
+					if (progress >= 1) {
+						clearInterval(animationInterval);
+						finalizeLoading();
+					}
+				}, 1000 / fps);
+			}
+
+			function enableScroll() {
+				document.body.style.overflow = '';
+				document.body.style.height = '';
+			}
+
+			function disableScroll() {
+				document.body.style.overflow = 'hidden';
+				document.body.style.height = '100vh';
+			}
+
+			function initializeLoader() {
+				const loader = document.getElementById('loader');
+				const mainContent = document.getElementById('main-content');
+				const commandPalette = document.getElementById('hotkeypad');
+				
+				if (loader && mainContent && commandPalette) {
+					loader.style.display = 'flex';
+					loader.style.zIndex = '1000';
+					mainContent.style.filter = 'blur(5px)';
+					mainContent.style.opacity = '0.5';
+					commandPalette.style.display = 'none';
+				}
+				
+				disableScroll();
+			}
+
+			function finalizeLoading() {
+				const loader = document.getElementById('loader');
+				const mainContent = document.getElementById('main-content');
+				const commandPalette = document.getElementById('hotkeypad');
+				
+				if (loader && mainContent && commandPalette) {
+					loader.style.opacity = '0';
+					mainContent.style.filter = 'none';
+					mainContent.style.opacity = '1';
+					
+					setTimeout(() => {
+						loader.style.display = 'none';
+						commandPalette.style.display = 'block';
+						enableScroll();
+					}, 300);
+				}
+			}
+
+			window.addEventListener('load', () => {
+				initializeLoader();
+				const { nodes, edges } = createGeometricPattern();
+				animateGeometricPattern(nodes, edges);
+				animateLoader(nodes, edges);
+			});
+		</script>
+		<style>
+			#loader {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgba(var(--color-fill-rgb), 0.7);
+				backdrop-filter: blur(5px);
+				z-index: 1000;
+				transition: opacity 0.3s ease-out;
+			}
+
+			.hypergraph-loader {
+				max-width: 100%;
+				max-height: 100vh;
+				animation: rotate 30s linear infinite;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
 			}
 		</style>
 	</body>
