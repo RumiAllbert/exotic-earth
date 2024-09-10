@@ -15,7 +15,7 @@ const { title, description = basics.summary } = Astro.props;
 
 const { image, url, theme } = basics;
 
-const ogImage = ogImageSrc;
+const ogImage = new URL('/og-image.jpeg', import.meta.env.SITE).href;
 ---
 
 <!doctype html>
@@ -25,7 +25,7 @@ const ogImage = ogImageSrc;
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href={faviconSrc} />
+		<link rel="icon" type="image/svg+xml" href={new URL('/favicon.svg', import.meta.env.SITE).href} />
 		<link rel="canonical" href={Astro.url} />
 		<link rel="preload" as="image" href={image} />
 
