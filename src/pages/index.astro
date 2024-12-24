@@ -1,13 +1,14 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import KeyboardManager from "@/components/KeyboardManager.astro";
 import About from "@/components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
 import Experience from "@/components/sections/Experience.astro";
 import Hero from "@/components/sections/Hero.astro";
-import Skills from "@/components/sections/Skills.astro";
-import KeyboardManager from "@/components/KeyboardManager.astro";
 import Languages from "@/components/sections/Languages.astro";
 import Projects from "@/components/sections/Projects.astro";
+import Publications from "@/components/sections/Publications.astro";
+import Skills from "@/components/sections/Skills.astro";
+import Layout from "@/layouts/Layout.astro";
 
 import { basics } from "@cv";
 const { name, label } = basics;
@@ -40,6 +41,10 @@ const { name, label } = basics;
 			<div class="separator print:hidden"></div>
 			<section id="education">
 				<Education className="order-first" />
+			</section>
+			<div class="separator"></div>
+			<section id="publications">
+				<Publications />
 			</section>
 			<div class="separator"></div>
 			<section id="projects">

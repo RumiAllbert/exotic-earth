@@ -398,6 +398,17 @@
       "language": "🏛️ Ancient Greek"
     }
   ],
+  "publications": [
+    {
+      "title": "Abliterator: A Framework for Studying Personality in Language Models Through Activation Engineering",
+      "authors": ["Rumi Allbert", "et al."],
+      "date": "2023-12-18",
+      "url": "https://arxiv.org/abs/2412.10427",
+      "abstract": "We introduce Abliterator, a framework for studying and manipulating personality traits in large language models (LLMs) through activation engineering.",
+      "publisher": "arXiv",
+      "type": "preprint"
+    }
+  ],
   "interests": [
     {
       "name": "Technology",
