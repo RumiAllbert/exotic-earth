@@ -11,49 +11,46 @@ import Section from "../Section.astro";
           const year = new Date(date).getFullYear();
 
           return (
-            <li class="group relative grid pb-1 transition-all sm:grid-cols-12 sm:gap-8 md:gap-4">
-              <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
-                <time datetime={date}>{year}</time>
-              </header>
+            <li class="group">
+              <article class="flex flex-col gap-2 border-l-2 border-skin-muted pl-4 transition-all duration-300 hover:border-skin-hue">
+                <header class="flex items-center justify-between gap-4">
+                  <time datetime={date} class="text-sm text-skin-muted">
+                    {year}
+                  </time>
+                  <span class="text-xs text-skin-muted">{type}</span>
+                </header>
 
-              <div class="relative flex flex-col sm:col-span-10">
-                <div class="flex flex-col gap-2">
-                  <h3>
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center text-lg leading-tight group/link hover:text-skin-hue focus-visible:text-skin-hue"
+                <h3 class="text-lg font-medium">
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group/link inline-flex items-center text-skin-base hover:text-skin-hue"
+                  >
+                    {title}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="ml-1 h-4 w-4 opacity-0 transition-all group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-hover/link:opacity-100"
                     >
-                      {title}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        class="inline-block h-4 w-4 shrink-0 transition-transform translate-y-px ml-1 group-hover/link:-translate-y-1 group-hover/link:translate-x-1"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </h3>
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                </h3>
 
-                  <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-skin-muted">
-                    <span>{authors.join(", ")}</span>
-                    <span>•</span>
-                    <span>{publisher}</span>
-                    <span>•</span>
-                    <span class="rounded-full bg-skin-button-accent/20 px-2 py-0.5 text-xs">
-                      {type}
-                    </span>
-                  </div>
-
-                  <p class="text-sm text-skin-muted">{abstract}</p>
+                <div class="flex flex-wrap items-center gap-2 text-sm text-skin-muted">
+                  <span>{authors.join(", ")}</span>
+                  <span>•</span>
+                  <span>{publisher}</span>
                 </div>
-              </div>
+
+                <p class="text-sm text-skin-muted">{abstract}</p>
+              </article>
             </li>
           );
         }
@@ -61,3 +58,48 @@ import Section from "../Section.astro";
     }
   </ul>
 </Section>
+
+<style>
+  .publication-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .publication-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(var(--color-button-accent), 0.15) 0%,
+      rgba(var(--color-button-accent), 0) 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .publication-card:hover::before {
+    opacity: 1;
+  }
+
+  .publication-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
