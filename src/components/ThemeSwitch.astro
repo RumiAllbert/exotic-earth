@@ -2,48 +2,53 @@
 import Theme from "@/icons/themeSwitch.astro";
 ---
 
-<div class="no-print fixed top-4 right-4 z-50 inline-flex items-center">
-	<div class="group/theme flex items-center gap-2">
-		<label for="themeSwitch" class="flex items-center gap-1 text-sm font-medium leading-6 text-skin-base transition-transform ease-in-out group-hover/theme:rotate-45"> <Theme /></label>
-		<select id="themeSwitch" name="themeSwitch" class="focus:ring-skin-hue ring-skin-muted block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-skin-base ring-1 ring-inset focus:ring-2 sm:text-sm sm:leading-6">
-			<option value="system">System</option>
-			<option value="dark">Dark</option>
-			<option value="light">Light</option>
-		</select>
-	</div>
+<div class="no-print fixed top-4 right-4 z-50">
+	<button id="themeSwitch" class="group flex h-10 w-10 items-center justify-center rounded-md bg-skin-fill ring-1 ring-skin-muted transition-all hover:ring-skin-hue">
+		<Theme />
+	</button>
 
 	<style>
 		:global(.dark) {
 			color-scheme: dark;
 		}
+
+		button {
+			transition: transform 0.2s ease;
+		}
+
+		button:hover {
+			transform: scale(1.1);
+		}
+
+		button:active {
+			transform: scale(0.9);
+		}
 	</style>
 
 	<script>
-		const select = document.getElementById("themeSwitch") as HTMLSelectElement;
+		const button = document.getElementById("themeSwitch") as HTMLButtonElement;
 		const theme = localStorage.getItem("theme");
 		const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
-		if (theme !== null) {
-			select.value = theme;
-		} else {
-			select.value = "light";
+		// Set initial theme
+		if (!theme) {
 			localStorage.setItem("theme", "light");
-		}
-
-		function updateTheme(value: string) {
-			const theme = value === "system" ? systemTheme : value;
-			document.documentElement.classList.remove("light", "dark");
+			document.documentElement.classList.add("light");
+		} else {
 			document.documentElement.classList.add(theme);
-			document.body.classList.remove("light", "dark");
-			document.body.classList.add(theme);
-			localStorage.setItem("theme", value);
 		}
 
-		updateTheme(select.value);
+		function updateTheme() {
+			const currentTheme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+			const newTheme = currentTheme === "dark" ? "light" : "dark";
+			
+			document.documentElement.classList.remove(currentTheme);
+			document.documentElement.classList.add(newTheme);
+			document.body.classList.remove(currentTheme);
+			document.body.classList.add(newTheme);
+			localStorage.setItem("theme", newTheme);
+		}
 
-		select.addEventListener("change", (event: Event) => {
-			const select = event.target as HTMLSelectElement;
-			updateTheme(select.value);
-		});
+		button.addEventListener("click", updateTheme);
 	</script>
 </div>
