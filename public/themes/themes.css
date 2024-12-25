@@ -18,10 +18,7 @@
       --color-text-inverted: 240, 240, 240;
       --color-fill: 203, 213, 225;
       --muted: 148, 163, 184;
-      --color: 59, 130, 246;
-      --color-button-accent: 59, 130, 246;
-      --color-button-accent-hover: 0, 185, 255;
-      --color-button-muted: 226, 232, 240;
+
     }
     [data-theme="red"] {
       --color-text-base: 28, 25, 23;
@@ -69,7 +66,8 @@
     --color-button-accent-hover: 147, 112, 219;
     --color-button-muted: 230, 225, 235;
     --color-skill-bubble: 75, 0, 130;
-    --color-command-palette-text: 255, 255, 255;
+    --color-command-palette-text: 0, 0, 0;
+    --color-date: 120, 120, 120;
   }
   
   .dark {
@@ -79,54 +77,22 @@
     --color-fill: 18, 18, 18;
     --muted: 36, 36, 36;
     --color: 147, 112, 219;
-    --color-button-accent: 147, 112, 219; // Lavender purple with 30% opacity
-    --color-button-accent-hover: 147, 112, 219; // Lavender purple for hover with 50% opacity
+    --color-button-accent: 147, 112, 219;
+    --color-button-accent-hover: 147, 112, 219;
     --color-button-muted: 40, 30, 50;
-    --color-skill-bubble: 147, 112, 219; // Keep the original purple for skill bubbles in dark mode
-    --color-command-palette-text: 255, 255, 255; // Keep white for dark mode
-    [data-theme="blue"] {
-      --color-text-base: 248, 250, 252;
-      --color-text-muted: 148, 163, 184;
-      --color-text-inverted: 240, 240, 240;
-      --color-fill: 2, 6, 23;
-      --muted: 51, 65, 85;
-      --color: 59, 130, 246;
-      --color-button-accent: 59, 130, 246;
-      --color-button-accent-hover: 0, 185, 255;
-      --color-button-muted: 30, 41, 59;
-    }
-    [data-theme="red"] {
-      --color-text-base: 231, 229, 228;
-      --color-text-muted: 168, 162, 158;
-      --color-text-inverted: 245, 245, 245;
-      --color-fill: 28, 25, 23;
-      --muted: 45, 45, 45;
-      --color: 248, 113, 113;
-      --color-button-accent: 248, 113, 113;
-      --color-button-accent-hover: 220, 50, 70;
-      --color-button-muted: 120, 113, 108; 
-    }
-    [data-theme="green"] {
-      --color-text-base: 230, 230, 230;
-      --color-text-muted: 104, 124, 104;
-      --color-text-inverted: 230, 230, 230;
-      --color-fill: 10, 20, 10;
-      --muted: 54, 64, 54;
-      --color: 132, 204, 22;
-      --color-button-accent: 132, 204, 22;
-      --color-button-accent-hover: 120, 220, 120;
-      --color-button-muted: 34, 44, 34;
-    }
-    [data-theme="cyber"] {
-      --color-text-base: 252, 255, 64;
-      --color-text-muted: 125, 125, 125;
-      --color-text-inverted: 240, 240, 240;
-      --color-fill: 15, 15, 15;
-      --muted: 50, 50, 50;
-      --color: 90, 237, 251;
-      --color-button-accent: 90, 237, 251;
-      --color-button-accent-hover: 0, 185, 255;
-      --color-button-muted: 25, 81, 86;
-    }
+    --color-command-palette-text: 255, 255, 255;
+    --color-date: 150, 150, 150;
   }
+}
+
+.text-date {
+  color: rgb(150, 150, 150) !important;
+}
+
+.command-palette {
+  color: rgb(255, 255, 255) !important;
+}
+
+.command-palette-text {
+  color: rgb(255, 255, 255) !important;
 }
