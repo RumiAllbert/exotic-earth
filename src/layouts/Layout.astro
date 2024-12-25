@@ -2,204 +2,253 @@
 import { basics } from "@cv";
 import Vengeance from "@/layouts/Vengeance.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
-import KeyboardManager from '../components/KeyboardManager.astro';
+import KeyboardManager from "../components/KeyboardManager.astro";
 
 interface Props {
-	title: string;
-	description?: string;
+  title: string;
+  description?: string;
 }
 
 const { title, description = basics.summary } = Astro.props;
 
 const { image, theme, summary } = basics;
-const siteUrl = import.meta.env.SITE || 'https://www.rumiallbert.com';
-
+const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		
-		<!-- Preload favicon -->
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
-		<!-- Preload og:image -->
-		<link rel="preload" href={`${siteUrl}/og-image.png`} as="image" type="image/png">
+    <!-- Preload favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={siteUrl} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={summary} />
-		<meta property="og:image" content={`${siteUrl}/og-image.png`} />
+    <!-- Preload og:image -->
+    <link
+      rel="preload"
+      href={`${siteUrl}/og-image.png`}
+      as="image"
+      type="image/png"
+    />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:domain" content={new URL(siteUrl).hostname} />
-		<meta property="twitter:url" content={siteUrl} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={summary} />
-		<meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={summary} />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
 
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content={new URL(siteUrl).hostname} />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={summary} />
+    <meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
 
-		<link rel="stylesheet" href="/themes/themes.css" />
-		<Vengeance />
-	</head>
-	<body data-theme={theme} class="relative bg-skin-fill">
-		<div class="absolute top-0 -z-10 h-full w-full print:hidden">
-			<div class="bg-skin-hue/10 absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full blur-[80px] invert-0 dark:bg-white/5"></div>
-		</div>
-		<slot />
-		<KeyboardManager />
-		<ThemeSwitch />
-		<style is:global>
-			body,
-			figure {
-				margin: 0;
-				padding: 0;
-			}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Itim"
+    />
 
-			a {
-				text-decoration: none;
-				}
-			ul {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-			}
+    <link rel="stylesheet" href="/themes/themes.css" />
 
-			*,
-			*::before,
-			*::after {
-				box-sizing: border-box;
-			}
+    <Vengeance />
+    <script is:inline>
+      // Immediately set initial theme to prevent flash
+      const theme = localStorage.getItem("theme") || "light";
+      document.documentElement.classList.add(theme);
+    </script>
 
-			h1,
-			h2,
-			h3,
-			h4 {
-				@apply text-skin-base;
-				margin: 0;
-				font-family:
-					system-ui,
-					-apple-system,
-					BlinkMacSystemFont,
-					"Segoe UI",
-					Roboto,
-					Oxygen,
-					Ubuntu,
-					Cantarell,
-					"Open Sans",
-					"Helvetica Neue",
-					sans-serif;
-			}
+    <!-- Add this to ensure content is visible even if JS fails -->
+    <noscript>
+      <style>
+        body {
+          visibility: visible !important;
+        }
+        .dark {
+          display: none;
+        }
+        .light {
+          display: block;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body data-theme={theme} class="relative bg-skin-fill">
+    <div class="absolute top-0 -z-10 h-full w-full print:hidden">
+      <div
+        class="absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full bg-skin-hue/10 blur-[80px] invert-0 dark:bg-white/5"
+      >
+      </div>
+    </div>
+    <slot />
+    <KeyboardManager />
+    <ThemeSwitch />
+    <style is:global>
+      body,
+      figure {
+        margin: 0;
+        padding: 0;
+      }
 
-			p {
-				@apply text-sm text-skin-muted;
-				line-height: 1.5;
-				text-wrap: pretty;
-			}
+      a {
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
 
-			.print {
-				display: none !important;
-			}
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-			.dev * {
-				@apply border border-red-500/50 bg-red-500/5;
-			}
-			#hotkeypad [data-backdrop] {
-				@apply !bg-zinc-800 !opacity-80;
-			}
+      h1,
+      h2,
+      h3,
+      h4 {
+        @apply text-skin-base;
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+      }
 
-			@media print {
-				.no-print {
-					display: none !important;
-				}
+      p {
+        @apply text-sm text-skin-muted;
+        line-height: 1.5;
+        text-wrap: pretty;
+      }
 
-				.print {
-					display: block !important;
-				}
+      .print {
+        display: none !important;
+      }
 
-				astro-dev-toolbar {
-					display: none !important;
-				}
+      .dev * {
+        @apply border border-red-500/50 bg-red-500/5;
+      }
+      #hotkeypad [data-backdrop] {
+        @apply !bg-zinc-800 !opacity-80;
+      }
 
-				article {
-					break-inside: avoid;
-				}
-			}
+      @media print {
+        .no-print {
+          display: none !important;
+        }
 
-			.core-competency {
-				@apply bg-blue-200 text-blue-800 text-base;
-			}
+        .print {
+          display: block !important;
+        }
 
-			:global(.dark) .core-competency {
-				@apply bg-blue-800 text-blue-200;
-			}
+        astro-dev-toolbar {
+          display: none !important;
+        }
 
-			#loader {
-				transition: opacity 0.3s ease-out;
-			}
+        article {
+          break-inside: avoid;
+        }
+      }
 
-			#loader.fade-out {
-				opacity: 0;
-			}
+      .core-competency {
+        @apply bg-blue-200 text-base text-blue-800;
+      }
 
-			.hypergraph-loader {
-				animation: rotate 10s linear infinite;
-			}
+      :global(.dark) .core-competency {
+        @apply bg-blue-800 text-blue-200;
+      }
 
-			@keyframes rotate {
-				from {
-					transform: rotate(0deg);
-				}
-				to {
-					transform: rotate(360deg);
-				}
-			}
+      #loader {
+        transition: opacity 0.3s ease-out;
+      }
 
-			#main-content {
-				opacity: 0;
-				transition: opacity 0.3s ease-out, filter 0.3s ease-out;
-			}
+      #loader.fade-out {
+        opacity: 0;
+      }
 
-			body {
-				overflow-x: hidden;
-			}
-		</style>
-		<script>
-			function createGeometricPattern() {
-				const svg = document.querySelector('.hypergraph-loader') as SVGSVGElement;
-				
-				// We'll set these values after generating the pattern
-				let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-				
-				const centerX = 150; // Increased center coordinates
-				const centerY = 150;
-				const numShapes = 4;
-				const minPoints = 3;
-				const maxPoints = 7;
-				const nodes: Array<{ x: number; y: number; }> = [];
-				const edges: Array<{ path: SVGPathElement; start: { x: number; y: number; }; end: { x: number; y: number; }; type: 'curve' | 'line'; }> = [];
+      .hypergraph-loader {
+        animation: rotate 10s linear infinite;
+      }
 
-				// Create gradient
-				const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-				gradient.setAttribute('id', 'nodeGradient');
-				gradient.innerHTML = `
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      #main-content {
+        opacity: 0;
+        transition:
+          opacity 0.3s ease-out,
+          filter 0.3s ease-out;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+    </style>
+    <script>
+      function createGeometricPattern() {
+        const svg = document.querySelector(
+          ".hypergraph-loader"
+        ) as SVGSVGElement;
+
+        // We'll set these values after generating the pattern
+        let minX = Infinity,
+          minY = Infinity,
+          maxX = -Infinity,
+          maxY = -Infinity;
+
+        const centerX = 150; // Increased center coordinates
+        const centerY = 150;
+        const numShapes = 4;
+        const minPoints = 3;
+        const maxPoints = 7;
+        const nodes: Array<{ x: number; y: number }> = [];
+        const edges: Array<{
+          path: SVGPathElement;
+          start: { x: number; y: number };
+          end: { x: number; y: number };
+          type: "curve" | "line";
+        }> = [];
+
+        // Create gradient
+        const gradient = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "linearGradient"
+        );
+        gradient.setAttribute("id", "nodeGradient");
+        gradient.innerHTML = `
 					<stop offset="0%" stop-color="rgba(168, 85, 247, 0.9)" />
 					<stop offset="50%" stop-color="rgba(139, 92, 246, 0.9)" />
 					<stop offset="100%" stop-color="rgba(107, 33, 168, 0.9)" />
 				`;
-				svg.appendChild(gradient);
+        svg.appendChild(gradient);
 
-				// Add glow effect
-				const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-				defs.innerHTML = `
+        // Add glow effect
+        const defs = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "defs"
+        );
+        defs.innerHTML = `
 					<filter id="glow">
 						<feGaussianBlur stdDeviation="2" result="coloredBlur"/>
 						<feMerge>
@@ -208,282 +257,337 @@ const siteUrl = import.meta.env.SITE || 'https://www.rumiallbert.com';
 						</feMerge>
 					</filter>
 				`;
-				svg.appendChild(defs);
+        svg.appendChild(defs);
 
-				// Generate shapes
-				for (let s = 0; s < numShapes; s++) {
-					const radius = 30 + s * 25; // Increased radius for larger pattern
-					const numPoints = Math.floor(Math.random() * (maxPoints - minPoints + 1)) + minPoints;
-					const shapeNodes: Array<{ x: number; y: number; }> = [];
+        // Generate shapes
+        for (let s = 0; s < numShapes; s++) {
+          const radius = 30 + s * 25; // Increased radius for larger pattern
+          const numPoints =
+            Math.floor(Math.random() * (maxPoints - minPoints + 1)) + minPoints;
+          const shapeNodes: Array<{ x: number; y: number }> = [];
 
-					for (let i = 0; i < numPoints; i++) {
-						const angle = (i / numPoints) * Math.PI * 2;
-						const randomOffset = (Math.random() - 0.5) * 10;
-						const x = centerX + (Math.cos(angle) * radius) + randomOffset;
-						const y = centerY + (Math.sin(angle) * radius) + randomOffset;
-						shapeNodes.push({ x, y });
-						addNode(svg, x, y);
-						
-						// Update min and max coordinates
-						minX = Math.min(minX, x);
-						minY = Math.min(minY, y);
-						maxX = Math.max(maxX, x);
-						maxY = Math.max(maxY, y);
-					}
+          for (let i = 0; i < numPoints; i++) {
+            const angle = (i / numPoints) * Math.PI * 2;
+            const randomOffset = (Math.random() - 0.5) * 10;
+            const x = centerX + Math.cos(angle) * radius + randomOffset;
+            const y = centerY + Math.sin(angle) * radius + randomOffset;
+            shapeNodes.push({ x, y });
+            addNode(svg, x, y);
 
-					// Connect nodes to form the shape
-					for (let i = 0; i < numPoints; i++) {
-						const start = shapeNodes[i];
-						const end = shapeNodes[(i + 1) % numPoints];
-						addEdge(svg, start, end, edges, 'line'); // Use straight lines for shape outlines
-					}
+            // Update min and max coordinates
+            minX = Math.min(minX, x);
+            minY = Math.min(minY, y);
+            maxX = Math.max(maxX, x);
+            maxY = Math.max(maxY, y);
+          }
 
-					nodes.push(...shapeNodes);
-				}
+          // Connect nodes to form the shape
+          for (let i = 0; i < numPoints; i++) {
+            const start = shapeNodes[i];
+            const end = shapeNodes[(i + 1) % numPoints];
+            addEdge(svg, start, end, edges, "line"); // Use straight lines for shape outlines
+          }
 
-				// Add cross-connections with curves
-				const maxCrossConnections = Math.floor(nodes.length * 0.4);
-				let crossConnections = 0;
-				while (crossConnections < maxCrossConnections) {
-					const i = Math.floor(Math.random() * nodes.length);
-					const j = Math.floor(Math.random() * nodes.length);
-					if (i !== j && !edgeExists(edges, nodes[i], nodes[j])) {
-						addEdge(svg, nodes[i], nodes[j], edges, 'curve'); // Use curves for cross-connections
-						crossConnections++;
-					}
-				}
+          nodes.push(...shapeNodes);
+        }
 
-				// Add padding to the viewBox
-				const padding = 20;
-				const viewBoxWidth = maxX - minX + padding * 2;
-				const viewBoxHeight = maxY - minY + padding * 2;
-				svg.setAttribute('viewBox', `${minX - padding} ${minY - padding} ${viewBoxWidth} ${viewBoxHeight}`);
-				
-				// Set width and height to maintain aspect ratio
-				const maxDimension = Math.max(viewBoxWidth, viewBoxHeight);
-				svg.setAttribute('width', maxDimension.toString());
-				svg.setAttribute('height', maxDimension.toString());
+        // Add cross-connections with curves
+        const maxCrossConnections = Math.floor(nodes.length * 0.4);
+        let crossConnections = 0;
+        while (crossConnections < maxCrossConnections) {
+          const i = Math.floor(Math.random() * nodes.length);
+          const j = Math.floor(Math.random() * nodes.length);
+          if (i !== j && !edgeExists(edges, nodes[i], nodes[j])) {
+            addEdge(svg, nodes[i], nodes[j], edges, "curve"); // Use curves for cross-connections
+            crossConnections++;
+          }
+        }
 
-				return { nodes, edges };
-			}
+        // Add padding to the viewBox
+        const padding = 20;
+        const viewBoxWidth = maxX - minX + padding * 2;
+        const viewBoxHeight = maxY - minY + padding * 2;
+        svg.setAttribute(
+          "viewBox",
+          `${minX - padding} ${minY - padding} ${viewBoxWidth} ${viewBoxHeight}`
+        );
 
-			function addNode(svg: SVGSVGElement, x: number, y: number) {
-				const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-				circle.setAttribute('cx', x.toString());
-				circle.setAttribute('cy', y.toString());
-				circle.setAttribute('r', '3'); // Keep node size consistent
-				circle.setAttribute('fill', 'url(#nodeGradient)');
-				circle.setAttribute('filter', 'url(#glow)');
-				svg.appendChild(circle);
-			}
+        // Set width and height to maintain aspect ratio
+        const maxDimension = Math.max(viewBoxWidth, viewBoxHeight);
+        svg.setAttribute("width", maxDimension.toString());
+        svg.setAttribute("height", maxDimension.toString());
 
-			function addEdge(svg: SVGSVGElement, start: { x: number; y: number }, end: { x: number; y: number }, edges: Array<{ path: SVGPathElement; start: { x: number; y: number }; end: { x: number; y: number }; type: 'curve' | 'line'; }>, type: 'curve' | 'line') {
-				const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-				let d;
-				if (type === 'curve') {
-					const midX = (start.x + end.x) / 2;
-					const midY = (start.y + end.y) / 2;
-					const ctrlX = midX + (Math.random() - 0.5) * 50;
-					const ctrlY = midY + (Math.random() - 0.5) * 50;
-					d = `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`;
-				} else {
-					d = `M${start.x},${start.y} L${end.x},${end.y}`;
-				}
-				path.setAttribute('d', d);
-				path.setAttribute('stroke', 'rgba(168, 85, 247, 0.2)');
-				path.setAttribute('stroke-width', '1');
-				path.setAttribute('fill', 'none');
-				svg.appendChild(path);
-				edges.push({ path, start, end, type });
-			}
+        return { nodes, edges };
+      }
 
-			function edgeExists(edges: Array<{ start: { x: number; y: number }; end: { x: number; y: number }; }>, start: { x: number; y: number }, end: { x: number; y: number }) {
-				return edges.some(edge => 
-					(edge.start.x === start.x && edge.start.y === start.y && edge.end.x === end.x && edge.end.y === end.y) ||
-					(edge.start.x === end.x && edge.start.y === end.y && edge.end.x === start.x && edge.end.y === start.y)
-				);
-			}
+      function addNode(svg: SVGSVGElement, x: number, y: number) {
+        const circle = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle"
+        );
+        circle.setAttribute("cx", x.toString());
+        circle.setAttribute("cy", y.toString());
+        circle.setAttribute("r", "3"); // Keep node size consistent
+        circle.setAttribute("fill", "url(#nodeGradient)");
+        circle.setAttribute("filter", "url(#glow)");
+        svg.appendChild(circle);
+      }
 
-			function animateGeometricPattern(nodes: ReturnType<typeof createGeometricPattern>['nodes'], edges: ReturnType<typeof createGeometricPattern>['edges']) {
-				let time = 0;
-				function update() {
-					time += 0.016;
+      function addEdge(
+        svg: SVGSVGElement,
+        start: { x: number; y: number },
+        end: { x: number; y: number },
+        edges: Array<{
+          path: SVGPathElement;
+          start: { x: number; y: number };
+          end: { x: number; y: number };
+          type: "curve" | "line";
+        }>,
+        type: "curve" | "line"
+      ) {
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        let d;
+        if (type === "curve") {
+          const midX = (start.x + end.x) / 2;
+          const midY = (start.y + end.y) / 2;
+          const ctrlX = midX + (Math.random() - 0.5) * 50;
+          const ctrlY = midY + (Math.random() - 0.5) * 50;
+          d = `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`;
+        } else {
+          d = `M${start.x},${start.y} L${end.x},${end.y}`;
+        }
+        path.setAttribute("d", d);
+        path.setAttribute("stroke", "rgba(168, 85, 247, 0.2)");
+        path.setAttribute("stroke-width", "1");
+        path.setAttribute("fill", "none");
+        svg.appendChild(path);
+        edges.push({ path, start, end, type });
+      }
 
-					edges.forEach((edge, i) => {
-						const opacity = 0.2 + Math.sin(time * 3 + i * 0.2) * 0.1;
-						edge.path.setAttribute('stroke', `rgba(168, 85, 247, ${opacity})`);
-						
-						if (edge.type === 'curve') {
-							// Animate only curved paths
-							const start = edge.start;
-							const end = edge.end;
-							const midX = (start.x + end.x) / 2;
-							const midY = (start.y + end.y) / 2;
-							const ctrlX = midX + Math.sin(time * 2 + i) * 25;
-							const ctrlY = midY + Math.cos(time * 2 + i) * 25;
-							edge.path.setAttribute('d', `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`);
-						}
-					});
+      function edgeExists(
+        edges: Array<{
+          start: { x: number; y: number };
+          end: { x: number; y: number };
+        }>,
+        start: { x: number; y: number },
+        end: { x: number; y: number }
+      ) {
+        return edges.some(
+          (edge) =>
+            (edge.start.x === start.x &&
+              edge.start.y === start.y &&
+              edge.end.x === end.x &&
+              edge.end.y === end.y) ||
+            (edge.start.x === end.x &&
+              edge.start.y === end.y &&
+              edge.end.x === start.x &&
+              edge.end.y === start.y)
+        );
+      }
 
-					requestAnimationFrame(update);
-				}
+      function animateGeometricPattern(
+        nodes: ReturnType<typeof createGeometricPattern>["nodes"],
+        edges: ReturnType<typeof createGeometricPattern>["edges"]
+      ) {
+        let time = 0;
+        function update() {
+          time += 0.016;
 
-				update();
-			}
+          edges.forEach((edge, i) => {
+            const opacity = 0.2 + Math.sin(time * 3 + i * 0.2) * 0.1;
+            edge.path.setAttribute("stroke", `rgba(168, 85, 247, ${opacity})`);
 
-			function animateLoader(nodes: ReturnType<typeof createGeometricPattern>['nodes'], edges: ReturnType<typeof createGeometricPattern>['edges']) {
-				const minDuration = 2000;
-				const maxDuration = 3000;
-				const duration = Math.random() * (maxDuration - minDuration) + minDuration;
-				const interval = 50;
-				const steps = duration / interval;
-				let currentStep = 0;
+            if (edge.type === "curve") {
+              // Animate only curved paths
+              const start = edge.start;
+              const end = edge.end;
+              const midX = (start.x + end.x) / 2;
+              const midY = (start.y + end.y) / 2;
+              const ctrlX = midX + Math.sin(time * 2 + i) * 25;
+              const ctrlY = midY + Math.cos(time * 2 + i) * 25;
+              edge.path.setAttribute(
+                "d",
+                `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`
+              );
+            }
+          });
 
-				disableScroll();
+          requestAnimationFrame(update);
+        }
 
-				const animationInterval = setInterval(() => {
-					currentStep++;
-					const progress = currentStep / steps;
+        update();
+      }
 
-					edges.forEach((edge, index) => {
-						if (index / edges.length < progress) {
-							edge.path.setAttribute('stroke', 'rgba(107, 33, 168, 1)');
-							edge.path.setAttribute('stroke-width', '4');
-							edge.path.setAttribute('filter', 'url(#glow)');
-						}
-					});
+      function animateLoader(
+        nodes: ReturnType<typeof createGeometricPattern>["nodes"],
+        edges: ReturnType<typeof createGeometricPattern>["edges"]
+      ) {
+        const minDuration = 2000;
+        const maxDuration = 3000;
+        const duration =
+          Math.random() * (maxDuration - minDuration) + minDuration;
+        const interval = 50;
+        const steps = duration / interval;
+        let currentStep = 0;
 
-					if (progress >= 1) {
-						clearInterval(animationInterval);
-						convergenceAnimation(nodes, edges);
-					}
-				}, interval);
-			}
+        disableScroll();
 
-			function convergenceAnimation(nodes: ReturnType<typeof createGeometricPattern>['nodes'], edges: ReturnType<typeof createGeometricPattern>['edges']) {
-				// Calculate the true center of the pattern
-				let sumX = 0, sumY = 0;
-				nodes.forEach(node => {
-					sumX += node.x;
-					sumY += node.y;
-				});
-				const centerX = sumX / nodes.length;
-				const centerY = sumY / nodes.length;
+        const animationInterval = setInterval(() => {
+          currentStep++;
+          const progress = currentStep / steps;
 
-				const duration = 1000;
-				const fps = 60;
-				const totalFrames = duration / (1000 / fps);
-				let currentFrame = 0;
+          edges.forEach((edge, index) => {
+            if (index / edges.length < progress) {
+              edge.path.setAttribute("stroke", "rgba(107, 33, 168, 1)");
+              edge.path.setAttribute("stroke-width", "4");
+              edge.path.setAttribute("filter", "url(#glow)");
+            }
+          });
 
-				const animationInterval = setInterval(() => {
-					currentFrame++;
-					const progress = currentFrame / totalFrames;
+          if (progress >= 1) {
+            clearInterval(animationInterval);
+            convergenceAnimation(nodes, edges);
+          }
+        }, interval);
+      }
 
-					nodes.forEach(node => {
-						node.x = node.x + (centerX - node.x) * progress;
-						node.y = node.y + (centerY - node.y) * progress;
-					});
+      function convergenceAnimation(
+        nodes: ReturnType<typeof createGeometricPattern>["nodes"],
+        edges: ReturnType<typeof createGeometricPattern>["edges"]
+      ) {
+        // Calculate the true center of the pattern
+        let sumX = 0,
+          sumY = 0;
+        nodes.forEach((node) => {
+          sumX += node.x;
+          sumY += node.y;
+        });
+        const centerX = sumX / nodes.length;
+        const centerY = sumY / nodes.length;
 
-					const circles = document.querySelectorAll('.hypergraph-loader circle');
-					circles.forEach((circle, i) => {
-						circle.setAttribute('cx', nodes[i].x.toString());
-						circle.setAttribute('cy', nodes[i].y.toString());
-						circle.setAttribute('opacity', (1 - progress).toString());
-					});
+        const duration = 1000;
+        const fps = 60;
+        const totalFrames = duration / (1000 / fps);
+        let currentFrame = 0;
 
-					edges.forEach(edge => {
-						edge.path.setAttribute('d', `M${edge.start.x},${edge.start.y} L${edge.end.x},${edge.end.y}`);
-						edge.path.setAttribute('opacity', (1 - progress).toString());
-					});
+        const animationInterval = setInterval(() => {
+          currentFrame++;
+          const progress = currentFrame / totalFrames;
 
-					if (progress >= 1) {
-						clearInterval(animationInterval);
-						finalizeLoading();
-					}
-				}, 1000 / fps);
-			}
+          nodes.forEach((node) => {
+            node.x = node.x + (centerX - node.x) * progress;
+            node.y = node.y + (centerY - node.y) * progress;
+          });
 
-			function enableScroll() {
-				document.body.style.overflow = '';
-				document.body.style.height = '';
-			}
+          const circles = document.querySelectorAll(
+            ".hypergraph-loader circle"
+          );
+          circles.forEach((circle, i) => {
+            circle.setAttribute("cx", nodes[i].x.toString());
+            circle.setAttribute("cy", nodes[i].y.toString());
+            circle.setAttribute("opacity", (1 - progress).toString());
+          });
 
-			function disableScroll() {
-				document.body.style.overflow = 'hidden';
-				document.body.style.height = '100vh';
-			}
+          edges.forEach((edge) => {
+            edge.path.setAttribute(
+              "d",
+              `M${edge.start.x},${edge.start.y} L${edge.end.x},${edge.end.y}`
+            );
+            edge.path.setAttribute("opacity", (1 - progress).toString());
+          });
 
-			function initializeLoader() {
-				const loader = document.getElementById('loader');
-				const mainContent = document.getElementById('main-content');
-				const commandPalette = document.getElementById('hotkeypad');
-				
-				if (loader && mainContent && commandPalette) {
-					loader.style.display = 'flex';
-					loader.style.zIndex = '1000';
-					mainContent.style.filter = 'blur(5px)';
-					mainContent.style.opacity = '0.5';
-					commandPalette.style.display = 'none';
-				}
-				
-				disableScroll();
-			}
+          if (progress >= 1) {
+            clearInterval(animationInterval);
+            finalizeLoading();
+          }
+        }, 1000 / fps);
+      }
 
-			function finalizeLoading() {
-				const loader = document.getElementById('loader');
-				const mainContent = document.getElementById('main-content');
-				const commandPalette = document.getElementById('hotkeypad');
-				
-				if (loader && mainContent && commandPalette) {
-					loader.style.opacity = '0';
-					mainContent.style.filter = 'none';
-					mainContent.style.opacity = '1';
-					
-					setTimeout(() => {
-						loader.style.display = 'none';
-						commandPalette.style.display = 'block';
-						enableScroll();
-					}, 300);
-				}
-			}
+      function enableScroll() {
+        document.body.style.overflow = "";
+        document.body.style.height = "";
+      }
 
-			window.addEventListener('load', () => {
-				initializeLoader();
-				const { nodes, edges } = createGeometricPattern();
-				animateGeometricPattern(nodes, edges);
-				animateLoader(nodes, edges);
-			});
-		</script>
-		<style>
-			#loader {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100vw;
-				height: 100vh;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background-color: rgba(var(--color-fill-rgb), 0.7);
-				backdrop-filter: blur(5px);
-				z-index: 1000;
-				transition: opacity 0.3s ease-out;
-			}
+      function disableScroll() {
+        document.body.style.overflow = "hidden";
+        document.body.style.height = "100vh";
+      }
 
-			.hypergraph-loader {
-				max-width: 100%;
-				max-height: 100vh;
-				animation: rotate 30s linear infinite;
-			}
+      function initializeLoader() {
+        const loader = document.getElementById("loader");
+        const mainContent = document.getElementById("main-content");
+        const commandPalette = document.getElementById("hotkeypad");
 
-			@keyframes rotate {
-				from {
-					transform: rotate(0deg);
-				}
-				to {
-					transform: rotate(360deg);
-				}
-			}
-		</style>
-	</body>
+        if (loader && mainContent && commandPalette) {
+          loader.style.display = "flex";
+          loader.style.zIndex = "1000";
+          mainContent.style.filter = "blur(5px)";
+          mainContent.style.opacity = "0.5";
+          commandPalette.style.display = "none";
+        }
+
+        disableScroll();
+      }
+
+      function finalizeLoading() {
+        const loader = document.getElementById("loader");
+        const mainContent = document.getElementById("main-content");
+        const commandPalette = document.getElementById("hotkeypad");
+
+        if (loader && mainContent && commandPalette) {
+          loader.style.opacity = "0";
+          mainContent.style.filter = "none";
+          mainContent.style.opacity = "1";
+
+          setTimeout(() => {
+            loader.style.display = "none";
+            commandPalette.style.display = "block";
+            enableScroll();
+          }, 300);
+        }
+      }
+
+      window.addEventListener("load", () => {
+        initializeLoader();
+        const { nodes, edges } = createGeometricPattern();
+        animateGeometricPattern(nodes, edges);
+        animateLoader(nodes, edges);
+      });
+    </script>
+    <style>
+      #loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(var(--color-fill-rgb), 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        transition: opacity 0.3s ease-out;
+      }
+
+      .hypergraph-loader {
+        max-width: 100%;
+        max-height: 100vh;
+        animation: rotate 30s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+  </body>
 </html>
