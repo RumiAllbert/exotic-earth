@@ -84,6 +84,30 @@
       ]
     },
     {
+      "name": "Fei Tian College",
+      "position": "Adjunct Professor",
+      "location_type": "Remote",
+      "location": "Middletown, NY",
+      "url": "https://feitian.edu/",
+      "startDate": "2025-01-14",
+      "endDate": null,
+      "summary": "Teaching foundational ethics and philosophy in computer & data science, with a focus on AI governance and emerging technology challenges.",
+      "highlights": [
+        "Teach foundational ethics and philosophy in computer science, focusing on AI governance, privacy rights, and emerging tech challenges",
+        "Design curriculum bridging theoretical frameworks with real-world case studies in data ethics and responsible innovation"
+      ],
+      "responsibilities": [
+        "Develop and deliver comprehensive course materials on tech ethics and AI governance",
+        "Mentor students in understanding ethical implications of emerging technologies"
+      ],
+      "skills": [
+        "Ethics in AI",
+        "Artificial Intelligence",
+        "Teaching",
+        "Philosophy"
+      ]
+    },
+    {
       "name": "The Epoch Times",
       "position": "Data Scientist",
       "location_type": "Hybrid",
