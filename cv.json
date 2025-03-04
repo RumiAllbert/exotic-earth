@@ -448,52 +448,53 @@
 
   "projects": [
     {
+      "name": "Etymon.ai",
+      "isActive": true,
+      "description": "🔍 An elegant, interactive web application for etymological analysis that deconstructs words into their constituent morphological components.",
+      "highlights": [
+        "🏺 Implemented comprehensive etymological analysis algorithms optimized for Classical language morphology and semantic evolution",
+        "🌳 Engineered visualization architecture using React Flow and Next.js for intuitive representation of linguistic relationships",
+        "🧠 Fine-tuned Google's Gemini AI model specifically for etymology breakdown, significantly enhancing accuracy in morphological analysis"
+      ],
+      "url": "https://etymon.rumiallbert.com/",
+      "github": ""
+    },
+    {
       "name": "LLM Abliterator",
       "isActive": true,
-      "description": "🔬 An open-source library for ablating or inducing personalities in Large Language Models (LLMs) using activation engineering techniques.",
+      "description": "🔬 A open-source framework for precise manipulation of personality traits in Large Language Models (LLMs) through advanced activation engineering techniques.",
       "highlights": [
-        "🔍 Developed a novel approach to identify and manipulate personality-related activation directions in LLMs",
-        "⚡ Implemented dynamic fine-tuning of LLM personalities on-the-fly",
-        "🤔 Explored ethical implications and enhanced interpretability of LLMs"
+        "🔍 Engineered a novel methodology to identify and manipulate personality-related activation vectors in neural networks",
+        "⚡ Architected a system for dynamic fine-tuning of LLM personality parameters with minimal computational overhead",
+        "🤔 Conducted rigorous analysis of ethical implications and enhanced model interpretability through systematic experimentation"
       ],
       "url": "https://community.wolfram.com/groups/-/m/t/3210605",
       "github": "https://github.com/RumiAllbert/llm-abliterator"
     },
+
     {
       "name": "Ancient Greek Resources",
       "isActive": true,
-      "description": "📚 A comprehensive website that aggregates various resources for learning Ancient Greek, utilized by universities and students worldwide.",
+      "description": "📚 A comprehensive digital repository aggregating scholarly resources for Classical Greek language acquisition, utilized by academic institutions and researchers internationally.",
       "highlights": [
-        "🏛️ Curated collection of learning materials, including textbooks, grammar guides, and vocabulary lists",
-        "🧠 Anki flashcards to reinforce language learning",
-        "🔄 Regularly updated with new resources and study tools"
+        "🏛️ Developed and maintained an extensive collection of pedagogical materials, including annotated textual resources, grammatical references, and lexicographical tools",
+        "🧠 Designed specialized spaced-repetition learning systems to optimize retention of complex morphological patterns",
+        "🔄 Implemented systematic content management protocols to ensure currency and academic rigor of all educational resources"
       ],
       "url": "https://www.ancientgreek.rumiallbert.com/",
       "github": ""
     },
     {
-      "name": "Go NLP Bot",
+      "name": "Go AI Bot",
       "isActive": true,
-      "description": "🤖 A Slack bot that uses natural language processing and Wolfram Alpha to answer user queries.",
+      "description": "🤖 An enterprise-grade conversational AI system leveraging natural language processing and computational knowledge engines to deliver precise information retrieval capabilities.",
       "highlights": [
-        "💬 Integrates with Slack API for seamless messaging interaction",
-        "🧠 Utilizes Wit.ai for intent and entity extraction from user messages",
-        "🔍 Leverages Wolfram Alpha API to provide accurate answers to queries"
+        "💬 Architected seamless integration with Slack API utilizing Go's concurrency model for optimal performance in high-volume messaging environments",
+        "🧠 Implemented sophisticated intent recognition and entity extraction using Wit.ai's machine learning framework",
+        "🔍 Engineered robust query processing pipeline leveraging Wolfram Alpha's computational knowledge engine for accurate information retrieval"
       ],
       "url": "https://github.com/RumiAllbert/go-nlp-bot",
       "github": "https://github.com/RumiAllbert/go-nlp-bot"
-    },
-    {
-      "name": "FIFA Player Value Prediction",
-      "isActive": true,
-      "description": "⚽️ A data analysis project using linear regression to predict FIFA player values based on their attributes.",
-      "highlights": [
-        "📊 Employed linear regression and diagnostic methods to fit the best reduced model",
-        "🔑 Identified key features impacting player value prediction, including overall rating, age, and reputation",
-        "🎯 Achieved an R² score of 0.98, indicating high model accuracy"
-      ],
-      "url": "https://github.com/RumiAllbert/FIFA-Linear-Analysis/blob/master/reports/Rumi%20Allbert%20-%20FIFA%20Player%20Analysis.pdf",
-      "github": "https://github.com/RumiAllbert/FIFA-Linear-Analysis/tree/master"
     }
   ]
 }
