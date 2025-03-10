@@ -304,6 +304,12 @@
   ],
   "certificates": [
     {
+      "name": "AI Agents Fundamentals",
+      "date": "2025-03-01",
+      "issuer": "Hugging Face",
+      "url": "https://huggingface.co/certificates/raaec"
+    },
+    {
       "name": "Neural Networks & Deep Learning",
       "date": "2022-01-01",
       "issuer": "DeepLearning.AI",
@@ -423,6 +429,15 @@
     }
   ],
   "publications": [
+    {
+      "title": "PhiloBERTA: A Transformer-Based Cross-Lingual Analysis of Greek and Latin Lexicons",
+      "authors": ["Rumi A. Allbert", "Makai L. Allbert"],
+      "date": "2025-03-01",
+      "url": "https://arxiv.org/abs/2503.05265",
+      "abstract": "A cross-lingual transformer model measuring semantic relationships between ancient Greek and Latin lexicons, revealing significant alignments in philosophical concepts.",
+      "publisher": "arXiv",
+      "type": "preprint"
+    },
     {
       "title": "Identifying and Manipulating Personality Traits in LLMs Through Activation Engineering",
       "authors": ["Rumi A. Allbert", "et al."],
