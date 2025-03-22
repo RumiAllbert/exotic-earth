@@ -425,8 +425,8 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
         nodes: ReturnType<typeof createGeometricPattern>["nodes"],
         edges: ReturnType<typeof createGeometricPattern>["edges"]
       ) {
-        const minDuration = 2000;
-        const maxDuration = 3000;
+        const minDuration = 1000;
+        const maxDuration = 1500;
         const duration =
           Math.random() * (maxDuration - minDuration) + minDuration;
         const interval = 50;
@@ -468,7 +468,7 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
         const centerX = sumX / nodes.length;
         const centerY = sumY / nodes.length;
 
-        const duration = 1000;
+        const duration = 500;
         const fps = 60;
         const totalFrames = duration / (1000 / fps);
         let currentFrame = 0;
@@ -546,7 +546,7 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
             loader.style.display = "none";
             commandPalette.style.display = "block";
             enableScroll();
-          }, 300);
+          }, 200);
         }
       }
 
