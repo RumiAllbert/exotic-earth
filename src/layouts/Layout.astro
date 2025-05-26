@@ -49,6 +49,47 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
     <meta property="twitter:description" content={summary} />
     <meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
 
+    {/* Canonical URL */}
+    <link rel="canonical" href={siteUrl + Astro.url.pathname} />
+
+    {/* JSON-LD Structured Data for Person */}
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: basics.name,
+        url: siteUrl,
+        image: `${siteUrl}${basics.image.startsWith("/") ? basics.image : "/" + basics.image}`,
+        jobTitle: basics.label,
+        description: basics.summary,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: basics.location.city,
+          addressRegion: basics.location.region,
+          postalCode: basics.location.postalCode,
+          addressCountry: basics.location.countryCode,
+        },
+        email: basics.email,
+        telephone: basics.phone,
+        sameAs: basics.profiles.map((profile) => profile.url),
+        knowsAbout: [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Natural Language Processing",
+          "Data Science",
+          "Python",
+          "PyTorch",
+          "TensorFlow",
+          "Hugging Face",
+          "AI Ethics",
+          "Mathematica",
+          "Software Engineering",
+          "Docker"
+        ], 
+      })}
+    />
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Itim"
@@ -588,6 +629,7 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
         }
       }
     </style>
+
 
   </body>
 </html>
