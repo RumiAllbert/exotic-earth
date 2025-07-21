@@ -241,7 +241,7 @@
       "url": "https://ralston.ac/",
       "area": "Humanities",
       "studyType": "Master of Arts",
-      "startDate": "2022-09-01",
+      "startDate": "2023-09-01",
       "endDate": "2024-05-01",
       "score": "4.0",
       "courses": [],
@@ -256,8 +256,8 @@
       "url": "https://feitian.edu/",
       "area": "Data Science",
       "studyType": "Bachelor of Science",
-      "startDate": "2018-09-01",
-      "endDate": "2022-05-01",
+      "startDate": "2019-09-01",
+      "endDate": "2023-05-01",
       "score": "3.7",
       "courses": [],
       "highlights": [
@@ -266,11 +266,22 @@
       ]
     },
     {
+      "institution": "Academia Vivarium Novum",
+      "area": "Classical Studies and Philosophy",
+      "studyType": "Immersive Program",
+      "startDate": "2024-",
+      "endDate": "2025-",
+      "highlights": [
+        "Immersive program in classical languages and philosophy; lived in full linguistic immersion with Latin and Ancient Greek as the only spoken languages.",
+        "Studied classical texts, philosophy, and rhetoric exclusively in the original languages through daily active reading, speaking, and composition."
+      ]
+    },
+    {
       "institution": "Wolfram Summer School",
       "url": "https://education.wolfram.com/summer-school/",
       "area": "Artificial Intelligence & Philosophy",
-      "startDate": "2024",
-      "endDate": "2024",
+      "startDate": "2024-",
+      "endDate": "2024-",
       "studyType": "Certificate",
       "highlights": [
         "Conducted research and experiments in Artificial Intelligence & Large Language Models",
@@ -283,8 +294,8 @@
       "url": "https://mtc.ntnu.edu.tw/eng/",
       "area": "Mandarin Chinese",
       "studyType": "Language Studies",
-      "startDate": "2023",
-      "endDate": "2023",
+      "startDate": "2023-",
+      "endDate": "2023-",
       "courses": [],
       "highlights": ["Recipient of the prestigious Huayu Scholarship"]
     },
@@ -303,6 +314,12 @@
     }
   ],
   "certificates": [
+    {
+      "name": "MCP Automation",
+      "issuer": "Hugging Face",
+      "date": "2025-01-01",
+      "url": "https://drive.google.com/file/d/101sdCr7GDEJjMbXFldtCcDEJFQbwOij0/view?usp=sharing"
+    },
     {
       "name": "AI Agents Fundamentals",
       "date": "2025-03-01",
@@ -463,13 +480,25 @@
 
   "projects": [
     {
+      "name": "ColorLab.ai",
+      "isActive": true,
+      "description": "🎨 AI-powered personal stylist that analyzes selfies to provide personalized color palettes and style guidance for different seasons.",
+      "highlights": [
+        "Built interactive styling platform using Next.js with real-time selfie analysis capabilities",
+        "Fine-tuned state-of-the-art LLMs for accurate color palette recommendations and seasonal styling",
+        "Implemented LangChain for agentic workflows and tool calling to deliver comprehensive style guidance"
+      ],
+      "url": "https://color-lab-ai.vercel.app/",
+      "github": ""
+    },
+    {
       "name": "Etymon.ai",
       "isActive": true,
-      "description": "🔍 An elegant, interactive web application for etymological analysis that deconstructs words into their constituent morphological components.",
+      "description": "🔍 An interactive web application for etymological analysis that breaks down words into their morphological components.",
       "highlights": [
-        "🏺 Implemented comprehensive etymological analysis algorithms optimized for Classical language morphology and semantic evolution",
-        "🌳 Engineered visualization architecture using React Flow and Next.js for intuitive representation of linguistic relationships",
-        "🧠 Fine-tuned Google's Gemini AI model specifically for etymology breakdown, significantly enhancing accuracy in morphological analysis"
+        "Built etymological analysis algorithms optimized for Classical languages and semantic evolution",
+        "Created intuitive visualizations using React Flow and Next.js to show linguistic relationships",
+        "Fine-tuned Google's Gemini AI for etymology breakdown, improving morphological analysis accuracy"
       ],
       "url": "https://etymon.rumiallbert.com/",
       "github": ""
@@ -477,39 +506,26 @@
     {
       "name": "LLM Abliterator",
       "isActive": true,
-      "description": "🔬 A open-source framework for precise manipulation of personality traits in Large Language Models (LLMs) through advanced activation engineering techniques.",
+      "description": "🔬 Open-source framework for manipulating personality traits in Large Language Models through activation engineering.",
       "highlights": [
-        "🔍 Engineered a novel methodology to identify and manipulate personality-related activation vectors in neural networks",
-        "⚡ Architected a system for dynamic fine-tuning of LLM personality parameters with minimal computational overhead",
-        "🤔 Conducted rigorous analysis of ethical implications and enhanced model interpretability through systematic experimentation"
+        "Developed methods to identify and modify personality-related activation vectors in neural networks",
+        "Built system for dynamic fine-tuning of LLM personality with minimal computational overhead",
+        "Analyzed ethical implications and improved model interpretability through systematic testing"
       ],
       "url": "https://community.wolfram.com/groups/-/m/t/3210605",
       "github": "https://github.com/RumiAllbert/llm-abliterator"
     },
-
     {
       "name": "Ancient Greek Resources",
       "isActive": true,
-      "description": "📚 A comprehensive digital repository aggregating scholarly resources for Classical Greek language acquisition, utilized by academic institutions and researchers internationally.",
+      "description": "📚 Comprehensive digital repository of scholarly resources for Classical Greek learning, used by academic institutions worldwide.",
       "highlights": [
-        "🏛️ Developed and maintained an extensive collection of pedagogical materials, including annotated textual resources, grammatical references, and lexicographical tools",
-        "🧠 Designed specialized spaced-repetition learning systems to optimize retention of complex morphological patterns",
-        "🔄 Implemented systematic content management protocols to ensure currency and academic rigor of all educational resources"
+        "Created extensive collection of annotated texts, grammar references, and lexicographical tools",
+        "Designed spaced-repetition systems to optimize learning of complex morphological patterns",
+        "Maintained rigorous content standards to ensure academic quality of educational resources"
       ],
       "url": "https://www.ancientgreek.rumiallbert.com/",
       "github": ""
-    },
-    {
-      "name": "Go AI Bot",
-      "isActive": true,
-      "description": "🤖 An enterprise-grade conversational AI system leveraging natural language processing and computational knowledge engines to deliver precise information retrieval capabilities.",
-      "highlights": [
-        "💬 Architected seamless integration with Slack API utilizing Go's concurrency model for optimal performance in high-volume messaging environments",
-        "🧠 Implemented sophisticated intent recognition and entity extraction using Wit.ai's machine learning framework",
-        "🔍 Engineered robust query processing pipeline leveraging Wolfram Alpha's computational knowledge engine for accurate information retrieval"
-      ],
-      "url": "https://github.com/RumiAllbert/go-nlp-bot",
-      "github": "https://github.com/RumiAllbert/go-nlp-bot"
     }
   ]
 }
