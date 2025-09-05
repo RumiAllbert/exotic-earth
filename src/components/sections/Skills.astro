@@ -1,20 +1,20 @@
 ---
 import Section from "../Section.astro";
 import { skills } from "@cv";
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 type IconMap = {
   [key: string]: string;
 };
 
 const skillCategories = [
-	"Core Competencies",
-	"Programming & Scripting Languages",
-	"Machine Learning & AI",
-	"Data Science & Analytics",
-	"Big Data & Cloud Technologies",
-	"Software Development & DevOps",
-	"Databases & Data Storage"
+  "Core Competencies",
+  "Programming & Scripting Languages",
+  "Machine Learning & AI",
+  "Data Science & Analytics",
+  "Big Data & Cloud Technologies",
+  "Software Development & DevOps",
+  "Databases & Data Storage",
 ];
 
 export const iconMap = {
@@ -121,39 +121,48 @@ export const iconMap = {
   microsoft: "simple-icons:microsoft",
   ibm: "simple-icons:ibm",
   illustrator: "simple-icons:adobeillustrator",
+  crewai: "simple-icons:crewai",
 };
 
 function getIconName(keyword: string) {
-	const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-	return (iconMap as IconMap)[lowercaseKeyword] || null;
+  const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, "");
+  return (iconMap as IconMap)[lowercaseKeyword] || null;
 }
 ---
 
 <Section className={Astro.props.className} title="Skills">
-	{skillCategories.map((category) => (
-		<div class="mb-4">
-				<h3 class="text-lg font-semibold mb-2">{category}</h3>
-				<ul class="inline-flex flex-wrap gap-2">
-					{skills
-						.filter(skill => skill.name === category)
-						.flatMap(({ keywords }) => keywords)
-						.map((keyword) => {
-							const iconName = getIconName(keyword);
-							return (
-								<li class={`skill-item text-sm rounded px-2 py-1 flex items-center gap-1 ${
-									category === "Core Competencies"
-										? "core-competency bg-blue-200 text-blue-800 text-base"
-										: "bg-skin-button-accent/20 text-skin-base dark:text-white"
-								}`}>
-									{iconName && <Icon name={iconName} class={`w-4 h-4 ${category === "Core Competencies" ? "w-5 h-5" : ""}`} />}
-									{keyword}
-								</li>
-							);
-						})
-					}
-				</ul>
-		</div>
-	))}
+  {
+    skillCategories.map((category) => (
+      <div class="mb-4">
+        <h3 class="mb-2 text-lg font-semibold">{category}</h3>
+        <ul class="inline-flex flex-wrap gap-2">
+          {skills
+            .filter((skill) => skill.name === category)
+            .flatMap(({ keywords }) => keywords)
+            .map((keyword) => {
+              const iconName = getIconName(keyword);
+              return (
+                <li
+                  class={`skill-item flex items-center gap-1 rounded px-2 py-1 text-sm ${
+                    category === "Core Competencies"
+                      ? "core-competency bg-blue-200 text-base text-blue-800"
+                      : "bg-skin-button-accent/20 text-skin-base dark:text-white"
+                  }`}
+                >
+                  {iconName && (
+                    <Icon
+                      name={iconName}
+                      class={`h-4 w-4 ${category === "Core Competencies" ? "h-5 w-5" : ""}`}
+                    />
+                  )}
+                  {keyword}
+                </li>
+              );
+            })}
+        </ul>
+      </div>
+    ))
+  }
 </Section>
 
 <style>
@@ -164,7 +173,7 @@ function getIconName(keyword: string) {
   }
 
   .skill-item::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -186,26 +195,32 @@ function getIconName(keyword: string) {
   }
 
   .skill-item:hover::before {
-    opacity: .7;
+    opacity: 0.7;
     background-position: var(--x, 0) var(--y, 0);
     transition: background-position 0.3s ease;
   }
 
   @keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
   }
 </style>
 
 <script>
-  document.querySelectorAll('.skill-item').forEach(item => {
-    item.addEventListener('mousemove', ((e: MouseEvent) => {
+  document.querySelectorAll(".skill-item").forEach((item) => {
+    item.addEventListener("mousemove", ((e: MouseEvent) => {
       const rect = item.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      (item as HTMLElement).style.setProperty('--x', `${x}px`);
-      (item as HTMLElement).style.setProperty('--y', `${y}px`);
+      (item as HTMLElement).style.setProperty("--x", `${x}px`);
+      (item as HTMLElement).style.setProperty("--y", `${y}px`);
     }) as EventListener);
   });
 </script>
