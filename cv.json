@@ -1,9 +1,9 @@
 {
   "basics": {
     "name": "Rumi Allbert",
-    "label": "AI Engineer",
+    "label": "AI Researcher & Engineer",
     "email": "rumiallbert@gmail.com",
-    "phone": "+18453214234",
+    "phone": "+1 (973) 936-4084",
     "image": "/me_avatar.jpg",
     "url": "https://rumiallbert.com",
     "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics. My interdisciplinary interests extend to classics, philosophy, and music.",
@@ -29,6 +29,19 @@
     ]
   },
   "work": [
+    {
+      "name": "micro1",
+      "position": "AI Researcher",
+      "location_type": "Traveler",
+      "location": "Remote",
+      "url": "https://www.micro1.ai/",
+      "startDate": "2025-08-01",
+      "endDate": null,
+      "summary": "The AI platform for human intelligence.",
+      "highlights": [],
+      "responsibilities": [],
+      "skills": []
+    },
     {
       "name": "Wolfram Institute",
       "position": "Affiliate Researcher",
@@ -63,7 +76,7 @@
       "location": "New York, NY",
       "url": "/",
       "startDate": "2024-05-01",
-      "endDate": null,
+      "endDate": "2025-07-01",
       "summary": "Architecting and implementing cutting-edge Large Language Models and AI systems.",
       "highlights": [
         "Architected and implemented cutting-edge Large Language Models, resulting in a 40% improvement in natural language understanding across multiple domains",
@@ -315,6 +328,12 @@
   ],
   "certificates": [
     {
+      "name": "CrewAI Multi-Agent Systems",
+      "issuer": "CrewAI",
+      "date": "2025-01-01",
+      "url": "https://learn.crewai.com/"
+    },
+    {
       "name": "MCP Automation",
       "issuer": "Hugging Face",
       "date": "2025-01-01",
@@ -436,16 +455,26 @@
       "language": "🇹🇼 Chinese"
     },
     {
-      "language": "📜 Latin"
+      "language": "🇮🇹 Italian"
     },
     {
-      "language": "🇬🇷 Greek"
+      "language": "📜 Latin"
     },
+
     {
       "language": "🏛️ Ancient Greek"
     }
   ],
   "publications": [
+    {
+      "title": "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems",
+      "authors": ["Rumi Allbert et al."],
+      "date": "2025-08-21",
+      "url": "https://arxiv.org/abs/2507.16835",
+      "abstract": "We present a large-scale empirical comparison of speech-to-text, LLM, and text-to-speech combinations using data from over 300,000 AI-conducted job interviews. Our analysis reveals that Google's STT with GPT-4.1 and Cartesia's TTS outperforms alternatives in both objective quality metrics and user satisfaction scores.",
+      "publisher": "arXiv",
+      "type": "preprint"
+    },
     {
       "title": "PhiloBERTA: A Transformer-Based Cross-Lingual Analysis of Greek and Latin Lexicons",
       "authors": ["Rumi A. Allbert", "Makai L. Allbert"],
