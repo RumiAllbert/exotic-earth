@@ -31,14 +31,16 @@
   "work": [
     {
       "name": "micro1",
-      "position": "AI Researcher",
+      "position": "Member of Technical Staff & AI Researcher",
       "location_type": "Traveler",
       "location": "Remote",
       "url": "https://www.micro1.ai/",
-      "startDate": "2025-08-01",
+      "startDate": "2025-07-01",
       "endDate": null,
       "summary": "The AI platform for human intelligence.",
-      "highlights": [],
+      "highlights": [
+        "Conducting and leading AI initiatives for human intelligence platform"
+      ],
       "responsibilities": [],
       "skills": []
     },
@@ -467,6 +469,24 @@
   ],
   "publications": [
     {
+      "title": "Uncovering Candidate Potential with Multi-Modal AI Assessments",
+      "authors": ["Rumi Allbert et al."],
+      "date": "2025-09-01",
+      "url": "https://www.researchgate.net/publication/395809850_Uncovering_Candidate_Potential_with_Multi-Modal_AI_Assessments",
+      "abstract": "Our AI Match Score combines resume analysis, structured interviews, and role-specific evaluations to outperform traditional screening by 16% (AUC: 0.742 vs. 0.641). It surfaces nearly twice as many qualified candidates, capturing unique potential signals beyond what resumes reveal.",
+      "publisher": "ResearchGate",
+      "type": "research paper"
+    },
+    {
+      "title": "From Plato to Pixels: Imagination, AI, and the Whole",
+      "authors": ["Rumi Allbert et al."],
+      "date": "2025-08-01",
+      "url": "https://www.researchgate.net/publication/395101656_From_Plato_to_Pixels_Imagination_AI_and_the_Whole",
+      "abstract": "This philosophical exploration traces imagination's evolution from Plato's Forms through medieval theology to modern fragmentation, examining whether AI can truly simulate human creativity. It argues that imagination remains humanity's essential faculty for synthesizing meaning from chaos, even as machines attempt to replicate creation.",
+      "publisher": "ResearchGate",
+      "type": "research paper"
+    },
+    {
       "title": "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems",
       "authors": ["Rumi Allbert et al."],
       "date": "2025-08-21",
@@ -508,6 +528,18 @@
   ],
 
   "projects": [
+    {
+      "name": "Latinium.ai",
+      "isActive": true,
+      "description": "📚 AI-powered Latin language learning platform with intelligent grammar analysis, real-time tutoring, and interactive annotations.",
+      "highlights": [
+        "Developed real-time Latin grammar analysis engine using advanced NLP to identify cases, tenses, and syntax",
+        "Built interactive annotation system with hover analysis and AI tutoring for personalized learning guidance",
+        "Implemented smart translation algorithms that preserve literary nuance and context-aware explanations"
+      ],
+      "url": "https://latinium.rumiallbert.com/",
+      "github": ""
+    },
     {
       "name": "ColorLab.ai",
       "isActive": true,
