@@ -45,6 +45,23 @@
       "skills": []
     },
     {
+      "name": "Aeterna Institute",
+      "position": "Founder & Researcher",
+      "location_type": "On site",
+      "location": "New York, NY",
+      "url": "https://aeterna-institute.org/",
+      "startDate": "2025-08-01",
+      "endDate": null,
+      "summary": "A classical liberal arts institute dedicated to preserving the intellectual traditions of antiquity through the Trivium, Quadrivium, and Socratic method.",
+      "highlights": [
+        "Founded an institute reviving the Seven Liberal Arts — Grammar, Logic, Rhetoric, Arithmetic, Geometry, Music, and Astronomy",
+        "Designed a classical curriculum rooted in the Socratic dialectic and the pursuit of Eudaimonia",
+        "Building a scholarly community of fellows committed to the preservation and transmission of Western intellectual heritage"
+      ],
+      "responsibilities": [],
+      "skills": []
+    },
+    {
       "name": "Wolfram Institute",
       "position": "Affiliate Researcher",
       "location_type": "Remote",
@@ -282,6 +299,7 @@
     },
     {
       "institution": "Academia Vivarium Novum",
+      "url": "https://vivariumnovum.net/en",
       "area": "Classical Studies and Philosophy",
       "studyType": "Immersive Program",
       "startDate": "2024-",
@@ -529,25 +547,61 @@
 
   "projects": [
     {
+      "name": "Memento Vitae",
+      "isActive": true,
+      "description": "⏳ Life visualization tool that maps your remaining weeks, time allocation, and mortality-aware insights.",
+      "highlights": [
+        "Full life grid rendering ~4,000 weeks with real-time current-week tracking",
+        "Time breakdown engine calculating how sleep, work, and habits consume remaining life",
+        "Reality-check insights — parent visits left, books to read, summers remaining"
+      ],
+      "url": "https://mementovitae.vercel.app/",
+      "github": "https://github.com/RumiAllbert/memento-vita"
+    },
+    {
+      "name": "Loqui TTS",
+      "isActive": true,
+      "description": "🔊 Local text-to-speech app powered by MLX Audio on Apple Silicon — voice cloning, multilingual, zero cloud dependency.",
+      "highlights": [
+        "5 model variants including voice cloning and 10-language support via Qwen3-TTS",
+        "Native Metal GPU inference with real-time system monitoring and WebSocket updates",
+        "Full-stack React + FastAPI app with in-browser model downloads and generation history"
+      ],
+      "url": "https://github.com/RumiAllbert/loqui-tts",
+      "github": "https://github.com/RumiAllbert/loqui-tts"
+    },
+    {
       "name": "Latinium.ai",
       "isActive": true,
-      "description": "📚 AI-powered Latin language learning platform with intelligent grammar analysis, real-time tutoring, and interactive annotations.",
+      "description": "📚 AI-powered Latin tutor with real-time grammar analysis and interactive annotations.",
       "highlights": [
-        "Developed real-time Latin grammar analysis engine using advanced NLP to identify cases, tenses, and syntax",
-        "Built interactive annotation system with hover analysis and AI tutoring for personalized learning guidance",
-        "Implemented smart translation algorithms that preserve literary nuance and context-aware explanations"
+        "Real-time grammar engine using NLP to parse cases, tenses, and syntax",
+        "Interactive hover annotations with AI-powered tutoring",
+        "Context-aware translation preserving literary nuance"
       ],
       "url": "https://latinium.rumiallbert.com/",
+      "github": "https://github.com/RumiAllbert/latinium"
+    },
+    {
+      "name": "Gentleman's Codex",
+      "isActive": true,
+      "description": "🎩 Interactive guide to timeless men's style — blazers, shirts, colors, and the rules of dressing well.",
+      "highlights": [
+        "Four-chapter curriculum with quizzes, achievements, and a style archetype assessment",
+        "Interactive outfit builder with real-time compatibility scoring",
+        "Color wheel tool and curated palettes for foolproof coordination"
+      ],
+      "url": "https://gentlemans-codex-1031601420066.us-central1.run.app/",
       "github": ""
     },
     {
       "name": "ColorLab.ai",
       "isActive": true,
-      "description": "🎨 AI-powered personal stylist that analyzes selfies to provide personalized color palettes and style guidance for different seasons.",
+      "description": "🎨 AI stylist that analyzes selfies to deliver personalized color palettes and seasonal style guidance.",
       "highlights": [
-        "Built interactive styling platform using Next.js with real-time selfie analysis capabilities",
-        "Fine-tuned state-of-the-art LLMs for accurate color palette recommendations and seasonal styling",
-        "Implemented LangChain for agentic workflows and tool calling to deliver comprehensive style guidance"
+        "Real-time selfie analysis built with Next.js",
+        "Fine-tuned LLMs for seasonal color palette recommendations",
+        "Agentic LangChain workflows for comprehensive style guidance"
       ],
       "url": "https://color-lab-ai.vercel.app/",
       "github": ""
@@ -555,11 +609,11 @@
     {
       "name": "Etymon.ai",
       "isActive": true,
-      "description": "🔍 An interactive web application for etymological analysis that breaks down words into their morphological components.",
+      "description": "🔍 Interactive etymology engine that deconstructs words into their morphological roots.",
       "highlights": [
-        "Built etymological analysis algorithms optimized for Classical languages and semantic evolution",
-        "Created intuitive visualizations using React Flow and Next.js to show linguistic relationships",
-        "Fine-tuned Google's Gemini AI for etymology breakdown, improving morphological analysis accuracy"
+        "Analysis algorithms optimized for Classical languages and semantic evolution",
+        "React Flow visualizations mapping linguistic relationships",
+        "Fine-tuned Gemini AI for morphological breakdown"
       ],
       "url": "https://etymon.rumiallbert.com/",
       "github": ""
@@ -567,11 +621,11 @@
     {
       "name": "LLM Abliterator",
       "isActive": true,
-      "description": "🔬 Open-source framework for manipulating personality traits in Large Language Models through activation engineering.",
+      "description": "🔬 Open-source toolkit for steering LLM personality traits via activation engineering.",
       "highlights": [
-        "Developed methods to identify and modify personality-related activation vectors in neural networks",
-        "Built system for dynamic fine-tuning of LLM personality with minimal computational overhead",
-        "Analyzed ethical implications and improved model interpretability through systematic testing"
+        "Methods to identify and modify personality-related activation vectors",
+        "Dynamic personality fine-tuning with minimal compute overhead",
+        "Systematic interpretability testing with ethical analysis"
       ],
       "url": "https://community.wolfram.com/groups/-/m/t/3210605",
       "github": "https://github.com/RumiAllbert/llm-abliterator"
@@ -579,11 +633,11 @@
     {
       "name": "Ancient Greek Resources",
       "isActive": true,
-      "description": "📚 Comprehensive digital repository of scholarly resources for Classical Greek learning, used by academic institutions worldwide.",
+      "description": "📚 Curated scholarly repository for Classical Greek, used by academic institutions worldwide.",
       "highlights": [
-        "Created extensive collection of annotated texts, grammar references, and lexicographical tools",
-        "Designed spaced-repetition systems to optimize learning of complex morphological patterns",
-        "Maintained rigorous content standards to ensure academic quality of educational resources"
+        "Annotated texts, grammar references, and lexicographical tools",
+        "Spaced-repetition systems for complex morphological patterns",
+        "Rigorous academic-quality content standards"
       ],
       "url": "https://www.ancientgreek.rumiallbert.com/",
       "github": ""
