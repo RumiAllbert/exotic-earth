@@ -2,13 +2,6 @@
 import Section from "../Section.astro";
 
 import { certificates, education } from "@cv";
-import { Icon } from 'astro-icon/components';
-import { iconMap } from "./Skills.astro";
-
-function getCertificateIconName(issuer: string) {
-    const lowercaseIssuer = issuer.toLowerCase().replace(/\s+/g, '');
-    return (iconMap as { [key: string]: string })[lowercaseIssuer] || null;
-}
 
 function getDomain(url?: string): string | null {
     if (!url) return null;
@@ -17,6 +10,19 @@ function getDomain(url?: string): string | null {
     } catch {
         return null;
     }
+}
+
+// Map certificate issuers to their website domains for colorized favicons
+const issuerDomains: Record<string, string> = {
+    'crewai': 'crewai.com',
+    'deeplearning.ai': 'deeplearning.ai',
+    'huggingface': 'huggingface.co',
+    'meta': 'meta.com',
+};
+
+function getIssuerDomain(issuer: string): string | null {
+    const key = issuer.toLowerCase().replace(/\s+/g, '');
+    return issuerDomains[key] || null;
 }
 
 ---
@@ -31,18 +37,18 @@ function getDomain(url?: string): string | null {
 				const domain = getDomain(url);
 
 				return (
-					<div class="flex items-baseline">
+					<div class="flex items-start">
 						{domain ? (
 							<img
-								src={`https://www.google.com/s2/favicons?domain=${domain}&sz=32`}
+								src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
 								alt={institution}
-								width="20"
-								height="20"
-								class="mr-2 hidden h-5 w-5 self-start rounded-sm md:inline-block print:hidden"
+								width="24"
+								height="24"
+								class="mr-3 h-6 w-6 shrink-0 rounded-sm print:hidden"
 								loading="lazy"
 							/>
 						) : (
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 h-6 w-6 shrink-0 print:hidden text-skin-muted">
 								<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
 								<path d="M22 10v6" />
 								<path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
@@ -77,13 +83,20 @@ function getDomain(url?: string): string | null {
 				<ul class="space-y-4 py-3 print:space-y-0">
 					{certificates.map(({ name, date, issuer, url }) => {
 						const certificateYear = new Date(date).getFullYear();
-						const iconName = getCertificateIconName(issuer);
+						const certDomain = getIssuerDomain(issuer) || getDomain(url);
 						return (
-							<div class="flex items-baseline">
-								{iconName ? (
-									<Icon name={iconName} class="mr-2 h-5 w-5 self-start text-skin-muted" />
+							<div class="flex items-start">
+								{certDomain ? (
+									<img
+										src={`https://www.google.com/s2/favicons?domain=${certDomain}&sz=64`}
+										alt={issuer}
+										width="24"
+										height="24"
+										class="mr-3 h-6 w-6 shrink-0 rounded-sm print:hidden"
+										loading="lazy"
+									/>
 								) : (
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 h-6 w-6 shrink-0 print:hidden text-skin-muted">
 										<path d="M15 12h-5" />
 										<path d="M15 8h-5" />
 										<path d="M19 17V5a2 2 0 0 0-2-2H4" />
