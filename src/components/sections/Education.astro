@@ -10,6 +10,15 @@ function getCertificateIconName(issuer: string) {
     return (iconMap as { [key: string]: string })[lowercaseIssuer] || null;
 }
 
+function getDomain(url?: string): string | null {
+    if (!url) return null;
+    try {
+        return new URL(url).hostname;
+    } catch {
+        return null;
+    }
+}
+
 ---
 
 <Section className={Astro.props.className} title="Education">
@@ -19,14 +28,26 @@ function getCertificateIconName(issuer: string) {
 				const startYear = new Date(startDate).getFullYear();
 				const endYear = endDate != null ? new Date(endDate).getFullYear() : "Actual";
 				const years = `${startYear} - ${endYear}`;
+				const domain = getDomain(url);
 
 				return (
 					<div class="flex items-baseline">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden">
-							<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-							<path d="M22 10v6" />
-							<path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-						</svg>
+						{domain ? (
+							<img
+								src={`https://www.google.com/s2/favicons?domain=${domain}&sz=32`}
+								alt={institution}
+								width="20"
+								height="20"
+								class="mr-2 hidden h-5 w-5 self-start rounded-sm md:inline-block print:hidden"
+								loading="lazy"
+							/>
+						) : (
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 hidden h-5 w-5 self-start md:inline-block print:hidden">
+								<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+								<path d="M22 10v6" />
+								<path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+							</svg>
+						)}
 						<div class="relative w-full items-baseline justify-between gap-2">
 							<h3 class="mr-6 items-baseline gap-x-2 gap-y-0.5 font-medium">
 								<a target="_blank" class="hover:text-skin-hue group flex items-center gap-[6px] decoration-dotted underline-offset-[5px] hover:underline" href={url}>

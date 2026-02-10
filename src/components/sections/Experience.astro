@@ -45,8 +45,12 @@ function getIconName(keyword: string) {
             <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
               <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
             </header>
-            <div class="relative flex flex-col pb-6 print:pb-0 before:-ml-6 sm:col-span-10 before:w-px print:before:hidden before:absolute before:bg-skin-muted before:h-full before:mt-2">
-              <div class="absolute w-2 h-2 bg-skin-muted rounded-full mt-2 -translate-x-[1.71rem] ring print:hidden ring-skin-fill"></div>
+            <div class="timeline-item relative flex flex-col pb-6 print:pb-0 sm:col-span-10">
+              <div class="timeline-track absolute -ml-6 w-px h-full mt-2 print:hidden">
+                <div class="absolute inset-0 bg-skin-muted"></div>
+                <div class="timeline-fill absolute top-0 left-0 w-full h-0"></div>
+              </div>
+              <div class="timeline-dot absolute w-2 h-2 rounded-full mt-2 -translate-x-[1.71rem] bg-skin-muted ring print:hidden ring-skin-fill transition-all duration-500"></div>
               <div class="flex items-center justify-between">
                 <h3>
                   <div class="inline-flex items-center text-lg print:text-base leading-tight group/link focus-visible:text-amber-500">
@@ -182,9 +186,22 @@ function getIconName(keyword: string) {
 
 <style>
   [x-cloak] { display: none !important; }
-  
+
   li::marker {
     @apply text-skin-hue
+  }
+
+  .timeline-fill {
+    background: linear-gradient(180deg, #c4b5fd, #a78bfa, #8b5cf6);
+    transition: height 0.1s linear;
+    will-change: height;
+    border-radius: 0 0 1px 1px;
+  }
+
+  .timeline-dot.lit {
+    background-color: #a78bfa;
+    ring-color: #a78bfa;
+    box-shadow: 0 0 8px 2px rgba(167, 139, 250, 0.5);
   }
 
   .skill-item {
@@ -232,4 +249,54 @@ function getIconName(keyword: string) {
       (item as HTMLElement).style.setProperty('--y', `${y}px`);
     }) as EventListener);
   });
+
+  // Timeline scroll-fill animation
+  let initialOffset: number | null = null;
+  let initialScrollY = 0;
+
+  function updateTimeline() {
+    const items = document.querySelectorAll('.timeline-item');
+    if (!items.length) { requestAnimationFrame(updateTimeline); return; }
+
+    const triggerY = window.scrollY + window.innerHeight * 0.75;
+
+    // On first frame, measure how far the trigger already overshoots the section
+    // This is the "head start" we need to zero out
+    if (initialOffset === null) {
+      const firstRect = items[0].getBoundingClientRect();
+      const firstItemTop = window.scrollY + firstRect.top;
+      initialOffset = Math.max(triggerY - firstItemTop, 0);
+      initialScrollY = window.scrollY;
+    }
+
+    // Shrink the offset 1:1 as the user scrolls — ink catches up naturally
+    const scrolled = Math.max(window.scrollY - initialScrollY, 0);
+    const currentOffset = Math.max(initialOffset - scrolled, 0);
+    const inkY = triggerY - currentOffset;
+
+    items.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+      const fill = item.querySelector('.timeline-fill') as HTMLElement;
+      const dot = item.querySelector('.timeline-dot') as HTMLElement;
+      if (!fill || !dot) return;
+
+      const itemTop = window.scrollY + rect.top;
+      const itemHeight = rect.height;
+
+      const scrolledInto = inkY - itemTop;
+      const progress = Math.min(Math.max(scrolledInto / itemHeight, 0), 1);
+
+      fill.style.height = `${progress * 100}%`;
+
+      if (progress > 0.05) {
+        dot.classList.add('lit');
+      } else {
+        dot.classList.remove('lit');
+      }
+    });
+
+    requestAnimationFrame(updateTimeline);
+  }
+
+  requestAnimationFrame(updateTimeline);
 </script>

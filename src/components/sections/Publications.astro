@@ -17,7 +17,9 @@ import Section from "../Section.astro";
                   <time datetime={date} class="text-sm text-skin-muted">
                     {year}
                   </time>
-                  <span class="text-xs text-skin-muted">{type}</span>
+                  <span class={`text-xs px-2 py-0.5 rounded-full ${type === 'research paper' ? 'bg-skin-hue/10 text-skin-hue' : 'bg-skin-muted/10 text-skin-muted'}`}>
+                    {type}
+                  </span>
                 </header>
 
                 <h3 class="text-lg font-medium">
@@ -45,7 +47,7 @@ import Section from "../Section.astro";
 
                 <div class="flex flex-wrap items-center gap-2 text-sm text-skin-muted">
                   <span>{authors.join(", ")}</span>
-                  <span>•</span>
+                  <span>&middot;</span>
                   <span>{publisher}</span>
                 </div>
 
@@ -60,46 +62,3 @@ import Section from "../Section.astro";
 </Section>
 
 <style>
-  .publication-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .publication-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(var(--color-button-accent), 0.15) 0%,
-      rgba(var(--color-button-accent), 0) 50%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .publication-card:hover::before {
-    opacity: 1;
-  }
-
-  .publication-card > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-

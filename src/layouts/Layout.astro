@@ -242,6 +242,24 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
           filter 0.3s ease-out;
       }
 
+      /* Section scroll reveal animations */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media print {
+        .scroll-reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+
       body {
         overflow-x: hidden;
       }
@@ -596,6 +614,20 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
         const { nodes, edges } = createGeometricPattern();
         animateGeometricPattern(nodes, edges);
         animateLoader(nodes, edges);
+
+        // Section scroll reveal
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const delay = el.dataset.revealDelay || '0';
+              setTimeout(() => el.classList.add('visible'), parseInt(delay));
+              revealObserver.unobserve(el);
+            }
+          });
+        }, { threshold: 0.08 });
+        revealElements.forEach(el => revealObserver.observe(el));
       });
     </script>
     <style>
