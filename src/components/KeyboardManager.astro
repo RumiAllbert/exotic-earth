@@ -3,8 +3,6 @@ import "hotkeypad/reset.css";
 import "hotkeypad/index.css";
 import { type SocialIcon } from "@/types";
 import { basics } from "@cv";
-import confetti from 'canvas-confetti';
-
 const { profiles, email } = basics;
 
 const SOCIAL_ICONS: SocialIcon = {
@@ -78,8 +76,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
   data-email={basics.email}
 ></div>
 
-<canvas id="rainbow-background"></canvas>
-
 <script>
 	interface Info {
 		id: string;
@@ -92,129 +88,12 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	}
 
 	import HotKeyPad from "hotkeypad";
-	import confetti from 'canvas-confetti';
 
 	const hotkeypad = new HotKeyPad();
 	const hotkeypadElement = hotkeypad.instance;
 	const info = hotkeypadElement.getAttribute("data-info") ?? "[]";
 	const parsedInfo = JSON.parse(info) as Info[];
 	const email = hotkeypadElement.getAttribute("data-email") ?? "";
-
-	let partyMode = false;
-	let ripples: Array<{ x: number; y: number; size: number; alpha: number }> = [];
-	let time = 0;
-
-	function togglePartyMode() {
-		partyMode = !partyMode;
-		if (partyMode) {
-			document.body.classList.add('party-mode');
-			const rainbowBackground = document.getElementById('rainbow-background');
-			if (rainbowBackground) {
-				rainbowBackground.style.display = 'block';
-			}
-			
-			// First confetti burst
-			confetti({
-				particleCount: 100,
-				spread: 70,
-				origin: { y: 0.6 }
-			});
-
-			// Second confetti burst after 1 second
-			setTimeout(() => {
-				confetti({
-					particleCount: 100,
-					spread: 70,
-					origin: { y: 0.6 }
-				});
-			}, 1000);
-
-			// Add mouse move event listener for ripples
-			document.addEventListener('mousemove', handleMouseMove);
-
-			// Start the animation loop
-			requestAnimationFrame(animateBackground);
-
-			setTimeout(() => {
-				document.body.classList.remove('party-mode');
-				if (rainbowBackground) {
-					rainbowBackground.style.display = 'none';
-				}
-				document.removeEventListener('mousemove', handleMouseMove);
-				partyMode = false;
-				ripples = [];
-			}, 15000);
-		} else {
-			document.body.classList.remove('party-mode');
-			const rainbowBackground = document.getElementById('rainbow-background');
-			if (rainbowBackground) {
-				rainbowBackground.style.display = 'none';
-			}
-			document.removeEventListener('mousemove', handleMouseMove);
-			ripples = [];
-		}
-	}
-
-	function handleMouseMove(e: MouseEvent) {
-		createRipple(e.clientX, e.clientY);
-	}
-
-	function createRipple(x: number, y: number) {
-		ripples.push({ x, y, size: 0, alpha: 1 });
-	}
-
-	function animateBackground() {
-		const canvas = document.getElementById('rainbow-background') as HTMLCanvasElement;
-		const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-
-		time += 0.005;
-
-		const colors = [
-			[255, 0, 0],    // Red
-			[255, 127, 0],  // Orange
-			[255, 255, 0],  // Yellow
-			[0, 255, 0],    // Green
-			[0, 0, 255],    // Blue
-			[75, 0, 130],   // Indigo
-			[143, 0, 255]   // Violet
-		];
-
-		const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-		
-		for (let i = 0; i < colors.length; i++) {
-			const t = (time + i / colors.length) % 1;
-			const r = Math.sin(t * Math.PI * 2) * 127 + 128;
-			const g = Math.sin((t + 1/3) * Math.PI * 2) * 127 + 128;
-			const b = Math.sin((t + 2/3) * Math.PI * 2) * 127 + 128;
-			
-			gradient.addColorStop(i / (colors.length - 1), `rgb(${r}, ${g}, ${b})`);
-		}
-
-		ctx.fillStyle = gradient;
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-		// Draw ripples
-		ripples.forEach((ripple, index) => {
-			ctx.beginPath();
-			ctx.arc(ripple.x, ripple.y, ripple.size, 0, 2 * Math.PI);
-			ctx.strokeStyle = `rgba(255, 255, 255, ${ripple.alpha})`;
-			ctx.stroke();
-
-			ripple.size += 2;
-			ripple.alpha -= 0.02;
-
-			if (ripple.alpha <= 0) {
-				ripples.splice(index, 1);
-			}
-		});
-
-		if (partyMode) {
-			requestAnimationFrame(animateBackground);
-		}
-	}
 
 	const data = parsedInfo.map(({ url, hotkey, icon, id, section, title }) => {
 		return {
@@ -290,14 +169,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			handler: () => {
 				window.location.href = `mailto:${email}?subject=Connection%20Request&body=Hello%20Rumi,%0D%0A%0D%0AMy%20name%20is%20[your%20name].%20I%20wanted%20to%20reach%20out%20because%20[your%20reason%20for%20wanting%20to%20connect].%0D%0A%0D%0ABest,%0D%0A[your%20name]`;
 			},
-		},
-		{
-			id: "party-mode",
-			title: "Toggle Party Mode",
-			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-party-popper"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12v.01c.1.7-.05 1.41-.42 2.01L15 12l.64 2.1c.24.8.13 1.67-.29 2.4v0c-.42.73-.46 1.61-.13 2.37l.96 2.13"/><path d="m15 12 .64 2.1c.24.8.13 1.67-.29 2.4v0c-.42.73-.46 1.61-.13 2.37l.96 2.13"/><path d="m13 9 .64 2.1c.24.8.13 1.67-.29 2.4v0c-.42.73-.46 1.61-.13 2.37L14 18"/><path d="M9 15c-.64.64-1.52.94-2.4.85h-.01c-.79-.1-1.6.1-2.25.64L2 18"/></svg>`,
-			hotkey: "ctrl+X",
-			section: "Fun",
-			handler: togglePartyMode,
 		},
 		...data,
 	]);
@@ -418,113 +289,147 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		font-weight: bold;
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 	}
+	/* Command palette — glassmorphism */
 	#hotkeypad {
-		--hotkeypad-bg-kbd: #f0f0f0;
-		--hotkeypad-bg-backdrop: rgba(255, 255, 255, 0.8);
-		--hotkeypad-bg-container: rgba(255, 255, 255, 0.9);
-		--hotkeypad-bg-item-hover: rgba(0, 0, 0, 0.1);
-		--hotkeypad-border-container: #ccc;
-		--hotkeypad-border-container-hover: #999;
-		--hotkeypad-fg-muted: #666;
-		@media (prefers-color-scheme: dark) {
-			--hotkeypad-bg-kbd: rgb(var(--muted));
-			--hotkeypad-bg-backdrop: rgba(var(--color-fill), 0.8);
-			--hotkeypad-bg-container: rgba(var(--color-fill), 0.9);
-			--hotkeypad-bg-item-hover: rgba(var(--color), 10%);
-			--hotkeypad-border-container: rgb(var(--muted));
-			--hotkeypad-border-container-hover: rgb(var(--color-fill));
-			--hotkeypad-fg-muted: rgb(var(--color-text-base));
-		}
-	}
-	#hotkeypad [data-container] {
-		background-color: rgba(var(--color-fill), 0.9);
-		background: linear-gradient(
-			to bottom,
-			rgba(var(--color-fill), 0.2) 0%,
-			rgba(var(--color-fill), 0.6) 30%,
-			rgba(var(--color-fill), 0.9) 100%
-		);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
+		--hotkeypad-bg-kbd: rgba(var(--color-fill), 0.8);
+		--hotkeypad-bg-backdrop: rgba(0, 0, 0, 0.5);
+		--hotkeypad-bg-container: rgba(var(--color-fill), 0.92);
+		--hotkeypad-bg-item-hover: rgba(var(--color-text-muted), 0.08);
+		--hotkeypad-border-container: rgba(var(--color-text-muted), 0.12);
+		--hotkeypad-border-container-hover: rgba(var(--color-text-muted), 0.2);
+		--hotkeypad-fg-muted: rgb(var(--color-text-muted));
 	}
 
-	#hotkeypad [data-item] {
-		background-color: rgba(var(--color-fill), 0.8);
+	#hotkeypad [data-backdrop] {
 		backdrop-filter: blur(8px);
 		-webkit-backdrop-filter: blur(8px);
 	}
+
+	#hotkeypad [data-container] {
+		background: linear-gradient(
+			165deg,
+			rgba(var(--color-fill), 0.95) 0%,
+			rgba(var(--color-fill), 0.88) 100%
+		);
+		backdrop-filter: blur(40px) saturate(1.5);
+		-webkit-backdrop-filter: blur(40px) saturate(1.5);
+		border: 1px solid rgba(var(--color-text-muted), 0.1);
+		border-radius: 16px;
+		box-shadow:
+			0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+			0 24px 48px -12px rgba(0, 0, 0, 0.2),
+			0 0 80px -20px rgba(var(--color-skin-hue), 0.08);
+		filter: none;
+	}
+
+	#hotkeypad [data-container] header {
+		padding: 1.25rem 1.5rem;
+	}
+
+	#hotkeypad [data-container] header input {
+		color: rgb(var(--color-text-base));
+		font-weight: 300;
+		letter-spacing: 0.01em;
+	}
+
+	#hotkeypad [data-container] header input::placeholder {
+		color: rgb(var(--color-text-muted));
+		opacity: 0.5;
+	}
+
+	#hotkeypad [data-sections] {
+		border-color: rgba(var(--color-text-muted), 0.1);
+	}
+
+	#hotkeypad [data-section] h4 {
+		color: rgb(var(--color-text-muted));
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		opacity: 0.6;
+		padding-left: 1.5rem;
+	}
+
+	#hotkeypad [data-hotkey] {
+		padding: 0.625rem 1.5rem;
+		border-radius: 8px;
+		margin: 1px 8px;
+		transition: background-color 0.15s, box-shadow 0.15s;
+	}
+
+	#hotkeypad [data-hotkey] p {
+		color: rgb(var(--color-text-base));
+		font-weight: 400;
+	}
+
+	#hotkeypad [data-hotkey] span {
+		color: rgb(var(--color-text-muted));
+		opacity: 0.7;
+	}
+
+	#hotkeypad [data-hotkey][data-active] {
+		background: rgba(var(--color-text-muted), 0.08);
+		box-shadow: 0 0 0 1px rgba(var(--color-text-muted), 0.06) inset;
+	}
+
+	#hotkeypad [data-hotkey]::before {
+		display: none;
+	}
+
+	#hotkeypad [data-active]::before {
+		display: block;
+		left: 8px;
+		height: calc(100% - 8px);
+		top: 4px;
+		border-radius: 2px;
+		background-color: rgb(var(--color-skin-hue));
+		width: 2px;
+	}
+
+	/* Kbd pills */
+	#hotkeypad [data-hotkey] div span {
+		background: rgba(var(--color-text-muted), 0.06);
+		border: 1px solid rgba(var(--color-text-muted), 0.1);
+		border-radius: 6px;
+		font-size: 0.75rem;
+		color: rgb(var(--color-text-muted));
+		opacity: 0.7;
+	}
+
+	#hotkeypad [data-hotkey]:hover div span,
+	#hotkeypad [data-active] div span {
+		background: rgba(var(--color-text-muted), 0.1);
+		border-color: rgba(var(--color-text-muted), 0.18);
+		opacity: 1;
+	}
+
+	/* Footer */
+	#hotkeypad [data-container] footer {
+		border-top: 1px solid rgba(var(--color-text-muted), 0.08);
+		padding: 0.75rem 1.5rem;
+	}
+
+	#hotkeypad [data-container] footer kbd {
+		background: rgba(var(--color-text-muted), 0.06);
+		border: 1px solid rgba(var(--color-text-muted), 0.1);
+		border-radius: 5px;
+		color: rgb(var(--color-text-muted));
+		opacity: 0.7;
+	}
+
+	#hotkeypad [data-container] footer p {
+		color: rgb(var(--color-text-muted));
+		opacity: 0.5;
+		font-size: 0.8rem;
+	}
+
 	.text-command-palette-text,
 	.command-palette-text {
 		color: rgb(var(--color-command-palette-text));
 	}
 
-	@keyframes rainbow {
-		0% { color: red; }
-		14% { color: orange; }
-		28% { color: yellow; }
-		42% { color: green; }
-		57% { color: blue; }
-		71% { color: indigo; }
-		85% { color: violet; }
-		100% { color: red; }
-	}
-
-	@keyframes shake {
-		0% { transform: translate(1px, 1px) rotate(0deg); }
-		10% { transform: translate(-1px, -2px) rotate(-1deg); }
-		20% { transform: translate(-3px, 0px) rotate(1deg); }
-		30% { transform: translate(3px, 2px) rotate(0deg); }
-		40% { transform: translate(1px, -1px) rotate(1deg); }
-		50% { transform: translate(-1px, 2px) rotate(-1deg); }
-		60% { transform: translate(-3px, 1px) rotate(0deg); }
-		70% { transform: translate(3px, 1px) rotate(-1deg); }
-		80% { transform: translate(-1px, -1px) rotate(1deg); }
-		90% { transform: translate(1px, 2px) rotate(0deg); }
-		100% { transform: translate(1px, -2px) rotate(-1deg); }
-	}
-
-	.party-mode * {
-		animation: rainbow 5s linear infinite, shake 0.82s cubic-bezier(.36,.07,.19,.97) both infinite;
-	}
-
 	body {
 		overflow-x: hidden;
-	}
-
-	.party-mode {
-		overflow: hidden;
-	}
-
-	#rainbow-background {
-		display: none;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		z-index: -1;
-		opacity: 0.5;
-	}
-
-	.party-mode {
-		position: relative;
-	}
-
-	.party-mode > * {
-		position: relative;
-		z-index: 1;
-	}
-
-	@media (prefers-contrast: high) {
-		#hotkeypad {
-			--hotkeypad-bg-container: #ffffff;
-			--hotkeypad-fg-muted: #000000;
-		}
-
-		#hotkeypad [data-item] {
-			background-color: #ffffff;
-			color: #000000;
-		}
 	}
 </style>
