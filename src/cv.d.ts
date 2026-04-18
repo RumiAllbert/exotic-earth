@@ -82,11 +82,14 @@ interface Certificates {
 }
 
 interface Publications {
-  name: string;
-  publisher: string;
-  releaseDate: DateStr;
+  title: string;
+  authors: Array<string>;
+  date: DateStr;
   url: string;
-  summary: string;
+  highlight?: string;
+  abstract: string;
+  publisher: string;
+  type: string;
 }
 
 interface Education {
