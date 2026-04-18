@@ -348,6 +348,12 @@
   ],
   "certificates": [
     {
+      "name": "Applied AI Product Management",
+      "issuer": "IBM",
+      "date": "2025-12-01",
+      "url": "https://www.coursera.org/account/accomplishments/verify/TYMTG4UVK74F"
+    },
+    {
       "name": "CrewAI Multi-Agent Systems",
       "issuer": "CrewAI",
       "date": "2025-01-01",
