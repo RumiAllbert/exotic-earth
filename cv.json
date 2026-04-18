@@ -553,6 +553,18 @@
 
   "projects": [
     {
+      "name": "Etymon.ai",
+      "isActive": true,
+      "description": "🔍 Interactive etymology engine that deconstructs words into their morphological roots.",
+      "highlights": [
+        "Analysis algorithms optimized for Classical languages and semantic evolution",
+        "React Flow visualizations mapping linguistic relationships",
+        "Fine-tuned Gemini AI for morphological breakdown"
+      ],
+      "url": "https://etymon.rumiallbert.com/",
+      "github": ""
+    },
+    {
       "name": "Memento Vitae",
       "isActive": true,
       "description": "⏳ Life visualization tool that maps your remaining weeks, time allocation, and mortality-aware insights.",
@@ -610,18 +622,6 @@
         "Agentic LangChain workflows for comprehensive style guidance"
       ],
       "url": "https://color-lab-ai.vercel.app/",
-      "github": ""
-    },
-    {
-      "name": "Etymon.ai",
-      "isActive": true,
-      "description": "🔍 Interactive etymology engine that deconstructs words into their morphological roots.",
-      "highlights": [
-        "Analysis algorithms optimized for Classical languages and semantic evolution",
-        "React Flow visualizations mapping linguistic relationships",
-        "Fine-tuned Gemini AI for morphological breakdown"
-      ],
-      "url": "https://etymon.rumiallbert.com/",
       "github": ""
     },
     {
