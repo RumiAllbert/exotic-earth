@@ -26,9 +26,7 @@ type WorkItem = {
 
 function getIconName(keyword: string) {
 	const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-	console.log(`Lowercase Keyword: ${lowercaseKeyword}`); // Debugging
 	const iconName = (iconMap as IconMap)[lowercaseKeyword];
-	console.log(`Icon Name: ${iconName}`); // Debugging
 	return iconName || null;
 }
 ---
