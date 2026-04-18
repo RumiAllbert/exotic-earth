@@ -1,64 +1,136 @@
 ---
 import { publications } from "@cv";
+import { Icon } from "astro-icon/components";
 import Section from "../Section.astro";
+
+const VENUES: Record<string, { icon: string; color: string }> = {
+  arXiv: { icon: "simple-icons:arxiv", color: "#B31B1B" },
+  ResearchGate: { icon: "simple-icons:researchgate", color: "#00CCBB" },
+};
+
+const GROUPS: Array<{ name: string; color: string; titles: string[] }> = [
+  {
+    name: "AI Systems & Evaluation",
+    color: "#6366f1",
+    titles: [
+      "Uncovering Candidate Potential with Multi-Modal AI Assessments",
+      "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems",
+    ],
+  },
+  {
+    name: "Philosophy of AI",
+    color: "#d97706",
+    titles: [
+      "From Plato to Pixels: Imagination, AI, and the Whole",
+      "PhiloBERTA: A Transformer-Based Cross-Lingual Analysis of Greek and Latin Lexicons",
+    ],
+  },
+  {
+    name: "Interpretability",
+    color: "#059669",
+    titles: [
+      "Identifying and Manipulating Personality Traits in LLMs Through Activation Engineering",
+    ],
+  },
+];
+
+const groupedPubs = GROUPS.map((g) => ({
+  ...g,
+  items: g.titles
+    .map((t) => publications.find((p) => p.title === t))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p)),
+}));
+
+function authorLine(authors: string[]): string {
+  const first = authors[0] ?? "";
+  const isRumiFirst = /^Rumi/.test(first);
+  if (!isRumiFirst) return authors.join(", ");
+  const coAuthors = authors
+    .slice(1)
+    .filter((a) => !/et al\.?/i.test(a) && !/^Rumi/.test(a));
+  return coAuthors.length
+    ? `Lead author · with ${coAuthors.join(", ")}`
+    : "Lead author";
+}
 ---
 
 <Section title="Publications">
-  <ul class="flex flex-col gap-6">
+  <div class="flex flex-col gap-7">
     {
-      publications.map(
-        ({ title, authors, date, url, abstract, publisher, type }) => {
-          const year = new Date(date).getFullYear();
-
-          return (
-            <li class="group">
-              <article class="flex flex-col gap-2 border-l-2 border-skin-muted pl-4 transition-all duration-300 hover:border-skin-hue">
-                <header class="flex items-center justify-between gap-4">
-                  <time datetime={date} class="text-sm text-skin-muted">
-                    {year}
-                  </time>
-                  <span class={`text-xs px-2 py-0.5 rounded-full ${type === 'research paper' ? 'bg-skin-hue/10 text-skin-hue' : 'bg-skin-muted/10 text-skin-muted'}`}>
-                    {type}
-                  </span>
-                </header>
-
-                <h3 class="text-lg font-medium">
+      groupedPubs.map((group) => (
+        <div class="flex flex-col gap-3">
+          <h3 class="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-skin-muted">
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full"
+              style={`background-color: ${group.color}`}
+              aria-hidden="true"
+            />
+            {group.name}
+          </h3>
+          <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">
+            {group.items.map(({ title, authors, date, url, highlight, publisher }) => {
+              const year = new Date(date).getFullYear();
+              const venue = VENUES[publisher];
+              return (
+                <li>
                   <a
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="group/link inline-flex items-center text-skin-base hover:text-skin-hue"
+                    class="group relative flex h-full flex-col gap-2 rounded-lg bg-skin-fill p-4 ring-1 ring-skin-muted/20 transition-shadow duration-200 hover:ring-2 hover:ring-skin-hue/15"
                   >
-                    {title}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class="ml-1 h-4 w-4 opacity-0 transition-all group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-hover/link:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
+                    <div class="flex items-center gap-2 text-xs">
+                      <time datetime={date} class="tabular-nums text-skin-muted">
+                        {year}
+                      </time>
+                      <span class="text-skin-muted/40">·</span>
+                      <span class="inline-flex items-center gap-1 font-medium">
+                        {venue && (
+                          <Icon
+                            name={venue.icon}
+                            class="h-3 w-3"
+                            style={`color: ${venue.color}`}
+                          />
+                        )}
+                        <span style={venue ? `color: ${venue.color}` : undefined}>
+                          {publisher}
+                        </span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          class="h-3 w-3 text-skin-muted/60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+
+                    <h4 class="text-[0.95rem] font-medium leading-snug text-skin-base transition-colors group-hover:text-skin-hue">
+                      {title}
+                    </h4>
+
+                    {highlight && (
+                      <p class="text-sm leading-relaxed text-skin-muted">
+                        {highlight}
+                      </p>
+                    )}
+
+                    <p class="mt-auto pt-1 text-xs text-skin-muted/70">
+                      {authorLine(authors)}
+                    </p>
                   </a>
-                </h3>
-
-                <div class="flex flex-wrap items-center gap-2 text-sm text-skin-muted">
-                  <span>{authors.join(", ")}</span>
-                  <span>&middot;</span>
-                  <span>{publisher}</span>
-                </div>
-
-                <p class="text-sm text-skin-muted">{abstract}</p>
-              </article>
-            </li>
-          );
-        }
-      )
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))
     }
-  </ul>
+  </div>
 </Section>
 
-<style>

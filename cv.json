@@ -406,68 +406,59 @@
     {
       "name": "Core Competencies",
       "keywords": [
-        "Data Science",
-        "Artificial Intelligence",
+        "AI Research",
         "Machine Learning",
-        "Statistical Analysis",
-        "Software Engineering",
-        "Research & Development",
-        "Project Management"
+        "NLP & LLMs",
+        "Data Science",
+        "Technical Leadership"
       ]
     },
     {
-      "name": "Programming & Scripting Languages",
-      "keywords": ["Python", "R", "JavaScript", "Go", "Mathematica"]
-    },
-    {
-      "name": "Machine Learning & AI",
+      "name": "AI & ML",
       "keywords": [
-        "TensorFlow",
         "PyTorch",
-        "Hugging Face",
-        "wandb",
-        "Scikit-learn",
+        "Transformers",
+        "LangGraph",
+        "MCP",
+        "OpenEnv",
+        "vLLM",
+        "LiteLLM",
         "TransformerLens",
-        "NLTK",
-        "SpaCy",
-        "Gensim",
-        "PyCaret"
+        "Verifiers",
+        "Unsloth",
+        "wandb"
       ]
     },
     {
-      "name": "Data Science & Analytics",
+      "name": "Languages & Data",
       "keywords": [
+        "Python",
+        "TypeScript",
+        "Go",
+        "R",
+        "Mathematica",
         "Pandas",
         "Polars",
         "NumPy",
         "Plotly",
-        "Streamlit",
-        "Matplotlib",
-        "Seaborn",
-        "Tableau",
-        "Power BI",
-        "Mathematica"
+        "Streamlit"
       ]
     },
     {
-      "name": "Big Data & Cloud Technologies",
-      "keywords": ["Hadoop", "Spark", "Hive", "AWS", "Azure", "Google Cloud"]
-    },
-    {
-      "name": "Software Development & DevOps",
+      "name": "Infrastructure & Tooling",
       "keywords": [
-        "Git",
-        "GitHub",
-        "GitLab",
         "Docker",
         "Kubernetes",
-        "CI/CD",
-        "Agile Methodologies"
+        "FastAPI",
+        "Ollama",
+        "Git",
+        "GitHub",
+        "AWS",
+        "Google Cloud",
+        "Spark",
+        "PostgreSQL",
+        "Redis"
       ]
-    },
-    {
-      "name": "Databases & Data Storage",
-      "keywords": ["MySQL", "MongoDB", "PostgreSQL", "SQLite", "Redis"]
     }
   ],
   "languages": [
@@ -497,6 +488,7 @@
       "authors": ["Rumi Allbert et al."],
       "date": "2025-09-01",
       "url": "https://www.researchgate.net/publication/395809850_Uncovering_Candidate_Potential_with_Multi-Modal_AI_Assessments",
+      "highlight": "An AI Match Score that outperforms résumé screening by 16% AUC and surfaces 2× more qualified candidates.",
       "abstract": "Our AI Match Score combines resume analysis, structured interviews, and role-specific evaluations to outperform traditional screening by 16% (AUC: 0.742 vs. 0.641). It surfaces nearly twice as many qualified candidates, capturing unique potential signals beyond what resumes reveal.",
       "publisher": "ResearchGate",
       "type": "research paper"
@@ -506,6 +498,7 @@
       "authors": ["Rumi Allbert et al."],
       "date": "2025-08-01",
       "url": "https://www.researchgate.net/publication/395101656_From_Plato_to_Pixels_Imagination_AI_and_the_Whole",
+      "highlight": "Tracing imagination from Plato's Forms to generative AI — and asking what machines still cannot make.",
       "abstract": "This philosophical exploration traces imagination's evolution from Plato's Forms through medieval theology to modern fragmentation, examining whether AI can truly simulate human creativity. It argues that imagination remains humanity's essential faculty for synthesizing meaning from chaos, even as machines attempt to replicate creation.",
       "publisher": "ResearchGate",
       "type": "research paper"
@@ -515,6 +508,7 @@
       "authors": ["Rumi Allbert et al."],
       "date": "2025-08-21",
       "url": "https://arxiv.org/abs/2507.16835",
+      "highlight": "Benchmarking voice-stack combinations across 300k+ real AI-conducted interviews.",
       "abstract": "We present a large-scale empirical comparison of speech-to-text, LLM, and text-to-speech combinations using data from over 300,000 AI-conducted job interviews. Our analysis reveals that Google's STT with GPT-4.1 and Cartesia's TTS outperforms alternatives in both objective quality metrics and user satisfaction scores.",
       "publisher": "arXiv",
       "type": "preprint"
@@ -524,6 +518,7 @@
       "authors": ["Rumi A. Allbert", "Makai L. Allbert"],
       "date": "2025-03-01",
       "url": "https://arxiv.org/abs/2503.05265",
+      "highlight": "A cross-lingual transformer revealing conceptual alignments between ancient Greek and Latin.",
       "abstract": "A cross-lingual transformer model measuring semantic relationships between ancient Greek and Latin lexicons, revealing significant alignments in philosophical concepts.",
       "publisher": "arXiv",
       "type": "preprint"
@@ -533,6 +528,7 @@
       "authors": ["Rumi A. Allbert", "et al."],
       "date": "2024-12-10",
       "url": "https://arxiv.org/abs/2412.10427",
+      "highlight": "Abliterator — studying and steering LLM personality through direct activation engineering.",
       "abstract": "We introduce Abliterator, a framework for studying and manipulating personality traits in large language models (LLMs) through activation engineering.",
       "publisher": "arXiv",
       "type": "preprint"

@@ -7,16 +7,6 @@ type IconMap = {
   [key: string]: string;
 };
 
-const skillCategories = [
-  "Core Competencies",
-  "Programming & Scripting Languages",
-  "Machine Learning & AI",
-  "Data Science & Analytics",
-  "Big Data & Cloud Technologies",
-  "Software Development & DevOps",
-  "Databases & Data Storage",
-];
-
 export const iconMap = {
   javascript: "simple-icons:javascript",
   php: "simple-icons:php",
@@ -83,6 +73,17 @@ export const iconMap = {
   mathematica: "simple-icons:wolframmathematica",
   go: "simple-icons:go",
   huggingface: "simple-icons:huggingface",
+  transformers: "simple-icons:huggingface",
+  langgraph: "simple-icons:langgraph",
+  langchain: "simple-icons:langchain",
+  mcp: "simple-icons:modelcontextprotocol",
+  anthropic: "simple-icons:anthropic",
+  openenv: "/skill-logos/openenv.png",
+  vllm: "/skill-logos/vllm.png",
+  litellm: "/skill-logos/litellm.svg",
+  transformerlens: "/skill-logos/transformerlens.svg",
+  verifiers: "/skill-logos/verifiers.png",
+  unsloth: "/skill-logos/unsloth.png",
   openai: "simple-icons:openai",
   pytorch: "simple-icons:pytorch",
   pandas: "simple-icons:pandas",
@@ -103,123 +104,74 @@ export const iconMap = {
   kibana: "simple-icons:kibana",
   polars: "simple-icons:polars",
   logstash: "simple-icons:logstash",
-  jira: "simple-icons:jira",
-  confluence: "simple-icons:confluence",
-  trello: "simple-icons:trello",
-  slack: "simple-icons:slack",
-  figma: "simple-icons:figma",
-  adobexd: "simple-icons:adobexd",
-  sketch: "simple-icons:sketch",
-  photoshop: "simple-icons:adobephotoshop",
-  meta: "simple-icons:meta",
-  coursera: "simple-icons:coursera",
-  udacity: "simple-icons:udacity",
-  datacamp: "simple-icons:datacamp",
-  edx: "simple-icons:edx",
-  linkedin: "simple-icons:linkedin",
-  google: "simple-icons:google",
-  microsoft: "simple-icons:microsoft",
-  ibm: "simple-icons:ibm",
-  illustrator: "simple-icons:adobeillustrator",
 };
 
 function getIconName(keyword: string) {
   const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, "");
   return (iconMap as IconMap)[lowercaseKeyword] || null;
 }
+
+const coreCompetencies =
+  skills.find((s) => s.name === "Core Competencies")?.keywords ?? [];
+const secondaryGroups = skills.filter((s) => s.name !== "Core Competencies");
+
+const GROUP_COLORS: Record<string, string> = {
+  "AI & ML": "#6366f1",
+  "Languages & Data": "#d97706",
+  "Infrastructure & Tooling": "#059669",
+};
 ---
 
 <Section className={Astro.props.className} title="Skills">
-  {
-    skillCategories.map((category) => (
-      <div class="mb-4">
-        <h3 class="mb-2 text-lg font-semibold">{category}</h3>
-        <ul class="inline-flex flex-wrap gap-2">
-          {skills
-            .filter((skill) => skill.name === category)
-            .flatMap(({ keywords }) => keywords)
-            .map((keyword) => {
-              const iconName = getIconName(keyword);
-              return (
-                <li
-                  class={`skill-item flex items-center gap-1 rounded px-2 py-1 text-sm ${
-                    category === "Core Competencies"
-                      ? "core-competency bg-blue-200 text-base text-blue-800"
-                      : "bg-skin-button-accent/20 text-skin-base dark:text-white"
-                  }`}
-                >
-                  {iconName && (
-                    <Icon
-                      name={iconName}
-                      class={`h-4 w-4 ${category === "Core Competencies" ? "h-5 w-5" : ""}`}
-                    />
-                  )}
-                  {keyword}
-                </li>
-              );
-            })}
+  <div class="flex flex-col gap-6">
+    {
+      coreCompetencies.length > 0 && (
+        <ul class="flex flex-wrap gap-x-2 gap-y-2">
+          {coreCompetencies.map((keyword) => (
+            <li class="rounded-md bg-skin-hue/[0.06] px-3.5 py-2 text-sm font-medium tracking-wide text-skin-base ring-1 ring-skin-hue/25">
+              {keyword}
+            </li>
+          ))}
         </ul>
-      </div>
-    ))
-  }
+      )
+    }
+
+    <div class="flex flex-col gap-4">
+      {
+        secondaryGroups.map((group) => (
+          <div class="flex flex-col gap-2">
+            <h3 class="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-skin-muted">
+              <span
+                class="inline-block h-1.5 w-1.5 rounded-full"
+                style={`background-color: ${GROUP_COLORS[group.name] ?? "var(--muted)"}`}
+                aria-hidden="true"
+              />
+              {group.name}
+            </h3>
+            <ul class="flex flex-wrap gap-1.5">
+              {group.keywords.map((keyword) => {
+                const iconName = getIconName(keyword);
+                const isImageAsset = iconName?.startsWith("/");
+                return (
+                  <li class="flex items-center gap-1.5 rounded bg-skin-button-accent/10 px-2 py-1 text-sm text-skin-base ring-1 ring-skin-muted/10 transition-shadow duration-200 hover:ring-skin-hue/20 dark:text-white">
+                    {iconName && !isImageAsset && (
+                      <Icon name={iconName} class="h-3.5 w-3.5" />
+                    )}
+                    {iconName && isImageAsset && (
+                      <span
+                        class="h-3.5 w-3.5 bg-current"
+                        style={`-webkit-mask: url(${iconName}) center / contain no-repeat; mask: url(${iconName}) center / contain no-repeat;`}
+                        aria-hidden="true"
+                      />
+                    )}
+                    {keyword}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </Section>
-
-<style>
-  .skill-item {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-item::before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #6366f1, #3b82f6);
-    z-index: -1;
-    filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .skill-item:hover {
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-  }
-
-  .skill-item:hover::before {
-    opacity: 0.7;
-    background-position: var(--x, 0) var(--y, 0);
-    transition: background-position 0.3s ease;
-  }
-
-  @keyframes glowing {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 100% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-</style>
-
-<script>
-  document.querySelectorAll(".skill-item").forEach((item) => {
-    item.addEventListener("mousemove", ((e: MouseEvent) => {
-      const rect = item.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      (item as HTMLElement).style.setProperty("--x", `${x}px`);
-      (item as HTMLElement).style.setProperty("--y", `${y}px`);
-    }) as EventListener);
-  });
-</script>
