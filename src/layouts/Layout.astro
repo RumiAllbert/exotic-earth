@@ -609,11 +609,41 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
         }
       }
 
+      const LOADER_STORAGE_KEY = "loaderShownAt";
+      const LOADER_INTERVAL_MS = 6 * 60 * 60 * 1000;
+
+      function shouldShowLoader() {
+        try {
+          const last = localStorage.getItem(LOADER_STORAGE_KEY);
+          if (!last) return true;
+          const lastTime = parseInt(last, 10);
+          if (Number.isNaN(lastTime)) return true;
+          return Date.now() - lastTime >= LOADER_INTERVAL_MS;
+        } catch {
+          return true;
+        }
+      }
+
+      function skipLoader() {
+        const loader = document.getElementById("loader");
+        const mainContent = document.getElementById("main-content");
+        if (loader) loader.style.display = "none";
+        if (mainContent) mainContent.style.opacity = "1";
+        enableScroll();
+      }
+
       window.addEventListener("load", () => {
-        initializeLoader();
-        const { nodes, edges } = createGeometricPattern();
-        animateGeometricPattern(nodes, edges);
-        animateLoader(nodes, edges);
+        if (shouldShowLoader()) {
+          try {
+            localStorage.setItem(LOADER_STORAGE_KEY, Date.now().toString());
+          } catch {}
+          initializeLoader();
+          const { nodes, edges } = createGeometricPattern();
+          animateGeometricPattern(nodes, edges);
+          animateLoader(nodes, edges);
+        } else {
+          skipLoader();
+        }
 
         // Section scroll reveal
         const revealElements = document.querySelectorAll('.scroll-reveal');
