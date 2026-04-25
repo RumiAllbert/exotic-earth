@@ -348,10 +348,28 @@
   ],
   "certificates": [
     {
+      "name": "Ethics of Artificial Intelligence",
+      "issuer": "Politecnico di Milano",
+      "date": "2026-04-25",
+      "url": "https://coursera.org/verify/SMV1XTV0SVY2"
+    },
+    {
+      "name": "Philosophy of Science",
+      "issuer": "University of Pennsylvania",
+      "date": "2026-04-25",
+      "url": "https://coursera.org/verify/AQB4G8SBRTHH"
+    },
+    {
       "name": "Applied AI Product Management",
       "issuer": "IBM",
       "date": "2025-12-01",
       "url": "https://www.coursera.org/account/accomplishments/verify/TYMTG4UVK74F"
+    },
+    {
+      "name": "Deep Learning",
+      "issuer": "Lightning AI",
+      "date": "2025-07-01",
+      "url": "https://lightning.ai/pages/courses/deep-learning-fundamentals/"
     },
     {
       "name": "CrewAI Multi-Agent Systems",
@@ -366,7 +384,7 @@
       "url": "https://drive.google.com/file/d/101sdCr7GDEJjMbXFldtCcDEJFQbwOij0/view?usp=sharing"
     },
     {
-      "name": "AI Agents Fundamentals",
+      "name": "AI Agents",
       "date": "2025-03-01",
       "issuer": "Hugging Face",
       "url": "https://huggingface.co/certificates/raaec"
@@ -384,22 +402,34 @@
       "url": "https://www.coursera.org/account/accomplishments/certificate/RWUE8B3LQSGW"
     },
     {
-      "name": "Advanced Google Analytics",
-      "date": "2022-03-01",
-      "issuer": "Google",
-      "url": "https://drive.google.com/file/d/1gJDZfGi-duZ60ftwtgUc_j5PzbmtyzSU/view?usp=sharing"
-    },
-    {
       "name": "Version Control",
       "date": "2022-09-01",
       "issuer": "Meta",
       "url": "https://www.coursera.org/account/accomplishments/verify/9QAWBQ3VVB2T"
     },
     {
+      "name": "Advanced Google Analytics",
+      "date": "2022-03-01",
+      "issuer": "Google",
+      "url": "https://drive.google.com/file/d/1gJDZfGi-duZ60ftwtgUc_j5PzbmtyzSU/view?usp=sharing"
+    },
+    {
+      "name": "Credit Risk Modeling in R",
+      "date": "2020-08-01",
+      "issuer": "DataCamp",
+      "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/8c7a8e5d82134d1b12bb475879bd0bf206454a9e"
+    },
+    {
       "name": "R for Finance",
       "date": "2020-07-01",
       "issuer": "DataCamp",
       "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/5e5e092c02b95553ac1363517c0a1ef892a2070b"
+    },
+    {
+      "name": "Human Rights Defense",
+      "date": "2019-05-01",
+      "issuer": "Amnesty International",
+      "url": "https://www.amnesty.org/"
     }
   ],
   "skills": [

@@ -245,18 +245,36 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
       /* Section scroll reveal animations */
       .scroll-reveal {
         opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        filter: blur(8px);
+        transform: translate3d(0, 18px, 0) scale(0.985);
+        transition:
+          opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, filter, transform;
       }
       .scroll-reveal.visible {
         opacity: 1;
-        transform: translateY(0);
+        filter: blur(0);
+        transform: translate3d(0, 0, 0) scale(1);
+        will-change: auto;
       }
+
       @media print {
         .scroll-reveal {
           opacity: 1 !important;
+          filter: none !important;
           transform: none !important;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .scroll-reveal {
+          opacity: 1 !important;
+          filter: none !important;
+          transform: none !important;
+          transition: none !important;
+          will-change: auto !important;
         }
       }
 
