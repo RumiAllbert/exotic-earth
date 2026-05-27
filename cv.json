@@ -514,6 +514,16 @@
   ],
   "publications": [
     {
+      "title": "De Suspensione: Inflection, Composition, and the Long Drift Outward",
+      "authors": ["Rumi Allbert"],
+      "date": "2026-05-01",
+      "url": "https://www.researchgate.net/publication/405343127_De_Suspensione_Inflection_Composition_and_the_Long_Drift_Outward",
+      "highlight": "Naming suspensio — the inner act of holding thought while form catches up — and tracing how Latin inflection, digital memory, and generative AI each thin it.",
+      "abstract": "Three historical migrations — the Latin-to-Romance simplification, the digital externalization of memory, and the offloading of sentence production to generative AI — converge on a single mental practice: suspensio, the inner act of composition once trained by the Trivium and by case-marking grammars that obliged the speaker to track relation internally. Drawing on classical-language impact studies, Romance morphosyntactic typology, neuro- and psycholinguistic work on grammar and thought, and recent empirical work on cognitive offloading and large language models, the paper rejects the strong Whorfian thesis that simplification produced cultural shallowness, defending instead the narrower claim that form, content, and production now migrate outward together — and that compositional practice can thin under AI assistance.",
+      "publisher": "ResearchGate",
+      "type": "research paper"
+    },
+    {
       "title": "Uncovering Candidate Potential with Multi-Modal AI Assessments",
       "authors": ["Rumi Allbert et al."],
       "date": "2025-09-01",
@@ -578,6 +588,18 @@
   ],
 
   "projects": [
+    {
+      "name": "Vertor",
+      "isActive": true,
+      "description": "🪶 Collaborative translation workspace for literary translators — compose, translate, and refine across multiple AI models.",
+      "highlights": [
+        "Sentence-by-sentence streaming across Gemini, Claude, and GPT with paragraph-aware structure preservation",
+        "Word-level refinement panel offering literal, natural, and lyrical alternative renderings on click",
+        "Minimal compose-translate-refine workflow built on Next.js 16"
+      ],
+      "url": "https://vertor.vercel.app/",
+      "github": "https://github.com/RumiAllbert/vertor"
+    },
     {
       "name": "Etymon.ai",
       "isActive": true,
