@@ -110,8 +110,8 @@ function getIconName(keyword: string) {
 }
 
 const coreCompetencies =
-  skills.find((s) => s.name === "Core Competencies")?.keywords ?? [];
-const secondaryGroups = skills.filter((s) => s.name !== "Core Competencies");
+  skills.find((s) => s.name === "Focus")?.keywords ?? [];
+const secondaryGroups = skills.filter((s) => s.name !== "Focus");
 
 const GROUP_COLORS: Record<string, string> = {
   "AI & ML": "#6366f1",

@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Rumi Allbert",
-    "label": "AI Researcher & Engineer",
+    "label": "Director of Research Engineering",
     "email": "rumiallbert@gmail.com",
     "phone": "+1 (973) 936-4084",
     "image": "/me_avatar.jpg",
     "url": "https://rumiallbert.com",
-    "summary": "Experienced AI Engineer and Data Scientist with a strong background in machine learning, natural language processing, and data analytics. My interdisciplinary interests extend to classics, philosophy, and music.",
+    "summary": "I lead research engineering for human-evaluation AI systems, and write at the intersection of machine intelligence, classical languages, and philosophy of mind.",
     "theme": "default",
     "location": {
       "address": "",
@@ -37,9 +37,11 @@
       "url": "https://www.micro1.ai/",
       "startDate": "2025-07-01",
       "endDate": null,
-      "summary": "The AI platform for human intelligence.",
+      "summary": "Lead research engineering for RL environments and post-training.",
       "highlights": [
-        "Conducting and leading AI initiatives for human intelligence platform"
+        "Design and ship RL environments for post-training — task specs, reward signals, and evaluation loops used in production training",
+        "Own post-training pipelines: data curation, preference/reward modeling, and iterative policy improvement",
+        "Set research roadmap and engineering standards for environment quality, training stability, and model evaluation"
       ],
       "responsibilities": [],
       "skills": []
@@ -52,11 +54,11 @@
       "url": "https://aeterna-institute.org/",
       "startDate": "2025-08-01",
       "endDate": null,
-      "summary": "A classical liberal arts institute dedicated to preserving the intellectual traditions of antiquity through the Trivium, Quadrivium, and Socratic method.",
+      "summary": "Classical liberal arts institute centered on the Trivium, Quadrivium, and Socratic method.",
       "highlights": [
-        "Founded an institute reviving the Seven Liberal Arts — Grammar, Logic, Rhetoric, Arithmetic, Geometry, Music, and Astronomy",
-        "Designed a classical curriculum rooted in the Socratic dialectic and the pursuit of Eudaimonia",
-        "Building a scholarly community of fellows committed to the preservation and transmission of Western intellectual heritage"
+        "Founded the institute and its curriculum around the Seven Liberal Arts",
+        "Designed coursework grounded in dialectic and primary texts",
+        "Building a small community of fellows for sustained study"
       ],
       "responsibilities": [],
       "skills": []
@@ -69,17 +71,13 @@
       "url": "https://wolframinstitute.org/",
       "startDate": "2024-06-11",
       "endDate": null,
-      "summary": "Researching Minds, Machines & Intelligence, focusing on Deep Learning/Artificial Intelligence Conceptual Spaces, AI Philosophy, and Consciousness Science.",
+      "summary": "Research on minds, machines, and intelligence — conceptual spaces, AI philosophy, and consciousness.",
       "highlights": [
-        "Exploring ethical, moral, and societal implications of AI development",
-        "Investigating machine ethics, AI bias, and explainability of AI decisions",
-        "Contributing to the development of ethical frameworks for responsible AI creation and deployment"
+        "Work on machine ethics, bias, and explainability in learning systems",
+        "Published Abliterator: activation engineering for personality traits in LLMs",
+        "Computational experiments in Mathematica and Python"
       ],
-      "responsibilities": [
-        "Conducting interdisciplinary research on AI philosophy and consciousness science",
-        "Collaborating with fellow researchers on projects related to machine intelligence and cognitive functions",
-        "Utilizing Mathematica and various machine learning and AI libraries for advanced computational analysis"
-      ],
+      "responsibilities": [],
       "skills": [
         "Mathematica",
         "Python",
@@ -93,16 +91,16 @@
       "position": "AI Engineer",
       "location_type": "On site",
       "location": "New York, NY",
-      "url": "/",
+      "url": "",
       "startDate": "2024-05-01",
       "endDate": "2025-07-01",
-      "summary": "Architecting and implementing cutting-edge Large Language Models and AI systems.",
+      "summary": "Built and shipped LLM systems for production NLU and recommendation evaluation.",
       "highlights": [
-        "Architected and implemented cutting-edge Large Language Models, resulting in a 40% improvement in natural language understanding across multiple domains",
-        "Pioneered an AI recommendation evaluation platform, leveraging advanced ML techniques to boost recommendation accuracy by 30%"
+        "Designed and deployed LLM pipelines that improved NLU quality ~40% across domains",
+        "Built an evaluation platform for recommendation models; accuracy up ~30%"
       ],
       "responsibilities": [
-        "Coordinating, implementing, and deploying various AI models to production"
+        "Owned model implementation through production deployment"
       ],
       "skills": [
         "Python",
@@ -123,14 +121,13 @@
       "url": "https://feitian.edu/",
       "startDate": "2025-01-14",
       "endDate": null,
-      "summary": "Teaching foundational ethics and philosophy in computer & data science, with a focus on AI governance and emerging technology challenges.",
+      "summary": "Ethics and philosophy for computer and data science — AI governance and emerging tech.",
       "highlights": [
-        "Teach foundational ethics and philosophy in computer science, focusing on AI governance, privacy rights, and emerging tech challenges",
-        "Design curriculum bridging theoretical frameworks with real-world case studies in data ethics and responsible innovation"
+        "Teach ethics and philosophy of computing, with emphasis on AI governance and privacy",
+        "Curriculum pairs primary frameworks with case studies in data ethics"
       ],
       "responsibilities": [
-        "Develop and deliver comprehensive course materials on tech ethics and AI governance",
-        "Mentor students in understanding ethical implications of emerging technologies"
+        "Course design and instruction in tech ethics and AI governance"
       ],
       "skills": [
         "Ethics in AI",
@@ -147,17 +144,16 @@
       "url": "https://www.theepochtimes.com/",
       "startDate": "2022-01-01",
       "endDate": "2024-02-29",
-      "summary": "Spearheaded data science initiatives, focusing on predictive modeling, data pipeline engineering, and NLP implementations.",
+      "summary": "Predictive modeling, data pipelines, and NLP for a large digital publisher.",
       "highlights": [
-        "Developed predictive models using advanced statistical techniques, resulting in a 20% reduction in subscriber churn",
-        "Engineered scalable data pipelines using Python and Hive, increasing operational efficiency by 25% and enhancing data integrity",
-        "Implemented state-of-the-art NLP models, including BERT and custom clustering algorithms, to extract actionable insights from unstructured data",
-        "Designed and deployed an automated reporting system, providing real-time analytics to C-level executives and informing strategic decisions"
+        "Churn models that cut subscriber attrition ~20%",
+        "Python/Hive pipelines that improved ops throughput ~25%",
+        "BERT and clustering pipelines over unstructured content",
+        "Automated reporting for executive decision cycles"
       ],
       "responsibilities": [
-        "Led end-to-end data science projects from conception to deployment",
-        "Collaborated with cross-functional teams to integrate data-driven solutions into business processes",
-        "Presented findings and recommendations to stakeholders, translating complex analyses into actionable insights"
+        "Owned projects from problem framing through deployment",
+        "Worked with product and editorial teams on measurement and modeling"
       ],
       "skills": [
         "Python",
@@ -175,17 +171,15 @@
       "url": "https://studentsforfg.org/",
       "startDate": "2019-10-01",
       "endDate": null,
-      "summary": "Leading technical initiatives and strategic planning for an international non-profit organization.",
+      "summary": "Technical leadership for an international non-profit.",
       "highlights": [
-        "Led development and maintenance of multilingual websites, ensuring optimal performance and user experience",
-        "Managed server infrastructure, prioritizing system reliability and efficiency",
-        "Organized and hosted international conferences, enhancing network and outreach",
-        "Engaged in advocacy at the International Religious Freedom Summit, supported by diverse media and community collaborations"
+        "Multilingual web presence and server operations",
+        "International conferences and logistics",
+        "Advocacy at the International Religious Freedom Summit"
       ],
       "responsibilities": [
-        "Overseeing all technical aspects of the organization's digital presence",
-        "Collaborating with international teams to implement strategic initiatives",
-        "Representing the organization at high-level conferences and summits"
+        "Technical direction for digital infrastructure",
+        "Coordination with international teams"
       ],
       "skills": [
         "WordPress",
@@ -200,12 +194,12 @@
       "position": "Data Analytics Research Assistant",
       "location_type": "Remote",
       "location": "Delaware",
-      "url": "/",
+      "url": "",
       "startDate": "2021-12-01",
       "endDate": "2022-12-01",
-      "summary": "Conducted complex statistical analyses using Python, uncovering key insights that shaped the direction of multiple research projects.",
+      "summary": "Statistical analysis in Python for social neuroscience experiments.",
       "highlights": [
-        "Developed and optimized a suite of Python scripts for PsychoPy, accelerating the data analysis pipeline by 30% and eliminating processing bottlenecks"
+        "PsychoPy analysis tooling that shortened the lab's data pipeline ~30%"
       ],
       "skills": ["Python", "PsychoPy", "Statistics", "Research"]
     },
@@ -217,10 +211,10 @@
       "location": "Middletown, NY",
       "startDate": "2021-05-01",
       "endDate": "2021-11-01",
-      "summary": "Developed data-driven reports for the VP & CEO, highlighting key findings from extensive data mining efforts.",
+      "summary": "Data mining and reporting for executive leadership.",
       "highlights": [
-        "Engineered high-performance data mining scripts, achieving a 200% improvement in processing efficiency and a 50% reduction in execution time",
-        "Implemented distributed computing solutions for big data algorithms, enabling real-time analysis of 5+ company data streams"
+        "Mining scripts that cut processing time roughly in half",
+        "Distributed analysis across multiple company data streams"
       ],
       "skills": ["Go", "Python", "MongoDB", "PHP", "Data Mining"]
     },
@@ -232,9 +226,9 @@
       "url": "https://www.nasa.gov/",
       "startDate": "2019-08-01",
       "endDate": "2020-06-01",
-      "summary": "Applied advanced data science techniques to real-world projects, including time series forecasting and geospatial analysis.",
+      "summary": "Time series and geospatial analysis on applied data projects.",
       "highlights": [
-        "Created user-friendly data visualizations and accessible USGS geospatial maps under the mentorship of NASA, the United Nations, USGS, and other organizations"
+        "USGS geospatial maps and visualizations under NASA / UN / USGS mentorship"
       ],
       "skills": [
         "QGIS",
@@ -251,22 +245,14 @@
       "url": "",
       "startDate": "2020-01-01",
       "endDate": "2020-06-01",
-      "summary": "Architected and implemented a responsive web platform, driving a 20% increase in user engagement and online visibility.",
-      "highlights": ["Completed several client projects successfully"],
+      "summary": "Web platform and client work for a contemporary gallery.",
+      "highlights": [
+        "Shipped the gallery's responsive web platform and client sites"
+      ],
       "skills": ["JavaScript", "React", "Node.js"]
     }
   ],
-  "volunteer": [
-    {
-      "organization": "Local Coding Club",
-      "position": "Volunteer",
-      "url": "https://codingclub.com/",
-      "startDate": "2021-01-01",
-      "endDate": "2022-01-01",
-      "summary": "Helped organize coding workshops and mentored new members.",
-      "highlights": ["Awarded 'Volunteer of the Month'"]
-    }
-  ],
+  "volunteer": [],
   "education": [
     {
       "institution": "Ralston College",
@@ -317,9 +303,8 @@
       "endDate": "2024-",
       "studyType": "Certificate",
       "highlights": [
-        "Conducted research and experiments in Artificial Intelligence & Large Language Models",
-        "Collaborated with peers on cutting-edge AI projects",
-        "Gained hands-on experience with Wolfram Language for AI applications"
+        "Research projects in AI and large language models",
+        "Wolfram Language for computational experiments"
       ]
     },
     {
@@ -330,7 +315,7 @@
       "startDate": "2023-",
       "endDate": "2023-",
       "courses": [],
-      "highlights": ["Recipient of the prestigious Huayu Scholarship"]
+      "highlights": ["Huayu Scholarship recipient"]
     },
     {
       "institution": "Center for Hellenic Studies, Harvard University",
@@ -341,8 +326,8 @@
       "endDate": "2023-10-31",
       "location": "Návplion, Peloponnese, Greece",
       "highlights": [
-        "Full-time Greek Language Residency",
-        "Collaborated with international scholars in Hellenic studies"
+        "Full-time Greek language residency",
+        "Seminar work with visiting Hellenists"
       ]
     }
   ],
@@ -434,13 +419,13 @@
   ],
   "skills": [
     {
-      "name": "Core Competencies",
+      "name": "Focus",
       "keywords": [
         "AI Research",
         "Machine Learning",
         "NLP & LLMs",
         "Data Science",
-        "Technical Leadership"
+        "Research Engineering"
       ]
     },
     {
@@ -493,23 +478,22 @@
   ],
   "languages": [
     {
-      "language": "🇺🇸 English"
+      "language": "English"
     },
     {
-      "language": "🇲🇽 Spanish"
+      "language": "Spanish"
     },
     {
-      "language": "🇹🇼 Chinese"
+      "language": "Chinese"
     },
     {
-      "language": "🇮🇹 Italian"
+      "language": "Italian"
     },
     {
-      "language": "📜 Latin"
+      "language": "Latin"
     },
-
     {
-      "language": "🏛️ Ancient Greek"
+      "language": "Ancient Greek"
     }
   ],
   "publications": [
@@ -580,22 +564,17 @@
       "keywords": ["AI", "Blockchain"]
     }
   ],
-  "references": [
-    {
-      "name": "Jane Smith",
-      "reference": "Reference…"
-    }
-  ],
+  "references": [],
 
   "projects": [
     {
       "name": "Vertor",
       "isActive": true,
-      "description": "🪶 Collaborative translation workspace for literary translators — compose, translate, and refine across multiple AI models.",
+      "description": "Collaborative translation workspace — compose, translate, and refine literary text across multiple models.",
       "highlights": [
-        "Sentence-by-sentence streaming across Gemini, Claude, and GPT with paragraph-aware structure preservation",
-        "Word-level refinement panel offering literal, natural, and lyrical alternative renderings on click",
-        "Minimal compose-translate-refine workflow built on Next.js 16"
+        "Sentence-by-sentence streaming across Gemini, Claude, and GPT with paragraph-aware structure",
+        "Word-level refinement: literal, natural, and lyrical alternatives",
+        "Compose–translate–refine workflow on Next.js"
       ],
       "url": "https://vertor.vercel.app/",
       "github": "https://github.com/RumiAllbert/vertor"
@@ -603,11 +582,11 @@
     {
       "name": "Etymon.ai",
       "isActive": true,
-      "description": "🔍 Interactive etymology engine that deconstructs words into their morphological roots.",
+      "description": "Etymology engine that decomposes words into morphological roots, with emphasis on classical languages.",
       "highlights": [
-        "Analysis algorithms optimized for Classical languages and semantic evolution",
-        "React Flow visualizations mapping linguistic relationships",
-        "Fine-tuned Gemini AI for morphological breakdown"
+        "Morphological analysis for classical languages and semantic change",
+        "React Flow graphs of linguistic relationships",
+        "Gemini-backed morphological breakdown"
       ],
       "url": "https://etymon.rumiallbert.com/",
       "github": ""
@@ -615,11 +594,11 @@
     {
       "name": "Memento Vitae",
       "isActive": true,
-      "description": "⏳ Life visualization tool that maps your remaining weeks, time allocation, and mortality-aware insights.",
+      "description": "Life visualization — remaining weeks, time allocation, and mortality-aware accounting.",
       "highlights": [
-        "Full life grid rendering ~4,000 weeks with real-time current-week tracking",
-        "Time breakdown engine calculating how sleep, work, and habits consume remaining life",
-        "Reality-check insights — parent visits left, books to read, summers remaining"
+        "Life grid of ~4,000 weeks with current-week tracking",
+        "Breakdown of how sleep, work, and habits consume remaining time",
+        "Concrete counts: visits left, books, summers remaining"
       ],
       "url": "https://mementovitae.vercel.app/",
       "github": "https://github.com/RumiAllbert/memento-vita"
@@ -627,11 +606,11 @@
     {
       "name": "Loqui TTS",
       "isActive": true,
-      "description": "🔊 Local text-to-speech app powered by MLX Audio on Apple Silicon — voice cloning, multilingual, zero cloud dependency.",
+      "description": "Local text-to-speech on Apple Silicon (MLX Audio) — voice cloning, multilingual, no cloud.",
       "highlights": [
-        "5 model variants including voice cloning and 10-language support via Qwen3-TTS",
-        "Native Metal GPU inference with real-time system monitoring and WebSocket updates",
-        "Full-stack React + FastAPI app with in-browser model downloads and generation history"
+        "Voice cloning and 10-language support via Qwen3-TTS",
+        "Metal GPU inference with live system monitoring",
+        "React + FastAPI with in-browser model downloads"
       ],
       "url": "https://github.com/RumiAllbert/loqui-tts",
       "github": "https://github.com/RumiAllbert/loqui-tts"
@@ -639,11 +618,11 @@
     {
       "name": "Latinium.ai",
       "isActive": true,
-      "description": "📚 AI-powered Latin tutor with real-time grammar analysis and interactive annotations.",
+      "description": "Latin tutor with live grammar analysis and interactive annotation.",
       "highlights": [
-        "Real-time grammar engine using NLP to parse cases, tenses, and syntax",
-        "Interactive hover annotations with AI-powered tutoring",
-        "Context-aware translation preserving literary nuance"
+        "NLP grammar engine for case, tense, and syntax",
+        "Hover annotations with model-backed tutoring",
+        "Translation that preserves literary register"
       ],
       "url": "https://latinium.rumiallbert.com/",
       "github": "https://github.com/RumiAllbert/latinium"
@@ -651,11 +630,11 @@
     {
       "name": "Gentleman's Codex",
       "isActive": true,
-      "description": "🎩 Interactive guide to timeless men's style — blazers, shirts, colors, and the rules of dressing well.",
+      "description": "Interactive guide to men's style — cut, color, and the rules of dressing well.",
       "highlights": [
-        "Four-chapter curriculum with quizzes, achievements, and a style archetype assessment",
-        "Interactive outfit builder with real-time compatibility scoring",
-        "Color wheel tool and curated palettes for foolproof coordination"
+        "Four-chapter curriculum with quizzes and style archetype assessment",
+        "Outfit builder with compatibility scoring",
+        "Color wheel and curated palettes"
       ],
       "url": "https://gentlemans-codex-1031601420066.us-central1.run.app/",
       "github": ""
@@ -663,11 +642,11 @@
     {
       "name": "ColorLab.ai",
       "isActive": true,
-      "description": "🎨 AI stylist that analyzes selfies to deliver personalized color palettes and seasonal style guidance.",
+      "description": "Color analysis from selfies — seasonal palettes and style guidance.",
       "highlights": [
-        "Real-time selfie analysis built with Next.js",
-        "Fine-tuned LLMs for seasonal color palette recommendations",
-        "Agentic LangChain workflows for comprehensive style guidance"
+        "Selfie analysis on Next.js",
+        "Model-backed seasonal palette recommendations",
+        "LangChain workflows for style guidance"
       ],
       "url": "https://color-lab-ai.vercel.app/",
       "github": ""
@@ -675,11 +654,11 @@
     {
       "name": "LLM Abliterator",
       "isActive": true,
-      "description": "🔬 Open-source toolkit for steering LLM personality traits via activation engineering.",
+      "description": "Open-source toolkit for steering LLM personality via activation engineering.",
       "highlights": [
-        "Methods to identify and modify personality-related activation vectors",
-        "Dynamic personality fine-tuning with minimal compute overhead",
-        "Systematic interpretability testing with ethical analysis"
+        "Identify and edit personality-related activation vectors",
+        "Personality steering with low compute overhead",
+        "Interpretability tests with ethical analysis"
       ],
       "url": "https://community.wolfram.com/groups/-/m/t/3210605",
       "github": "https://github.com/RumiAllbert/llm-abliterator"
@@ -687,11 +666,11 @@
     {
       "name": "Ancient Greek Resources",
       "isActive": true,
-      "description": "📚 Curated scholarly repository for Classical Greek, used by academic institutions worldwide.",
+      "description": "Curated repository for Classical Greek — texts, grammar, and lexicography.",
       "highlights": [
         "Annotated texts, grammar references, and lexicographical tools",
-        "Spaced-repetition systems for complex morphological patterns",
-        "Rigorous academic-quality content standards"
+        "Spaced repetition for morphology",
+        "Content standards aimed at classroom use"
       ],
       "url": "https://www.ancientgreek.rumiallbert.com/",
       "github": ""
