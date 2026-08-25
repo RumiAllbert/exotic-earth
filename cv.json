@@ -1,11 +1,11 @@
 {
   "basics": {
-    "name": "Rumi Allbert",
+    "name": "Rumi Alexander Elías Calles",
     "label": "Director of Research Engineering",
-    "email": "rumiallbert@gmail.com",
+    "email": "rumi.calles@gmail.com",
     "phone": "+1 (973) 936-4084",
     "image": "/me_avatar.jpg",
-    "url": "https://rumiallbert.com",
+    "url": "https://rumicalles.com",
     "summary": "I lead research engineering for human-evaluation AI systems, and write at the intersection of machine intelligence, classical languages, and philosophy of mind.",
     "theme": "default",
     "location": {
@@ -499,7 +499,7 @@
   "publications": [
     {
       "title": "De Suspensione: Inflection, Composition, and the Long Drift Outward",
-      "authors": ["Rumi Allbert"],
+      "authors": ["Rumi Alexander Elías Calles"],
       "date": "2026-05-01",
       "url": "https://www.researchgate.net/publication/405343127_De_Suspensione_Inflection_Composition_and_the_Long_Drift_Outward",
       "highlight": "Naming suspensio — the inner act of holding thought while form catches up — and tracing how Latin inflection, digital memory, and generative AI each thin it.",
@@ -509,7 +509,7 @@
     },
     {
       "title": "Uncovering Candidate Potential with Multi-Modal AI Assessments",
-      "authors": ["Rumi Allbert et al."],
+      "authors": ["Rumi Alexander Elías Calles et al."],
       "date": "2025-09-01",
       "url": "https://www.researchgate.net/publication/395809850_Uncovering_Candidate_Potential_with_Multi-Modal_AI_Assessments",
       "highlight": "An AI Match Score that outperforms résumé screening by 16% AUC and surfaces 2× more qualified candidates.",
@@ -519,7 +519,7 @@
     },
     {
       "title": "From Plato to Pixels: Imagination, AI, and the Whole",
-      "authors": ["Rumi Allbert et al."],
+      "authors": ["Rumi Alexander Elías Calles et al."],
       "date": "2025-08-01",
       "url": "https://www.researchgate.net/publication/395101656_From_Plato_to_Pixels_Imagination_AI_and_the_Whole",
       "highlight": "Tracing imagination from Plato's Forms to generative AI — and asking what machines still cannot make.",
@@ -529,7 +529,7 @@
     },
     {
       "title": "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems",
-      "authors": ["Rumi Allbert et al."],
+      "authors": ["Rumi Alexander Elías Calles et al."],
       "date": "2025-08-21",
       "url": "https://arxiv.org/abs/2507.16835",
       "highlight": "Benchmarking voice-stack combinations across 300k+ real AI-conducted interviews.",
@@ -539,7 +539,7 @@
     },
     {
       "title": "PhiloBERTA: A Transformer-Based Cross-Lingual Analysis of Greek and Latin Lexicons",
-      "authors": ["Rumi A. Allbert", "Makai L. Allbert"],
+      "authors": ["Rumi Alexander Elías Calles", "Makai L. Allbert"],
       "date": "2025-03-01",
       "url": "https://arxiv.org/abs/2503.05265",
       "highlight": "A cross-lingual transformer revealing conceptual alignments between ancient Greek and Latin.",
@@ -549,7 +549,7 @@
     },
     {
       "title": "Identifying and Manipulating Personality Traits in LLMs Through Activation Engineering",
-      "authors": ["Rumi A. Allbert", "et al."],
+      "authors": ["Rumi Alexander Elías Calles", "et al."],
       "date": "2024-12-10",
       "url": "https://arxiv.org/abs/2412.10427",
       "highlight": "Abliterator — studying and steering LLM personality through direct activation engineering.",

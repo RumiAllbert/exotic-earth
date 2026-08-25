@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # local folders
 .history
+
+# Local Netlify folder
+.netlify

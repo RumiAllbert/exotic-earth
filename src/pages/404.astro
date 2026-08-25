@@ -1,0 +1,53 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { NOT_FOUND_MARKDOWN } from "@/lib/site-content";
+import { basics } from "@cv";
+
+const { name } = basics;
+---
+
+<Layout title={`Not found · ${name}`} description="This path does not exist on rumicalles.com." noindex>
+  <main class="relative mx-auto w-full max-w-2xl p-8 md:p-16">
+    <p class="mb-8 text-sm text-skin-muted">
+      <a class="doc-link" href="/">← Home</a>
+    </p>
+    <article class="doc-page space-y-5">
+      <h1 class="text-4xl font-bold text-skin-base">Not found</h1>
+      <p>
+        This path does not exist on rumicalles.com (HTTP 404). Agents: use the
+        links below, or <code>/llms.txt</code> and <code>/sitemap.md</code>.
+      </p>
+      <h2>Where to look next</h2>
+      <ul>
+        <li><a href="/">Home</a> — CV, research, publications, and projects</li>
+        <li><a href="/llms.txt">llms.txt</a> — agent index and when-to-use guidance</li>
+        <li><a href="/sitemap.md">Sitemap</a> — markdown site map</li>
+        <li><a href="/sitemap-index.xml">XML sitemap</a> — machine-readable URL list</li>
+        <li><a href="/about">About</a> — identity and affiliations</li>
+        <li><a href="/contact">Contact</a> — email and public profiles</li>
+      </ul>
+      <pre class="agent-recovery whitespace-pre-wrap break-words rounded-lg bg-skin-button-muted/40 p-4 text-sm text-skin-base ring-1 ring-skin-muted/20">{NOT_FOUND_MARKDOWN}</pre>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .doc-link,
+  .doc-page :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .doc-page :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+  }
+  .doc-page :global(ul) {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+  .doc-page :global(code) {
+    font-size: 0.9em;
+  }
+</style>

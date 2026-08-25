@@ -7,12 +7,13 @@ import KeyboardManager from "../components/KeyboardManager.astro";
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description = basics.summary } = Astro.props;
+const { title, description = basics.summary, noindex = false } = Astro.props;
 
 const { image, theme, summary } = basics;
-const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
+const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
 ---
 
 <!doctype html>
@@ -22,6 +23,7 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <!-- Preload favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -36,7 +38,7 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:url" content={siteUrl + Astro.url.pathname} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={summary} />
     <meta property="og:image" content={`${siteUrl}/og-image.png`} />
@@ -115,6 +117,18 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
         }
         .light {
           display: block;
+        }
+        #loader {
+          display: none !important;
+        }
+        #main-content,
+        .scroll-reveal {
+          opacity: 1 !important;
+          filter: none !important;
+          transform: none !important;
+        }
+        [x-cloak] {
+          display: block !important;
         }
       </style>
     </noscript>
@@ -275,6 +289,18 @@ const siteUrl = import.meta.env.SITE || "https://www.rumiallbert.com";
           transform: none !important;
           transition: none !important;
           will-change: auto !important;
+        }
+      }
+
+      @media (scripting: none) {
+        #loader {
+          display: none !important;
+        }
+        #main-content,
+        .scroll-reveal {
+          opacity: 1 !important;
+          filter: none !important;
+          transform: none !important;
         }
       }
 

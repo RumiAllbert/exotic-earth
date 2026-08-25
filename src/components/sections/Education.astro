@@ -96,7 +96,7 @@ function getIssuerLogo(issuer: string): string | null {
 	{
 		certificates.length > 0 && (
 			<>
-				<h4 class="text-lg font-semibold mb-2">Certificates</h4>
+				<h3 class="text-lg font-semibold mb-2">Certificates</h3>
 				<ul class="grid gap-2.5 py-3 sm:grid-cols-2 print:block print:space-y-2">
 					{certificates.map(({ name, date, issuer, url }) => {
 						const certificateYear = new Date(date).getFullYear();
@@ -130,9 +130,9 @@ function getIssuerLogo(issuer: string): string | null {
 									)}
 									<div class="min-w-0 flex-1">
 										<div class="flex items-start justify-between gap-2">
-											<h3 class="text-sm font-medium leading-snug text-skin-base transition-colors group-hover:text-skin-hue print:text-skin-base">
+											<h4 class="text-sm font-medium leading-snug text-skin-base transition-colors group-hover:text-skin-hue print:text-skin-base">
 												{name}
-											</h3>
+											</h4>
 											<time class="shrink-0 rounded-full bg-skin-button-muted/60 px-1.5 py-0.5 text-[10px] font-medium text-skin-muted ring-1 ring-skin-muted/10 print:bg-transparent print:p-0 print:ring-0">
 												{certificateYear}
 											</time>

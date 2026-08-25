@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { basics } from "@cv";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const { name } = basics;
+---
+
+<Layout title={`${title} · ${name}`} description={description}>
+  <main class="relative mx-auto w-full max-w-2xl p-8 md:p-16">
+    <p class="mb-8 text-sm text-skin-muted">
+      <a class="doc-link" href="/">← Home</a>
+    </p>
+    <article class="doc-page space-y-5">
+      <h1 class="text-4xl font-bold text-skin-base">{title}</h1>
+      <slot />
+    </article>
+    <nav class="mt-16 flex flex-wrap gap-4 border-t border-skin-muted/20 pt-6 text-xs text-skin-muted">
+      <a class="doc-link" href="/">Home</a>
+      <a class="doc-link" href="/about">About</a>
+      <a class="doc-link" href="/contact">Contact</a>
+      <a class="doc-link" href="/privacy">Privacy</a>
+      <a class="doc-link" href="/llms.txt">llms.txt</a>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .doc-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .doc-page :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+  }
+  .doc-page :global(p) {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+  .doc-page :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .doc-page :global(ul) {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+</style>

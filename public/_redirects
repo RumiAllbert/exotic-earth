@@ -1,0 +1,12 @@
+# Old domains → new primary
+https://rumiallbert.com/*      https://rumicalles.com/:splat  301!
+http://rumiallbert.com/*       https://rumicalles.com/:splat  301!
+https://www.rumiallbert.com/*  https://rumicalles.com/:splat  301!
+http://www.rumiallbert.com/*   https://rumicalles.com/:splat  301!
+https://dev.rumiallbert.com/*  https://rumicalles.com/:splat  301!
+http://dev.rumiallbert.com/*   https://rumicalles.com/:splat  301!
+
+# Prefer apex over www
+https://www.rumicalles.com/*   https://rumicalles.com/:splat  301!
+http://www.rumicalles.com/*    https://rumicalles.com/:splat  301!
+http://rumicalles.com/*        https://rumicalles.com/:splat  301!
