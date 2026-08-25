@@ -2,7 +2,6 @@ import { negotiate, setVaryAccept } from "../../src/lib/negotiate.ts";
 
 export const config = {
   path: "/*",
-  method: ["GET", "HEAD"],
 };
 
 type EdgeContext = {
