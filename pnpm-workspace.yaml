@@ -1,0 +1,9 @@
+# Single-package repo. This file exists so pnpm 10/11 will run
+# native install scripts for the bundler and image pipeline.
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+
+allowBuilds:
+  esbuild: true
+  sharp: true
