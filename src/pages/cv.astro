@@ -1,0 +1,228 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import {
+  basics,
+  work,
+  education,
+  skills,
+  certificates,
+  languages,
+  publications,
+} from "@cv";
+const year = (date: string | null) => date?.slice(0, 4) ?? "Present";
+---
+
+<Layout
+  title={`Curriculum vitae · ${basics.name}`}
+  description={basics.summary}
+>
+  <main id="main-content" class="cv-page page-width">
+    <p class="eyebrow">Curriculum vitae</p>
+    <h1>{basics.name}</h1>
+    <p class="cv-intro">{basics.summary}</p>
+    <div class="hero-links">
+      <a class="text-link" href={`mailto:${basics.email}`}>Get in touch ↗</a
+      ><button class="quiet-link no-print" id="print-cv" type="button"
+        >Print / save PDF ↗</button
+      ><a class="quiet-link" href="/cv.md">Read as Markdown ↗</a>
+    </div>
+    <section id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      {
+        work.map((job) => (
+          <article class="cv-entry">
+            <div class="cv-entry-header">
+              <>
+                <div>
+                  <>
+                    <h3>
+                      {job.url ? (
+                        <a
+                          href={job.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {job.name} ↗
+                        </a>
+                      ) : (
+                        job.name
+                      )}
+                    </h3>
+                    <p>{job.position}</p>
+                  </>
+                </div>
+                <span class="date">
+                  <time datetime={job.startDate}>{year(job.startDate)}</time> –{" "}
+                  {job.endDate ? (
+                    <time datetime={job.endDate}>{year(job.endDate)}</time>
+                  ) : (
+                    "Present"
+                  )}
+                </span>
+              </>
+            </div>
+            <p>
+              {job.location} · {job.location_type}
+            </p>
+            {Array.isArray(job.summary) ? (
+              <ul>
+                {job.summary.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>{job.summary}</p>
+            )}
+            {job.highlights?.length ||
+            job.responsibilities?.length ||
+            ("achievements" in job &&
+              Array.isArray(job.achievements) &&
+              job.achievements.length) ||
+            job.skills?.length ? (
+              <details>
+                <summary>Details</summary>
+                {job.highlights?.length > 0 && (
+                  <ul>
+                    {job.highlights.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                )}
+                {job.responsibilities && job.responsibilities.length > 0 && (
+                  <>
+                    <h4>Responsibilities</h4>
+                    <ul>
+                      {job.responsibilities.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {"achievements" in job &&
+                  Array.isArray(job.achievements) &&
+                  job.achievements.length > 0 && (
+                    <>
+                      <h4>Achievements</h4>
+                      <ul>
+                        {job.achievements.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                {job.skills?.length > 0 && <p>{job.skills.join(" · ")}</p>}
+              </details>
+            ) : null}
+          </article>
+        ))
+      }
+    </section>
+    <section id="education" aria-labelledby="education-title">
+      <h2 id="education-title">Education</h2>
+      {
+        education.map((item) => (
+          <article class="cv-entry">
+            <>
+              <div class="cv-entry-header">
+                <>
+                  <h3>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {item.institution} ↗
+                    </a>
+                  </h3>
+                  <span class="date">
+                    {year(item.startDate)} – {year(item.endDate)}
+                  </span>
+                </>
+              </div>
+              <p>
+                {item.studyType} in {item.area}
+              </p>
+              <ul>
+                {item.highlights.map((highlight) => (
+                  <li>{highlight}</li>
+                ))}
+              </ul>
+            </>
+          </article>
+        ))
+      }
+    </section>
+    <section id="publications" aria-labelledby="publications-title">
+      <h2 id="publications-title">Publications</h2>{
+        publications.map((paper) => (
+          <article class="cv-entry">
+            <>
+              <p class="eyebrow">
+                {paper.publisher} / {year(paper.date)}
+              </p>
+              <h3>
+                <a href={paper.url} target="_blank" rel="noopener noreferrer">
+                  {paper.title} ↗
+                </a>
+              </h3>
+              <p>{paper.authors.join(", ")}</p>
+              <p>{paper.highlight}</p>
+            </>
+          </article>
+        ))
+      }
+    </section>
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills &amp; tools</h2><div class="skill-groups">
+        {
+          skills.map((group) => (
+            <div>
+              <>
+                <h3>{group.name}</h3>
+                <p>{group.keywords.join(" · ")}</p>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+    <section aria-labelledby="languages-title">
+      <h2 id="languages-title">Languages</h2><p>
+        {languages.map((item) => item.language).join(" · ")}
+      </p>
+    </section>
+    <section aria-labelledby="certificates-title">
+      <h2 id="certificates-title">Certificates</h2><div
+        class="certificate-list"
+      >
+        {
+          certificates.map((item) => (
+            <div>
+              <>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.name} ↗
+                </a>
+                <p>
+                  {item.issuer} · {year(item.date)}
+                </p>
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Layout>
+<script>
+  let closedDetails: HTMLDetailsElement[] = [];
+  window.addEventListener("beforeprint", () => {
+    closedDetails = Array.from(document.querySelectorAll<HTMLDetailsElement>("details:not([open])"));
+    closedDetails.forEach(detail => { detail.open = true; });
+  });
+  window.addEventListener("afterprint", () => {
+    closedDetails.forEach(detail => { detail.open = false; });
+  });
+  document
+    .getElementById("print-cv")
+    ?.addEventListener("click", () => window.print());
+</script>

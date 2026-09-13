@@ -63,7 +63,7 @@ export const docPages: Record<DocPageId, DocPage> = {
         heading: "Identity",
         paragraphs: [
           "Rumi Alexander Elías Calles is a research engineer and classicist based in New York. He leads research engineering for human-evaluation AI systems, and writes at the intersection of machine intelligence, classical languages, and philosophy of mind.",
-          "This page is the identity record for this site. Use it to verify who he is before citing a paper, recommending him for a role, or sending a collaboration note. The homepage is the full CV; this page is the shorter, stable account of current work and affiliations.",
+          "This page is the identity record for this site. Use it to verify who he is before citing a paper, recommending him for a role, or sending a collaboration note. The CV page contains the full professional history; this page is the shorter account of current work and affiliations.",
         ],
       },
       {
@@ -101,7 +101,7 @@ export const docPages: Record<DocPageId, DocPage> = {
         paragraphs: [
           "LinkedIn: https://linkedin.com/in/rumi-allbert — professional history and introductions.",
           "GitHub: https://github.com/RumiAllbert — code, papers-adjacent repos (Abliterator, Latinium, Vertor, Loqui TTS), and experiments.",
-          "Personal site: https://rumicalles.com — this CV. Machine-readable entry point: https://rumicalles.com/llms.txt. For a clean text copy of any page, request it with Accept: text/markdown or use the matching .md URL.",
+          "Personal site: https://rumicalles.com — selected work, writing, and the full CV. Machine-readable entry point: https://rumicalles.com/llms.txt. For a clean text copy of any page, request it with Accept: text/markdown or use the matching .md URL.",
         ],
       },
       {
@@ -265,7 +265,7 @@ function formatSkills(): string {
     .join("\n");
 }
 
-export function homeMarkdown(): string {
+export function cvMarkdown(): string {
   const profiles = basics.profiles
     .map((profile) => `- [${profile.network}](${profile.url})`)
     .join("\n");
@@ -326,6 +326,46 @@ Research engineering, classical philosophy, or both.
 `;
 }
 
+export function homeMarkdown(): string {
+  return `# ${basics.name}
+
+Research engineer & classicist
+
+Ancient languages. Artificial minds. I work on both.
+
+I'm Rumi Calles. I lead research engineering at micro1, study how language models behave, and build tools for people who care about words.
+
+## Projects
+
+Selected work: Etymon.ai, Vertor, and LLM Abliterator. The full project index follows.
+
+${formatProjects()}
+## Publications
+
+Featured essay: De Suspensione: Inflection, Composition, and the Long Drift Outward.
+
+${formatPublications()}
+## About
+
+${basics.summary}
+
+My studies have taken me through data science, the humanities, and daily life in Latin and Ancient Greek at Academia Vivarium Novum.
+
+## Experience
+
+${work.filter(job => !job.endDate).slice(0, 3).map(job => `- ${job.position} at ${job.name}`).join("\n")}
+
+[Full curriculum vitae](${SITE_URL}/cv) · [CV in Markdown](${SITE_URL}/cv.md)
+
+## Contact
+
+- Email: ${basics.email}
+- [About](${SITE_URL}/about)
+- [Contact](${SITE_URL}/contact)
+- [Privacy](${SITE_URL}/privacy)
+`;
+}
+
 export function sitemapMarkdown(): string {
   return `# Sitemap
 
@@ -334,6 +374,8 @@ Machine-readable twin of the public pages on ${SITE_URL}.
 ## Pages
 
 - [Home](${SITE_URL}/): CV, research, publications, and projects
+- [Curriculum vitae](${SITE_URL}/cv): full experience, education, publications, skills, and certificates
+- [CV (markdown)](${SITE_URL}/cv.md): text version of the full CV
 - [About](${SITE_URL}/about): identity, affiliations, and research focus
 - [Contact](${SITE_URL}/contact): email, profiles, and what to write about
 - [Privacy](${SITE_URL}/privacy): collection, hosting, and agent access
@@ -353,6 +395,10 @@ const PAGE_MARKDOWN: Record<string, () => string> = {
   "/": homeMarkdown,
   "/index.html": homeMarkdown,
   "/index.md": homeMarkdown,
+  "/cv": cvMarkdown,
+  "/cv/": cvMarkdown,
+  "/cv.html": cvMarkdown,
+  "/cv.md": cvMarkdown,
   "/about": () => docPageMarkdown(docPages.about),
   "/about/": () => docPageMarkdown(docPages.about),
   "/about.html": () => docPageMarkdown(docPages.about),
