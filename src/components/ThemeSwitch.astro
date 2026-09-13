@@ -1,54 +1,29 @@
----
-import Theme from "@/icons/themeSwitch.astro";
----
+<button
+  id="themeSwitch"
+  class="theme-toggle"
+  type="button"
+  aria-label="Toggle dark mode"
+  aria-pressed="false"
+>
+  <span aria-hidden="true">◐</span>
+</button>
 
-<div class="no-print fixed top-4 right-4 z-50">
-	<button id="themeSwitch" class="group flex h-10 w-10 items-center justify-center rounded-md bg-skin-fill ring-1 ring-skin-muted transition-all hover:ring-skin-hue">
-		<Theme />
-	</button>
-
-	<style>
-		:global(.dark) {
-			color-scheme: dark;
-		}
-
-		button {
-			transition: transform 0.2s ease;
-		}
-
-		button:hover {
-			transform: scale(1.1);
-		}
-
-		button:active {
-			transform: scale(0.9);
-		}
-	</style>
-
-	<script>
-		const button = document.getElementById("themeSwitch") as HTMLButtonElement;
-		const theme = localStorage.getItem("theme");
-		const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
-		// Set initial theme
-		if (!theme) {
-			localStorage.setItem("theme", "light");
-			document.documentElement.classList.add("light");
-		} else {
-			document.documentElement.classList.add(theme);
-		}
-
-		function updateTheme() {
-			const currentTheme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-			const newTheme = currentTheme === "dark" ? "light" : "dark";
-			
-			document.documentElement.classList.remove(currentTheme);
-			document.documentElement.classList.add(newTheme);
-			document.body.classList.remove(currentTheme);
-			document.body.classList.add(newTheme);
-			localStorage.setItem("theme", newTheme);
-		}
-
-		button.addEventListener("click", updateTheme);
-	</script>
-</div>
+<script>
+  const button = document.getElementById("themeSwitch") as HTMLButtonElement;
+  const updateLabel = () =>
+    button.setAttribute(
+      "aria-pressed",
+      String(document.documentElement.classList.contains("dark")),
+    );
+  updateLabel();
+  button.addEventListener("click", () => {
+    const dark = document.documentElement.classList.toggle("dark");
+    document.documentElement.classList.remove("light");
+    updateLabel();
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      /* Theme storage is optional. */
+    }
+  });
+</script>

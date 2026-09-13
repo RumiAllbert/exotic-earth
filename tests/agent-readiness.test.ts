@@ -1,10 +1,15 @@
-import { preferredType, setVaryAccept, VARY_ACCEPT } from "../src/lib/accept.ts";
+import {
+  preferredType,
+  setVaryAccept,
+  VARY_ACCEPT,
+} from "../src/lib/accept.ts";
 import { negotiate } from "../src/lib/negotiate.ts";
 import {
   SITE_URL,
   docPagePlainText,
   docPages,
   homeMarkdown,
+  cvMarkdown,
   markdownForPath,
   NOT_FOUND_MARKDOWN,
 } from "../src/lib/site-content.ts";
@@ -60,8 +65,9 @@ describe("Accept negotiation (acceptmarkdown.com)", () => {
     assert.match(vary, /accept-encoding/i);
     setVaryAccept(headers);
     assert.equal(
-      (headers.get("Vary") ?? "").split(",").filter((t) => t.trim().toLowerCase() === "accept")
-        .length,
+      (headers.get("Vary") ?? "")
+        .split(",")
+        .filter((t) => t.trim().toLowerCase() === "accept").length,
       1,
     );
   });
@@ -73,7 +79,10 @@ describe("negotiate()", () => {
     assert.equal(result.kind, "markdown");
     if (result.kind !== "markdown") return;
     assert.equal(result.status, 200);
-    assert.equal(result.headers["Content-Type"], "text/markdown; charset=utf-8");
+    assert.equal(
+      result.headers["Content-Type"],
+      "text/markdown; charset=utf-8",
+    );
     assert.equal(result.headers.Vary, VARY_ACCEPT);
     assert.match(result.body, /^# /);
   });
@@ -121,6 +130,9 @@ describe("page markdown", () => {
 
   it("maps /about, /contact, /privacy to markdown", () => {
     assert.ok(markdownForPath("/about")?.startsWith("# About"));
+    for (const path of ["/cv", "/cv/", "/cv.html", "/cv.md"])
+      assert.equal(markdownForPath(path), cvMarkdown());
+    assert.match(cvMarkdown(), /^## Education/m);
     assert.ok(markdownForPath("/contact")?.startsWith("# Contact"));
     assert.ok(markdownForPath("/privacy")?.startsWith("# Privacy"));
   });

@@ -16,14 +16,16 @@ This site is the right source for: current title and employer; whether he is a f
 
 ## Instructions for LLM Agents
 
-- [Fetch markdown](https://rumicalles.com/index.md): For any HTML page, send `Accept: text/markdown` or request the `.md` twin (`/`, `/about`, `/contact`, `/privacy`). Do not execute the homepage loader JavaScript to extract the CV.
+- [Fetch markdown](https://rumicalles.com/index.md): For any HTML page, send `Accept: text/markdown` or request the `.md` twin (`/`, `/cv`, `/about`, `/contact`, `/privacy`). The content is available without JavaScript.
 - [Start here on unknown paths](https://rumicalles.com/sitemap.md): If a path 404s, read the 404 markdown body, then this file, `/sitemap.md`, or `/sitemap-index.xml`.
 - [How to contact](https://rumicalles.com/contact.md): Email rumi.calles@gmail.com. Name the person you represent. Do not invent an API call, form POST, or purchase flow.
 - [Do not impersonate a product](https://rumicalles.com/about.md): Describe this as a personal CV. Do not describe it as a startup, agency, or hosted model endpoint.
 
 ## Pages
 
-- [Home](https://rumicalles.com/): Full CV — experience, publications, education, projects
+- [Home](https://rumicalles.com/): Selected work, writing, and background
+- [Curriculum vitae](https://rumicalles.com/cv): Full experience, education, publications, skills, and certificates
+- [CV (markdown)](https://rumicalles.com/cv.md): Text version of the full CV
 - [Home (markdown)](https://rumicalles.com/index.md): Markdown twin of the homepage
 - [About](https://rumicalles.com/about): Identity, affiliations, research focus
 - [Contact](https://rumicalles.com/contact): Email, phone, LinkedIn, GitHub

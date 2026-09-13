@@ -1,9 +1,8 @@
 ---
-import "hotkeypad/reset.css";
 import "hotkeypad/index.css";
 import { type SocialIcon } from "@/types";
 import { basics } from "@cv";
-const { profiles, email } = basics;
+const { profiles } = basics;
 
 const SOCIAL_ICONS: SocialIcon = {
 	GitHub: `<svg
@@ -178,11 +177,13 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		if (section) {
 			const yOffset = -60; // Adjust this value to account for any fixed headers
 			const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
-			window.scrollTo({top: y, behavior: 'smooth'});
+			window.scrollTo({top: y, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+		} else {
+			window.location.href = ['skills', 'education', 'experience'].includes(sectionId) ? `/cv#${sectionId}` : `/#${sectionId}`;
 		}
 	}
 
-	const footerButtons = document.querySelectorAll(".footer-button, #normal-footer");
+	const footerButtons = document.querySelectorAll(".footer-button, #normal-footer, #open-commands");
 	footerButtons.forEach((button) => {
 		button.addEventListener("click", () => {
 			var event = new KeyboardEvent("keydown", {
