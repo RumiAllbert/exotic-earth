@@ -7,7 +7,7 @@ import LinkedIn from "@/icons/LinkedIn.astro";
 import GitHub from "@/icons/GitHub.astro";
 import type { SocialIcon } from "@/types";
 
-const { name, label, location, profiles, phone, email } = basics;
+const { name, location, profiles, phone, email } = basics;
 const { city, region } = location;
 
 const SOCIAL_ICONS: SocialIcon = {
@@ -24,15 +24,13 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
   <div class="copy">
     <h1>
       {
-        name.split(" ").map((word, i) => (
-          <span class:list={[{ "display-italic": i >= 2 }]}>{word} </span>
-        ))
+        name
+          .split(" ")
+          .map((word, i) => (
+            <span class:list={[{ "display-italic": i >= 2 }]}>{word} </span>
+          ))
       }
     </h1>
-
-
-    <p class="role">{label}, micro1</p>
-    <p class="lede">I lead RL environments and post-training.</p>
 
     <p class="place">{city === region ? city : `${city}, ${region}`}</p>
 
@@ -78,7 +76,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       }
     </p>
   </div>
-
 </header>
 
 <style>
@@ -93,8 +90,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     border-bottom: 1px solid rgba(var(--color-rule), 0.1);
   }
 
-
-
   h1 {
     font-size: clamp(2.2rem, 5.5vw, 3.6rem);
     font-weight: 500;
@@ -106,21 +101,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     font-family: "EB Garamond", Newsreader, Georgia, serif;
     font-style: italic;
     font-weight: 400;
-  }
-
-
-
-  .role {
-    margin: 1.35rem 0 0;
-    font-size: 1.05rem;
-    color: rgb(var(--color-text-base));
-  }
-
-  .lede {
-    margin: 0.45rem 0 0;
-    max-width: 36ch;
-    font-size: 1.05rem;
-    color: rgb(var(--color-text-muted));
   }
 
   .place {
@@ -179,7 +159,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       gap: 1.5rem 2rem;
       padding: 4.25rem 0 2rem;
     }
-
   }
 
   @media print {
@@ -189,7 +168,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       animation: none;
       grid-template-columns: 1fr;
     }
-
 
     h1 {
       font-size: 18pt;

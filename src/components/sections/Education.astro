@@ -1,6 +1,20 @@
 ---
 import Section from "../Section.astro";
-import { education } from "@cv";
+import { education, certificates } from "@cv";
+
+const issuerDomains: Record<string, string> = {
+  "Politecnico di Milano": "polimi.it",
+  "University of Pennsylvania": "upenn.edu",
+  IBM: "ibm.com",
+  "Lightning AI": "lightning.ai",
+  CrewAI: "crewai.com",
+  "Hugging Face": "huggingface.co",
+  "DeepLearning.AI": "deeplearning.ai",
+  Meta: "meta.com",
+  Google: "google.com",
+  DataCamp: "datacamp.com",
+  "Amnesty International": "amnesty.org",
+};
 
 function yearOf(date?: string | null): string {
   if (!date) return "Present";
@@ -13,32 +27,52 @@ function yearOf(date?: string | null): string {
   <ol class="schools">
     {
       education.map(
-        ({ institution, startDate, endDate, area, url, studyType, highlights }) => (
-          <li>
-            <header>
-              <h3>
-                {url ? (
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {institution}
-                  </a>
-                ) : (
-                  institution
-                )}
-              </h3>
-              <p class="when">
-                {yearOf(startDate)}–{yearOf(endDate)}
-              </p>
-            </header>
-            <p class="course">
-              {studyType} in {area}
-            </p>
-            {highlights && highlights.length > 0 && (
-              <ul>
-                {highlights.map((highlight) => (
-                  <li>{highlight}</li>
-                ))}
-              </ul>
+        ({
+          institution,
+          startDate,
+          endDate,
+          area,
+          url,
+          studyType,
+          highlights,
+        }) => (
+          <li class="school">
+            {url && (
+              <img
+                class="logo"
+                src={`https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=64`}
+                alt=""
+                width="24"
+                height="24"
+                loading="lazy"
+              />
             )}
+            <div class="school-copy">
+              <header>
+                <h3>
+                  {url ? (
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {institution}
+                    </a>
+                  ) : (
+                    institution
+                  )}
+                </h3>
+                <p class="when">
+                  {yearOf(startDate)}–{yearOf(endDate)}
+                </p>
+              </header>
+              <p class="course">
+                {[studyType, area].filter(Boolean).join(" in ")}
+              </p>
+              {highlights && highlights.length > 0 && (
+                <ul>
+                  {highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </li>
         ),
       )
@@ -46,7 +80,87 @@ function yearOf(date?: string | null): string {
   </ol>
 </Section>
 
+<Section title="Certifications">
+  <ul class="certificates">
+    {
+      certificates.map(({ name, issuer, date, url }) => (
+        <li>
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <img
+              class="logo"
+              src={`https://www.google.com/s2/favicons?domain=${issuerDomains[issuer] || new URL(url).hostname}&sz=64`}
+              alt=""
+              width="20"
+              height="20"
+              loading="lazy"
+            />
+            <span>
+              <>
+                <span class="certificate-name">{name}</span>
+                <span class="issuer">
+                  {issuer} · {yearOf(date)}
+                </span>
+              </>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
 <style>
+  .school {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  .school-copy {
+    flex: 1;
+    min-width: 0;
+  }
+  .logo {
+    flex: none;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.8;
+    margin-top: 0.2rem;
+  }
+  .certificates {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem 1.5rem;
+  }
+  .certificates a {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+  }
+  .certificate-name {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.3;
+  }
+  .issuer {
+    display: block;
+    font-size: 0.78rem;
+    color: rgb(var(--color-text-muted));
+    margin-top: 0.2rem;
+  }
+  .certificates a:hover .certificate-name {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  :global(#education) {
+    display: grid;
+    gap: 2.25rem;
+  }
+  @media (max-width: 520px) {
+    .certificates {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .schools {
     display: flex;
     flex-direction: column;

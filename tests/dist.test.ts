@@ -32,6 +32,11 @@ describe("built dist (agent endpoints)", () => {
     assert.match(html, /<h2[^>]*>\s*Publications\s*<\/h2>/);
     assert.ok(visibleText(html).length >= 500);
     assert.match(html, /id="news"/);
+    const cv = JSON.parse(readFileSync(join(dist, "../cv.json"), "utf8"));
+    assert.equal((html.match(/class="certificate-name"/g) ?? []).length, cv.certificates.length);
+    assert.equal((html.match(/<summary[^>]*>Abstract<\/summary>/g) ?? []).length, cv.publications.length);
+    const hero = html.split('<header class="hero')[1].split('</header>')[0];
+    assert.doesNotMatch(hero, /class="(?:role|lede)"/);
     assert.match(html, /href="https:\/\/etymon-ai.com\/"/);
     assert.doesNotMatch(html, /πάντες|All human beings by nature/);
     assert.match(read("index.md"), /## News & appearances/);
