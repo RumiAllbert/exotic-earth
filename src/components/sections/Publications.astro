@@ -94,19 +94,20 @@ function authorLine(authors: string[]): string {
 </Section>
 
 <script>
+  const hoverPreview = matchMedia("(min-width: 641px) and (hover: hover) and (pointer: fine)");
   document.querySelectorAll<HTMLDetailsElement>(".abstract-preview").forEach((details) => {
     details.querySelector("summary")!.addEventListener("pointerenter", (event) => {
-      if ((event as PointerEvent).pointerType === "mouse") details.open = true;
+      if (hoverPreview.matches && (event as PointerEvent).pointerType === "mouse") details.open = true;
     });
-    details.addEventListener("pointerleave", () => {
-      if (!details.contains(document.activeElement)) details.open = false;
+    details.addEventListener("pointerleave", (event) => {
+      if (hoverPreview.matches && (event as PointerEvent).pointerType === "mouse" && !details.contains(document.activeElement)) details.open = false;
     });
     details.addEventListener("keydown", (event) => {
       if ((event as KeyboardEvent).key === "Escape") details.open = false;
     });
     details.addEventListener("focusout", () => {
       requestAnimationFrame(() => {
-        if (!details.matches(":hover") && !details.contains(document.activeElement)) details.open = false;
+        if (hoverPreview.matches && !details.matches(":hover") && !details.contains(document.activeElement)) details.open = false;
       });
     });
   });
@@ -169,9 +170,11 @@ function authorLine(authors: string[]): string {
     overflow-y: auto;
   }
   .preview-card strong { font-weight: 500; font-size: 1.08rem; }
-  @media (max-width: 640px) {
-    details[open] { position: relative; top: auto; margin: 0.2rem 0 0 4.1rem; }
-    .preview-card { position: static; margin-top: 0.5rem; padding: 1rem; max-height: none; box-shadow: none; }
+  @media (max-width: 640px), (hover: none), (pointer: coarse) {
+    details { position: relative; top: auto; margin: 0.2rem 0 0 4.1rem; }
+    summary { width: 44px; height: 44px; }
+    .open-arrow { transition: none; }
+    .preview-card { animation: none; position: static; margin-top: 0.5rem; padding: 1rem; max-height: none; box-shadow: none; }
   }
   details p {
     font-size: 0.95rem;
