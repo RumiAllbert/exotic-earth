@@ -5,3 +5,5 @@ Additional logo sources:
 - Transformers: Hugging Face mark from the existing Simple Icons package.
 
 Logos remain the property of their respective owners.
+
+- MCP: https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/modelcontextprotocol.svg (Simple Icons, CC0).
