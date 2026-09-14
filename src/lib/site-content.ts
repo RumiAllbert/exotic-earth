@@ -1,4 +1,3 @@
-import { news } from "../data/news.ts";
 import cv from "../../cv.json" with { type: "json" };
 
 const {
@@ -271,8 +270,6 @@ export function homeMarkdown(): string {
 
 ${basics.label}
 
-${basics.location.city}, ${basics.location.region}
-
 ${basics.summary}
 
 - Email: ${basics.email}
@@ -295,10 +292,6 @@ ${formatWork()}
 ## Publications
 
 ${formatPublications()}
-## News & appearances
-
-${news.map(item => `- [${item.title}](${item.url}) · ${item.publisher} · ${item.date} · ${item.kind}\n  ${item.description}`).join("\n")}
-
 ## Skills
 
 ${formatSkills()}

@@ -89,8 +89,9 @@ function getIconName(skill: string): string | null {
                       class="more no-print"
                       @click="expanded = !expanded"
                       :aria-expanded="expanded"
+                      aria-label={`Expand details: ${position} at ${name}`}
                     >
-                      <span x-text="expanded ? 'Less' : 'Notes'">Notes</span>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true" :style="expanded ? 'transform: rotate(180deg)' : ''"><path d="m4 6 4 4 4-4" /></svg>
                     </button>
                   )}
                 </div>
@@ -306,7 +307,7 @@ function getIconName(skill: string): string | null {
 
   .more {
     margin: 0;
-    padding: 0;
+    padding: 0.35rem;
     border: 0;
     background: none;
     flex-shrink: 0;

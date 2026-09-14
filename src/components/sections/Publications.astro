@@ -77,9 +77,9 @@ function authorLine(authors: string[]): string {
                         </span>
                       </span>
                     </a>
-                    <details>
-                      <summary>Abstract</summary>
-                      <p>{abstract}</p>
+                    <details class="abstract-preview">
+                      <summary aria-label={`Preview abstract: ${title}`}>Preview abstract <span aria-hidden="true">↗</span></summary>
+                      <div class="preview-card"><strong>{title}</strong><p>{abstract}</p></div>
                     </details>
                   </li>
                 );
@@ -92,8 +92,29 @@ function authorLine(authors: string[]): string {
   </div>
 </Section>
 
+<script>
+  document.querySelectorAll<HTMLDetailsElement>(".abstract-preview").forEach((details) => {
+    const paper = details.closest(".paper")!;
+    paper.addEventListener("pointerenter", (event) => {
+      if ((event as PointerEvent).pointerType === "mouse") details.open = true;
+    });
+    paper.addEventListener("pointerleave", () => {
+      if (!details.contains(document.activeElement)) details.open = false;
+    });
+    paper.addEventListener("keydown", (event) => {
+      if ((event as KeyboardEvent).key === "Escape") details.open = false;
+    });
+    details.addEventListener("focusout", () => {
+      requestAnimationFrame(() => {
+        if (!paper.matches(":hover") && !details.contains(document.activeElement)) details.open = false;
+      });
+    });
+  });
+</script>
+
 <style>
   .paper {
+    position: relative;
     padding: 0.9rem 0;
     border-top: 1px solid rgba(var(--color-rule), 0.14);
     transition: background-color 160ms ease;
@@ -106,10 +127,29 @@ function authorLine(authors: string[]): string {
     margin: 0.5rem 0 0 4.1rem;
   }
   summary {
+    border: 1px solid rgba(var(--color-rule), 0.25);
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
     cursor: pointer;
     width: fit-content;
     font-size: 0.82rem;
     color: rgb(var(--color-text-muted));
+  }
+  .preview-card {
+    position: absolute;
+    left: 4.1rem;
+    right: 0;
+    z-index: 10;
+    padding: 1.25rem;
+    background: rgb(var(--color-fill));
+    border: 1px solid rgba(var(--color-rule), 0.25);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    max-height: 45vh;
+    overflow-y: auto;
+  }
+  .preview-card strong { font-weight: 500; font-size: 1.08rem; }
+  @media (max-width: 640px) {
+    .preview-card { position: static; margin-top: 0.5rem; padding: 1rem; max-height: none; box-shadow: none; }
   }
   details p {
     font-size: 0.95rem;

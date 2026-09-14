@@ -7,8 +7,7 @@ import LinkedIn from "@/icons/LinkedIn.astro";
 import GitHub from "@/icons/GitHub.astro";
 import type { SocialIcon } from "@/types";
 
-const { name, location, profiles, phone, email } = basics;
-const { city, region } = location;
+const { name, profiles, phone, email } = basics;
 
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
@@ -32,7 +31,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       }
     </h1>
 
-    <p class="place">{city === region ? city : `${city}, ${region}`}</p>
 
     <ul class="tongues" aria-label="Languages">
       <li lang="en">English</li>
@@ -103,11 +101,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     font-weight: 400;
   }
 
-  .place {
-    margin: 0.95rem 0 0;
-    font-size: 0.95rem;
-    color: rgb(var(--color-text-muted));
-  }
 
   .tongues {
     display: flex;
