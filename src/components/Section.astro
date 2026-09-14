@@ -2,7 +2,39 @@
 const { className, title } = Astro.props;
 ---
 
-<section class:list={["flex flex-col gap-4 print:gap-0", className]}>
-	{title && <h2 class="relative flex w-full items-center gap-3 pb-4 text-3xl print:gap-1 print:pb-0 print:text-xl">{title}</h2>}
-	<slot />
+<section class:list={["leaf", className]}>
+  {
+    title && (
+      <h2>{title}</h2>
+    )
+  }
+  <slot />
 </section>
+
+<style>
+  .leaf {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  h2 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    letter-spacing: -0.015em;
+    color: rgb(var(--color-text-base));
+  }
+
+  @media print {
+    .leaf {
+      gap: 0.4rem;
+    }
+
+    h2 {
+      font-size: 14pt;
+      font-style: normal;
+      font-weight: 600;
+    }
+  }
+</style>

@@ -1,14 +1,9 @@
 ---
-import Section from "../Section.astro"
-import { work } from "@cv"
-import { Icon } from 'astro-icon/components'
-import { iconMap } from "./Skills.astro"
+import Section from "../Section.astro";
+import { work } from "@cv";
+import { Icon } from "astro-icon/components";
+import { iconMap, logoColors } from "./Skills.astro";
 
-type IconMap = {
-  [key: string]: string;
-};
-
-// Add this type definition
 type WorkItem = {
   name: string;
   position: string;
@@ -24,277 +19,367 @@ type WorkItem = {
   skills: string[];
 };
 
-function getIconName(keyword: string) {
-	const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, '');
-	const iconName = (iconMap as IconMap)[lowercaseKeyword];
-	return iconName || null;
+function yearOf(date: string | null): string {
+  if (!date) return "Present";
+  const year = date.slice(0, 4);
+  return /^\d{4}$/.test(year) ? year : "Present";
+}
+
+function getIconName(skill: string): string | null {
+  const key = skill.toLowerCase().replace(/\s+/g, "");
+  return iconMap[key] || null;
 }
 ---
-<Section className={Astro.props.className} title="Experience">
-  <ul class="flex flex-col">
-    {(work as WorkItem[]).map(({ name, startDate, endDate, position, summary, highlights, responsibilities, achievements, url, skills, location, location_type }) => {
-      const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present"
-      const hasExpandableContent = (highlights?.length > 0 || (responsibilities && responsibilities?.length > 0) || (achievements && achievements?.length > 0) || skills?.length > 0)
 
-      return (
-        <li class="relative print:py-2" x-data="{ expanded: false }">
-          <div class="group relative grid pb-1 print:pb-0 transition-all print:grid-cols-1 print:gap-1 sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100">
-            <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
-              <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
-            </header>
-            <div class="timeline-item relative flex flex-col pb-6 print:pb-0 sm:col-span-10">
-              <div class="timeline-track absolute -ml-6 w-px h-full mt-2 print:hidden">
-                <div class="absolute inset-0 bg-skin-muted"></div>
-                <div class="timeline-fill absolute top-0 left-0 w-full h-0"></div>
+<Section className={Astro.props.className} title="Experience">
+  <ol class="posts">
+    {
+      (work as WorkItem[]).map(
+        ({
+          name,
+          startDate,
+          endDate,
+          position,
+          summary,
+          highlights,
+          responsibilities,
+          achievements,
+          url,
+          skills,
+          location,
+          location_type,
+        }) => {
+          const hasSummary = Array.isArray(summary)
+            ? summary.length > 0
+            : Boolean(summary);
+          const hasExtra =
+            hasSummary ||
+            Boolean(location || location_type) ||
+            (highlights?.length ?? 0) > 0 ||
+            (responsibilities?.length ?? 0) > 0 ||
+            (achievements?.length ?? 0) > 0 ||
+            (skills?.length ?? 0) > 0;
+
+          return (
+            <li class="post timeline-item" x-data="{ expanded: false }">
+              <div class="track" aria-hidden="true">
+                <span class="dot"></span>
               </div>
-              <div class="timeline-dot absolute w-2 h-2 rounded-full mt-2 -translate-x-[1.71rem] bg-skin-muted ring print:hidden ring-skin-fill transition-all duration-500"></div>
-              <div class="flex items-center justify-between">
-                <h3>
-                  <div class="inline-flex items-center text-lg print:text-base leading-tight group/link focus-visible:text-amber-500">
-                    <span>{position} <span>@</span> 
+              <header class="when">
+                <time datetime={startDate}>{yearOf(startDate)}</time>
+                <span aria-hidden="true">–</span>
+                <time datetime={endDate ?? undefined}>{yearOf(endDate)}</time>
+              </header>
+              <div class="body">
+                <div class="head">
+                  <h3>
+                    <span class="role">{position}</span>
+                    <span class="at"> at </span>
                     {url ? (
-                      <a class="text-skin-hue" href={url} title={`Ver ${name}`} target="_blank">{name}</a>
+                      <a href={url} title={`Visit ${name}`} target="_blank" rel="noopener noreferrer">
+                        {name}
+                      </a>
                     ) : (
-                      <span>{name}</span>
+                      <span class="org">{name}</span>
                     )}
-                    {url &&
-                      <span class="inline-block text-skin-hue print:[&>svg]:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path>
-                        </svg>
-                      </span>
-                    }
-                    </span>
-                  </div>
-                </h3>
-                {hasExpandableContent && (
-                  <button 
-                    @click="expanded = !expanded" 
-                    class="text-skin-muted hover:text-skin-base transition-colors duration-200 print:hidden"
-                    :aria-expanded="expanded"
-                    aria-label="Toggle details"
-                  >
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      class="h-5 w-5 transition-transform duration-200"
-                      :class="{ 'rotate-180': expanded }"
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
+                  </h3>
+                  {hasExtra && (
+                    <button
+                      type="button"
+                      class="more no-print"
+                      @click="expanded = !expanded"
+                      :aria-expanded="expanded"
+                      aria-label={`Expand details: ${position} at ${name}`}
                     >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-              {(location || location_type) && (
-                <div class="text-xs text-skin-muted mb-2">
-                  {location} {location && location_type && '-'} {location_type}
-                </div>
-              )}
-              
-              {/* Summary is always visible */}
-              {summary && (
-                <div class="text-sm text-skin-muted mt-2">
-                  {Array.isArray(summary) ? (
-                    <ul class="[&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {summary.map(item => (
-                        <li>{item}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>{summary}</p>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true" :style="expanded ? 'transform: rotate(180deg)' : ''"><path d="m4 6 4 4 4-4" /></svg>
+                    </button>
                   )}
                 </div>
-              )}
-              
-              {/* Expandable content */}
-              {hasExpandableContent && (
-                <div 
-                  x-show="expanded"
-                  x-collapse
-                  x-cloak
-                  class="mt-4 print:block flex flex-col gap-4 print:text-xs text-sm border-t border-skin-muted/20 pt-4"
-                >
-                  {highlights && highlights.length > 0 && (
-                    <div class="flex flex-col gap-1">
-                      <h4 class="font-medium text-skin-base">Highlights:</h4>
-                      <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                        {highlights.map(highlight => (
+                {hasExtra && (
+                  <div class="notes" x-cloak x-show="expanded" x-collapse>
+                    {(location || location_type) && (
+                      <p class="meta">
+                        {[location, location_type].filter(Boolean).join(", ")}
+                      </p>
+                    )}
+                    {hasSummary && (
+                      <div class="blurb">
+                        {Array.isArray(summary) ? (
+                          <ul>
+                            {summary.map((item) => (
+                              <li>{item}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p>{summary}</p>
+                        )}
+                      </div>
+                    )}
+                    {highlights?.length > 0 && (
+                      <ul>
+                        {highlights.map((highlight) => (
                           <li>{highlight}</li>
                         ))}
                       </ul>
-                    </div>
-                  )}
-
-                  {(responsibilities || achievements) && (
-                    <div class="flex relative flex-col max-sm:!h-auto print:!h-auto gap-4 print:gap-2">
-                      {responsibilities && responsibilities.length > 0 && (
-                        <div class="flex flex-col gap-1">
-                          <h4 class="font-medium text-skin-base">Responsibilities:</h4>
-                          <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                            {responsibilities.map(responsibility => (
-                              <li>{responsibility}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {achievements && achievements.length > 0 && (
-                        <div class="flex flex-col gap-1">
-                          <h4 class="font-medium text-skin-base">Achievements:</h4>
-                          <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                            {achievements.map((achievement: string) => (
-                              <li>{achievement}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {skills && skills.length > 0 && (
-                    <div class="flex flex-col gap-1">
-                      <h4 class="font-medium text-skin-base">Technologies:</h4>
-                      <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
-                        {skills.map(skill => {
+                    )}
+                    {responsibilities && responsibilities.length > 0 && (
+                      <ul>
+                        {responsibilities.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {skills && skills.length > 0 && (
+                      <ul class="tech no-print">
+                        {skills.map((skill) => {
                           const iconName = getIconName(skill);
                           return (
-                            <li class="skill-item bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs">
-                              {iconName && <Icon name={iconName} class="w-4 h-4" />}
-                              <span>{skill}</span>
+                            <li style={`--logo-color: ${logoColors[skill.toLowerCase().replace(/\s+/g, "")] ?? "#719d8d"}`}>
+                              {iconName && !iconName.startsWith("/") && (
+                                <Icon class="icon" name={iconName} />
+                              )}
+                              {skill}
                             </li>
-                          )
+                          );
                         })}
                       </ul>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </li>
+                    )}
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        },
       )
-    })}
-  </ul>  
+    }
+  </ol>
 </Section>
-<script is:inline defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-<script is:inline defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-<style>
-  [x-cloak] { display: none !important; }
-
-  li::marker {
-    @apply text-skin-hue
-  }
-
-  .timeline-fill {
-    background: linear-gradient(180deg, #c4b5fd, #a78bfa, #8b5cf6);
-    transition: height 0.1s linear;
-    will-change: height;
-    border-radius: 0 0 1px 1px;
-  }
-
-  .timeline-dot.lit {
-    background-color: #a78bfa;
-    ring-color: #a78bfa;
-    box-shadow: 0 0 8px 2px rgba(167, 139, 250, 0.5);
-  }
-
-  .skill-item {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .skill-item::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6, #6366f1, #3b82f6);
-    z-index: -1;
-    filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .skill-item:hover {
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-  }
-
-  .skill-item:hover::before {
-    opacity: .7;
-    background-position: var(--x, 0) var(--y, 0);
-    transition: background-position 0.3s ease;
-  }
-</style>
 
 <script>
-  document.querySelectorAll('.skill-item').forEach(item => {
-    item.addEventListener('mousemove', ((e: MouseEvent) => {
-      const rect = item.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      (item as HTMLElement).style.setProperty('--x', `${x}px`);
-      (item as HTMLElement).style.setProperty('--y', `${y}px`);
-    }) as EventListener);
-  });
+  function setupTimeline() {
+    const items = Array.from(document.querySelectorAll(".timeline-item"));
+    if (!items.length) return;
 
-  // Timeline scroll-fill animation
-  let initialOffset: number | null = null;
-  let initialScrollY = 0;
+    const fill = () => {
+      const viewport = window.innerHeight;
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const start = viewport * 0.88;
+        const end = viewport * 0.22;
+        const progress = (start - rect.top) / (start - end);
+        (item as HTMLElement).style.setProperty(
+          "--fill",
+          `${Math.min(1, Math.max(0, progress))}`,
+        );
+      });
+    };
 
-  function updateTimeline() {
-    const items = document.querySelectorAll('.timeline-item');
-    if (!items.length) { requestAnimationFrame(updateTimeline); return; }
-
-    const triggerY = window.scrollY + window.innerHeight * 0.75;
-
-    // On first frame, measure how far the trigger already overshoots the section
-    // This is the "head start" we need to zero out
-    if (initialOffset === null) {
-      const firstRect = items[0].getBoundingClientRect();
-      const firstItemTop = window.scrollY + firstRect.top;
-      initialOffset = Math.max(triggerY - firstItemTop, 0);
-      initialScrollY = window.scrollY;
-    }
-
-    // Shrink the offset 1:1 as the user scrolls — ink catches up naturally
-    const scrolled = Math.max(window.scrollY - initialScrollY, 0);
-    const currentOffset = Math.max(initialOffset - scrolled, 0);
-    const inkY = triggerY - currentOffset;
-
-    items.forEach((item) => {
-      const rect = item.getBoundingClientRect();
-      const fill = item.querySelector('.timeline-fill') as HTMLElement;
-      const dot = item.querySelector('.timeline-dot') as HTMLElement;
-      if (!fill || !dot) return;
-
-      const itemTop = window.scrollY + rect.top;
-      const itemHeight = rect.height;
-
-      const scrolledInto = inkY - itemTop;
-      const progress = Math.min(Math.max(scrolledInto / itemHeight, 0), 1);
-
-      fill.style.height = `${progress * 100}%`;
-
-      if (progress > 0.05) {
-        dot.classList.add('lit');
-      } else {
-        dot.classList.remove('lit');
-      }
-    });
-
-    requestAnimationFrame(updateTimeline);
+    fill();
+    window.addEventListener("scroll", fill, { passive: true });
+    window.addEventListener("resize", fill, { passive: true });
   }
 
-  requestAnimationFrame(updateTimeline);
+  setupTimeline();
+  document.addEventListener("astro:page-load", setupTimeline);
 </script>
+
+<style>
+  .posts {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 0.85rem 5.5rem 1fr;
+    gap: 0.1rem 0.75rem;
+    padding: 0.28rem 0;
+    align-items: start;
+  }
+
+  .track {
+    position: relative;
+  }
+
+  .track::before {
+    content: "";
+    position: absolute;
+    left: 0.26rem;
+    top: 0.45rem;
+    bottom: -0.28rem;
+    width: 1px;
+    background: rgba(var(--color-rule), 0.16);
+  }
+
+  .track::after {
+    content: "";
+    position: absolute;
+    left: 0.26rem;
+    top: 0.45rem;
+    bottom: -0.28rem;
+    width: 1px;
+    background: rgb(var(--color-lamp));
+    transform: scaleY(var(--fill, 0));
+    transform-origin: top;
+  }
+
+  .post:last-child .track::before,
+  .post:last-child .track::after {
+    bottom: 0.35rem;
+  }
+
+  .dot {
+    position: absolute;
+    left: 0.05rem;
+    top: 0.38rem;
+    z-index: 1;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--color-lamp), 0.55);
+    background: rgb(var(--color-fill));
+    box-shadow: 0 0 0 2px rgb(var(--color-fill));
+  }
+
+  .when {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.78rem;
+    color: rgb(var(--color-text-muted));
+    padding-top: 0.18rem;
+    white-space: nowrap;
+  }
+
+  .head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .role {
+    color: rgb(var(--color-text-base));
+  }
+
+  .at {
+    color: rgb(var(--color-text-muted));
+  }
+
+  h3 a,
+  .org {
+    color: rgb(var(--color-text-base));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  h3 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .meta,
+  .blurb p,
+  .blurb li,
+  .notes li {
+    font-size: 0.9rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .meta {
+    margin: 0;
+  }
+
+  .blurb ul,
+  .notes ul:not(.tech) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+    padding-left: 1rem;
+    list-style: disc;
+  }
+
+  .more {
+    margin: 0;
+    padding: 0.35rem;
+    border: 0;
+    background: none;
+    flex-shrink: 0;
+    font-family: inherit;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: rgb(var(--color-text-muted));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .notes {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding-bottom: 0.45rem;
+  }
+
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tech li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid rgba(var(--color-rule), 0.14);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .tech li:hover .icon { color: var(--logo-color); }
+  .icon {
+    transition: color 180ms ease;
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+    .post {
+      grid-template-columns: 0.85rem 1fr;
+    }
+    .when {
+      grid-column: 2;
+      padding-top: 0;
+    }
+    .body {
+      grid-column: 2;
+    }
+  }
+
+  @media print {
+    .post {
+      padding: 0.25rem 0;
+      break-inside: avoid;
+      grid-template-columns: 6rem 1fr;
+    }
+
+    .track {
+      display: none;
+    }
+
+    .notes {
+      display: flex !important;
+    }
+  }
+</style>

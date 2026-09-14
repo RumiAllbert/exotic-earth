@@ -1,0 +1,119 @@
+---
+import ThemeSwitch from "@/components/ThemeSwitch.astro";
+import { basics } from "@cv";
+
+const { name } = basics;
+const given = name.split(" ")[0];
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isHome = path === "/";
+
+const links = [
+  { href: isHome ? "#experience" : "/#experience", label: "Work" },
+  { href: isHome ? "#publications" : "/#publications", label: "Writing" },
+  { href: isHome ? "#projects" : "/#projects", label: "Projects" },
+  { href: isHome ? "#contact" : "/contact", label: "Contact" },
+];
+---
+
+<header class="site-nav no-print">
+  <a class="mark" href="/" aria-label={name}>{given}</a>
+  <nav aria-label="Sections">
+    {
+      links.map(({ href, label }) => (
+        <a href={href}>{label}</a>
+      ))
+    }
+  </nav>
+  <div class="tools">
+    <button
+      type="button"
+      id="nav-cmdk"
+      class="cmdk"
+      aria-label="Open command palette"
+    >
+      <kbd>⌘</kbd><kbd>K</kbd>
+    </button>
+    <ThemeSwitch />
+  </div>
+</header>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.85rem 1.5rem;
+    background: color-mix(in srgb, rgb(var(--color-fill)) 86%, transparent);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(var(--color-rule), 0.08);
+  }
+
+  .mark {
+    font-style: italic;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: rgb(var(--color-text-base));
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.15rem;
+    margin-left: auto;
+  }
+
+  nav a {
+    font-size: 0.92rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    color: rgb(var(--color-text-base));
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .cmdk {
+    display: none;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.2rem 0.45rem;
+    color: rgb(var(--color-text-muted));
+    background: rgba(var(--muted), 0.35);
+    border: 1px solid rgba(var(--color-rule), 0.12);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .cmdk kbd {
+    font-family: Newsreader, Georgia, serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+
+  @media (min-width: 720px) {
+    .site-nav {
+      padding: 0.9rem 2.25rem;
+    }
+    .cmdk {
+      display: inline-flex;
+    }
+  }
+
+  @media (max-width: 520px) {
+    nav {
+      display: none;
+    }
+    .tools {
+      margin-left: auto;
+    }
+  }
+</style>

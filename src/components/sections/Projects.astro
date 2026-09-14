@@ -1,156 +1,220 @@
 ---
-import Git from "@/icons/git.astro";
-import Arrow from "@/icons/Arrow.astro";
 import Section from "../Section.astro";
-
 import { projects } from "@cv";
+
+const FEATURED: Record<string, { src: string; alt: string }> = {
+  "Etymon.ai": {
+    src: "/projects/etymon.webp",
+    alt: "Etymon — Discover the origin of words",
+  },
+  Vertor: {
+    src: "/projects/vertor.webp",
+    alt: "Vertor — Translate. Refine. Ship.",
+  },
+};
+
+const featuredNames = ["Etymon.ai", "Vertor"];
+const featured = featuredNames
+  .map((name) => projects.find((project) => project.name === name))
+  .filter((project): project is NonNullable<typeof project> => Boolean(project));
+const rest = projects.filter((project) => !FEATURED[project.name]);
 ---
 
 <Section className={Astro.props.className} title="Projects">
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-2 print:flex print:flex-col">
-		{
-			projects.map(({ url, description, highlights, name, isActive, github }) => {
-				return (
-					<div role="contentinfo" class="project-card grid-span-1 ring-skin-muted relative flex flex-col rounded-lg bg-skin-button-muted/50 p-6 shadow-md ring-1 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]" x-data="{ expanded: false }">
-						<div class="flex items-center justify-between space-x-[10px] mb-3">
-							<h3 class="text-xl font-semibold text-skin-base">{name}</h3>
-							{github && (
-								<a href={github} title="View repository on GitHub" target="_blank" rel="noopener" class="text-skin-muted hover:text-skin-hue transition-colors duration-300">
-									<Git class="w-6 h-6" />
-								</a>
-							)}
-						</div>
-
-						<p class="text-sm text-skin-base mb-4">{description}</p>
-
-						<div
-							x-show="expanded"
-							x-collapse
-							x-cloak
-							class="mb-4 print:block"
-						>
-							<ul class="text-sm text-skin-muted space-y-1">
-								{highlights.map((highlight) => (
-									<li class="flex items-center">
-										<span class="mr-2">•</span>
-										{highlight}
-									</li>
-								))}
-							</ul>
-						</div>
-
-						<div class="mt-auto flex justify-between items-center">
-							<div class="flex items-center gap-3">
-								{isActive && url && (
-									<a
-										class="group inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-skin-button-accent text-skin-inverted rounded-md transition-colors duration-300 hover:bg-skin-button-accent-hover"
-										href={url}
-										title={`View ${name}`}
-										target="_blank"
-									>
-										View Project
-										<Arrow class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" />
-									</a>
-								)}
-							</div>
-							<button
-								@click="expanded = !expanded"
-								class="text-xs text-skin-muted hover:text-skin-hue transition-colors duration-300 flex items-center gap-1"
-							>
-								<span x-text="expanded ? 'Less' : 'More'">More</span>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="14"
-									height="14"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="transition-transform duration-300"
-									:class="expanded ? 'rotate-180' : ''"
-								>
-									<path d="m6 9 6 6 6-6"/>
-								</svg>
-							</button>
-						</div>
-					</div>
-				);
-			})
-		}
-	</div>
+  <div class="plates no-print">
+    {
+      featured.map(({ name, url, description }) => {
+        const image = FEATURED[name];
+        return (
+          <a class="plate" href={url} target="_blank" rel="noopener noreferrer">
+            <img src={image.src} alt={image.alt} width="1200" height="630" loading="lazy" />
+            <span>
+              <strong>{name}</strong>
+              {description}
+            </span>
+          </a>
+        );
+      })
+    }
+  </div>
+  <ul class="catalog">
+    {
+      rest.map(({ url, description, highlights, name, isActive, github }) => (
+        <li class="work" x-data="{ expanded: false }">
+          <div class="row">
+            <h3>{name}</h3>
+            <p class="deck">{description}</p>
+            <div class="actions">
+              {isActive && url && (
+                <a href={url} target="_blank" rel="noopener noreferrer">
+                  Live
+                </a>
+              )}
+              {github && (
+                <a
+                  href={github}
+                  title={`Repository for ${name}`}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Code
+                </a>
+              )}
+              {highlights?.length > 0 && (
+                <button
+                  type="button"
+                  class="no-print"
+                  @click="expanded = !expanded"
+                  :aria-expanded="expanded"
+                >
+                  <span x-text="expanded ? 'Less' : 'Notes'">Notes</span>
+                </button>
+              )}
+            </div>
+          </div>
+          {highlights?.length > 0 && (
+            <ul class="notes" x-show="expanded" x-collapse>
+              {highlights.map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))
+    }
+  </ul>
 </Section>
 
 <style>
-	ul {
-		@apply ml-4 list-none;
-	}
+  .plates {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+  .plate {
+    display: block;
+    color: inherit;
+  }
 
-	[role="contentinfo"] {
-		animation: fadeIn 0.5s ease-out;
-	}
+  .plate img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 630;
+    object-fit: cover;
+    object-position: center;
+    background: rgb(var(--muted));
+    border: 1px solid rgba(var(--color-rule), 0.1);
+  }
 
-	.project-card {
-		position: relative;
-		overflow: hidden;
-		transition: all 0.3s ease;
-	}
+  .plate span {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
 
-	.project-card::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: radial-gradient(
-			circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-			rgba(200, 180, 255, 0.8) 0%, 
-			rgba(200, 180, 255, 0) 50%
-		);
-		opacity: 0;
-		transition: opacity 0.3s ease;
-		pointer-events: none;
-		z-index: 0;
-	}
+  .plate strong {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(var(--color-text-base));
+    margin-bottom: 0.15rem;
+  }
 
-	.project-card:hover::before {
-		opacity: 1;
-	}
+  .plate:hover strong {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 
-	.project-card > * {
-		position: relative;
-		z-index: 1;
-	}
+  @media (min-width: 720px) {
+    .plates {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .catalog {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work {
+    padding: 1.05rem 0;
+    border-top: 1px solid rgba(var(--color-rule), 0.12);
+  }
+
+  .work:last-child {
+    border-bottom: 1px solid rgba(var(--color-rule), 0.12);
+  }
+
+  .row {
+    display: grid;
+    gap: 0.35rem 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .deck {
+    margin: 0;
+    font-size: 0.98rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 0.35rem;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+
+  .actions a,
+  .actions button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    color: rgb(var(--color-text-base));
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .actions a:hover,
+  .actions button:hover {
+    color: rgb(var(--color-text-muted));
+  }
+
+  .notes {
+    margin-top: 0.7rem;
+    padding-left: 1.1rem;
+    list-style: disc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.92rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  @media (min-width: 720px) {
+    .row {
+      grid-template-columns: 11rem 1fr auto;
+      align-items: baseline;
+    }
+
+    .actions {
+      margin-top: 0;
+      justify-content: flex-end;
+    }
+  }
+
+  @media print {
+    .notes {
+      display: block !important;
+    }
+  }
 </style>
-
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const projectCards = document.querySelectorAll('.project-card');
-		
-		projectCards.forEach(card => {
-			card.addEventListener('mousemove', (e) => {
-				const element = card as HTMLElement;
-				const event = e as MouseEvent;
-				const rect = element.getBoundingClientRect();
-				const x = event.clientX - rect.left;
-				const y = event.clientY - rect.top;
-				
-				element.style.setProperty('--mouse-x', `${x}px`);
-				element.style.setProperty('--mouse-y', `${y}px`);
-			});
-		});
-	});
-</script>

@@ -6,7 +6,7 @@
     "phone": "+1 (973) 936-4084",
     "image": "/me_avatar.jpg",
     "url": "https://rumicalles.com",
-    "summary": "I lead research engineering for human-evaluation AI systems, and write at the intersection of machine intelligence, classical languages, and philosophy of mind.",
+    "summary": "Director of Research Engineering @ micro1. BSc Data Science; MA Humanities. Classical languages, philosophy of mind, and AI.",
     "theme": "default",
     "location": {
       "address": "",
@@ -18,8 +18,8 @@
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "rumi-allbert",
-        "url": "https://linkedin.com/in/rumi-allbert"
+        "username": "rumi-calles",
+        "url": "https://www.linkedin.com/in/rumi-calles/"
       },
       {
         "network": "GitHub",
@@ -37,11 +37,11 @@
       "url": "https://www.micro1.ai/",
       "startDate": "2025-07-01",
       "endDate": null,
-      "summary": "Lead research engineering for RL environments and post-training.",
+      "summary": "RL environments and post-training.",
       "highlights": [
-        "Design and ship RL environments for post-training — task specs, reward signals, and evaluation loops used in production training",
-        "Own post-training pipelines: data curation, preference/reward modeling, and iterative policy improvement",
-        "Set research roadmap and engineering standards for environment quality, training stability, and model evaluation"
+        "Ship RL environments for production post-training: task specs, rewards, eval loops",
+        "Own post-training: data, reward models, policy iteration",
+        "Set standards for environment quality, training stability, and eval"
       ],
       "responsibilities": [],
       "skills": []
@@ -54,28 +54,28 @@
       "url": "https://aeterna-institute.org/",
       "startDate": "2025-08-01",
       "endDate": null,
-      "summary": "Classical liberal arts institute centered on the Trivium, Quadrivium, and Socratic method.",
+      "summary": "Classical liberal arts. Trivium, Quadrivium, Socratic method.",
       "highlights": [
-        "Founded the institute and its curriculum around the Seven Liberal Arts",
-        "Designed coursework grounded in dialectic and primary texts",
-        "Building a small community of fellows for sustained study"
+        "Founded the institute. Curriculum on the Seven Liberal Arts",
+        "Coursework from primary texts and dialectic",
+        "Small community of fellows"
       ],
       "responsibilities": [],
       "skills": []
     },
     {
       "name": "Wolfram Institute",
-      "position": "Affiliate Researcher",
+      "position": "AI Researcher",
       "location_type": "Remote",
       "location": "New York, NY",
       "url": "https://wolframinstitute.org/",
       "startDate": "2024-06-11",
       "endDate": null,
-      "summary": "Research on minds, machines, and intelligence — conceptual spaces, AI philosophy, and consciousness.",
+      "summary": "Minds, machines, intelligence. Conceptual spaces, AI philosophy, consciousness.",
       "highlights": [
-        "Work on machine ethics, bias, and explainability in learning systems",
-        "Published Abliterator: activation engineering for personality traits in LLMs",
-        "Computational experiments in Mathematica and Python"
+        "Machine ethics, bias, and explainability",
+        "Abliterator: activation engineering for LLM personality",
+        "Experiments in Mathematica and Python"
       ],
       "responsibilities": [],
       "skills": [
@@ -94,13 +94,13 @@
       "url": "",
       "startDate": "2024-05-01",
       "endDate": "2025-07-01",
-      "summary": "Built and shipped LLM systems for production NLU and recommendation evaluation.",
+      "summary": "Production LLM systems for NLU and recommendation eval.",
       "highlights": [
-        "Designed and deployed LLM pipelines that improved NLU quality ~40% across domains",
-        "Built an evaluation platform for recommendation models; accuracy up ~30%"
+        "LLM pipelines that lifted NLU quality ~40% across domains",
+        "Eval platform for recommendation models. Accuracy up ~30%"
       ],
       "responsibilities": [
-        "Owned model implementation through production deployment"
+        "Model implementation through production"
       ],
       "skills": [
         "Python",
@@ -121,13 +121,13 @@
       "url": "https://feitian.edu/",
       "startDate": "2025-01-14",
       "endDate": null,
-      "summary": "Ethics and philosophy for computer and data science — AI governance and emerging tech.",
+      "summary": "Ethics of computing. AI governance.",
       "highlights": [
-        "Teach ethics and philosophy of computing, with emphasis on AI governance and privacy",
-        "Curriculum pairs primary frameworks with case studies in data ethics"
+        "Teach ethics of computing, AI governance, and privacy",
+        "Primary frameworks with data-ethics cases"
       ],
       "responsibilities": [
-        "Course design and instruction in tech ethics and AI governance"
+        "Course design and instruction"
       ],
       "skills": [
         "Ethics in AI",
@@ -144,16 +144,16 @@
       "url": "https://www.theepochtimes.com/",
       "startDate": "2022-01-01",
       "endDate": "2024-02-29",
-      "summary": "Predictive modeling, data pipelines, and NLP for a large digital publisher.",
+      "summary": "Predictive modeling, pipelines, and NLP for a publisher.",
       "highlights": [
         "Churn models that cut subscriber attrition ~20%",
-        "Python/Hive pipelines that improved ops throughput ~25%",
-        "BERT and clustering pipelines over unstructured content",
-        "Automated reporting for executive decision cycles"
+        "Python/Hive pipelines. Ops throughput up ~25%",
+        "BERT and clustering over unstructured content",
+        "Automated reporting for executives"
       ],
       "responsibilities": [
-        "Owned projects from problem framing through deployment",
-        "Worked with product and editorial teams on measurement and modeling"
+        "Projects from framing through deployment",
+        "Measurement and modeling with product and editorial"
       ],
       "skills": [
         "Python",
@@ -171,15 +171,15 @@
       "url": "https://studentsforfg.org/",
       "startDate": "2019-10-01",
       "endDate": null,
-      "summary": "Technical leadership for an international non-profit.",
+      "summary": "Technical lead for an international nonprofit.",
       "highlights": [
-        "Multilingual web presence and server operations",
+        "Multilingual site and servers",
         "International conferences and logistics",
         "Advocacy at the International Religious Freedom Summit"
       ],
       "responsibilities": [
-        "Technical direction for digital infrastructure",
-        "Coordination with international teams"
+        "Digital infrastructure",
+        "Work with international teams"
       ],
       "skills": [
         "WordPress",
@@ -197,9 +197,9 @@
       "url": "",
       "startDate": "2021-12-01",
       "endDate": "2022-12-01",
-      "summary": "Statistical analysis in Python for social neuroscience experiments.",
+      "summary": "Python stats for social neuroscience experiments.",
       "highlights": [
-        "PsychoPy analysis tooling that shortened the lab's data pipeline ~30%"
+        "PsychoPy tooling that cut the lab's data pipeline ~30%"
       ],
       "skills": ["Python", "PsychoPy", "Statistics", "Research"]
     },
@@ -211,10 +211,10 @@
       "location": "Middletown, NY",
       "startDate": "2021-05-01",
       "endDate": "2021-11-01",
-      "summary": "Data mining and reporting for executive leadership.",
+      "summary": "Data mining and reporting for executives.",
       "highlights": [
-        "Mining scripts that cut processing time roughly in half",
-        "Distributed analysis across multiple company data streams"
+        "Mining scripts that cut processing time about in half",
+        "Analysis across company data streams"
       ],
       "skills": ["Go", "Python", "MongoDB", "PHP", "Data Mining"]
     },
@@ -226,9 +226,9 @@
       "url": "https://www.nasa.gov/",
       "startDate": "2019-08-01",
       "endDate": "2020-06-01",
-      "summary": "Time series and geospatial analysis on applied data projects.",
+      "summary": "Time series and geospatial analysis.",
       "highlights": [
-        "USGS geospatial maps and visualizations under NASA / UN / USGS mentorship"
+        "USGS geospatial maps under NASA, UN, and USGS mentorship"
       ],
       "skills": [
         "QGIS",
@@ -245,9 +245,9 @@
       "url": "",
       "startDate": "2020-01-01",
       "endDate": "2020-06-01",
-      "summary": "Web platform and client work for a contemporary gallery.",
+      "summary": "Web platform and client sites for a gallery.",
       "highlights": [
-        "Shipped the gallery's responsive web platform and client sites"
+        "Shipped the gallery site and client sites"
       ],
       "skills": ["JavaScript", "React", "Node.js"]
     }
@@ -264,9 +264,9 @@
       "score": "4.0",
       "courses": [],
       "highlights": [
-        "Full-tuition scholarship recipient",
-        "Completed intensive Greek Language Residency",
-        "Participated in educational trips to Greece and Turkey"
+        "Full-tuition scholarship",
+        "Greek Language Residency",
+        "Study in Greece and Turkey"
       ]
     },
     {
@@ -279,8 +279,8 @@
       "score": "3.7",
       "courses": [],
       "highlights": [
-        "First Place Hackathon Champion",
-        "Academic Excellence Recipient"
+        "First place, hackathon",
+        "Academic excellence award"
       ]
     },
     {
@@ -291,8 +291,8 @@
       "startDate": "2024-",
       "endDate": "2025-",
       "highlights": [
-        "Immersive program in classical languages and philosophy; lived in full linguistic immersion with Latin and Ancient Greek as the only spoken languages.",
-        "Studied classical texts, philosophy, and rhetoric exclusively in the original languages through daily active reading, speaking, and composition."
+        "Lived in Latin and Ancient Greek",
+        "Primary texts, philosophy, and rhetoric in the original languages"
       ]
     },
     {
@@ -303,8 +303,8 @@
       "endDate": "2024-",
       "studyType": "Certificate",
       "highlights": [
-        "Research projects in AI and large language models",
-        "Wolfram Language for computational experiments"
+        "Research in AI and large language models",
+        "Wolfram Language experiments"
       ]
     },
     {
@@ -326,8 +326,8 @@
       "endDate": "2023-10-31",
       "location": "Návplion, Peloponnese, Greece",
       "highlights": [
-        "Full-time Greek language residency",
-        "Seminar work with visiting Hellenists"
+        "Full-time Greek residency",
+        "Seminars with visiting Hellenists"
       ]
     }
   ],
@@ -436,6 +436,7 @@
         "LangGraph",
         "MCP",
         "OpenEnv",
+        "Harbor",
         "vLLM",
         "LiteLLM",
         "TransformerLens",
@@ -502,7 +503,7 @@
       "authors": ["Rumi Alexander Elías Calles"],
       "date": "2026-05-01",
       "url": "https://www.researchgate.net/publication/405343127_De_Suspensione_Inflection_Composition_and_the_Long_Drift_Outward",
-      "highlight": "Naming suspensio — the inner act of holding thought while form catches up — and tracing how Latin inflection, digital memory, and generative AI each thin it.",
+      "highlight": "On suspensio, the inner act of holding thought while form catches up. Latin inflection, digital memory, and generative AI.",
       "abstract": "Three historical migrations — the Latin-to-Romance simplification, the digital externalization of memory, and the offloading of sentence production to generative AI — converge on a single mental practice: suspensio, the inner act of composition once trained by the Trivium and by case-marking grammars that obliged the speaker to track relation internally. Drawing on classical-language impact studies, Romance morphosyntactic typology, neuro- and psycholinguistic work on grammar and thought, and recent empirical work on cognitive offloading and large language models, the paper rejects the strong Whorfian thesis that simplification produced cultural shallowness, defending instead the narrower claim that form, content, and production now migrate outward together — and that compositional practice can thin under AI assistance.",
       "publisher": "ResearchGate",
       "type": "research paper"
@@ -512,7 +513,7 @@
       "authors": ["Rumi Alexander Elías Calles et al."],
       "date": "2025-09-01",
       "url": "https://www.researchgate.net/publication/395809850_Uncovering_Candidate_Potential_with_Multi-Modal_AI_Assessments",
-      "highlight": "An AI Match Score that outperforms résumé screening by 16% AUC and surfaces 2× more qualified candidates.",
+      "highlight": "AI Match Score beats résumé screening by 16% AUC and finds 2× more qualified candidates.",
       "abstract": "Our AI Match Score combines resume analysis, structured interviews, and role-specific evaluations to outperform traditional screening by 16% (AUC: 0.742 vs. 0.641). It surfaces nearly twice as many qualified candidates, capturing unique potential signals beyond what resumes reveal.",
       "publisher": "ResearchGate",
       "type": "research paper"
@@ -522,7 +523,7 @@
       "authors": ["Rumi Alexander Elías Calles et al."],
       "date": "2025-08-01",
       "url": "https://www.researchgate.net/publication/395101656_From_Plato_to_Pixels_Imagination_AI_and_the_Whole",
-      "highlight": "Tracing imagination from Plato's Forms to generative AI — and asking what machines still cannot make.",
+      "highlight": "Imagination from Plato's Forms to generative AI. What machines still cannot make.",
       "abstract": "This philosophical exploration traces imagination's evolution from Plato's Forms through medieval theology to modern fragmentation, examining whether AI can truly simulate human creativity. It argues that imagination remains humanity's essential faculty for synthesizing meaning from chaos, even as machines attempt to replicate creation.",
       "publisher": "ResearchGate",
       "type": "research paper"
@@ -532,7 +533,7 @@
       "authors": ["Rumi Alexander Elías Calles et al."],
       "date": "2025-08-21",
       "url": "https://arxiv.org/abs/2507.16835",
-      "highlight": "Benchmarking voice-stack combinations across 300k+ real AI-conducted interviews.",
+      "highlight": "Voice-stack comparison across 300k+ AI-conducted interviews.",
       "abstract": "We present a large-scale empirical comparison of speech-to-text, LLM, and text-to-speech combinations using data from over 300,000 AI-conducted job interviews. Our analysis reveals that Google's STT with GPT-4.1 and Cartesia's TTS outperforms alternatives in both objective quality metrics and user satisfaction scores.",
       "publisher": "arXiv",
       "type": "preprint"
@@ -542,7 +543,7 @@
       "authors": ["Rumi Alexander Elías Calles", "Makai L. Allbert"],
       "date": "2025-03-01",
       "url": "https://arxiv.org/abs/2503.05265",
-      "highlight": "A cross-lingual transformer revealing conceptual alignments between ancient Greek and Latin.",
+      "highlight": "Cross-lingual transformer on ancient Greek and Latin lexicons.",
       "abstract": "A cross-lingual transformer model measuring semantic relationships between ancient Greek and Latin lexicons, revealing significant alignments in philosophical concepts.",
       "publisher": "arXiv",
       "type": "preprint"
@@ -552,7 +553,7 @@
       "authors": ["Rumi Alexander Elías Calles", "et al."],
       "date": "2024-12-10",
       "url": "https://arxiv.org/abs/2412.10427",
-      "highlight": "Abliterator — studying and steering LLM personality through direct activation engineering.",
+      "highlight": "Abliterator. Steering LLM personality through activation engineering.",
       "abstract": "We introduce Abliterator, a framework for studying and manipulating personality traits in large language models (LLMs) through activation engineering.",
       "publisher": "arXiv",
       "type": "preprint"
@@ -570,7 +571,7 @@
     {
       "name": "Vertor",
       "isActive": true,
-      "description": "Collaborative translation workspace — compose, translate, and refine literary text across multiple models.",
+      "description": "Translation workspace. Compose, translate, and refine literary text across models.",
       "highlights": [
         "Sentence-by-sentence streaming across Gemini, Claude, and GPT with paragraph-aware structure",
         "Word-level refinement: literal, natural, and lyrical alternatives",
@@ -582,19 +583,19 @@
     {
       "name": "Etymon.ai",
       "isActive": true,
-      "description": "Etymology engine that decomposes words into morphological roots, with emphasis on classical languages.",
+      "description": "Etymology engine. Morphological roots, with emphasis on classical languages.",
       "highlights": [
         "Morphological analysis for classical languages and semantic change",
         "React Flow graphs of linguistic relationships",
         "Gemini-backed morphological breakdown"
       ],
-      "url": "https://etymon.rumiallbert.com/",
+      "url": "https://etymon-ai.com/",
       "github": ""
     },
     {
       "name": "Memento Vitae",
       "isActive": true,
-      "description": "Life visualization — remaining weeks, time allocation, and mortality-aware accounting.",
+      "description": "Life in remaining weeks. Time allocation and mortality accounting.",
       "highlights": [
         "Life grid of ~4,000 weeks with current-week tracking",
         "Breakdown of how sleep, work, and habits consume remaining time",
@@ -606,7 +607,7 @@
     {
       "name": "Loqui TTS",
       "isActive": true,
-      "description": "Local text-to-speech on Apple Silicon (MLX Audio) — voice cloning, multilingual, no cloud.",
+      "description": "Local TTS on Apple Silicon. Voice cloning, multilingual, no cloud.",
       "highlights": [
         "Voice cloning and 10-language support via Qwen3-TTS",
         "Metal GPU inference with live system monitoring",
@@ -630,7 +631,7 @@
     {
       "name": "Gentleman's Codex",
       "isActive": true,
-      "description": "Interactive guide to men's style — cut, color, and the rules of dressing well.",
+      "description": "Guide to men's style. Cut, color, rules.",
       "highlights": [
         "Four-chapter curriculum with quizzes and style archetype assessment",
         "Outfit builder with compatibility scoring",
@@ -642,7 +643,7 @@
     {
       "name": "ColorLab.ai",
       "isActive": true,
-      "description": "Color analysis from selfies — seasonal palettes and style guidance.",
+      "description": "Color analysis from selfies. Seasonal palettes and style guidance.",
       "highlights": [
         "Selfie analysis on Next.js",
         "Model-backed seasonal palette recommendations",
@@ -654,7 +655,7 @@
     {
       "name": "LLM Abliterator",
       "isActive": true,
-      "description": "Open-source toolkit for steering LLM personality via activation engineering.",
+      "description": "Toolkit for steering LLM personality through activation engineering.",
       "highlights": [
         "Identify and edit personality-related activation vectors",
         "Personality steering with low compute overhead",
@@ -666,7 +667,7 @@
     {
       "name": "Ancient Greek Resources",
       "isActive": true,
-      "description": "Curated repository for Classical Greek — texts, grammar, and lexicography.",
+      "description": "Classical Greek. Texts, grammar, lexicography.",
       "highlights": [
         "Annotated texts, grammar references, and lexicographical tools",
         "Spaced repetition for morphology",

@@ -1,12 +1,25 @@
 ---
 import Section from "../Section.astro";
-
 import { basics } from "@cv";
+
 const { summary } = basics;
 ---
 
 <Section title="About">
-	<p>
-		{summary}
-	</p>
+  <p class="summary">{summary}</p>
 </Section>
+
+<style>
+  .summary {
+    max-width: 62ch;
+    font-size: 1.18rem;
+    line-height: 1.55;
+    color: rgb(var(--color-text-base));
+  }
+
+  @media print {
+    .summary {
+      font-size: 11pt;
+    }
+  }
+</style>

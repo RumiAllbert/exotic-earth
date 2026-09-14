@@ -31,11 +31,16 @@ export default {
         skin: {
           hue: withOpacity("--color"),
           muted: withOpacity("--muted"),
+          lamp: withOpacity("--color-lamp"),
         },
         blue: {
           200: '#BFDBFE',
           800: '#1E40AF',
         },
+      },
+      fontFamily: {
+        display: ["Newsreader", "Georgia", "serif"],
+        serif: ["Newsreader", "Georgia", "serif"],
       },
       ringColor: {
         skin: {

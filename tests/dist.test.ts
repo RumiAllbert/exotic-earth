@@ -31,6 +31,22 @@ describe("built dist (agent endpoints)", () => {
     assert.match(html, /<h2[^>]*>\s*Experience\s*<\/h2>/);
     assert.match(html, /<h2[^>]*>\s*Publications\s*<\/h2>/);
     assert.ok(visibleText(html).length >= 500);
+    const palette = html.split('<ul id="command-results"')[1].split('</ul>')[0];
+    assert.equal((palette.match(/<li/g) ?? []).length, 8);
+    assert.match(palette.split('<li').at(-1)!, /hiring/);
+    assert.match(html, /https:\/\/www.linkedin.com\/in\/rumi-calles\//);
+
+    assert.doesNotMatch(html, /id="news"/);
+    assert.match(html, /aria-label="Page progress"/);
+    const cv = JSON.parse(readFileSync(join(dist, "../cv.json"), "utf8"));
+    assert.equal((html.match(/class="certificate-name"/g) ?? []).length, cv.certificates.length);
+    assert.equal((html.match(/class="abstract-preview"/g) ?? []).length, cv.publications.length);
+    const hero = html.split('<header class="hero')[1].split('</header>')[0];
+    assert.doesNotMatch(hero, /class="(?:role|lede)"/);
+    assert.match(html, /href="https:\/\/etymon-ai.com\/"/);
+    assert.doesNotMatch(html, /πάντες|All human beings by nature/);
+    assert.doesNotMatch(read("index.md"), /## News & appearances/);
+    assert.doesNotMatch(hero, /New York/);
   });
 
   it("404.html includes markdown recovery links", {

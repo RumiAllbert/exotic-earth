@@ -1,98 +1,61 @@
 @tailwind base;
 @layer base {
   :root {
-    --color-text-base: 0, 0, 0;
-    --color-text-muted: 120, 120, 120;
-    --color-text-inverted: 255, 255, 255;
-    --color-fill: 245, 245, 245;
-    --muted: 200, 200, 200;
-    --color: 75, 0, 130;
-    --color-button-accent: 147, 112, 219; // Lavender purple with 30% opacity
-    --color-button-accent-hover: 147, 112, 219; // Lavender purple for hover with 50% opacity
-    --color-button-muted: 230, 225, 235;
-    --color-skill-bubble: 75, 0, 130; // Keep the original purple for skill bubbles
-    --color-command-palette-text: 255, 255, 255; // Keep white for dark mode
-    [data-theme="blue"] {
-      --color-text-base: 15, 23, 42;
-      --color-text-muted: 100, 116, 139;
-      --color-text-inverted: 240, 240, 240;
-      --color-fill: 203, 213, 225;
-      --muted: 148, 163, 184;
+    --color-text-base: 232, 231, 226;
+    --color-text-muted: 148, 147, 140;
+    --color-text-inverted: 16, 16, 16;
+    --color-fill: 16, 16, 16;
+    --muted: 38, 38, 36;
+    --color: 232, 231, 226;
+    --color-lamp: 148, 147, 140;
+    --color-button-accent: 232, 231, 226;
+    --color-button-accent-hover: 232, 231, 226;
+    --color-button-muted: 28, 28, 27;
+    --color-skill-bubble: 232, 231, 226;
+    --color-command-palette-text: 232, 231, 226;
+    --color-date: 148, 147, 140;
+    --color-rule: 232, 231, 226;
+  }
 
-    }
-    [data-theme="red"] {
-      --color-text-base: 28, 25, 23;
-      --color-text-muted: 100, 100, 100;
-      --color-text-inverted: 245, 245, 245;
-      --color-fill: 231, 229, 228;
-      --muted: 220, 220, 220;
-      --color: 239, 68, 68;
-      --color-button-accent: 239, 68, 68;
-      --color-button-accent-hover: 220, 50, 70;
-      --color-button-muted: 245, 245, 245;
-    }
-    [data-theme="green"] {
-      --color-text-base: 40, 40, 40;
-      --color-text-muted: 110, 110, 110;
-      --color-text-inverted: 230, 230, 230;
-      --color-fill: 236, 252, 203;
-      --muted: 189, 220, 147;
-      --color: 101, 163, 13;
-      --color-button-accent: 101, 163, 13;
-      --color-button-accent-hover: 120, 220, 120;
-      --color-button-muted: 211, 235, 173;
-    }
-    [data-theme="cyber"] {
-      --color-text-base: 15, 15, 15;
-      --color-text-muted: 144, 135, 5;
-      --color-text-inverted: 240, 240, 240;
-      --color-fill: 252, 255, 64;
-      --muted: 50, 50, 50;
-      --color: 235, 21, 43;
-      --color-button-accent: 235, 21, 43;
-      --color-button-accent-hover: 0, 185, 255;
-      --color-button-muted: 249, 239, 6;
-    }
-  }
-  
-  .light {
-    --color-text-base: 0, 0, 0;
-    --color-text-muted: 120, 120, 120;
-    --color-text-inverted: 255, 255, 255;
-    --color-fill: 245, 245, 245;
-    --muted: 200, 200, 200;
-    --color: 75, 0, 130;
-    --color-button-accent: 147, 112, 219;
-    --color-button-accent-hover: 147, 112, 219;
-    --color-button-muted: 230, 225, 235;
-    --color-skill-bubble: 75, 0, 130;
-    --color-command-palette-text: 0, 0, 0;
-    --color-date: 120, 120, 120;
-  }
-  
   .dark {
-    --color-text-base: 255, 255, 255;
-    --color-text-muted: 150, 150, 150;
-    --color-text-inverted: 255, 255, 255;
-    --color-fill: 18, 18, 18;
-    --muted: 36, 36, 36;
-    --color: 147, 112, 219;
-    --color-button-accent: 147, 112, 219;
-    --color-button-accent-hover: 147, 112, 219;
-    --color-button-muted: 40, 30, 50;
-    --color-command-palette-text: 255, 255, 255;
-    --color-date: 150, 150, 150;
+    --color-text-base: 232, 231, 226;
+    --color-text-muted: 148, 147, 140;
+    --color-text-inverted: 16, 16, 16;
+    --color-fill: 16, 16, 16;
+    --muted: 38, 38, 36;
+    --color: 232, 231, 226;
+    --color-lamp: 148, 147, 140;
+    --color-button-accent: 232, 231, 226;
+    --color-button-accent-hover: 232, 231, 226;
+    --color-button-muted: 28, 28, 27;
+    --color-skill-bubble: 232, 231, 226;
+    --color-command-palette-text: 232, 231, 226;
+    --color-date: 148, 147, 140;
+    --color-rule: 232, 231, 226;
+  }
+
+  .light {
+    --color-text-base: 18, 18, 17;
+    --color-text-muted: 90, 90, 86;
+    --color-text-inverted: 247, 247, 245;
+    --color-fill: 247, 247, 245;
+    --muted: 226, 226, 222;
+    --color: 18, 18, 17;
+    --color-lamp: 90, 90, 86;
+    --color-button-accent: 18, 18, 17;
+    --color-button-accent-hover: 18, 18, 17;
+    --color-button-muted: 236, 236, 232;
+    --color-skill-bubble: 18, 18, 17;
+    --color-command-palette-text: 18, 18, 17;
+    --color-date: 90, 90, 86;
+    --color-rule: 18, 18, 17;
   }
 }
 
 .text-date {
-  color: rgb(150, 150, 150) !important;
-}
-
-.command-palette {
-  color: rgb(255, 255, 255) !important;
+  color: rgb(var(--color-date));
 }
 
 .command-palette-text {
-  color: rgb(255, 255, 255) !important;
+  color: rgb(var(--color-command-palette-text));
 }
