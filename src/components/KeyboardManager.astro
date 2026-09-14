@@ -161,6 +161,26 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			},
 		},
 		{
+			id: "goto-publications",
+			title: "Go to Publications",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>`,
+			hotkey: "ctrl+W",
+			section: "Navigation",
+			handler: () => {
+				scrollToSection("publications");
+			},
+		},
+		{
+			id: "goto-contact",
+			title: "Go to Contact",
+			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
+			hotkey: "ctrl+M",
+			section: "Navigation",
+			handler: () => {
+				scrollToSection("contact");
+			},
+		},
+		{
 			id: "connect-with-me",
 			title: "Connect with me",
 			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>`,
@@ -176,13 +196,13 @@ const profilesInfo = profiles.map(({ network, url }) => {
 	function scrollToSection(sectionId: string) {
 		const section = document.getElementById(sectionId);
 		if (section) {
-			const yOffset = -60; // Adjust this value to account for any fixed headers
+			const yOffset = -60;
 			const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
 			window.scrollTo({top: y, behavior: 'smooth'});
 		}
 	}
 
-	const footerButtons = document.querySelectorAll(".footer-button, #normal-footer");
+	const footerButtons = document.querySelectorAll(".footer-button, #normal-footer, #nav-cmdk");
 	footerButtons.forEach((button) => {
 		button.addEventListener("click", () => {
 			var event = new KeyboardEvent("keydown", {
@@ -221,64 +241,31 @@ const profilesInfo = profiles.map(({ network, url }) => {
 		}
 	}
 
-	@media (min-width: 601px) {
-		.footer-button {
-			display: none;
-		}
+	#normal-footer {
+		display: none;
 	}
 
-	@media (max-width: 600px) {
-		#normal-footer {
-			display: none;
-		}
+	#floating-palette {
+		display: none;
+	}
 
-		.footer-button {
-			background: #fff;
+	@media (max-width: 720px) {
+		#floating-palette {
+			background: rgb(var(--color-fill));
 			position: fixed;
-			border: 1px solid #eee;
-			right: 10px;
-			bottom: 10px;
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
+			border: 1px solid rgba(var(--color-rule), 0.18);
+			right: 14px;
+			bottom: 14px;
+			width: 46px;
+			height: 46px;
+			border-radius: 4px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
-			transition: transform 0.3s ease;
+			color: rgb(var(--color-text-base));
+			z-index: 30;
 		}
-
-		.footer-button:hover {
-			transform: scale(1.1);
-		}
-	}
-
-	footer {
-		position: fixed;
-		bottom: 10px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: auto;
-		max-width: 80%;
-		padding: 6px 12px;
-		text-align: center;
-		font-size: 0.8rem;
-		border-radius: 16px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-		background-color: rgba(var(--color-button-accent), 0.8);
-		backdrop-filter: blur(8px);
-		-webkit-backdrop-filter: blur(8px);
-
-		animation: slideIn 0.5s ease-out forwards;
-		cursor: pointer;
-		transition: transform 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
-	}
-
-	footer:hover {
-		transform: translateX(-50%) scale(1.05);
-		padding: 8px 14px;
-		font-size: 0.85rem;
 	}
 
 	kbd {

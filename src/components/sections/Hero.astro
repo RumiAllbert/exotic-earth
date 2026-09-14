@@ -1,238 +1,253 @@
 ---
 import { basics } from "@cv";
-import Section from "@/components/Section.astro";
 import Mail from "@/icons/Mail.astro";
 import Phone from "@/icons/Phone.astro";
 import X from "@/icons/X.astro";
 import LinkedIn from "@/icons/LinkedIn.astro";
 import GitHub from "@/icons/GitHub.astro";
-import WorldMap from "@/icons/WorldMap.astro";
 import type { SocialIcon } from "@/types";
 
-const { name, label, image, location, profiles, phone, email } = basics;
+const { name, label, location, profiles, phone, email } = basics;
 const { city, region } = location;
 
 const SOCIAL_ICONS: SocialIcon = {
-	GitHub,
-	LinkedIn,
-	X,
+  GitHub,
+  LinkedIn,
+  X,
 };
 
-const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
-const linkedUrl = linkedInfo?.url;
-
-const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
+const linkedUrl = profiles.find(({ network }) => network === "LinkedIn")?.url;
+const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
 ---
 
-<Section>
-	<div class="flex flex-col-reverse gap-8">
-		<div class="info">
-			<h1>{name}</h1>
-			<p class="label">{label}</p>
-			<div class="flex items-center gap-2 pt-2 text-sm text-skin-muted">
-				<WorldMap />
-				{city}, {region}
-			</div>
-			<footer class="print">
-				{printInfo}
-			</footer>
-			<footer class="no-print">
-				{
-					email && (
-						<div x-data=`{ copyText: '${email}', copyNotification: false, copyToClipboard() { navigator.clipboard.writeText(this.copyText); this.copyNotification = true; let that = this; setTimeout(function(){ that.copyNotification = false; }, 3000); } }` class="relative flex items-center">
-							<div x-show="copyNotification" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-y-2" style="display:none;" class="absolute left-0" x-cloak>
-								<div class="-mt-1.5 flex h-7 -translate-y-full items-center rounded border-r border-green-500 bg-green-500 px-3 text-xs text-white">
-									<span class="!text-white">Copied!</span>
-									<div class="absolute left-0 bottom-0 inline-block h-full translate-x-full translate-y-5 overflow-hidden">
-										<div class="h-3 w-3 origin-center rotate-45 transform border border-transparent bg-green-500" />
-									</div>
-								</div>
-							</div>
-							<button @click="copyToClipboard();" class="group flex h-8 w-9 cursor-pointer items-center justify-center rounded-md text-skin-muted hover:bg-skin-button-accent hover:text-skin-inverted [&>span]:hover:text-skin-inverted">
-								<svg x-show="copyNotification" class="h-4 w-4 stroke-current text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" x-cloak>
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-								<span x-show="!copyNotification">
-									<Mail />
-								</span>
-							</button>
-						</div>
-					)
-				}
-				{
-					phone && (
-						<div x-data=`{ copyText: '${phone}', copyNotification: false, copyToClipboard() { navigator.clipboard.writeText(this.copyText); this.copyNotification = true; let that = this; setTimeout(function(){ that.copyNotification = false; }, 3000); } }` class="relative flex items-center">
-							<div x-show="copyNotification" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-y-2" style="display:none;" class="absolute left-0" x-cloak>
-								<div class="-mt-1.5 flex h-7 -translate-y-full items-center rounded border-r border-green-500 bg-green-500 px-3 text-xs text-white">
-									<span class="!text-white">Copied!</span>
-									<div class="absolute left-0 bottom-0 inline-block h-full translate-x-full translate-y-5 overflow-hidden">
-										<div class="h-3 w-3 origin-center rotate-45 transform border border-transparent bg-green-500" />
-									</div>
-								</div>
-							</div>
-							<button @click="copyToClipboard();" class="group flex h-8 w-9 cursor-pointer items-center justify-center rounded-md text-skin-muted hover:bg-skin-button-accent hover:text-skin-inverted [&>span]:hover:text-skin-inverted">
-								<svg x-show="copyNotification" class="h-4 w-4 stroke-current text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" x-cloak>
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-								<span x-show="!copyNotification">
-									<Phone />
-								</span>
-							</button>
-						</div>
-					)
-				}
-				{
-					profiles.map(({ network, url }) => {
-						const Icon = SOCIAL_ICONS[network];
+<header class="hero hero-animate">
+  <div class="copy">
+    <h1>
+      {
+        name.split(" ").map((word, i) => (
+          <span class:list={[{ "display-italic": i >= 2 }]}>{word} </span>
+        ))
+      }
+    </h1>
 
-						return (
-							<a href={url} title={`Visit ${name} profile on ${network}`} target="_blank" rel="noopener noreferrer">
-								<Icon />
-							</a>
-						);
-					})
-				}
-				<div class="no-print footer-button max-sm:hidden group flex h-8 w-9 cursor-pointer items-center justify-center rounded-md text-skin-hue hover:bg-skin-button-accent hover:text-skin-inverted [&>span]:hover:text-skin-inverted">
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon h-6 w-6 icon-tabler icon-tabler-command"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-						<path d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"></path>
-					</svg>
-				</div>
-			</footer>
-		</div>
-		<figure class="print:hidden w-fit relative tilt-container">
-			<img class="tilt-image relative z-10" src={image} alt={name} />
-			<div class="pointer-events-none absolute -inset-2">
-				<div class="absolute -inset-y-8 right-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-				<div class="absolute -inset-y-8 left-0 w-px bg-skin-hue/50 [mask-image:linear-gradient(to_top,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-				<div class="absolute -inset-x-8 bottom-0 h-px bg-skin-hue/50 [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-				<div class="absolute -inset-x-8 top-0 h-px bg-skin-hue/50 [mask-image:linear-gradient(to_left,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-			</div>
-		</figure>
-	</div>
-</Section>
+    <p class="epigraph" lang="grc">
+      πάντες ἄνθρωποι τοῦ εἰδέναι ὀρέγονται φύσει.
+    </p>
+    <p class="translation">
+      All human beings by nature stretch toward knowing.
+    </p>
+
+    <p class="role">{label}, micro1</p>
+    <p class="lede">I lead RL environments and post-training.</p>
+
+    <p class="place">{city === region ? city : `${city}, ${region}`}</p>
+
+    <ul class="tongues" aria-label="Languages">
+      <li lang="en">English</li>
+      <li lang="es">Español</li>
+      <li lang="zh">中文</li>
+      <li lang="it">Italiano</li>
+      <li lang="la">Latin</li>
+      <li lang="grc">Attic Greek</li>
+    </ul>
+
+    <p class="print">{printInfo}</p>
+    <p class="no-print links">
+      {
+        email && (
+          <a href={`mailto:${email}`} aria-label="Email">
+            <Mail />
+          </a>
+        )
+      }
+      {
+        phone && (
+          <a href={`tel:${phone}`} aria-label="Phone">
+            <Phone />
+          </a>
+        )
+      }
+      {
+        profiles.map(({ network, url }) => {
+          const Icon = SOCIAL_ICONS[network];
+          return (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={network}
+            >
+              <Icon />
+            </a>
+          );
+        })
+      }
+    </p>
+  </div>
+
+  <figure class="portrait">
+    <img
+      src="/me_avatar01.jpg"
+      alt={name}
+      width="360"
+      height="450"
+    />
+  </figure>
+</header>
 
 <style>
-	.info {
-		@apply flex flex-col gap-1 pr-8 print:gap-0 print:pr-0;
-	}
+  .hero {
+    width: min(52rem, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding: 3.5rem 0 2.25rem;
+    display: grid;
+    grid-template-columns: 1fr 5.75rem;
+    gap: 1.25rem 1.5rem;
+    align-items: start;
+    border-bottom: 1px solid rgba(var(--color-rule), 0.1);
+  }
 
-	h1 {
-		@apply text-4xl font-bold print:text-3xl;
-	}
+  .portrait {
+    margin: 0;
+    width: 5.75rem;
+  }
 
-	.label {
-		@apply text-balance text-base text-skin-muted print:text-lg;
-	}
+  .portrait img {
+    display: block;
+    width: 5.75rem;
+    height: 7.2rem;
+    object-fit: cover;
+    object-position: center 18%;
+    filter: saturate(0.9) contrast(1.04);
+  }
 
-	img {
-		@apply aspect-square w-32 rounded-2xl bg-cover;
-	}
+  h1 {
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
 
-	span {
-		@apply flex items-center gap-1 text-xs text-skin-hue ;
-	}
+  .display-italic {
+    font-family: "EB Garamond", Newsreader, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
 
-	footer {
-		@apply mt-2 flex gap-1 text-sm ;
-	}
+  .epigraph {
+    margin: 1.15rem 0 0;
+    font-family: "EB Garamond", Newsreader, Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgb(var(--color-text-muted));
+  }
 
-	footer a, footer button {
-		@apply inline-flex size-8 items-center justify-center rounded-md p-1 transition-all duration-500 ease-linear text-skin-hue hover:bg-skin-button-accent hover:text-skin-inverted;
-	}
+  .translation {
+    margin: 0.2rem 0 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
 
-	@media (width <= 700px) {
-		.container {
-			flex-direction: column-reverse;
-		}
+  .role {
+    margin: 1.35rem 0 0;
+    font-size: 1.05rem;
+    color: rgb(var(--color-text-base));
+  }
 
-		.info {
-			@apply md:items-center md:justify-center pr-0 ;
-		}
+  .lede {
+    margin: 0.45rem 0 0;
+    max-width: 36ch;
+    font-size: 1.05rem;
+    color: rgb(var(--color-text-muted));
+  }
 
-		figure {
-			@apply flex md:items-center md:justify-center;
-		}
+  .place {
+    margin: 0.95rem 0 0;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
 
-		.label {
-			text-wrap: balance;
-		}
+  .tongues {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin: 1.05rem 0 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
 
-		figure {
-			@apply md:mx-auto;
-		}
-	}
+  .links {
+    display: flex;
+    gap: 0.35rem;
+    margin: 1.15rem 0 0;
+    color: rgb(var(--color-text-muted));
+  }
 
-	.tilt-container {
-		perspective: 1000px;
-		transform-style: preserve-3d;
-		position: relative;
-		overflow: visible;
-	}
+  .links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.15rem;
+    height: 2.15rem;
+  }
 
-	.tilt-image {
-		transition: transform 0.1s ease;
-		transform: rotateX(0) rotateY(0);
-		position: relative;
-		z-index: 10;
-	}
+  .links a:hover {
+    color: rgb(var(--color-text-base));
+  }
+
+  .hero-animate {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .hero {
+      grid-template-columns: 1fr 7.25rem;
+      gap: 1.5rem 2rem;
+      padding: 4.25rem 0 2rem;
+    }
+
+    .portrait,
+    .portrait img {
+      width: 7.25rem;
+      height: 9.1rem;
+    }
+  }
+
+  @media print {
+    .hero {
+      width: 100%;
+      padding: 0;
+      animation: none;
+      grid-template-columns: 1fr 5rem;
+    }
+
+    .portrait,
+    .portrait img {
+      width: 5rem;
+      height: 6.25rem;
+    }
+
+    h1 {
+      font-size: 18pt;
+    }
+
+    .epigraph,
+    .translation,
+    .tongues {
+      display: none;
+    }
+  }
 </style>
-
-<script>
-	const select = document.getElementById("themeSwitch") as HTMLSelectElement;
-	const theme = localStorage.getItem("theme");
-
-	if (theme !== null) {
-		select.value = theme;
-	} else {
-		select.value = "light";
-		localStorage.setItem("theme", "light");
-	}
-
-	function updateTheme(value: string) {
-		const theme = value === "system" ? "light" : value; 
-		document.documentElement.classList.remove("light", "dark");
-		document.documentElement.classList.add(theme);
-		localStorage.setItem("theme", value);
-	}
-
-	updateTheme(select.value);
-
-	select.addEventListener("change", (event: Event) => {
-		const select = event.target as HTMLSelectElement;
-		updateTheme(select.value);
-	});
-
-	// Disable dark mode when printing
-	window.addEventListener("beforeprint", () => {
-		document.documentElement.classList.remove("dark");
-	});
-
-	// Restore the theme after printing
-	window.addEventListener("afterprint", () => {
-		if (select.value === "dark" || (select.value === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)) { 
-			document.documentElement.classList.add("dark");
-		}
-	});
-
-	// Add tilt effect
-	const tiltContainer = document.querySelector('.tilt-container') as HTMLElement;
-	const tiltImage = document.querySelector('.tilt-image') as HTMLElement;
-
-	if (tiltContainer && tiltImage) {
-		tiltContainer.addEventListener('mousemove', (e: MouseEvent) => {
-			const { left, top, width, height } = tiltContainer.getBoundingClientRect();
-			const x = (e.clientX - left) / width;
-			const y = (e.clientY - top) / height;
-			
-			const tiltX = (y - 0.5) * 20;
-			const tiltY = (x - 0.5) * -20;
-
-			tiltImage.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-		});
-
-		tiltContainer.addEventListener('mouseleave', () => {
-			tiltImage.style.transform = 'rotateX(0) rotateY(0)';
-		});
-	}
-</script>

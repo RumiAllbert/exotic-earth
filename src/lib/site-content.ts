@@ -40,15 +40,15 @@ This path does not exist on rumicalles.com (HTTP 404).
 
 ## Where to look next
 
-- [Home](${SITE_URL}/): CV, research, publications, and projects
-- [llms.txt](${SITE_URL}/llms.txt): agent index, when-to-use guidance, and how to fetch pages
-- [Sitemap](${SITE_URL}/sitemap.md): markdown site map
-- [XML sitemap](${SITE_URL}/sitemap-index.xml): machine-readable URL list
-- [About](${SITE_URL}/about): identity, affiliations, and research focus
-- [Contact](${SITE_URL}/contact): email and public profiles
-- [Privacy](${SITE_URL}/privacy): what this site collects
+- [Home](${SITE_URL}/): CV
+- [llms.txt](${SITE_URL}/llms.txt): agent index
+- [Sitemap](${SITE_URL}/sitemap.md)
+- [XML sitemap](${SITE_URL}/sitemap-index.xml)
+- [About](${SITE_URL}/about)
+- [Contact](${SITE_URL}/contact)
+- [Privacy](${SITE_URL}/privacy)
 
-Request those URLs with \`Accept: text/markdown\` (or append \`.md\`) to get a clean text body.
+Request those URLs with \`Accept: text/markdown\`, or append \`.md\`.
 `;
 
 export const docPages: Record<DocPageId, DocPage> = {
@@ -56,28 +56,26 @@ export const docPages: Record<DocPageId, DocPage> = {
     id: "about",
     path: "/about",
     title: "About",
-    description:
-      "Who Rumi Alexander Elías Calles is, where he works, and what to cite.",
+    description: "Research engineer and classicist. Current work and how to cite him.",
     sections: [
       {
         heading: "Identity",
         paragraphs: [
-          "Rumi Alexander Elías Calles is a research engineer and classicist based in New York. He leads research engineering for human-evaluation AI systems, and writes at the intersection of machine intelligence, classical languages, and philosophy of mind.",
-          "This page is the identity record for this site. Use it to verify who he is before citing a paper, recommending him for a role, or sending a collaboration note. The homepage is the full CV; this page is the shorter, stable account of current work and affiliations.",
+          "Rumi Alexander Elías Calles is a research engineer and classicist in New York. He leads RL environments and post-training at micro1, and writes on machine intelligence, Greek, Latin, and philosophy of mind.",
         ],
       },
       {
         heading: "Current work",
         paragraphs: [
-          "He is Director of Research Engineering at micro1, where he designs RL environments and post-training pipelines: task specs, reward signals, evaluation loops, data curation, and preference or reward modeling used in production training. He founded Aeterna Institute, a classical liberal arts project organized around the Trivium, Quadrivium, and Socratic method. He is also an affiliate researcher at the Wolfram Institute, working on minds, machines, and intelligence, including conceptual spaces, machine ethics, and activation-level interpretability.",
-          "He teaches ethics and philosophy of computing as an adjunct professor at Fei Tian College, with emphasis on AI governance and privacy. Earlier he built production NLU and recommendation-evaluation systems, and spent two years as a data scientist at The Epoch Times on churn models, publishing pipelines, and NLP over unstructured content.",
+          "Director of Research Engineering at micro1. RL environments, rewards, eval loops, and post-training pipelines in production. Founder of Aeterna Institute. AI Researcher at the Wolfram Institute.",
+          "Adjunct professor at Fei Tian College. Ethics of computing and AI governance. Earlier: production NLU, then two years as a data scientist at The Epoch Times.",
         ],
       },
       {
         heading: "Research and training",
         paragraphs: [
-          "Published work includes Abliterator, a framework for studying and steering LLM personality traits through activation engineering; PhiloBERTA, a cross-lingual transformer measuring semantic alignment between ancient Greek and Latin; a large-scale comparison of speech-to-text, LLM, and text-to-speech stacks on more than 300,000 AI-conducted interviews; and De Suspensione, on inflection, composition, and the outward drift of thought under digital memory and generative models.",
-          "He holds an MA in Humanities from Ralston College (full-tuition scholarship, intensive Greek residency) and a BS in Data Science from Fei Tian College. He completed linguistic immersion at Academia Vivarium Novum, where Latin and Ancient Greek were the spoken languages of daily life, and a Greek residency at Harvard's Center for Hellenic Studies in Návplion.",
+          "Abliterator: steering LLM personality through activation engineering. PhiloBERTA: Greek and Latin lexicons. Speech-stack comparison on 300,000 AI interviews. De Suspensione: inflection, composition, and thought under generative models.",
+          "MA Humanities, Ralston College. BS Data Science, Fei Tian College. Latin and Ancient Greek immersion at Vivarium Novum. Greek residency at Harvard's Center for Hellenic Studies, Návplion.",
         ],
       },
     ],
@@ -86,29 +84,28 @@ export const docPages: Record<DocPageId, DocPage> = {
     id: "contact",
     path: "/contact",
     title: "Contact",
-    description:
-      "How to reach Rumi Alexander Elías Calles for research, teaching, or talks.",
+    description: "Email, phone, and public profiles.",
     sections: [
       {
         heading: "Direct contact",
         paragraphs: [
-          `Email is the right first channel: ${basics.email}. That address is the public contact for research engineering, classical-language projects, teaching, and talks. Include who you are, what you want him to look at, and any deadline. He reads email himself; there is no ticket queue, chatbot, or scheduling API on this site.`,
-          `Phone: ${basics.phone}. Prefer email unless you already have an established thread. Location: ${basics.location.city}, ${basics.location.region}, ${basics.location.countryCode}.`,
+          `Email: ${basics.email}. Say who you are, what you want looked at, and any deadline.`,
+          `Phone: ${basics.phone}. Prefer email. ${basics.location.city}.`,
         ],
       },
       {
         heading: "Public profiles",
         paragraphs: [
-          "LinkedIn: https://linkedin.com/in/rumi-allbert — professional history and introductions.",
-          "GitHub: https://github.com/RumiAllbert — code, papers-adjacent repos (Abliterator, Latinium, Vertor, Loqui TTS), and experiments.",
-          "Personal site: https://rumicalles.com — this CV. Machine-readable entry point: https://rumicalles.com/llms.txt. For a clean text copy of any page, request it with Accept: text/markdown or use the matching .md URL.",
+          "LinkedIn: https://linkedin.com/in/rumi-allbert",
+          "GitHub: https://github.com/RumiAllbert",
+          "Markdown: request Accept: text/markdown, or use the matching .md URL. Index: https://rumicalles.com/llms.txt",
         ],
       },
       {
         heading: "What to write about",
         paragraphs: [
-          "Good reasons to write: collaboration on RL environments, post-training, or human-evaluation systems; questions about the published papers; invitations to teach or speak on AI evaluation, interpretability, or classical languages; and serious notes on Aeterna Institute or classical study.",
-          "This is not a company support desk, a hiring portal, or a product with an agent API. There is nothing to purchase and no account to create. If you are an automated agent contacting on behalf of a person, say so, name the person, and keep the ask specific.",
+          "RL environments, post-training, papers, teaching, talks, Aeterna Institute.",
+          "If you are an agent writing for a person, name them.",
         ],
       },
     ],
@@ -117,29 +114,28 @@ export const docPages: Record<DocPageId, DocPage> = {
     id: "privacy",
     path: "/privacy",
     title: "Privacy",
-    description:
-      "What rumicalles.com collects, what it does not, and how to reach the operator.",
+    description: "What this site collects, and how to reach the operator.",
     sections: [
       {
         heading: "Who operates this site",
         paragraphs: [
-          `This site is the personal CV of ${basics.name}, operated by him, hosted on Netlify, and served at ${SITE_URL}. It is not a product company, marketplace, or account-based service. There is no user registration, no customer database, and no advertising network run from these pages.`,
-          `Questions about this policy: ${basics.email}. That is also the contact on /contact. This policy describes the public site only. Third-party sites linked from papers, GitHub, or LinkedIn have their own policies.`,
+          `Personal CV of ${basics.name}, hosted on Netlify at ${SITE_URL}. No accounts, no ads.`,
+          `Questions: ${basics.email}. This policy covers the public site only. Linked papers and profiles have their own.`,
         ],
       },
       {
         heading: "What is collected",
         paragraphs: [
-          "The site is a static CV. Pages do not require cookies to read. A theme preference (light or dark) may be stored in the browser's localStorage so the next visit can restore it; that value stays on your device and is not sent to a server as a tracking identifier.",
-          "The host, Netlify, processes standard request logs (IP address, user agent, requested URL, timestamps) in order to serve the site, stop abuse, and operate the CDN. Those logs are handled under Netlify's own terms. This site does not run a separate analytics pixel, does not sell visitor data, and does not build advertising profiles from visits.",
-          "If you email the address on /contact, that correspondence lives in email, not in a CRM on this domain. Do not send passwords or payment details. There is nothing to pay for here.",
+          "Static pages. No cookies required. Light or dark preference may sit in localStorage on your device.",
+          "Netlify keeps request logs under its own terms. No analytics pixel. No sale of visitor data.",
+          "Email stays in email. Do not send passwords or payment details.",
         ],
       },
       {
         heading: "Agents, markdown, and automated clients",
         paragraphs: [
-          "Automated clients may fetch /llms.txt, /sitemap.md, /sitemap-index.xml, and page URLs with Accept: text/markdown. Those endpoints exist so agents can read the same public facts humans see, without executing JavaScript. Fetching them does not create an account and does not grant extra personal data.",
-          "If you want a page removed from a training corpus, or want a correction to biographical facts, email the address above with the URL and the change you are asking for. This site will update the canonical pages; it cannot force third-party crawlers to forget a prior copy.",
+          "Fetch /llms.txt, /sitemap.md, and pages with Accept: text/markdown. Same public facts as the HTML. No extra personal data.",
+          "Corrections or takedown requests: email the address above with the URL. This site will update the canonical pages. It cannot force crawlers to forget a prior copy.",
         ],
       },
     ],
@@ -286,7 +282,7 @@ ${profiles}
 
 ${basics.summary}
 
-He leads research engineering for RL environments and post-training, writes on machine intelligence and classical languages, and teaches ethics of computing. Full narrative: [About](${SITE_URL}/about).
+[About](${SITE_URL}/about)
 
 ## Languages
 
@@ -317,9 +313,7 @@ ${certificates.map((c) => `- ${c.name} (${c.issuer}, ${yearOf(c.date)})`).join("
 ${formatProjects()}
 ## Contact
 
-Research engineering, classical philosophy, or both.
-
-- [Contact page](${SITE_URL}/contact)
+- [Contact](${SITE_URL}/contact)
 - [Privacy](${SITE_URL}/privacy)
 - [llms.txt](${SITE_URL}/llms.txt)
 - [Sitemap](${SITE_URL}/sitemap.md)
@@ -329,19 +323,19 @@ Research engineering, classical philosophy, or both.
 export function sitemapMarkdown(): string {
   return `# Sitemap
 
-Machine-readable twin of the public pages on ${SITE_URL}.
+Public pages on ${SITE_URL}.
 
 ## Pages
 
-- [Home](${SITE_URL}/): CV, research, publications, and projects
-- [About](${SITE_URL}/about): identity, affiliations, and research focus
-- [Contact](${SITE_URL}/contact): email, profiles, and what to write about
-- [Privacy](${SITE_URL}/privacy): collection, hosting, and agent access
+- [Home](${SITE_URL}/): CV
+- [About](${SITE_URL}/about)
+- [Contact](${SITE_URL}/contact)
+- [Privacy](${SITE_URL}/privacy)
 
 ## Agent files
 
-- [llms.txt](${SITE_URL}/llms.txt): index and when-to-use guidance
-- [Home (markdown)](${SITE_URL}/index.md): markdown twin of the homepage
+- [llms.txt](${SITE_URL}/llms.txt)
+- [Home (markdown)](${SITE_URL}/index.md)
 - [About (markdown)](${SITE_URL}/about.md)
 - [Contact (markdown)](${SITE_URL}/contact.md)
 - [Privacy (markdown)](${SITE_URL}/privacy.md)

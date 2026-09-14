@@ -1,8 +1,8 @@
 ---
 import { basics } from "@cv";
 import Vengeance from "@/layouts/Vengeance.astro";
-import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import KeyboardManager from "../components/KeyboardManager.astro";
+import SiteNav from "@/components/SiteNav.astro";
 
 interface Props {
   title: string;
@@ -10,9 +10,13 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description = basics.summary, noindex = false } = Astro.props;
+const {
+  title,
+  description = `${basics.label}. I lead RL environments and post-training. ${basics.summary}`,
+  noindex = false,
+} = Astro.props;
 
-const { image, theme, summary } = basics;
+const { theme, summary } = basics;
 const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
 ---
 
@@ -25,25 +29,26 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
 
-    <!-- Preload favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-
-    <!-- Preload og:image -->
     <link
       rel="preload"
       href={`${siteUrl}/og-image.png`}
       as="image"
       type="image/png"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl + Astro.url.pathname} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={summary} />
     <meta property="og:image" content={`${siteUrl}/og-image.png`} />
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={new URL(siteUrl).hostname} />
     <meta property="twitter:url" content={siteUrl} />
@@ -51,10 +56,8 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
     <meta property="twitter:description" content={summary} />
     <meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
 
-    {/* Canonical URL */}
     <link rel="canonical" href={siteUrl + Astro.url.pathname} />
 
-    {/* JSON-LD Structured Data for Person */}
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -82,77 +85,79 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
           "Data Science",
           "Python",
           "PyTorch",
-          "TensorFlow",
-          "Hugging Face",
           "AI Ethics",
-          "Mathematica",
-          "Software Engineering",
-          "Docker"
-        ], 
+          "Attic Greek",
+          "Latin",
+          "Philosophy of Mind",
+        ],
       })}
     />
 
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Itim"
-    />
-
     <link rel="stylesheet" href="/themes/themes.css" />
-
     <Vengeance />
     <script is:inline>
-      // Immediately set initial theme to prevent flash
-      const theme = localStorage.getItem("theme") || "light";
-      document.documentElement.classList.add(theme);
+      (function () {
+        var theme = localStorage.getItem("theme");
+        document.documentElement.classList.add(
+          theme === "light" ? "light" : "dark",
+        );
+      })();
     </script>
-
-    <!-- Add this to ensure content is visible even if JS fails -->
     <noscript>
       <style>
         body {
           visibility: visible !important;
         }
-        .dark {
-          display: none;
-        }
-        .light {
-          display: block;
-        }
-        #loader {
-          display: none !important;
-        }
-        #main-content,
-        .scroll-reveal {
+        .hero-animate,
+        .hero-animate * {
           opacity: 1 !important;
-          filter: none !important;
           transform: none !important;
-        }
-        [x-cloak] {
-          display: block !important;
+          filter: none !important;
+          animation: none !important;
         }
       </style>
     </noscript>
   </head>
-  <body data-theme={theme} class="relative bg-skin-fill">
-    <div class="absolute top-0 -z-10 h-full w-full print:hidden">
-      <div
-        class="absolute bottom-auto left-[20%] right-auto top-0 h-[200px] w-[200px] -translate-x-[30%] translate-y-[20%] rounded-full bg-skin-hue/10 blur-[80px] invert-0 dark:bg-white/5"
-      >
-      </div>
-    </div>
+  <body data-theme={theme} class="relative bg-skin-fill text-skin-base">
+    <div class="grain" aria-hidden="true"></div>
+    <SiteNav />
     <slot />
     <KeyboardManager />
-    <ThemeSwitch />
+    <script
+      is:inline
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      is:inline
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <style is:global>
+      html {
+        scroll-behavior: smooth;
+      }
+
       body,
       figure {
         margin: 0;
         padding: 0;
       }
 
+      body {
+        font-family: Newsreader, Georgia, serif;
+        font-size: 1.05rem;
+        line-height: 1.55;
+        overflow-x: hidden;
+        background: rgb(var(--color-fill));
+        color: rgb(var(--color-text-base));
+      }
+
       a {
         text-decoration: none;
+        color: inherit;
       }
+
       ul {
         list-style: none;
         margin: 0;
@@ -169,41 +174,63 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
       h2,
       h3,
       h4 {
-        @apply text-skin-base;
         margin: 0;
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          Oxygen,
-          Ubuntu,
-          Cantarell,
-          "Open Sans",
-          "Helvetica Neue",
-          sans-serif;
+        color: rgb(var(--color-text-base));
+        font-family: Newsreader, Georgia, serif;
+        font-weight: 500;
       }
 
       p {
-        @apply text-sm text-skin-muted;
-        line-height: 1.5;
+        color: rgb(var(--color-text-muted));
+        line-height: 1.6;
         text-wrap: pretty;
+      }
+
+      ::selection {
+        background: rgba(var(--color), 0.28);
+        color: rgb(var(--color-text-base));
+      }
+
+      :focus-visible {
+        outline: 2px solid rgb(var(--color));
+        outline-offset: 3px;
       }
 
       .print {
         display: none !important;
       }
 
+      .grain {
+        pointer-events: none;
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        opacity: 0.04;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+      }
+
+      .light .grain {
+        opacity: 0.03;
+        mix-blend-mode: multiply;
+      }
+
+      [x-cloak] {
+        display: none !important;
+      }
+
       .dev * {
         @apply border border-red-500/50 bg-red-500/5;
       }
+
       #hotkeypad [data-backdrop] {
         @apply !bg-zinc-800 !opacity-80;
       }
 
       @media print {
-        .no-print {
+        .no-print,
+        .grain,
+        .site-nav {
           display: none !important;
         }
 
@@ -218,524 +245,27 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
         article {
           break-inside: avoid;
         }
-      }
 
-      .core-competency {
-        @apply bg-blue-200 text-base text-blue-800;
-      }
-
-      :global(.dark) .core-competency {
-        @apply bg-blue-800 text-blue-200;
-      }
-
-      #loader {
-        transition: opacity 0.3s ease-out;
-      }
-
-      #loader.fade-out {
-        opacity: 0;
-      }
-
-      .hypergraph-loader {
-        animation: rotate 10s linear infinite;
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      #main-content {
-        opacity: 0;
-        transition:
-          opacity 0.3s ease-out,
-          filter 0.3s ease-out;
-      }
-
-      /* Section scroll reveal animations */
-      .scroll-reveal {
-        opacity: 0;
-        filter: blur(8px);
-        transform: translate3d(0, 18px, 0) scale(0.985);
-        transition:
-          opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-          filter 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-          transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: opacity, filter, transform;
-      }
-      .scroll-reveal.visible {
-        opacity: 1;
-        filter: blur(0);
-        transform: translate3d(0, 0, 0) scale(1);
-        will-change: auto;
-      }
-
-      @media print {
-        .scroll-reveal {
-          opacity: 1 !important;
-          filter: none !important;
-          transform: none !important;
+        body {
+          background: white;
+          color: black;
+          font-size: 11pt;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .scroll-reveal {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .hero-animate,
+        .hero-animate * {
+          animation: none !important;
           opacity: 1 !important;
-          filter: none !important;
           transform: none !important;
-          transition: none !important;
-          will-change: auto !important;
-        }
-      }
-
-      @media (scripting: none) {
-        #loader {
-          display: none !important;
-        }
-        #main-content,
-        .scroll-reveal {
-          opacity: 1 !important;
           filter: none !important;
-          transform: none !important;
-        }
-      }
-
-      body {
-        overflow-x: hidden;
-      }
-    </style>
-    <script>
-      function createGeometricPattern() {
-        const svg = document.querySelector(
-          ".hypergraph-loader"
-        ) as SVGSVGElement;
-
-        // We'll set these values after generating the pattern
-        let minX = Infinity,
-          minY = Infinity,
-          maxX = -Infinity,
-          maxY = -Infinity;
-
-        const centerX = 150; // Increased center coordinates
-        const centerY = 150;
-        const numShapes = 4;
-        const minPoints = 3;
-        const maxPoints = 7;
-        const nodes: Array<{ x: number; y: number }> = [];
-        const edges: Array<{
-          path: SVGPathElement;
-          start: { x: number; y: number };
-          end: { x: number; y: number };
-          type: "curve" | "line";
-        }> = [];
-
-        // Create gradient
-        const gradient = document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "linearGradient"
-        );
-        gradient.setAttribute("id", "nodeGradient");
-        gradient.innerHTML = `
-					<stop offset="0%" stop-color="rgba(168, 85, 247, 0.9)" />
-					<stop offset="50%" stop-color="rgba(139, 92, 246, 0.9)" />
-					<stop offset="100%" stop-color="rgba(107, 33, 168, 0.9)" />
-				`;
-        svg.appendChild(gradient);
-
-        // Add glow effect
-        const defs = document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "defs"
-        );
-        defs.innerHTML = `
-					<filter id="glow">
-						<feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-						<feMerge>
-							<feMergeNode in="coloredBlur"/>
-							<feMergeNode in="SourceGraphic"/>
-						</feMerge>
-					</filter>
-				`;
-        svg.appendChild(defs);
-
-        // Generate shapes
-        for (let s = 0; s < numShapes; s++) {
-          const radius = 30 + s * 25; // Increased radius for larger pattern
-          const numPoints =
-            Math.floor(Math.random() * (maxPoints - minPoints + 1)) + minPoints;
-          const shapeNodes: Array<{ x: number; y: number }> = [];
-
-          for (let i = 0; i < numPoints; i++) {
-            const angle = (i / numPoints) * Math.PI * 2;
-            const randomOffset = (Math.random() - 0.5) * 10;
-            const x = centerX + Math.cos(angle) * radius + randomOffset;
-            const y = centerY + Math.sin(angle) * radius + randomOffset;
-            shapeNodes.push({ x, y });
-            addNode(svg, x, y);
-
-            // Update min and max coordinates
-            minX = Math.min(minX, x);
-            minY = Math.min(minY, y);
-            maxX = Math.max(maxX, x);
-            maxY = Math.max(maxY, y);
-          }
-
-          // Connect nodes to form the shape
-          for (let i = 0; i < numPoints; i++) {
-            const start = shapeNodes[i];
-            const end = shapeNodes[(i + 1) % numPoints];
-            addEdge(svg, start, end, edges, "line"); // Use straight lines for shape outlines
-          }
-
-          nodes.push(...shapeNodes);
-        }
-
-        // Add cross-connections with curves
-        const maxCrossConnections = Math.floor(nodes.length * 0.4);
-        let crossConnections = 0;
-        while (crossConnections < maxCrossConnections) {
-          const i = Math.floor(Math.random() * nodes.length);
-          const j = Math.floor(Math.random() * nodes.length);
-          if (i !== j && !edgeExists(edges, nodes[i], nodes[j])) {
-            addEdge(svg, nodes[i], nodes[j], edges, "curve"); // Use curves for cross-connections
-            crossConnections++;
-          }
-        }
-
-        // Add padding to the viewBox
-        const padding = 20;
-        const viewBoxWidth = maxX - minX + padding * 2;
-        const viewBoxHeight = maxY - minY + padding * 2;
-        svg.setAttribute(
-          "viewBox",
-          `${minX - padding} ${minY - padding} ${viewBoxWidth} ${viewBoxHeight}`
-        );
-
-        // Set width and height to maintain aspect ratio
-        const maxDimension = Math.max(viewBoxWidth, viewBoxHeight);
-        svg.setAttribute("width", maxDimension.toString());
-        svg.setAttribute("height", maxDimension.toString());
-
-        return { nodes, edges };
-      }
-
-      function addNode(svg: SVGSVGElement, x: number, y: number) {
-        const circle = document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "circle"
-        );
-        circle.setAttribute("cx", x.toString());
-        circle.setAttribute("cy", y.toString());
-        circle.setAttribute("r", "3"); // Keep node size consistent
-        circle.setAttribute("fill", "url(#nodeGradient)");
-        circle.setAttribute("filter", "url(#glow)");
-        svg.appendChild(circle);
-      }
-
-      function addEdge(
-        svg: SVGSVGElement,
-        start: { x: number; y: number },
-        end: { x: number; y: number },
-        edges: Array<{
-          path: SVGPathElement;
-          start: { x: number; y: number };
-          end: { x: number; y: number };
-          type: "curve" | "line";
-        }>,
-        type: "curve" | "line"
-      ) {
-        const path = document.createElementNS(
-          "http://www.w3.org/2000/svg",
-          "path"
-        );
-        let d;
-        if (type === "curve") {
-          const midX = (start.x + end.x) / 2;
-          const midY = (start.y + end.y) / 2;
-          const ctrlX = midX + (Math.random() - 0.5) * 50;
-          const ctrlY = midY + (Math.random() - 0.5) * 50;
-          d = `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`;
-        } else {
-          d = `M${start.x},${start.y} L${end.x},${end.y}`;
-        }
-        path.setAttribute("d", d);
-        path.setAttribute("stroke", "rgba(168, 85, 247, 0.2)");
-        path.setAttribute("stroke-width", "1");
-        path.setAttribute("fill", "none");
-        svg.appendChild(path);
-        edges.push({ path, start, end, type });
-      }
-
-      function edgeExists(
-        edges: Array<{
-          start: { x: number; y: number };
-          end: { x: number; y: number };
-        }>,
-        start: { x: number; y: number },
-        end: { x: number; y: number }
-      ) {
-        return edges.some(
-          (edge) =>
-            (edge.start.x === start.x &&
-              edge.start.y === start.y &&
-              edge.end.x === end.x &&
-              edge.end.y === end.y) ||
-            (edge.start.x === end.x &&
-              edge.start.y === end.y &&
-              edge.end.x === start.x &&
-              edge.end.y === start.y)
-        );
-      }
-
-      function animateGeometricPattern(
-        nodes: ReturnType<typeof createGeometricPattern>["nodes"],
-        edges: ReturnType<typeof createGeometricPattern>["edges"]
-      ) {
-        let time = 0;
-        function update() {
-          time += 0.016;
-
-          edges.forEach((edge, i) => {
-            const opacity = 0.2 + Math.sin(time * 3 + i * 0.2) * 0.1;
-            edge.path.setAttribute("stroke", `rgba(168, 85, 247, ${opacity})`);
-
-            if (edge.type === "curve") {
-              // Animate only curved paths
-              const start = edge.start;
-              const end = edge.end;
-              const midX = (start.x + end.x) / 2;
-              const midY = (start.y + end.y) / 2;
-              const ctrlX = midX + Math.sin(time * 2 + i) * 25;
-              const ctrlY = midY + Math.cos(time * 2 + i) * 25;
-              edge.path.setAttribute(
-                "d",
-                `M${start.x},${start.y} Q${ctrlX},${ctrlY} ${end.x},${end.y}`
-              );
-            }
-          });
-
-          requestAnimationFrame(update);
-        }
-
-        update();
-      }
-
-      function animateLoader(
-        nodes: ReturnType<typeof createGeometricPattern>["nodes"],
-        edges: ReturnType<typeof createGeometricPattern>["edges"]
-      ) {
-        const minDuration = 1000;
-        const maxDuration = 1500;
-        const duration =
-          Math.random() * (maxDuration - minDuration) + minDuration;
-        const interval = 50;
-        const steps = duration / interval;
-        let currentStep = 0;
-
-        disableScroll();
-
-        const animationInterval = setInterval(() => {
-          currentStep++;
-          const progress = currentStep / steps;
-
-          edges.forEach((edge, index) => {
-            if (index / edges.length < progress) {
-              edge.path.setAttribute("stroke", "rgba(107, 33, 168, 1)");
-              edge.path.setAttribute("stroke-width", "4");
-              edge.path.setAttribute("filter", "url(#glow)");
-            }
-          });
-
-          if (progress >= 1) {
-            clearInterval(animationInterval);
-            convergenceAnimation(nodes, edges);
-          }
-        }, interval);
-      }
-
-      function convergenceAnimation(
-        nodes: ReturnType<typeof createGeometricPattern>["nodes"],
-        edges: ReturnType<typeof createGeometricPattern>["edges"]
-      ) {
-        // Calculate the true center of the pattern
-        let sumX = 0,
-          sumY = 0;
-        nodes.forEach((node) => {
-          sumX += node.x;
-          sumY += node.y;
-        });
-        const centerX = sumX / nodes.length;
-        const centerY = sumY / nodes.length;
-
-        const duration = 500;
-        const fps = 60;
-        const totalFrames = duration / (1000 / fps);
-        let currentFrame = 0;
-
-        const animationInterval = setInterval(() => {
-          currentFrame++;
-          const progress = currentFrame / totalFrames;
-
-          nodes.forEach((node) => {
-            node.x = node.x + (centerX - node.x) * progress;
-            node.y = node.y + (centerY - node.y) * progress;
-          });
-
-          const circles = document.querySelectorAll(
-            ".hypergraph-loader circle"
-          );
-          circles.forEach((circle, i) => {
-            circle.setAttribute("cx", nodes[i].x.toString());
-            circle.setAttribute("cy", nodes[i].y.toString());
-            circle.setAttribute("opacity", (1 - progress).toString());
-          });
-
-          edges.forEach((edge) => {
-            edge.path.setAttribute(
-              "d",
-              `M${edge.start.x},${edge.start.y} L${edge.end.x},${edge.end.y}`
-            );
-            edge.path.setAttribute("opacity", (1 - progress).toString());
-          });
-
-          if (progress >= 1) {
-            clearInterval(animationInterval);
-            finalizeLoading();
-          }
-        }, 1000 / fps);
-      }
-
-      function enableScroll() {
-        document.body.style.overflow = "";
-        document.body.style.height = "";
-      }
-
-      function disableScroll() {
-        document.body.style.overflow = "hidden";
-        document.body.style.height = "100vh";
-      }
-
-      function initializeLoader() {
-        const loader = document.getElementById("loader");
-        const mainContent = document.getElementById("main-content");
-        const commandPalette = document.getElementById("hotkeypad");
-
-        if (loader && mainContent && commandPalette) {
-          loader.style.display = "flex";
-          loader.style.zIndex = "1000";
-          mainContent.style.filter = "blur(5px)";
-          mainContent.style.opacity = "0.5";
-          commandPalette.style.display = "none";
-        }
-
-        disableScroll();
-      }
-
-      function finalizeLoading() {
-        const loader = document.getElementById("loader");
-        const mainContent = document.getElementById("main-content");
-        const commandPalette = document.getElementById("hotkeypad");
-
-        if (loader && mainContent && commandPalette) {
-          loader.style.opacity = "0";
-          mainContent.style.filter = "none";
-          mainContent.style.opacity = "1";
-
-          setTimeout(() => {
-            loader.style.display = "none";
-            commandPalette.style.display = "block";
-            enableScroll();
-          }, 200);
-        }
-      }
-
-      const LOADER_STORAGE_KEY = "loaderShownAt";
-      const LOADER_INTERVAL_MS = 6 * 60 * 60 * 1000;
-
-      function shouldShowLoader() {
-        try {
-          const last = localStorage.getItem(LOADER_STORAGE_KEY);
-          if (!last) return true;
-          const lastTime = parseInt(last, 10);
-          if (Number.isNaN(lastTime)) return true;
-          return Date.now() - lastTime >= LOADER_INTERVAL_MS;
-        } catch {
-          return true;
-        }
-      }
-
-      function skipLoader() {
-        const loader = document.getElementById("loader");
-        const mainContent = document.getElementById("main-content");
-        if (loader) loader.style.display = "none";
-        if (mainContent) mainContent.style.opacity = "1";
-        enableScroll();
-      }
-
-      window.addEventListener("load", () => {
-        if (shouldShowLoader()) {
-          try {
-            localStorage.setItem(LOADER_STORAGE_KEY, Date.now().toString());
-          } catch {}
-          initializeLoader();
-          const { nodes, edges } = createGeometricPattern();
-          animateGeometricPattern(nodes, edges);
-          animateLoader(nodes, edges);
-        } else {
-          skipLoader();
-        }
-
-        // Section scroll reveal
-        const revealElements = document.querySelectorAll('.scroll-reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const el = entry.target as HTMLElement;
-              const delay = el.dataset.revealDelay || '0';
-              setTimeout(() => el.classList.add('visible'), parseInt(delay));
-              revealObserver.unobserve(el);
-            }
-          });
-        }, { threshold: 0.08 });
-        revealElements.forEach(el => revealObserver.observe(el));
-      });
-    </script>
-    <style>
-      #loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(var(--color-fill-rgb), 0.7);
-        backdrop-filter: blur(5px);
-        z-index: 1000;
-        transition: opacity 0.3s ease-out;
-      }
-
-      .hypergraph-loader {
-        max-width: 100%;
-        max-height: 100vh;
-        animation: rotate 30s linear infinite;
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
         }
       }
     </style>
-
-
   </body>
 </html>

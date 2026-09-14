@@ -7,101 +7,47 @@ type IconMap = {
   [key: string]: string;
 };
 
-export const iconMap = {
+export const iconMap: IconMap = {
   javascript: "simple-icons:javascript",
-  php: "simple-icons:php",
   python: "simple-icons:python",
   react: "simple-icons:react",
-  nodejs: "simple-icons:nodedotjs",
   typescript: "simple-icons:typescript",
-  apachesuperset: "simple-icons:apachesuperset",
-  html: "simple-icons:html5",
-  css: "simple-icons:css3",
-  ollama: "simple-icons:ollama",
-  plotly: "simple-icons:plotly",
-  fastapi: "simple-icons:fastapi",
-  qgis: "simple-icons:qgis",
-  "node.js": "simple-icons:nodedotjs",
-  wordpress: "simple-icons:wordpress",
-  sass: "simple-icons:sass",
-  git: "simple-icons:git",
-  github: "simple-icons:github",
-  gitlab: "simple-icons:gitlab",
   docker: "simple-icons:docker",
   kubernetes: "simple-icons:kubernetes",
-  hive: "simple-icons:apachehive",
+  git: "simple-icons:git",
+  github: "simple-icons:github",
   aws: "simple-icons:amazonaws",
-  azure: "simple-icons:microsoftazure",
-  gcp: "simple-icons:googlecloud",
-  mysql: "simple-icons:mysql",
-  postgresql: "simple-icons:postgresql",
-  mongodb: "simple-icons:mongodb",
-  redis: "simple-icons:redis",
-  graphql: "simple-icons:graphql",
-  rest: "simple-icons:openapiinitiative",
-  java: "simple-icons:java",
-  csharp: "simple-icons:csharp",
-  cpp: "simple-icons:cplusplus",
-  swift: "simple-icons:swift",
-  kotlin: "simple-icons:kotlin",
-  flutter: "simple-icons:flutter",
-  angular: "simple-icons:angular",
-  vue: "simple-icons:vuedotjs",
-  svelte: "simple-icons:svelte",
-  nextjs: "simple-icons:nextdotjs",
-  nuxtjs: "simple-icons:nuxtdotjs",
-  gatsby: "simple-icons:gatsby",
-  webpack: "simple-icons:webpack",
   googlecloud: "simple-icons:googlecloud",
-  babel: "simple-icons:babel",
-  eslint: "simple-icons:eslint",
-  jest: "simple-icons:jest",
-  mocha: "simple-icons:mocha",
-  cypress: "simple-icons:cypress",
-  selenium: "simple-icons:selenium",
-  jenkins: "simple-icons:jenkins",
-  travis: "simple-icons:travisci",
-  circleci: "simple-icons:circleci",
-  nginx: "simple-icons:nginx",
-  apache: "simple-icons:apache",
-  linux: "simple-icons:linux",
-  ubuntu: "simple-icons:ubuntu",
-  centos: "simple-icons:centos",
-  bash: "simple-icons:gnubash",
-  powershell: "simple-icons:powershell",
-  tensorflow: "simple-icons:tensorflow",
-  mathematica: "simple-icons:wolframmathematica",
+  postgresql: "simple-icons:postgresql",
+  redis: "simple-icons:redis",
   go: "simple-icons:go",
   huggingface: "simple-icons:huggingface",
-  transformers: "simple-icons:huggingface",
-  langchain: "simple-icons:langchain",
-  anthropic: "simple-icons:anthropic",
+  pytorch: "simple-icons:pytorch",
+  pandas: "simple-icons:pandas",
+  wandb: "simple-icons:weightsandbiases",
+  numpy: "simple-icons:numpy",
+  fastapi: "simple-icons:fastapi",
+  ollama: "simple-icons:ollama",
+  plotly: "simple-icons:plotly",
+  streamlit: "simple-icons:streamlit",
+  polars: "simple-icons:polars",
+  spark: "simple-icons:apachespark",
+  mathematica: "simple-icons:wolframmathematica",
   openenv: "/skill-logos/openenv.png",
   vllm: "/skill-logos/vllm.png",
   litellm: "/skill-logos/litellm.svg",
   transformerlens: "/skill-logos/transformerlens.svg",
   verifiers: "/skill-logos/verifiers.png",
   unsloth: "/skill-logos/unsloth.png",
-  openai: "simple-icons:openai",
-  pytorch: "simple-icons:pytorch",
-  pandas: "simple-icons:pandas",
-  wandb: "simple-icons:weightsandbiases",
-  numpy: "simple-icons:numpy",
-  scikitlearn: "simple-icons:scikitlearn",
-  jupyter: "simple-icons:jupyter",
-  tableau: "simple-icons:tableau",
-  powerbi: "simple-icons:powerbi",
-  r: "simple-icons:r",
-  scala: "simple-icons:scala",
-  sqlite: "simple-icons:sqlite",
-  hadoop: "simple-icons:apachehadoop",
-  spark: "simple-icons:apachespark",
-  kafka: "simple-icons:apachekafka",
-  streamlit: "simple-icons:streamlit",
-  elasticsearch: "simple-icons:elasticsearch",
-  kibana: "simple-icons:kibana",
-  polars: "simple-icons:polars",
-  logstash: "simple-icons:logstash",
+  hive: "simple-icons:apachehive",
+  mysql: "simple-icons:mysql",
+  apachesuperset: "simple-icons:apachesuperset",
+  wordpress: "simple-icons:wordpress",
+  qgis: "simple-icons:qgis",
+  mongodb: "simple-icons:mongodb",
+  php: "simple-icons:php",
+  nodejs: "simple-icons:nodedotjs",
+  "node.js": "simple-icons:nodedotjs",
 };
 
 function getIconName(keyword: string) {
@@ -110,66 +56,88 @@ function getIconName(keyword: string) {
 }
 
 const coreCompetencies =
-  skills.find((s) => s.name === "Focus")?.keywords ?? [];
-const secondaryGroups = skills.filter((s) => s.name !== "Focus");
-
-const GROUP_COLORS: Record<string, string> = {
-  "AI & ML": "#6366f1",
-  "Languages & Data": "#d97706",
-  "Infrastructure & Tooling": "#059669",
-};
+  skills.find((group) => group.name === "Focus")?.keywords ?? [];
+const secondaryGroups = skills.filter((group) => group.name !== "Focus");
 ---
 
 <Section className={Astro.props.className} title="Skills">
-  <div class="flex flex-col gap-6">
+  <div class="stack">
     {
       coreCompetencies.length > 0 && (
-        <ul class="flex flex-wrap gap-x-2 gap-y-2">
-          {coreCompetencies.map((keyword) => (
-            <li class="rounded-md bg-skin-hue/[0.06] px-3.5 py-2 text-sm font-medium tracking-wide text-skin-base ring-1 ring-skin-hue/25">
-              {keyword}
-            </li>
-          ))}
-        </ul>
+        <p class="focus">{coreCompetencies.join(", ")}</p>
       )
     }
-
-    <div class="flex flex-col gap-4">
-      {
-        secondaryGroups.map((group) => (
-          <div class="flex flex-col gap-2">
-            <h3 class="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-skin-muted">
-              <span
-                class="inline-block h-1.5 w-1.5 rounded-full"
-                style={`background-color: ${GROUP_COLORS[group.name] ?? "var(--muted)"}`}
-                aria-hidden="true"
-              />
-              {group.name}
-            </h3>
-            <ul class="flex flex-wrap gap-1.5">
-              {group.keywords.map((keyword) => {
-                const iconName = getIconName(keyword);
-                const isImageAsset = iconName?.startsWith("/");
-                return (
-                  <li class="flex items-center gap-1.5 rounded bg-skin-button-accent/10 px-2 py-1 text-sm text-skin-base ring-1 ring-skin-muted/10 transition-shadow duration-200 hover:ring-skin-hue/20 dark:text-white">
-                    {iconName && !isImageAsset && (
-                      <Icon name={iconName} class="h-3.5 w-3.5" />
-                    )}
-                    {iconName && isImageAsset && (
-                      <span
-                        class="h-3.5 w-3.5 bg-current"
-                        style={`-webkit-mask: url(${iconName}) center / contain no-repeat; mask: url(${iconName}) center / contain no-repeat;`}
-                        aria-hidden="true"
-                      />
-                    )}
-                    {keyword}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))
-      }
-    </div>
+    {
+      secondaryGroups.map((group) => (
+        <div class="group">
+          <h3>{group.name}</h3>
+          <ul>
+            {group.keywords.map((keyword) => {
+              const iconName = getIconName(keyword);
+              const isImageAsset = iconName?.startsWith("/");
+              return (
+                <li>
+                  {iconName && !isImageAsset && (
+                    <Icon name={iconName} class="h-3.5 w-3.5" />
+                  )}
+                  {iconName && isImageAsset && (
+                    <span
+                      class="asset"
+                      style={`-webkit-mask: url(${iconName}) center / contain no-repeat; mask: url(${iconName}) center / contain no-repeat;`}
+                      aria-hidden="true"
+                    />
+                  )}
+                  {keyword}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))
+    }
   </div>
 </Section>
+
+<style>
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .focus {
+    margin: 0;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgb(var(--color-text-base));
+  }
+
+  h3 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: rgb(var(--color-text-muted));
+    margin-bottom: 0.45rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .asset {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    background: currentColor;
+  }
+</style>

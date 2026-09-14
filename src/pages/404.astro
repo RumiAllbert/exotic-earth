@@ -7,47 +7,75 @@ const { name } = basics;
 ---
 
 <Layout title={`Not found · ${name}`} description="This path does not exist on rumicalles.com." noindex>
-  <main class="relative mx-auto w-full max-w-2xl p-8 md:p-16">
-    <p class="mb-8 text-sm text-skin-muted">
-      <a class="doc-link" href="/">← Home</a>
+  <main class="doc">
+    <p class="back">
+      <a href="/">Home</a>
     </p>
-    <article class="doc-page space-y-5">
-      <h1 class="text-4xl font-bold text-skin-base">Not found</h1>
+    <article class="doc-page">
+      <h1>Not found</h1>
       <p>
-        This path does not exist on rumicalles.com (HTTP 404). Agents: use the
-        links below, or <code>/llms.txt</code> and <code>/sitemap.md</code>.
+        This path does not exist (HTTP 404). Try <code>/llms.txt</code> or
+        <code>/sitemap.md</code>.
       </p>
       <h2>Where to look next</h2>
       <ul>
-        <li><a href="/">Home</a> — CV, research, publications, and projects</li>
-        <li><a href="/llms.txt">llms.txt</a> — agent index and when-to-use guidance</li>
-        <li><a href="/sitemap.md">Sitemap</a> — markdown site map</li>
-        <li><a href="/sitemap-index.xml">XML sitemap</a> — machine-readable URL list</li>
-        <li><a href="/about">About</a> — identity and affiliations</li>
-        <li><a href="/contact">Contact</a> — email and public profiles</li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="/sitemap.md">Sitemap</a></li>
+        <li><a href="/sitemap-index.xml">XML sitemap</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
-      <pre class="agent-recovery whitespace-pre-wrap break-words rounded-lg bg-skin-button-muted/40 p-4 text-sm text-skin-base ring-1 ring-skin-muted/20">{NOT_FOUND_MARKDOWN}</pre>
+      <pre class="agent-recovery">{NOT_FOUND_MARKDOWN}</pre>
     </article>
   </main>
 </Layout>
 
 <style>
-  .doc-link,
-  .doc-page :global(a) {
-    color: inherit;
+  .doc {
+    width: min(42rem, calc(100% - 2.5rem));
+    margin: 0 auto;
+    padding: 3.75rem 0 5.5rem;
+  }
+  .back {
+    margin: 0 0 2rem;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
+  h1 {
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.35rem;
+  }
+  .doc-page a,
+  .back a {
+    color: rgb(var(--color-text-base));
     text-decoration: underline;
     text-underline-offset: 3px;
   }
-  .doc-page :global(h2) {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 1.75rem;
+  .doc-page h2 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.45rem;
+    margin: 2rem 0 0.7rem;
   }
-  .doc-page :global(ul) {
+  .doc-page p {
+    margin: 0 0 1rem;
+  }
+  .doc-page ul {
     list-style: disc;
     padding-left: 1.25rem;
   }
-  .doc-page :global(code) {
+  .doc-page code {
     font-size: 0.9em;
+  }
+  .agent-recovery {
+    margin-top: 2rem;
+    padding: 1.1rem 1.2rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 0.88rem;
+    background: rgb(var(--color-button-muted));
   }
 </style>

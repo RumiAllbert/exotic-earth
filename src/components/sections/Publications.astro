@@ -1,17 +1,10 @@
 ---
 import { publications } from "@cv";
-import { Icon } from "astro-icon/components";
 import Section from "../Section.astro";
 
-const VENUES: Record<string, { icon: string; color: string }> = {
-  arXiv: { icon: "simple-icons:arxiv", color: "#B31B1B" },
-  ResearchGate: { icon: "simple-icons:researchgate", color: "#00CCBB" },
-};
-
-const GROUPS: Array<{ name: string; color: string; titles: string[] }> = [
+const GROUPS: Array<{ name: string; titles: string[] }> = [
   {
-    name: "AI Systems & Evaluation",
-    color: "#6366f1",
+    name: "AI systems and evaluation",
     titles: [
       "Uncovering Candidate Potential with Multi-Modal AI Assessments",
       "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems",
@@ -19,7 +12,6 @@ const GROUPS: Array<{ name: string; color: string; titles: string[] }> = [
   },
   {
     name: "Philosophy of AI",
-    color: "#d97706",
     titles: [
       "De Suspensione: Inflection, Composition, and the Long Drift Outward",
       "From Plato to Pixels: Imagination, AI, and the Whole",
@@ -28,18 +20,17 @@ const GROUPS: Array<{ name: string; color: string; titles: string[] }> = [
   },
   {
     name: "Interpretability",
-    color: "#059669",
     titles: [
       "Identifying and Manipulating Personality Traits in LLMs Through Activation Engineering",
     ],
   },
 ];
 
-const groupedPubs = GROUPS.map((g) => ({
-  ...g,
-  items: g.titles
-    .map((t) => publications.find((p) => p.title === t))
-    .filter((p): p is NonNullable<typeof p> => Boolean(p)),
+const groupedPubs = GROUPS.map((group) => ({
+  ...group,
+  items: group.titles
+    .map((title) => publications.find((paper) => paper.title === title))
+    .filter((paper): paper is NonNullable<typeof paper> => Boolean(paper)),
 }));
 
 function authorLine(authors: string[]): string {
@@ -48,90 +39,109 @@ function authorLine(authors: string[]): string {
   if (!isRumiFirst) return authors.join(", ");
   const coAuthors = authors
     .slice(1)
-    .filter((a) => !/et al\.?/i.test(a) && !/^Rumi/.test(a));
+    .filter((author) => !/et al\.?/i.test(author) && !/^Rumi/.test(author));
   return coAuthors.length
-    ? `Lead author · with ${coAuthors.join(", ")}`
+    ? `Lead author, with ${coAuthors.join(", ")}`
     : "Lead author";
 }
 ---
 
 <Section title="Publications">
-  <div class="flex flex-col gap-7">
+  <div class="stack">
     {
       groupedPubs.map((group) => (
-        <div class="flex flex-col gap-3">
-          <h3 class="flex items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-skin-muted">
-            <span
-              class="inline-block h-1.5 w-1.5 rounded-full"
-              style={`background-color: ${group.color}`}
-              aria-hidden="true"
-            />
-            {group.name}
-          </h3>
-          <ul class="grid grid-cols-1 gap-3 md:grid-cols-2">
-            {group.items.map(({ title, authors, date, url, highlight, publisher }) => {
-              const year = new Date(date).getFullYear();
-              const venue = VENUES[publisher];
-              return (
-                <li>
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group relative flex h-full flex-col gap-2 rounded-lg bg-skin-fill p-4 ring-1 ring-skin-muted/20 transition-shadow duration-200 hover:ring-2 hover:ring-skin-hue/15"
-                  >
-                    <div class="flex items-center gap-2 text-xs">
-                      <time datetime={date} class="tabular-nums text-skin-muted">
-                        {year}
-                      </time>
-                      <span class="text-skin-muted/40">·</span>
-                      <span class="inline-flex items-center gap-1 font-medium">
-                        {venue && (
-                          <Icon
-                            name={venue.icon}
-                            class="h-3 w-3"
-                            style={`color: ${venue.color}`}
-                          />
-                        )}
-                        <span style={venue ? `color: ${venue.color}` : undefined}>
-                          {publisher}
+        <div class="group">
+          <h3>{group.name}</h3>
+          <ol>
+            {group.items.map(
+              ({ title, authors, date, url, highlight, publisher }) => {
+                const year = new Date(date).getFullYear();
+                return (
+                  <li>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      <span class="year">{year}</span>
+                      <span class="entry">
+                        <cite>{title}</cite>
+                        {highlight && <span class="note">{highlight}</span>}
+                        <span class="meta">
+                          {publisher}, {authorLine(authors)}
                         </span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          class="h-3 w-3 text-skin-muted/60 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
                       </span>
-                    </div>
-
-                    <h4 class="text-[0.95rem] font-medium leading-snug text-skin-base transition-colors group-hover:text-skin-hue">
-                      {title}
-                    </h4>
-
-                    {highlight && (
-                      <p class="text-sm leading-relaxed text-skin-muted">
-                        {highlight}
-                      </p>
-                    )}
-
-                    <p class="mt-auto pt-1 text-xs text-skin-muted/70">
-                      {authorLine(authors)}
-                    </p>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+                    </a>
+                  </li>
+                );
+              },
+            )}
+          </ol>
         </div>
       ))
     }
   </div>
 </Section>
 
+<style>
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+
+  h3 {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: rgb(var(--color-text-muted));
+    margin-bottom: 0.7rem;
+  }
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.05rem;
+  }
+
+  a {
+    display: grid;
+    grid-template-columns: 3.2rem 1fr;
+    gap: 0.9rem;
+    align-items: start;
+  }
+
+  .year {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.9rem;
+    color: rgb(var(--color-text-muted));
+    padding-top: 0.2rem;
+  }
+
+  cite {
+    display: block;
+    font-style: normal;
+    font-size: 1.05rem;
+    color: rgb(var(--color-text-base));
+    line-height: 1.35;
+  }
+
+  a:hover cite {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .note,
+  .meta {
+    display: block;
+    margin-top: 0.28rem;
+    font-size: 0.92rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .note {
+    font-style: italic;
+  }
+
+  @media print {
+    a {
+      display: block;
+    }
+  }
+</style>

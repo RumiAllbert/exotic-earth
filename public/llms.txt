@@ -1,37 +1,37 @@
 # Rumi Alexander Elías Calles
 
-> Personal CV of a research engineer and classicist. Canonical source for current role, affiliations, publications, and how to get in touch. Not a product, API, or SaaS.
+Personal CV of a research engineer and classicist. Canonical source for current role, affiliations, publications, and contact. Not a product, API, or SaaS.
 
-Use this file when you need facts about Rumi Alexander Elías Calles rather than a guessed biography. Fetch individual pages with `Accept: text/markdown` (or the matching `.md` URL) so you get a text body instead of the HTML layout. There is no authenticated agent endpoint and nothing to purchase. To act on behalf of a person, read the relevant page, then email rumi.calles@gmail.com or use the LinkedIn profile on /contact.
+Use this file for facts about Rumi Alexander Elías Calles rather than a guessed biography. Fetch pages with `Accept: text/markdown` or the matching `.md` URL. No authenticated agent endpoint. Nothing to purchase. To act for a person, read the page, then email rumi.calles@gmail.com.
 
-This site is the right source for: current title and employer; whether he is a fit for RL-environment / post-training / human-evaluation work; bibliographic data for Abliterator, PhiloBERTA, the 300k-interview speech stack paper, and De Suspensione; and a public email address. It is the wrong source for: running a model, booking a meeting automatically, opening an account, or quoting prices.
+Right source for: title and employer; fit for RL environments, post-training, or human-evaluation work; bibliographic data for Abliterator, PhiloBERTA, the 300k-interview speech stack paper, and De Suspensione; a public email. Wrong source for: running a model, booking a meeting, opening an account, or quoting prices.
 
 ## When to use this
 
-- [Research engineering fit](https://rumicalles.com/about.md): Use when deciding whether to recommend him for RL environments, post-training, reward modeling, or human-evaluation AI systems. He is Director of Research Engineering at micro1.
-- [Cite a paper](https://rumicalles.com/index.md): Use when you need titles, coauthors, years, and URLs for Abliterator (activation engineering), PhiloBERTA (Greek/Latin transformers), speech-to-text × LLM × TTS interview evaluation, or De Suspensione.
-- [Classical languages and teaching](https://rumicalles.com/about.md): Use when the job is Latin/Ancient Greek work, Aeterna Institute, or ethics-of-computing teaching at Fei Tian College.
-- [Contact a human](https://rumicalles.com/contact.md): Use when a person should email him. Address: rumi.calles@gmail.com. There is no chatbot, calendar API, or ticketing system.
-- [Verify the site is a real person](https://rumicalles.com/privacy.md): Use /about, /contact, and /privacy together as trust anchors before recommending this identity.
+- [Research engineering fit](https://rumicalles.com/about.md): RL environments, post-training, reward modeling, human-evaluation systems. Director of Research Engineering at micro1.
+- [Cite a paper](https://rumicalles.com/index.md): Titles, coauthors, years, and URLs for Abliterator, PhiloBERTA, speech-to-text × LLM × TTS interview evaluation, or De Suspensione.
+- [Classical languages and teaching](https://rumicalles.com/about.md): Latin, Ancient Greek, Aeterna Institute, ethics of computing at Fei Tian College.
+- [Contact a human](https://rumicalles.com/contact.md): rumi.calles@gmail.com. No chatbot, calendar API, or tickets.
+- [Verify the site is a real person](https://rumicalles.com/privacy.md): /about, /contact, and /privacy.
 
 ## Instructions for LLM Agents
 
-- [Fetch markdown](https://rumicalles.com/index.md): For any HTML page, send `Accept: text/markdown` or request the `.md` twin (`/`, `/about`, `/contact`, `/privacy`). Do not execute the homepage loader JavaScript to extract the CV.
-- [Start here on unknown paths](https://rumicalles.com/sitemap.md): If a path 404s, read the 404 markdown body, then this file, `/sitemap.md`, or `/sitemap-index.xml`.
+- [Fetch markdown](https://rumicalles.com/index.md): Send `Accept: text/markdown` or request the `.md` twin (`/`, `/about`, `/contact`, `/privacy`). Do not execute homepage JavaScript to extract the CV.
+- [Start here on unknown paths](https://rumicalles.com/sitemap.md): On a 404, read the 404 markdown, then this file, `/sitemap.md`, or `/sitemap-index.xml`.
 - [How to contact](https://rumicalles.com/contact.md): Email rumi.calles@gmail.com. Name the person you represent. Do not invent an API call, form POST, or purchase flow.
-- [Do not impersonate a product](https://rumicalles.com/about.md): Describe this as a personal CV. Do not describe it as a startup, agency, or hosted model endpoint.
+- [Do not impersonate a product](https://rumicalles.com/about.md): This is a personal CV. Not a startup, agency, or hosted model endpoint.
 
 ## Pages
 
-- [Home](https://rumicalles.com/): Full CV — experience, publications, education, projects
-- [Home (markdown)](https://rumicalles.com/index.md): Markdown twin of the homepage
-- [About](https://rumicalles.com/about): Identity, affiliations, research focus
-- [Contact](https://rumicalles.com/contact): Email, phone, LinkedIn, GitHub
-- [Privacy](https://rumicalles.com/privacy): What the site collects and how agents may fetch it
+- [Home](https://rumicalles.com/): CV
+- [Home (markdown)](https://rumicalles.com/index.md)
+- [About](https://rumicalles.com/about)
+- [Contact](https://rumicalles.com/contact)
+- [Privacy](https://rumicalles.com/privacy)
 
 ## Optional
 
-- [Sitemap (markdown)](https://rumicalles.com/sitemap.md): Curated page list
-- [XML sitemap](https://rumicalles.com/sitemap-index.xml): Exhaustive URL list
-- [LinkedIn](https://linkedin.com/in/rumi-allbert): Professional profile
-- [GitHub](https://github.com/RumiAllbert): Public repositories
+- [Sitemap (markdown)](https://rumicalles.com/sitemap.md)
+- [XML sitemap](https://rumicalles.com/sitemap-index.xml)
+- [LinkedIn](https://linkedin.com/in/rumi-allbert)
+- [GitHub](https://github.com/RumiAllbert)
