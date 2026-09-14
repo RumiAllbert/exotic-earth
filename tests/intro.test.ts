@@ -16,9 +16,9 @@ test('intro respects daily limit, reduced motion, anchors, storage failure and s
       window: { addEventListener: (key: string, fn: () => void) => { events[key] = fn; }, removeEventListener: (key: string) => { delete events[key]; } },
       setTimeout: (fn: () => void) => { events.timeout = fn; return 1; }, clearTimeout: () => {},
     });
-    const show = scenario === 'first' || scenario === 'expired' || scenario.startsWith('local') || scenario === 'click' || scenario === 'key';
+    const show = scenario === 'first' || scenario === 'expired' || scenario === 'click' || scenario === 'key';
     assert.equal(intro.hidden, !show, scenario);
     assert.equal(events.scroll, undefined);
-    if (show) { assert.equal(saved, scenario.startsWith('local') ? '' : String(now)); events[scenario === 'first' ? 'wheel' : scenario === 'click' ? 'pointerdown' : scenario === 'key' ? 'keydown' : 'timeout'](); assert.equal(intro.hidden, true); assert.equal(events.keydown, undefined); }
+    if (show) { assert.equal(saved, String(now)); events[scenario === 'first' ? 'wheel' : scenario === 'click' ? 'pointerdown' : scenario === 'key' ? 'keydown' : 'timeout'](); assert.equal(intro.hidden, true); assert.equal(events.keydown, undefined); }
   }
 });

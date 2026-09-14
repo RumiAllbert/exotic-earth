@@ -7,16 +7,15 @@
 <script is:inline>
 (() => {
   const intro = document.getElementById('scholar-intro');
-  const localPreview = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
   const key = 'portfolio-intro-last-shown';
   const day = 24 * 60 * 60 * 1000;
   const now = Date.now();
-  if (!intro || (!localPreview && location.hash) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!intro || location.hash || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   try {
     const last = Number(localStorage.getItem(key));
-    if (!localPreview && last > 0 && now - last < day) return;
-    if (!localPreview) localStorage.setItem(key, String(now));
-  } catch { if (!localPreview) return; }
+    if (last > 0 && now - last < day) return;
+    localStorage.setItem(key, String(now));
+  } catch { return; }
   intro.hidden = false;
   let timer;
   const finish = () => {
