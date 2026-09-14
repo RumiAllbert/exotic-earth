@@ -72,7 +72,7 @@ function authorLine(authors: string[]): string {
                       <span class="year">{year}</span>
                       <span class="entry">
                         <cite>{title}</cite>
-                        {highlight && <span class="note">{highlight}</span>}
+
                         <span class="meta">
                           <Icon name={publisher === "arXiv" ? "simple-icons:arxiv" : "simple-icons:researchgate"} class="publisher-logo" /> {publisher} · {type} · {authorLine(authors)}
                         </span>
@@ -80,7 +80,7 @@ function authorLine(authors: string[]): string {
                     </a>
                     <details class="abstract-preview">
                       <summary aria-label={`Preview abstract: ${title}`}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 4h10v16H4zM7 8h4M7 12h3" /><path class="open-arrow" d="M12 12h9m-4-4 4 4-4 4" /></svg></summary>
-                      <div class="preview-card"><strong>{title}</strong><p>{abstract}</p></div>
+                      <div class="preview-card"><strong>{title}</strong>{highlight && <p class="note">{highlight}</p>}<p>{abstract}</p></div>
                     </details>
                   </li>
                 );
@@ -116,7 +116,8 @@ function authorLine(authors: string[]): string {
   .publisher-logo { display: inline-block; width: 0.75rem; height: 0.75rem; vertical-align: -0.05rem; margin-right: 0.2rem; }
   .paper {
     position: relative;
-    padding: 0.9rem 0;
+    padding: 0.65rem 0;
+    min-height: 4.4rem;
     border-top: 1px solid rgba(var(--color-rule), 0.14);
     transition: background-color 160ms ease;
   }
@@ -125,10 +126,14 @@ function authorLine(authors: string[]): string {
     background: rgba(var(--color-rule), 0.035);
   }
   details {
-    position: relative;
-    margin: 0.5rem 0 0 4.1rem;
+    pointer-events: none;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
   }
   summary {
+    pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,9 +154,10 @@ function authorLine(authors: string[]): string {
     to { opacity: 1; transform: translateX(0); clip-path: inset(0); }
   }
   .preview-card {
+    pointer-events: auto;
     position: absolute;
     top: 0;
-    left: 28px;
+    left: 3.2rem;
     right: 0;
     z-index: 10;
     padding: 1.25rem;
@@ -164,6 +170,7 @@ function authorLine(authors: string[]): string {
   }
   .preview-card strong { font-weight: 500; font-size: 1.08rem; }
   @media (max-width: 640px) {
+    details[open] { position: relative; top: auto; margin: 0.2rem 0 0 4.1rem; }
     .preview-card { position: static; margin-top: 0.5rem; padding: 1rem; max-height: none; box-shadow: none; }
   }
   details p {
@@ -187,7 +194,7 @@ function authorLine(authors: string[]): string {
   .stack {
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: 1.1rem;
   }
 
   h3 {
@@ -195,7 +202,7 @@ function authorLine(authors: string[]): string {
     font-weight: 400;
     font-size: 1.15rem;
     color: rgb(var(--color-text-muted));
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.4rem;
   }
 
   ol {
@@ -221,7 +228,7 @@ function authorLine(authors: string[]): string {
   cite {
     display: block;
     font-style: normal;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     color: rgb(var(--color-text-base));
     line-height: 1.35;
   }
