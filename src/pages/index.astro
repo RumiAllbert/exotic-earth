@@ -3,6 +3,7 @@ import About from "@/components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
 import Experience from "@/components/sections/Experience.astro";
 import SectionProgress from "@/components/SectionProgress.astro";
+import ScholarIntro from "@/components/ScholarIntro.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Publications from "@/components/sections/Publications.astro";
@@ -14,6 +15,7 @@ const { name, label, email, profiles } = basics;
 ---
 
 <Layout title={`${name} - ${label}`} description={basics.summary}>
+  <ScholarIntro />
   <Hero />
   <SectionProgress />
 
