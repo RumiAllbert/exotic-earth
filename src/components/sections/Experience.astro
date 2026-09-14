@@ -2,7 +2,7 @@
 import Section from "../Section.astro";
 import { work } from "@cv";
 import { Icon } from "astro-icon/components";
-import { iconMap } from "./Skills.astro";
+import { iconMap, logoColors } from "./Skills.astro";
 
 type WorkItem = {
   name: string;
@@ -134,7 +134,7 @@ function getIconName(skill: string): string | null {
                         {skills.map((skill) => {
                           const iconName = getIconName(skill);
                           return (
-                            <li>
+                            <li style={`--logo-color: ${logoColors[skill.toLowerCase().replace(/\s+/g, "")] ?? "#719d8d"}`}>
                               {iconName && !iconName.startsWith("/") && (
                                 <Icon class="icon" name={iconName} />
                               )}
@@ -347,7 +347,9 @@ function getIconName(skill: string): string | null {
     color: rgb(var(--color-text-muted));
   }
 
+  .tech li:hover .icon { color: var(--logo-color); }
   .icon {
+    transition: color 180ms ease;
     width: 0.75rem;
     height: 0.75rem;
   }

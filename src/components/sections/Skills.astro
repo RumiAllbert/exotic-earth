@@ -21,6 +21,9 @@ export const iconMap: IconMap = {
   postgresql: "simple-icons:postgresql",
   redis: "simple-icons:redis",
   go: "simple-icons:go",
+  transformers: "simple-icons:huggingface",
+  harbor: "/skill-logos/harbor.ico",
+  langgraph: "/skill-logos/langgraph.svg",
   huggingface: "simple-icons:huggingface",
   pytorch: "simple-icons:pytorch",
   pandas: "simple-icons:pandas",
@@ -50,6 +53,15 @@ export const iconMap: IconMap = {
   "node.js": "simple-icons:nodedotjs",
 };
 
+export const logoColors: Record<string, string> = {
+  python: '#3776ab', transformers: '#d6a82b', huggingface: '#d6a82b', pytorch: '#ee4c2c',
+  typescript: '#3178c6', docker: '#2496ed', kubernetes: '#326ce5', git: '#f05032',
+  github: '#8878b5', aws: '#d79736', googlecloud: '#4285f4', postgresql: '#4169a1',
+  redis: '#dc382d', go: '#00add8', pandas: '#8273b5', numpy: '#4dabcf',
+  wandb: '#d7a637', fastapi: '#009688', ollama: '#8c9891', plotly: '#6c83d8',
+  streamlit: '#ff4b4b', polars: '#cd8d3e', spark: '#e25a1c', mathematica: '#dd1100',
+};
+
 function getIconName(keyword: string) {
   const lowercaseKeyword = keyword.toLowerCase().replace(/\s+/g, "");
   return (iconMap as IconMap)[lowercaseKeyword] || null;
@@ -76,11 +88,12 @@ const secondaryGroups = skills.filter((group) => group.name !== "Focus");
               const iconName = getIconName(keyword);
               const isImageAsset = iconName?.startsWith("/");
               return (
-                <li>
+                <li style={`--logo-color: ${logoColors[keyword.toLowerCase().replace(/\s+/g, "")] ?? "#719d8d"}`}>
                   {iconName && !isImageAsset && (
-                    <Icon name={iconName} class="h-3.5 w-3.5" />
+                    <Icon name={iconName} class="skill-logo h-3.5 w-3.5" />
                   )}
-                  {iconName && isImageAsset && (
+                  {iconName && isImageAsset && ["Harbor", "LangGraph"].includes(keyword) && <img class="image-logo" src={iconName} alt="" width="14" height="14" />}
+                  {iconName && isImageAsset && !["Harbor", "LangGraph"].includes(keyword) && (
                     <span
                       class="asset"
                       style={`-webkit-mask: url(${iconName}) center / contain no-repeat; mask: url(${iconName}) center / contain no-repeat;`}
@@ -99,6 +112,13 @@ const secondaryGroups = skills.filter((group) => group.name !== "Focus");
 </Section>
 
 <style>
+  .skill-logo, .asset { transition: color 180ms ease; }
+  li:hover .skill-logo, li:hover .asset { color: var(--logo-color); }
+  .image-logo { width: 0.9rem; height: 0.9rem; object-fit: contain; filter: grayscale(1); opacity: .8; transition: filter 180ms ease, opacity 180ms ease; }
+  .image-logo[src$="harbor.ico"] { background: #eee; border-radius: 50%; }
+  li:hover .image-logo[src$="harbor.ico"] { filter: sepia(.5); }
+  li:hover .image-logo { filter: grayscale(.2); opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .skill-logo, .asset, .image-logo { transition: none; } }
   .stack {
     display: flex;
     flex-direction: column;
