@@ -27,10 +27,13 @@ describe("built dist (agent endpoints)", () => {
   }, () => {
     const html = read("index.html");
     assert.match(html, /<h1[^>]*>/);
-    assert.match(html, /<h2[^>]*>\s*About\s*<\/h2>/);
-    assert.match(html, /<h2[^>]*>\s*Experience\s*<\/h2>/);
-    assert.match(html, /<h2[^>]*>\s*Publications\s*<\/h2>/);
+    assert.match(html, /<h2[^>]*>\s*Beyond the work\s*<\/h2>/);
+    assert.match(html, /<h2[^>]*>\s*Selected work\s*<\/h2>/);
+    assert.match(html, /<h2[^>]*>\s*Selected research\s*<\/h2>/);
     assert.ok(visibleText(html).length >= 500);
+    assert.ok(html.indexOf('id="work"') < html.indexOf('id="research"'));
+    assert.match(read("cv/index.html"), /Experience/);
+    assert.match(read("cv/index.html"), /Skills/);
   });
 
   it("404.html includes markdown recovery links", {
