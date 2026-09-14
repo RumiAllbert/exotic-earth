@@ -1,6 +1,6 @@
 # Rumi Alexander Elías Calles
 
-Personal CV of a research engineer and classicist. Canonical source for current role, affiliations, publications, and contact. Not a product, API, or SaaS.
+> Personal CV of a research engineer and classicist. Canonical source for current role, affiliations, publications, and contact. Not a product, API, or SaaS.
 
 Use this file for facts about Rumi Alexander Elías Calles rather than a guessed biography. Fetch pages with `Accept: text/markdown` or the matching `.md` URL. No authenticated agent endpoint. Nothing to purchase. To act for a person, read the page, then email rumi.calles@gmail.com.
 

@@ -85,14 +85,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     </p>
   </div>
 
-  <figure class="portrait">
-    <img
-      src="/me_avatar01.jpg"
-      alt={name}
-      width="360"
-      height="450"
-    />
-  </figure>
 </header>
 
 <style>
@@ -101,25 +93,13 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     margin: 0 auto;
     padding: 3.5rem 0 2.25rem;
     display: grid;
-    grid-template-columns: 1fr 5.75rem;
+    grid-template-columns: 1fr;
     gap: 1.25rem 1.5rem;
     align-items: start;
     border-bottom: 1px solid rgba(var(--color-rule), 0.1);
   }
 
-  .portrait {
-    margin: 0;
-    width: 5.75rem;
-  }
 
-  .portrait img {
-    display: block;
-    width: 5.75rem;
-    height: 7.2rem;
-    object-fit: cover;
-    object-position: center 18%;
-    filter: saturate(0.9) contrast(1.04);
-  }
 
   h1 {
     font-size: clamp(2.2rem, 5.5vw, 3.6rem);
@@ -214,16 +194,11 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
 
   @media (min-width: 640px) {
     .hero {
-      grid-template-columns: 1fr 7.25rem;
+      grid-template-columns: 1fr;
       gap: 1.5rem 2rem;
       padding: 4.25rem 0 2rem;
     }
 
-    .portrait,
-    .portrait img {
-      width: 7.25rem;
-      height: 9.1rem;
-    }
   }
 
   @media print {
@@ -231,14 +206,9 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       width: 100%;
       padding: 0;
       animation: none;
-      grid-template-columns: 1fr 5rem;
+      grid-template-columns: 1fr;
     }
 
-    .portrait,
-    .portrait img {
-      width: 5rem;
-      height: 6.25rem;
-    }
 
     h1 {
       font-size: 18pt;
