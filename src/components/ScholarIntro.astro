@@ -11,7 +11,7 @@
   const key = 'portfolio-intro-last-shown';
   const day = 24 * 60 * 60 * 1000;
   const now = Date.now();
-  if (!intro || location.hash || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!intro || (!localPreview && location.hash) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   try {
     const last = Number(localStorage.getItem(key));
     if (!localPreview && last > 0 && now - last < day) return;
@@ -25,13 +25,11 @@
     window.removeEventListener('wheel', finish);
     window.removeEventListener('touchstart', finish);
     window.removeEventListener('keydown', finish);
-    window.removeEventListener('scroll', finish);
   };
   intro.addEventListener('click', finish, { once: true });
   window.addEventListener('wheel', finish, { passive: true });
   window.addEventListener('touchstart', finish, { passive: true });
   window.addEventListener('keydown', finish);
-  window.addEventListener('scroll', finish, { passive: true });
   timer = setTimeout(finish, 3400);
 })();
 </script>
