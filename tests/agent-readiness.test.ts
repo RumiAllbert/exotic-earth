@@ -119,8 +119,7 @@ describe("page markdown", () => {
     assert.ok(md.replace(/\s+/g, " ").length >= 500);
   });
 
-  it("maps /cv, /about, /contact, /privacy to markdown", () => {
-    assert.equal(markdownForPath("/cv"), homeMarkdown());
+  it("maps /about, /contact, /privacy to markdown", () => {
     assert.ok(markdownForPath("/about")?.startsWith("# About"));
     assert.ok(markdownForPath("/contact")?.startsWith("# Contact"));
     assert.ok(markdownForPath("/privacy")?.startsWith("# Privacy"));

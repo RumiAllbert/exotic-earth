@@ -20,12 +20,36 @@ const linkedUrl = profiles.find(({ network }) => network === "LinkedIn")?.url;
 const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
 ---
 
-<header class="hero">
+<header class="hero hero-animate">
   <div class="copy">
-    <h1>{name}</h1>
-    <p class="lede">I lead RL environments and post-training at micro1.</p>
-    <p class="role">{label}</p>
+    <h1>
+      {
+        name.split(" ").map((word, i) => (
+          <span class:list={[{ "display-italic": i >= 2 }]}>{word} </span>
+        ))
+      }
+    </h1>
+
+    <p class="epigraph" lang="grc">
+      πάντες ἄνθρωποι τοῦ εἰδέναι ὀρέγονται φύσει.
+    </p>
+    <p class="translation">
+      All human beings by nature stretch toward knowing.
+    </p>
+
+    <p class="role">{label}, micro1</p>
+    <p class="lede">I lead RL environments and post-training.</p>
+
     <p class="place">{city === region ? city : `${city}, ${region}`}</p>
+
+    <ul class="tongues" aria-label="Languages">
+      <li lang="en">English</li>
+      <li lang="es">Español</li>
+      <li lang="zh">中文</li>
+      <li lang="it">Italiano</li>
+      <li lang="la">Latin</li>
+      <li lang="grc">Attic Greek</li>
+    </ul>
 
     <p class="print">{printInfo}</p>
     <p class="no-print links">
@@ -98,25 +122,43 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
   }
 
   h1 {
-    font-size: clamp(2.6rem, 5.5vw, 4.1rem);
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
     font-weight: 500;
     letter-spacing: -0.03em;
     line-height: 1;
   }
 
+  .display-italic {
+    font-family: "EB Garamond", Newsreader, Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
 
-
-
-  .role {
-    margin: 1.35rem 0 0;
-    font-size: 0.85rem;
+  .epigraph {
+    margin: 1.15rem 0 0;
+    font-family: "EB Garamond", Newsreader, Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
     color: rgb(var(--color-text-muted));
   }
 
+  .translation {
+    margin: 0.2rem 0 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
+
+  .role {
+    margin: 1.35rem 0 0;
+    font-size: 1.05rem;
+    color: rgb(var(--color-text-base));
+  }
+
   .lede {
-    margin: 1.5rem 0 0;
+    margin: 0.45rem 0 0;
     max-width: 36ch;
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     color: rgb(var(--color-text-muted));
   }
 
@@ -126,6 +168,15 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     color: rgb(var(--color-text-muted));
   }
 
+  .tongues {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    margin: 1.05rem 0 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text-muted));
+  }
 
   .links {
     display: flex;
@@ -146,12 +197,26 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     color: rgb(var(--color-text-base));
   }
 
+  .hero-animate {
+    animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
   @media (min-width: 640px) {
     .hero {
       grid-template-columns: 1fr 7.25rem;
       gap: 1.5rem 2rem;
-      padding: 5.5rem 0 3.5rem;
+      padding: 4.25rem 0 2rem;
     }
 
     .portrait,
@@ -159,14 +224,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       width: 7.25rem;
       height: 9.1rem;
     }
-  }
-
-  @media screen and (max-width: 639px) {
-    .hero { display: block; position: relative; }
-    h1 { padding-right: 5.5rem; }
-    .portrait { position: absolute; right: 0; top: 3.5rem; }
-    .portrait, .portrait img { width: 4rem; height: 5rem; }
-    .lede { font-size: 1.2rem; line-height: 1.5; }
   }
 
   @media print {
@@ -187,6 +244,10 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       font-size: 18pt;
     }
 
-
+    .epigraph,
+    .translation,
+    .tongues {
+      display: none;
+    }
   }
 </style>

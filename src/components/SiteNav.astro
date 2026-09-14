@@ -8,9 +8,9 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const isHome = path === "/";
 
 const links = [
-  { href: isHome ? "#work" : "/#work", label: "Work" },
-  { href: isHome ? "#research" : "/#research", label: "Research" },
-  { href: "/cv", label: "CV" },
+  { href: isHome ? "#experience" : "/#experience", label: "Work" },
+  { href: isHome ? "#publications" : "/#publications", label: "Writing" },
+  { href: isHome ? "#projects" : "/#projects", label: "Projects" },
   { href: isHome ? "#contact" : "/contact", label: "Contact" },
 ];
 ---
@@ -109,9 +109,9 @@ const links = [
   }
 
   @media (max-width: 520px) {
-    .site-nav { gap: 0.6rem; padding-inline: 1.25rem; }
-    nav { gap: 0.7rem; }
-    nav a { font-size: 0.75rem; }
+    nav {
+      display: none;
+    }
     .tools {
       margin-left: auto;
     }

@@ -40,8 +40,7 @@ This path does not exist on rumicalles.com (HTTP 404).
 
 ## Where to look next
 
-- [Home](${SITE_URL}/): Selected work and research
-- [Full CV](${SITE_URL}/cv): Experience, publications, skills, education, and projects
+- [Home](${SITE_URL}/): CV
 - [llms.txt](${SITE_URL}/llms.txt): agent index
 - [Sitemap](${SITE_URL}/sitemap.md)
 - [XML sitemap](${SITE_URL}/sitemap-index.xml)
@@ -328,8 +327,7 @@ Public pages on ${SITE_URL}.
 
 ## Pages
 
-- [Home](${SITE_URL}/): Selected work and research
-- [Full CV](${SITE_URL}/cv): Experience, publications, skills, education, and projects
+- [Home](${SITE_URL}/): CV
 - [About](${SITE_URL}/about)
 - [Contact](${SITE_URL}/contact)
 - [Privacy](${SITE_URL}/privacy)
@@ -349,8 +347,6 @@ const PAGE_MARKDOWN: Record<string, () => string> = {
   "/": homeMarkdown,
   "/index.html": homeMarkdown,
   "/index.md": homeMarkdown,
-  "/cv": homeMarkdown,
-  "/cv.md": homeMarkdown,
   "/about": () => docPageMarkdown(docPages.about),
   "/about/": () => docPageMarkdown(docPages.about),
   "/about.html": () => docPageMarkdown(docPages.about),
