@@ -31,6 +31,10 @@ describe("built dist (agent endpoints)", () => {
     assert.match(html, /<h2[^>]*>\s*Experience\s*<\/h2>/);
     assert.match(html, /<h2[^>]*>\s*Publications\s*<\/h2>/);
     assert.ok(visibleText(html).length >= 500);
+    assert.match(html, /id="news"/);
+    assert.match(html, /href="https:\/\/etymon-ai.com\/"/);
+    assert.doesNotMatch(html, /πάντες|All human beings by nature/);
+    assert.match(read("index.md"), /## News & appearances/);
   });
 
   it("404.html includes markdown recovery links", {

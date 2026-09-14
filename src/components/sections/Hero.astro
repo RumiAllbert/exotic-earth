@@ -30,12 +30,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       }
     </h1>
 
-    <p class="epigraph" lang="grc">
-      πάντες ἄνθρωποι τοῦ εἰδέναι ὀρέγονται φύσει.
-    </p>
-    <p class="translation">
-      All human beings by nature stretch toward knowing.
-    </p>
 
     <p class="role">{label}, micro1</p>
     <p class="lede">I lead RL environments and post-training.</p>
@@ -114,20 +108,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     font-weight: 400;
   }
 
-  .epigraph {
-    margin: 1.15rem 0 0;
-    font-family: "EB Garamond", Newsreader, Georgia, serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: rgb(var(--color-text-muted));
-  }
 
-  .translation {
-    margin: 0.2rem 0 0;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: rgb(var(--color-text-muted));
-  }
 
   .role {
     margin: 1.35rem 0 0;
@@ -214,8 +195,6 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
       font-size: 18pt;
     }
 
-    .epigraph,
-    .translation,
     .tongues {
       display: none;
     }

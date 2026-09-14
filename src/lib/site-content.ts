@@ -1,3 +1,4 @@
+import { news } from "../data/news.ts";
 import cv from "../../cv.json" with { type: "json" };
 
 const {
@@ -294,6 +295,10 @@ ${formatWork()}
 ## Publications
 
 ${formatPublications()}
+## News & appearances
+
+${news.map(item => `- [${item.title}](${item.url}) · ${item.publisher} · ${item.date} · ${item.kind}\n  ${item.description}`).join("\n")}
+
 ## Skills
 
 ${formatSkills()}

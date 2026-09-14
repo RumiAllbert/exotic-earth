@@ -2,6 +2,7 @@
 import About from "@/components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
 import Experience from "@/components/sections/Experience.astro";
+import News from "@/components/sections/News.astro";
 import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Publications from "@/components/sections/Publications.astro";
@@ -24,6 +25,9 @@ const { name, label, email, profiles } = basics;
     </section>
     <section id="publications">
       <Publications />
+    </section>
+    <section id="news">
+      <News />
     </section>
     <section id="skills">
       <Skills className="print:hidden" />
