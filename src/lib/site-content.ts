@@ -96,7 +96,7 @@ export const docPages: Record<DocPageId, DocPage> = {
       {
         heading: "Public profiles",
         paragraphs: [
-          "LinkedIn: https://linkedin.com/in/rumi-allbert",
+          "LinkedIn: https://www.linkedin.com/in/rumi-calles/",
           "GitHub: https://github.com/RumiAllbert",
           "Markdown: request Accept: text/markdown, or use the matching .md URL. Index: https://rumicalles.com/llms.txt",
         ],

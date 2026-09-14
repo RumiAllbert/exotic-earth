@@ -31,6 +31,11 @@ describe("built dist (agent endpoints)", () => {
     assert.match(html, /<h2[^>]*>\s*Experience\s*<\/h2>/);
     assert.match(html, /<h2[^>]*>\s*Publications\s*<\/h2>/);
     assert.ok(visibleText(html).length >= 500);
+    const palette = html.split('<ul id="command-results"')[1].split('</ul>')[0];
+    assert.equal((palette.match(/<li/g) ?? []).length, 8);
+    assert.match(palette.split('<li').at(-1)!, /hiring/);
+    assert.match(html, /https:\/\/www.linkedin.com\/in\/rumi-calles\//);
+
     assert.doesNotMatch(html, /id="news"/);
     assert.match(html, /aria-label="Page progress"/);
     const cv = JSON.parse(readFileSync(join(dist, "../cv.json"), "utf8"));
