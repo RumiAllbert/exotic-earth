@@ -27,7 +27,7 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
 ---
 
 <!doctype html>
-<html lang={languageTag(locale)}>
+<html lang={languageTag(locale)} class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -109,8 +109,9 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
     <script is:inline>
       (function () {
         var theme = localStorage.getItem("theme");
+        document.documentElement.classList.remove("light", "dark");
         document.documentElement.classList.add(
-          theme === "light" ? "light" : "dark",
+          theme === "dark" ? "dark" : "light",
         );
       })();
     </script>

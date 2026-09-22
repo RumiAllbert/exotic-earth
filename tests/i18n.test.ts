@@ -22,7 +22,7 @@ test('every locale renders complete portfolio content and keeps navigation in th
       if (locale !== 'en') assert.ok(values[locale]?.trim());
     }
     const html = read(`dist${root}index.html`);
-    assert.ok(html.includes(`<html lang="${languageTag(locale)}">`));
+    assert.ok(html.includes(`<html lang="${languageTag(locale)}" class="light">`));
     assert.ok(html.includes(`href="${root}" lang="${languageTag(locale)}" hreflang="${languageTag(locale)}" aria-current="page"`));
     assert.ok(html.includes(`href="${root}contact"`));
     assert.ok(html.includes(`href="${root}about"`));

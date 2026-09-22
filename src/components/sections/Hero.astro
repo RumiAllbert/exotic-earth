@@ -24,13 +24,8 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
 <header class="hero hero-animate">
   <div class="copy">
     <h1>
-      {
-        name
-          .split(" ")
-          .map((word, i) => (
-            <span class:list={[{ "display-italic": i >= 2 }]}>{word} </span>
-          ))
-      }
+      <span>{name.split(" ").slice(0, 2).join(" ")}</span>{" "}
+      <span class="display-italic">{name.split(" ").slice(2).join(" ")}</span>
     </h1>
 
 
@@ -101,6 +96,8 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
   }
 
   .display-italic {
+    display: block;
+    white-space: nowrap;
     font-family: "EB Garamond", Newsreader, Georgia, serif;
     font-style: italic;
     font-weight: 400;
