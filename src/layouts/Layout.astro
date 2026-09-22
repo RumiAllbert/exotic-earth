@@ -12,12 +12,14 @@ interface Props {
   title: string;
   description?: string;
   noindex?: boolean;
+  localized?: boolean;
 }
 
 const {
   title,
   description = `${basics.label}. I lead RL environments and post-training. ${basics.summary}`,
   noindex = false,
+  localized = true,
 } = Astro.props;
 
 const { theme, summary } = basics;
@@ -60,8 +62,10 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
     <meta property="twitter:description" content={t(summary)} />
     <meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
 
-    {!noindex && Object.keys(locales).map(lang => <link rel="alternate" hreflang={languageTag(lang as Locale)} href={siteUrl + localizedPath(Astro.url.pathname, lang as Locale)} />)}
-    {!noindex && <link rel="alternate" hreflang="x-default" href={siteUrl + localizedPath(Astro.url.pathname, 'en')} />}
+    {!noindex && localized && Object.keys(locales).map(lang => <link rel="alternate" hreflang={languageTag(lang as Locale)} href={siteUrl + localizedPath(Astro.url.pathname, lang as Locale)} />)}
+    {!noindex && localized && <link rel="alternate" hreflang="x-default" href={siteUrl + localizedPath(Astro.url.pathname, 'en')} />}
+    <link rel="describedby" href="/llms.txt" />
+    {!noindex && localized && <link rel="alternate" type="text/markdown" href={Astro.url.pathname.replace(/\/$/, '') + (Astro.url.pathname === '/' || Object.keys(locales).some(lang => Astro.url.pathname === `/${lang}/`) ? '/index.md' : '.md')} />}
     <link rel="canonical" href={siteUrl + Astro.url.pathname} />
 
     <script
@@ -115,6 +119,8 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
         body {
           visibility: visible !important;
         }
+        .notes[x-cloak] { display: flex !important; }
+        .more, .actions button, #nav-cmdk, #themeSwitch { display: none !important; }
         .hero-animate,
         .hero-animate * {
           opacity: 1 !important;
@@ -127,7 +133,7 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
   </head>
   <body data-theme={theme} class="relative bg-skin-fill text-skin-base">
     <div class="grain" aria-hidden="true"></div>
-    <SiteNav showLanguage={!noindex} />
+    <SiteNav showLanguage={!noindex && localized} />
     <slot />
     <KeyboardManager />
     <script

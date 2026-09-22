@@ -29,7 +29,7 @@ const { name } = basics;
       <a href={local("/about")}>{t("About")}</a>
       <a href={local("/contact")}>{t("Contact")}</a>
       <a href={local("/privacy")}>{t("Privacy")}</a>
-      <a href="/llms.txt">llms.txt</a>
+      <a href="/llms">llms.txt</a>
     </nav>
   </main>
 </Layout>
@@ -73,6 +73,7 @@ const { name } = basics;
     color: rgb(var(--color-text-base));
     text-decoration: underline;
     text-underline-offset: 3px;
+    overflow-wrap: anywhere;
   }
 
   .doc-page :global(ul) {

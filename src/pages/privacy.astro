@@ -1,6 +1,7 @@
 ---
 import { translator } from "@/i18n";
 const t = translator(Astro.url.pathname);
+import TextLinks from "@/components/TextLinks.astro";
 import DocPage from "@/layouts/DocPage.astro";
 import { docPages } from "@/lib/site-content";
 
@@ -12,7 +13,7 @@ const page = docPages.privacy;
     <section>
       <h2>{t(section.heading)}</h2>
       {section.paragraphs.map((paragraph) => (
-        <p>{t(paragraph)}</p>
+        <p><TextLinks text={t(paragraph)} /></p>
       ))}
     </section>
   ))}

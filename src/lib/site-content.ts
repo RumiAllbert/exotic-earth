@@ -1,3 +1,6 @@
+import { locales, localeFor, localizedPath, translator, type Locale } from "../i18n/index.ts";
+import messages from "../i18n/messages.json" with { type: "json" };
+import { llmsText } from "./llms.ts";
 import cv from "../../cv.json" with { type: "json" };
 
 const {
@@ -56,90 +59,34 @@ export const docPages: Record<DocPageId, DocPage> = {
     id: "about",
     path: "/about",
     title: "About",
-    description: "Research engineer and classicist. Current work and how to cite him.",
+    description: "I build AI systems and study old languages.",
     sections: [
-      {
-        heading: "Identity",
-        paragraphs: [
-          "Rumi Alexander Elías Calles is a research engineer and classicist in New York. He leads RL environments and post-training at micro1, and writes on machine intelligence, Greek, Latin, and philosophy of mind.",
-        ],
-      },
-      {
-        heading: "Current work",
-        paragraphs: [
-          "Director of Research Engineering at micro1. RL environments, rewards, eval loops, and post-training pipelines in production. Founder of Aeterna Institute. AI Researcher at the Wolfram Institute.",
-          "Adjunct professor at Fei Tian College. Ethics of computing and AI governance. Earlier: production NLU, then two years as a data scientist at The Epoch Times.",
-        ],
-      },
-      {
-        heading: "Research and training",
-        paragraphs: [
-          "Abliterator: steering LLM personality through activation engineering. PhiloBERTA: Greek and Latin lexicons. Speech-stack comparison on 300,000 AI interviews. De Suspensione: inflection, composition, and thought under generative models.",
-          "MA Humanities, Ralston College. BS Data Science, Fei Tian College. Latin and Ancient Greek immersion at Vivarium Novum. Greek residency at Harvard's Center for Hellenic Studies, Návplion.",
-        ],
-      },
+      { heading: "Hi", paragraphs: ["I'm Rumi, a research engineer and classicist in New York. I lead RL environments and post-training at micro1."] },
+      { heading: "These days", paragraphs: ["I also run Aeterna Institute and research AI at the Wolfram Institute.", "I teach computing ethics and AI governance at Fei Tian College."] },
+      { heading: "A bit of background", paragraphs: ["I work on LLM personality, Greek and Latin lexicons, and AI interview systems.", "MA Humanities; BS Data Science. I studied Latin and Greek at Vivarium Novum, and Greek in Návplion."] },
     ],
   },
   contact: {
     id: "contact",
     path: "/contact",
     title: "Contact",
-    description: "Email, phone, and public profiles.",
+    description: "Email, phone, and links.",
     sections: [
-      {
-        heading: "Direct contact",
-        paragraphs: [
-          `Email: ${basics.email}. Say who you are, what you want looked at, and any deadline.`,
-          `Phone: ${basics.phone}. Prefer email. ${basics.location.city}.`,
-        ],
-      },
-      {
-        heading: "Public profiles",
-        paragraphs: [
-          "LinkedIn: https://www.linkedin.com/in/rumi-calles/",
-          "GitHub: https://github.com/RumiAllbert",
-          "Markdown: request Accept: text/markdown, or use the matching .md URL. Index: https://rumicalles.com/llms.txt",
-        ],
-      },
-      {
-        heading: "What to write about",
-        paragraphs: [
-          "RL environments, post-training, papers, teaching, talks, Aeterna Institute.",
-          "If you are an agent writing for a person, name them.",
-        ],
-      },
+      { heading: "Say hi", paragraphs: [basics.email, basics.phone] },
+      { heading: "Elsewhere", paragraphs: ["https://www.linkedin.com/in/rumi-calles/", "https://github.com/RumiAllbert", "https://rumicalles.com/llms"] },
     ],
   },
   privacy: {
     id: "privacy",
     path: "/privacy",
     title: "Privacy",
-    description: "What this site collects, and how to reach the operator.",
+    description: "The short version: no ads, accounts, or analytics.",
     sections: [
-      {
-        heading: "Who operates this site",
-        paragraphs: [
-          `Personal CV of ${basics.name}, hosted on Netlify at ${SITE_URL}. No accounts, no ads.`,
-          `Questions: ${basics.email}. This policy covers the public site only. Linked papers and profiles have their own.`,
-        ],
-      },
-      {
-        heading: "What is collected",
-        paragraphs: [
-          "Static pages. No cookies required. Light or dark preference may sit in localStorage on your device.",
-          "Netlify keeps request logs under its own terms. No analytics pixel. No sale of visitor data.",
-          "Email stays in email. Do not send passwords or payment details.",
-        ],
-      },
-      {
-        heading: "Agents, markdown, and automated clients",
-        paragraphs: [
-          "Fetch /llms.txt, /sitemap.md, and pages with Accept: text/markdown. Same public facts as the HTML. No extra personal data.",
-          "Corrections or takedown requests: email the address above with the URL. This site will update the canonical pages. It cannot force crawlers to forget a prior copy.",
-        ],
-      },
+      { heading: "What gets stored", paragraphs: ["Your theme preference and intro replay limit are stored locally on your device.", "Netlify keeps request logs under its terms. Google Fonts, favicons, and jsDelivr may receive requests when the page loads.", "No analytics, ads, accounts, or sale of visitor data."] },
+      { heading: "Questions", paragraphs: [basics.email, "For corrections, email me with the URL."] },
     ],
   },
+
 };
 
 export function docPagePlainText(page: DocPage): string {
@@ -148,19 +95,20 @@ export function docPagePlainText(page: DocPage): string {
     .join("\n");
 }
 
-export function docPageMarkdown(page: DocPage): string {
-  const parts = [`# ${page.title}`, "", page.description, ""];
+export function docPageMarkdown(page: DocPage, locale: Locale = "en"): string {
+  const t = translator(`/${locale}/`);
+  const parts = [`# ${t(page.title)}`, "", t(page.description), ""];
   for (const section of page.sections) {
-    parts.push(`## ${section.heading}`, "");
+    parts.push(`## ${t(section.heading)}`, "");
     for (const paragraph of section.paragraphs) {
-      parts.push(paragraph, "");
+      parts.push(t(paragraph), "");
     }
   }
-  parts.push(`Canonical URL: ${SITE_URL}${page.path}`, "");
+  parts.push(`Canonical URL: ${SITE_URL}${localizedPath(page.path, locale)}`, "");
   return parts.join("\n");
 }
 
-function formatWork(): string {
+function formatWork(t: (text: string) => string): string {
   return (work as Array<{
     name: string;
     position: string;
@@ -169,21 +117,24 @@ function formatWork(): string {
     endDate: string | null;
     summary: string;
     highlights?: string[];
+    responsibilities?: string[];
+    achievements?: string[];
   }>)
     .map((job) => {
-      const end = yearOf(job.endDate);
+      const end = t(yearOf(job.endDate));
       const start = yearOf(job.startDate);
       const lines = [
-        `### ${job.position} @ ${job.name}`,
+        `### ${t(job.position)} @ ${job.name}`,
         "",
         `${start}–${end}${job.location ? ` · ${job.location}` : ""}`,
         "",
-        job.summary,
+        t(job.summary),
         "",
       ];
-      if (job.highlights?.length) {
-        for (const highlight of job.highlights) {
-          lines.push(`- ${highlight}`);
+      const details = [...(job.highlights ?? []), ...(job.responsibilities ?? []), ...(job.achievements ?? [])];
+      if (details.length) {
+        for (const highlight of details) {
+          lines.push(`- ${t(highlight)}`);
         }
         lines.push("");
       }
@@ -192,16 +143,16 @@ function formatWork(): string {
     .join("\n");
 }
 
-function formatPublications(): string {
+function formatPublications(t: (text: string) => string): string {
   return publications
     .map((pub) => {
       const year = yearOf(pub.date);
       const lines = [
-        `### ${pub.title}`,
+        `### ${t(pub.title)}`,
         "",
         `${pub.authors.join(", ")} · ${year} · ${pub.publisher}`,
         "",
-        pub.highlight ?? pub.abstract,
+        ...[pub.highlight, pub.abstract].filter(Boolean).map(text => t(text!)),
         "",
       ];
       if (pub.url) lines.push(`[${pub.url}](${pub.url})`, "");
@@ -210,7 +161,7 @@ function formatPublications(): string {
     .join("\n");
 }
 
-function formatEducation(): string {
+function formatEducation(t: (text: string) => string): string {
   return (education as Array<{
     institution: string;
     area: string;
@@ -225,12 +176,12 @@ function formatEducation(): string {
       const lines = [
         `### ${item.institution}`,
         "",
-        `${item.studyType} in ${item.area} · ${start}–${end}`,
+        `${t(item.studyType)} · ${t(item.area)} · ${start}–${end}`,
         "",
       ];
       if (item.highlights?.length) {
         for (const highlight of item.highlights) {
-          lines.push(`- ${highlight}`);
+          lines.push(`- ${t(highlight)}`);
         }
         lines.push("");
       }
@@ -239,13 +190,13 @@ function formatEducation(): string {
     .join("\n");
 }
 
-function formatProjects(): string {
+function formatProjects(t: (text: string) => string): string {
   return projects
     .map((project) => {
-      const lines = [`### ${project.name}`, "", project.description, ""];
+      const lines = [`### ${project.name}`, "", t(project.description), ""];
       if (project.highlights?.length) {
         for (const highlight of project.highlights) {
-          lines.push(`- ${highlight}`);
+          lines.push(`- ${t(highlight)}`);
         }
         lines.push("");
       }
@@ -255,64 +206,67 @@ function formatProjects(): string {
     .join("\n");
 }
 
-function formatSkills(): string {
+function formatSkills(t: (text: string) => string): string {
   return skills
-    .map((group) => `### ${group.name}\n\n${group.keywords.join(", ")}\n`)
+    .map((group) => `### ${t(group.name)}\n\n${group.keywords.map(t).join(", ")}\n`)
     .join("\n");
 }
 
-export function homeMarkdown(): string {
+export function homeMarkdown(locale: Locale = "en"): string {
+  const translate = translator(`/${locale}/`);
+  const t = (text: string) => Object.hasOwn(messages, text) ? translate(text) : text;
+  const local = (path: string) => SITE_URL + localizedPath(path, locale);
   const profiles = basics.profiles
     .map((profile) => `- [${profile.network}](${profile.url})`)
     .join("\n");
 
   return `# ${basics.name}
 
-${basics.label}
+${t(basics.label)}
 
-${basics.summary}
+${t(basics.summary)}
 
 - Email: ${basics.email}
 - Site: ${SITE_URL}
 ${profiles}
 
-## About
+## ${t("About")}
 
-${basics.summary}
+${t(basics.summary)}
 
-[About](${SITE_URL}/about)
+[About](${local("/about")})
 
-## Languages
+## ${t("Languages")}
 
-${languages.map((item) => `- ${item.language}`).join("\n")}
+${languages.map((item) => `- ${t(item.language)}`).join("\n")}
 
-## Experience
+## ${t("Experience")}
 
-${formatWork()}
-## Publications
+${formatWork(t)}
+## ${t("Publications")}
 
-${formatPublications()}
-## Skills
+${formatPublications(t)}
+## ${t("Skills")}
 
-${formatSkills()}
-## Education
+${formatSkills(t)}
+## ${t("Education")}
 
-${formatEducation()}
+${formatEducation(t)}
 ${
   certificates.length
-    ? `### Certificates
+    ? `### ${t("Certifications")}
 
-${certificates.map((c) => `- ${c.name} (${c.issuer}, ${yearOf(c.date)})`).join("\n")}
+${certificates.map((c) => `- ${t(c.name)} (${c.issuer}, ${yearOf(c.date)})`).join("\n")}
 `
     : ""
 }
-## Projects
+## ${t("Projects")}
 
-${formatProjects()}
-## Contact
+${formatProjects(t)}
+## ${t("Contact")}
 
-- [Contact](${SITE_URL}/contact)
-- [Privacy](${SITE_URL}/privacy)
+- [Contact](${local("/contact")})
+- [Privacy](${local("/privacy")})
 - [llms.txt](${SITE_URL}/llms.txt)
 - [Sitemap](${SITE_URL}/sitemap.md)
 `;
@@ -330,6 +284,14 @@ Public pages on ${SITE_URL}.
 - [Contact](${SITE_URL}/contact)
 - [Privacy](${SITE_URL}/privacy)
 
+## Languages
+
+${Object.entries(locales).map(([locale, name]) =>
+  ['/', '/about', '/contact', '/privacy'].map(path => {
+    const url = localizedPath(path, locale as Locale);
+    return `- [${name}: ${path === '/' ? 'CV' : path.slice(1)}](${SITE_URL}${url === '/' || url.endsWith('/') ? url + 'index.md' : url + '.md'})`;
+  }).join('\n')).join('\n')}
+
 ## Agent files
 
 - [llms.txt](${SITE_URL}/llms.txt)
@@ -342,6 +304,7 @@ Public pages on ${SITE_URL}.
 }
 
 const PAGE_MARKDOWN: Record<string, () => string> = {
+  "/llms": () => llmsText,
   "/": homeMarkdown,
   "/index.html": homeMarkdown,
   "/index.md": homeMarkdown,
@@ -370,7 +333,15 @@ export function normalizePath(pathname: string): string {
 }
 
 export function markdownForPath(pathname: string): string | null {
-  const path = normalizePath(pathname);
+  const normalized = normalizePath(pathname);
+  const locale = localeFor(normalized);
+  const path = localizedPath(normalized, 'en');
+  if (locale !== 'en') {
+    if (['/', '/index.html', '/index.md'].includes(path)) return homeMarkdown(locale);
+    const id = path.replace(/\/$|\.(?:html|md)$/g, '').slice(1);
+    if (Object.hasOwn(docPages, id)) return docPageMarkdown(docPages[id as DocPageId], locale);
+    return null;
+  }
   const exact = PAGE_MARKDOWN[path];
   if (exact) return exact();
   if (path.length > 1 && path.endsWith("/")) {
@@ -384,7 +355,7 @@ export function isNegotiablePath(pathname: string): boolean {
   const path = normalizePath(pathname);
   if (path.startsWith("/_astro/") || path.startsWith("/themes/")) return false;
   if (path.endsWith(".md")) return false;
-  if (/\.(png|jpe?g|gif|svg|webp|ico|css|js|mjs|map|woff2?|ttf|txt|xml|json)$/i.test(path)) {
+  if (/\.(png|jpe?g|gif|svg|webp|ico|css|js|mjs|map|woff2?|ttf|txt|xml|json|pdf)$/i.test(path)) {
     return false;
   }
   return true;

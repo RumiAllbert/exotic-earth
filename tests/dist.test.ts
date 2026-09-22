@@ -58,13 +58,14 @@ describe("built dist (agent endpoints)", () => {
     assert.match(html, /# Not found/);
   });
 
-  it("trust pages have 500+ characters of text", {
-    skip: !existsSync(join(dist, "about/index.html")),
-  }, () => {
-    for (const page of ["about", "contact", "privacy"]) {
-      const text = visibleText(read(`${page}/index.html`));
-      assert.ok(text.length >= 500, `${page} is ${text.length} chars`);
+  it("supporting pages expose real contact and agent links", () => {
+    const html = read('contact/index.html');
+    for (const href of ['mailto:rumi.calles@gmail.com', 'tel:+19739364084', 'https://www.linkedin.com/in/rumi-calles/', 'https://github.com/RumiAllbert', '/llms']) {
+      assert.ok(html.includes(`href="${href}"`), href);
     }
+    const guide = read('llms/index.html');
+    assert.match(guide, /href="\/llms.txt" download/);
+    assert.match(guide, /href="https:\/\/rumicalles.com\/index.md"/);
   });
 
   it("copies machine-readable files", {

@@ -37,7 +37,7 @@ test('every locale renders complete portfolio content and keeps navigation in th
     for (const page of Object.values(docPages)) {
       const content = read(`dist${root}${page.id}/index.html`);
       for (const value of page.sections.flatMap(section => [section.heading, ...section.paragraphs])) {
-        assert.ok(content.includes(escape(t(value))), `${locale}/${page.id}: missing ${value}`);
+        assert.ok(content.replace(/<[^>]+>/g, "").includes(escape(t(value))), `${locale}/${page.id}: missing ${value}`);
       }
     }
   }
