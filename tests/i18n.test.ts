@@ -23,7 +23,7 @@ test('every locale renders complete portfolio content and keeps navigation in th
     }
     const html = read(`dist${root}index.html`);
     assert.ok(html.includes(`<html lang="${languageTag(locale)}">`));
-    assert.ok(html.includes(`value="${root}" lang="${languageTag(locale)}" selected`));
+    assert.ok(html.includes(`href="${root}" lang="${languageTag(locale)}" hreflang="${languageTag(locale)}" aria-current="page"`));
     assert.ok(html.includes(`href="${root}contact"`));
     assert.ok(html.includes(`href="${root}about"`));
     assert.ok(html.includes(`hreflang="zh-Hant"`));
@@ -47,16 +47,41 @@ test('every locale renders complete portfolio content and keeps navigation in th
   assert.ok(messages['Language']['zh-Hant'].includes('語'));
 });
 
-test('language selection preserves the current section and query', () => {
+test('language disclosure preserves location and dismisses with Escape, outside click and focus departure', () => {
   const source = read('src/components/LanguageSelect.astro').split('<script>')[1].split('</script>')[0];
-  let change: (event: unknown) => void = () => {};
-  let destination = '';
+  const events: Record<string, Function> = {};
+  const outside: Record<string, Function> = {};
+  const link = { href: 'https://rumicalles.com/zh-Hant/' };
+  let focused = false;
+  const picker = {
+    open: true,
+    querySelectorAll: () => [link],
+    querySelector: () => ({ focus: () => { focused = true; } }),
+    addEventListener: (name: string, fn: Function) => { events[name] = fn; },
+    contains: (node: unknown) => node === link,
+  };
+  const location = { search: '?ref=portfolio', hash: '#projects' };
   runInNewContext(ts.transpile(source), {
-    document: { querySelector: () => ({ addEventListener: (_: string, fn: typeof change) => { change = fn; } }) },
-    location: { search: '?ref=portfolio', hash: '#projects', assign: (url: string) => { destination = url; } },
+    document: { querySelector: () => picker, addEventListener: (name: string, fn: Function) => { outside[name] = fn; } },
+    location, URL,
   });
-  change({ currentTarget: { value: '/zh-Hant/' } });
-  assert.equal(destination, '/zh-Hant/?ref=portfolio#projects');
+  assert.equal(link.href, 'https://rumicalles.com/zh-Hant/?ref=portfolio#projects');
+  location.hash = '#contact';
+  events.click({ target: { closest: () => link } });
+  assert.equal(link.href, 'https://rumicalles.com/zh-Hant/?ref=portfolio#contact');
+  events.keydown({ key: 'Escape', stopPropagation() {} });
+  assert.equal(picker.open, false);
+  assert.equal(focused, true);
+  picker.open = true;
+  outside.pointerdown({ target: link });
+  assert.equal(picker.open, true);
+  outside.pointerdown({ target: {} });
+  assert.equal(picker.open, false);
+  picker.open = true;
+  events.focusout({ relatedTarget: link });
+  assert.equal(picker.open, true);
+  events.focusout({ relatedTarget: null });
+  assert.equal(picker.open, false);
 });
 
 test('classical versions retain modern technical terminology and Spanish uses the requested invitation', () => {
