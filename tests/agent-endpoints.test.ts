@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { test } from 'node:test';
 import { locales, translator, type Locale } from '../src/i18n/index.ts';
 import { docPages, homeMarkdown, markdownForPath } from '../src/lib/site-content.ts';
@@ -56,16 +56,18 @@ test('edge responses preserve negotiation and static files', async () => {
 
 test('every built public file is reachable over HTTP', { skip: !process.env.SITE_TEST_URL }, async (context) => {
   const base = process.env.SITE_TEST_URL!;
-  const files = readdirSync(new URL('../dist/', import.meta.url), { recursive: true, withFileTypes: true })
-    .filter(file => file.isFile() && !file.name.startsWith('_'))
-    .map(file => `${file.parentPath}/${file.name}`.split('/dist/')[1]);
+  const files = readdirSync(new URL('../dist/', import.meta.url), { recursive: true })
+    .map(String)
+    .filter(file => !file.split('/').at(-1)!.startsWith('_') && statSync(new URL(`../dist/${file}`, import.meta.url)).isFile());
   context.diagnostic(`${files.length} public files checked over HTTP`);
   for (const file of files) {
     const path = file === 'index.html' ? '/' : file.endsWith('/index.html') ? `/${file.slice(0, -10)}` : `/${file}`;
     const response = await fetch(base + path);
-    assert.equal(response.status, file === '404.html' ? 404 : 200, path);
+    if (file === '404.html') assert.ok([200, 404].includes(response.status), path);
+    else assert.equal(response.status, 200, path);
     assert.ok((await response.arrayBuffer()).byteLength > 0, path);
   }
+  assert.equal((await fetch(base + '/__endpoint-audit-missing__')).status, 404);
 });
 
 test('machine-readable indexes resolve to built files and structured data stays valid', () => {
