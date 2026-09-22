@@ -1,4 +1,8 @@
 ---
+import { translator, localeFor, localizedPath } from "@/i18n";
+const t = translator(Astro.url.pathname);
+const locale = localeFor(Astro.url.pathname);
+const local = (path: string) => localizedPath(path, locale);
 import About from "@/components/sections/About.astro";
 import Education from "@/components/sections/Education.astro";
 import Experience from "@/components/sections/Experience.astro";
@@ -14,7 +18,7 @@ import { basics } from "@cv";
 const { name, label, email, profiles } = basics;
 ---
 
-<Layout title={`${name} - ${label}`} description={basics.summary}>
+<Layout title={`${name} - ${t(label)}`} description={t(basics.summary)}>
   <ScholarIntro />
   <Hero />
   <SectionProgress />
@@ -41,7 +45,7 @@ const { name, label, email, profiles } = basics;
   </main>
 
   <footer id="contact" class="close no-print">
-    <a class="mail" href={`mailto:${email}`}>let's chat :)</a>
+    <a class="mail" href={`mailto:${email}`}>{t("let's chat :)")}</a>
     <div class="social">
       {
         profiles.map(({ network, url }) => (
@@ -52,10 +56,10 @@ const { name, label, email, profiles } = basics;
       }
     </div>
     <nav>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/llms.txt">llms.txt</a>
+      <a href={local("/about")}>{t("About")}</a>
+      <a href={local("/contact")}>{t("Contact")}</a>
+      <a href={local("/privacy")}>{t("Privacy")}</a>
+      <a href="/llms">llms.txt</a>
     </nav>
     <p class="copy">&copy; {new Date().getFullYear()} {name}</p>
   </footer>

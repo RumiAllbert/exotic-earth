@@ -1,10 +1,12 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 const sections = ['About', 'Experience', 'Publications', 'Skills', 'Education', 'Projects'];
 ---
 
-<nav class="section-progress no-print" aria-label="Page progress">
+<nav class="section-progress no-print" aria-label={t("Page progress")}>
   <div class="rail" aria-hidden="true"><span></span></div>
-  {sections.map(title => <a href={`#${title.toLowerCase()}`}>{title}</a>)}
+  {sections.map(title => <a href={`#${title.toLowerCase()}`}>{t(title)}</a>)}
 </nav>
 
 <script>

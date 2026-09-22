@@ -1,3 +1,4 @@
+import { llmsText } from "../src/lib/llms.ts";
 import { preferredType, setVaryAccept, VARY_ACCEPT } from "../src/lib/accept.ts";
 import { negotiate } from "../src/lib/negotiate.ts";
 import {
@@ -10,11 +11,7 @@ import {
 } from "../src/lib/site-content.ts";
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 describe("Accept negotiation (acceptmarkdown.com)", () => {
   it("serves markdown when Accept: text/markdown", () => {
@@ -125,14 +122,16 @@ describe("page markdown", () => {
     assert.ok(markdownForPath("/privacy")?.startsWith("# Privacy"));
   });
 
-  it("trust pages each have at least 500 characters of text", () => {
+  it("supporting pages stay concise and contain their essential facts", () => {
     for (const page of Object.values(docPages)) {
-      const text = docPagePlainText(page);
-      assert.ok(
-        text.length >= 500,
-        `${page.id} is ${text.length} chars, need 500+`,
-      );
+      assert.ok(docPagePlainText(page).length < 900);
+      assert.ok(page.sections.every(section => section.paragraphs.length > 0));
     }
+    assert.match(docPagePlainText(docPages.about), /micro1/);
+    assert.match(docPagePlainText(docPages.contact), /rumi.calles@gmail.com/);
+    assert.match(docPagePlainText(docPages.privacy), /Netlify/);
+    assert.match(docPagePlainText(docPages.privacy), /intro replay/);
+    assert.match(docPagePlainText(docPages.privacy), /Google Fonts/);
   });
 
   it("404 markdown points at sitemap, llms.txt, and home", () => {
@@ -143,12 +142,21 @@ describe("page markdown", () => {
 });
 
 describe("llms.txt", () => {
-  const llms = readFileSync(join(root, "public/llms.txt"), "utf8");
+  const llms = llmsText;
 
   it("follows llmstxt.org: H1, blockquote, then H2 file lists", () => {
     assert.match(llms, /^# /);
     assert.match(llms, /^> /m);
     assert.match(llms, /^## /m);
+  });
+
+  it("has only linked file-list entries after H2 headings", () => {
+    const sections = llms.split(/^## .+$/m).slice(1);
+    for (const section of sections) for (const line of section.trim().split('\n')) {
+      if (line.trim()) assert.match(line, /^- \[.+\]\(https:\/\/[^)]+\)(?:: .*)?$/);
+    }
+    assert.ok(llms.length < 1200);
+    assert.match(llms, /linkedin.com\/in\/rumi-calles\//);
   });
 
   it("includes when-to-use guidance", () => {

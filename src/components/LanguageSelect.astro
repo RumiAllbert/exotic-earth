@@ -1,0 +1,64 @@
+---
+import { locales, languageTag, localeFor, localizedPath, translator, type Locale } from '@/i18n';
+const locale = localeFor(Astro.url.pathname);
+const t = translator(Astro.url.pathname);
+---
+<details id="language-picker">
+  <summary class="language" aria-label={t('Language')} title={t('Language')}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <ellipse cx="12" cy="12" rx="4" ry="9" />
+      <path d="M3 12h18" />
+    </svg>
+  </summary>
+  <div class="language-options">
+    {Object.entries(locales).map(([code, name]) => (
+      <a href={localizedPath(Astro.url.pathname, code as Locale)} lang={languageTag(code as Locale)} hreflang={languageTag(code as Locale)} aria-current={code === locale ? 'page' : undefined} aria-label={name}>
+        <span>{name}</span>
+        {code === locale && <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 8 3 3 7-7" /></svg>}
+      </a>
+    ))}
+  </div>
+</details>
+<script>
+  const picker = document.querySelector<HTMLDetailsElement>('#language-picker');
+  if (picker) {
+    picker.querySelectorAll<HTMLAnchorElement>('a').forEach(link => {
+      link.href += location.search + location.hash;
+    });
+    // Read the current section at click time too, since scrolling can change the hash.
+    picker.addEventListener('click', event => {
+      const link = (event.target as Element).closest('a');
+      if (link) {
+        const url = new URL(link.href);
+        url.search = location.search;
+        url.hash = location.hash;
+        link.href = url.href;
+      }
+    });
+    document.addEventListener('pointerdown', event => {
+      if (!picker.contains(event.target as Node)) picker.open = false;
+    });
+    picker.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        picker.open = false;
+        picker.querySelector('summary')?.focus();
+        event.stopPropagation();
+      }
+    });
+    picker.addEventListener('focusout', event => {
+      if (!picker.contains(event.relatedTarget as Node | null)) picker.open = false;
+    });
+  }
+</script>
+<style>
+  details { position: relative; }
+  .language { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: rgb(var(--color-text-muted)); border-radius: 50%; cursor: pointer; list-style: none; }
+  .language::-webkit-details-marker { display: none; }
+  details[open] .language { color: rgb(var(--color-text-base)); background: rgba(var(--color-rule), .07); }
+  .language-options { position: absolute; right: 0; top: calc(100% + .65rem); width: 11rem; padding: .35rem; border: 1px solid rgba(var(--color-rule), .14); border-radius: 1rem; background: rgba(var(--color-fill), .96); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); box-shadow: 0 12px 32px rgba(0, 0, 0, .12); }
+  a { display: flex; align-items: center; justify-content: space-between; min-height: 40px; padding: .4rem .7rem; border-radius: .65rem; font-size: .95rem; line-height: 1.3; color: rgb(var(--color-text-muted)); }
+  a:hover, a:focus-visible, a[aria-current] { color: rgb(var(--color-text-base)); background: rgba(var(--color-rule), .07); }
+  a:focus-visible { outline-offset: -2px; }
+  @supports not (backdrop-filter: blur(1px)) { .language-options { background: rgb(var(--color-fill)); } }
+</style>

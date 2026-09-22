@@ -1,16 +1,19 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
+import TextLinks from "@/components/TextLinks.astro";
 import DocPage from "@/layouts/DocPage.astro";
 import { docPages } from "@/lib/site-content";
 
 const page = docPages.contact;
 ---
 
-<DocPage title={page.title} description={page.description}>
+<DocPage title={t(page.title)} description={t(page.description)}>
   {page.sections.map((section) => (
     <section>
-      <h2>{section.heading}</h2>
+      <h2>{t(section.heading)}</h2>
       {section.paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
+        <p><TextLinks text={t(paragraph)} /></p>
       ))}
     </section>
   ))}

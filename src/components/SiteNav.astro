@@ -1,11 +1,16 @@
 ---
+import { translator, localeFor, localizedPath } from "@/i18n";
+const t = translator(Astro.url.pathname);
+const locale = localeFor(Astro.url.pathname);
+const local = (path: string) => localizedPath(path, locale);
+import LanguageSelect from "./LanguageSelect.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import { basics } from "@cv";
 
 const { name } = basics;
 const given = name.split(" ")[0];
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isHome = path === "/";
+const isHome = localizedPath(path, "en") === "/";
 
 const links = [
   { href: isHome ? "#experience" : "/#experience", label: "Work" },
@@ -16,11 +21,11 @@ const links = [
 ---
 
 <header class="site-nav no-print">
-  <a class="mark" href="/" aria-label={name}>{given}</a>
-  <nav aria-label="Sections">
+  <a class="mark" href={local("/")} aria-label={name}>{given}</a>
+  <nav aria-label={t("Sections")}>
     {
       links.map(({ href, label }) => (
-        <a href={href}>{label}</a>
+        <a href={href.startsWith("/") ? local(href) : href}>{t(label)}</a>
       ))
     }
   </nav>
@@ -29,13 +34,26 @@ const links = [
       type="button"
       id="nav-cmdk"
       class="cmdk"
-      aria-label="Open command palette"
+      aria-label={t("Open command palette")}
+      aria-keyshortcuts="Meta+K Control+K"
+      title={`${t("Open command palette")} (⌘K / Ctrl+K)`}
     >
-      <kbd>⌘</kbd><kbd>K</kbd>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 8a3 3 0 1 0-3-3v14a3 3 0 1 0 3-3H5a3 3 0 1 0 3 3V5a3 3 0 1 0-3 3Z" />
+      </svg>
     </button>
+    {Astro.props.showLanguage !== false && <LanguageSelect />}
     <ThemeSwitch />
   </div>
 </header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('.site-nav');
+  const updateNav = () => nav?.classList.toggle('is-scrolled', window.scrollY > 48);
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('pageshow', updateNav);
+</script>
 
 <style>
   .site-nav {
@@ -44,11 +62,25 @@ const links = [
     z-index: 40;
     display: flex;
     align-items: center;
-    gap: 1.25rem;
-    padding: 0.85rem 1.5rem;
-    background: color-mix(in srgb, rgb(var(--color-fill)) 86%, transparent);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(var(--color-rule), 0.08);
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.25rem 0.5rem 0.25rem 1.125rem;
+    background: rgba(var(--color-fill), 0.68);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid transparent;
+    border-bottom-color: rgba(var(--color-rule), 0.1);
+    border-radius: 0;
+    transition: width 280ms ease, top 280ms ease, border-radius 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+  }
+
+  .site-nav.is-scrolled {
+    top: 0.75rem;
+    width: min(64rem, calc(100% - 2rem));
+    border-color: rgba(var(--color-rule), 0.1);
+    border-radius: 1.75rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .mark {
@@ -61,6 +93,7 @@ const links = [
   nav {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 1.15rem;
     margin-left: auto;
   }
@@ -68,6 +101,7 @@ const links = [
   nav a {
     font-size: 0.92rem;
     color: rgb(var(--color-text-muted));
+    transition: color 160ms ease;
   }
 
   nav a:hover,
@@ -78,42 +112,47 @@ const links = [
   .tools {
     display: flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0;
+    flex-shrink: 0;
   }
 
   .cmdk {
-    display: none;
+    display: inline-flex;
     align-items: center;
-    gap: 0.15rem;
-    padding: 0.2rem 0.45rem;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
     color: rgb(var(--color-text-muted));
-    background: rgba(var(--muted), 0.35);
-    border: 1px solid rgba(var(--color-rule), 0.12);
-    border-radius: 4px;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
     cursor: pointer;
   }
 
-  .cmdk kbd {
-    font-family: Newsreader, Georgia, serif;
-    font-size: 0.75rem;
-    font-weight: 400;
+  .tools :global(.cmdk),
+  .tools :global(.language),
+  .tools :global(.theme-switch) {
+    transition: color 160ms ease, background-color 160ms ease;
   }
 
-  @media (min-width: 720px) {
-    .site-nav {
-      padding: 0.9rem 2.25rem;
-    }
-    .cmdk {
-      display: inline-flex;
-    }
+  .tools :global(.cmdk:hover),
+  .tools :global(.language:hover),
+  .tools :global(.theme-switch:hover) {
+    color: rgb(var(--color-text-base));
+    background-color: rgba(var(--color-rule), 0.06);
   }
 
-  @media (max-width: 520px) {
-    nav {
-      display: none;
-    }
-    .tools {
-      margin-left: auto;
-    }
+  @supports not (backdrop-filter: blur(1px)) {
+    .site-nav { background: rgb(var(--color-fill)); }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .tools { margin-left: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav, nav a, .tools :global(*) { transition: none; }
   }
 </style>

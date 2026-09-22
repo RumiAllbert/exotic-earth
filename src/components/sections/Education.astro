@@ -1,4 +1,6 @@
 ---
+import { translator, localeFor } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import Section from "../Section.astro";
 import { education, certificates } from "@cv";
 
@@ -17,9 +19,9 @@ const issuerDomains: Record<string, string> = {
 };
 
 function yearOf(date?: string | null): string {
-  if (!date) return "Present";
+  if (!date) return t("Present");
   const year = date.slice(0, 4);
-  return /^\d{4}$/.test(year) ? year : "Present";
+  return /^\d{4}$/.test(year) ? year : t("Present");
 }
 ---
 
@@ -63,12 +65,12 @@ function yearOf(date?: string | null): string {
                 </p>
               </header>
               <p class="course">
-                {[studyType, area].filter(Boolean).join(" in ")}
+                {[studyType, area].filter(Boolean).map(t).join(localeFor(Astro.url.pathname) === "en" ? " in " : " · ")}
               </p>
               {highlights && highlights.length > 0 && (
                 <ul>
                   {highlights.map((highlight) => (
-                    <li>{highlight}</li>
+                    <li>{t(highlight)}</li>
                   ))}
                 </ul>
               )}
@@ -96,7 +98,7 @@ function yearOf(date?: string | null): string {
             />
             <span>
               <>
-                <span class="certificate-name">{name}</span>
+                <span class="certificate-name">{t(name)}</span>
                 <span class="issuer">
                   {issuer} · {yearOf(date)}
                 </span>

@@ -1,4 +1,6 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import Section from "../Section.astro";
 import { skills } from "@cv";
 import { Icon } from "astro-icon/components";
@@ -77,13 +79,13 @@ const secondaryGroups = skills.filter((group) => group.name !== "Focus");
   <div class="stack">
     {
       coreCompetencies.length > 0 && (
-        <p class="focus">{coreCompetencies.join(", ")}</p>
+        <p class="focus">{coreCompetencies.map(t).join(", ")}</p>
       )
     }
     {
       secondaryGroups.map((group) => (
         <div class="group">
-          <h3>{group.name}</h3>
+          <h3>{t(group.name)}</h3>
           <ul>
             {group.keywords.map((keyword) => {
               const iconName = getIconName(keyword);

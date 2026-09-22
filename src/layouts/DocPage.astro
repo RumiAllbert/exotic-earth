@@ -1,4 +1,8 @@
 ---
+import { translator, localeFor, localizedPath } from "@/i18n";
+const t = translator(Astro.url.pathname);
+const locale = localeFor(Astro.url.pathname);
+const local = (path: string) => localizedPath(path, locale);
 import Layout from "@/layouts/Layout.astro";
 import { basics } from "@cv";
 
@@ -14,18 +18,18 @@ const { name } = basics;
 <Layout title={`${title} · ${name}`} description={description}>
   <main class="doc">
     <p class="back">
-      <a href="/">Home</a>
+      <a href={local("/")}>{t("Home")}</a>
     </p>
     <article class="doc-page">
       <h1>{title}</h1>
       <slot />
     </article>
     <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/llms.txt">llms.txt</a>
+      <a href={local("/")}>{t("Home")}</a>
+      <a href={local("/about")}>{t("About")}</a>
+      <a href={local("/contact")}>{t("Contact")}</a>
+      <a href={local("/privacy")}>{t("Privacy")}</a>
+      <a href="/llms">llms.txt</a>
     </nav>
   </main>
 </Layout>
@@ -69,6 +73,7 @@ const { name } = basics;
     color: rgb(var(--color-text-base));
     text-decoration: underline;
     text-underline-offset: 3px;
+    overflow-wrap: anywhere;
   }
 
   .doc-page :global(ul) {

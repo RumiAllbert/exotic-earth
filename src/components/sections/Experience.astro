@@ -1,4 +1,6 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import Section from "../Section.astro";
 import { work } from "@cv";
 import { Icon } from "astro-icon/components";
@@ -20,9 +22,9 @@ type WorkItem = {
 };
 
 function yearOf(date: string | null): string {
-  if (!date) return "Present";
+  if (!date) return t("Present");
   const year = date.slice(0, 4);
-  return /^\d{4}$/.test(year) ? year : "Present";
+  return /^\d{4}$/.test(year) ? year : t("Present");
 }
 
 function getIconName(skill: string): string | null {
@@ -73,10 +75,10 @@ function getIconName(skill: string): string | null {
               <div class="body">
                 <div class="head">
                   <h3>
-                    <span class="role">{position}</span>
-                    <span class="at"> at </span>
+                    <span class="role">{t(position)}</span>
+                    <span class="at"> {t("at")} </span>
                     {url ? (
-                      <a href={url} title={`Visit ${name}`} target="_blank" rel="noopener noreferrer">
+                      <a href={url} title={`${t("Visit")} ${name}`} target="_blank" rel="noopener noreferrer">
                         {name}
                       </a>
                     ) : (
@@ -89,7 +91,7 @@ function getIconName(skill: string): string | null {
                       class="more no-print"
                       @click="expanded = !expanded"
                       :aria-expanded="expanded"
-                      aria-label={`Expand details: ${position} at ${name}`}
+                      aria-label={`${t("Expand details")}: ${t(position)} ${t("at")} ${name}`}
                     >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true" :style="expanded ? 'transform: rotate(180deg)' : ''"><path d="m4 6 4 4 4-4" /></svg>
                     </button>
@@ -99,7 +101,7 @@ function getIconName(skill: string): string | null {
                   <div class="notes" x-cloak x-show="expanded" x-collapse>
                     {(location || location_type) && (
                       <p class="meta">
-                        {[location, location_type].filter(Boolean).join(", ")}
+                        {[location, location_type].filter(Boolean).map(value => ["Remote", "Traveler", "On site", "Hybrid", "Intern"].includes(value) ? t(value) : value).join(", ")}
                       </p>
                     )}
                     {hasSummary && (
@@ -107,25 +109,25 @@ function getIconName(skill: string): string | null {
                         {Array.isArray(summary) ? (
                           <ul>
                             {summary.map((item) => (
-                              <li>{item}</li>
+                              <li>{t(item)}</li>
                             ))}
                           </ul>
                         ) : (
-                          <p>{summary}</p>
+                          <p>{t(summary)}</p>
                         )}
                       </div>
                     )}
                     {highlights?.length > 0 && (
                       <ul>
                         {highlights.map((highlight) => (
-                          <li>{highlight}</li>
+                          <li>{t(highlight)}</li>
                         ))}
                       </ul>
                     )}
                     {responsibilities && responsibilities.length > 0 && (
                       <ul>
                         {responsibilities.map((item) => (
-                          <li>{item}</li>
+                          <li>{t(item)}</li>
                         ))}
                       </ul>
                     )}
@@ -138,7 +140,7 @@ function getIconName(skill: string): string | null {
                               {iconName && !iconName.startsWith("/") && (
                                 <Icon class="icon" name={iconName} />
                               )}
-                              {skill}
+                              {iconName ? skill : t(skill)}
                             </li>
                           );
                         })}
@@ -185,14 +187,16 @@ function getIconName(skill: string): string | null {
 
 <style>
   .posts {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 0.85rem max-content minmax(0, 1fr);
+    column-gap: 0.75rem;
     position: relative;
   }
 
   .post {
     display: grid;
-    grid-template-columns: 0.85rem 5.5rem 1fr;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     gap: 0.1rem 0.75rem;
     padding: 0.28rem 0;
     align-items: start;
@@ -249,6 +253,8 @@ function getIconName(skill: string): string | null {
     padding-top: 0.18rem;
     white-space: nowrap;
   }
+
+  .body, h3 { min-width: 0; overflow-wrap: anywhere; }
 
   .head {
     display: flex;
@@ -355,8 +361,8 @@ function getIconName(skill: string): string | null {
   }
 
   @media (max-width: 640px) {
-    .post {
-      grid-template-columns: 0.85rem 1fr;
+    .posts {
+      grid-template-columns: 0.85rem minmax(0, 1fr);
     }
     .when {
       grid-column: 2;
@@ -368,11 +374,16 @@ function getIconName(skill: string): string | null {
   }
 
   @media print {
+    .posts {
+      grid-template-columns: max-content minmax(0, 1fr);
+    }
+
     .post {
       padding: 0.25rem 0;
       break-inside: avoid;
-      grid-template-columns: 6rem 1fr;
     }
+
+    .when, .body { grid-column: auto; }
 
     .track {
       display: none;
