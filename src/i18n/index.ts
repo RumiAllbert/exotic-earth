@@ -1,7 +1,8 @@
 import messages from './messages.json' with { type: 'json' };
 
-export const locales = { en: 'English', es: 'Español', 'zh-Hant': '繁體中文', it: 'Italiano', la: 'Latina', grc: 'Ἑλληνική' };
+export const locales = { en: 'English', es: 'Español', 'zh-Hant': '中文', it: 'Italiano', la: 'Latina', grc: 'Ἑλληνική' };
 export type Locale = keyof typeof locales;
+export const languageTag = (locale: Locale) => locale === 'es' ? 'es-MX' : locale;
 export function localeFor(path: string): Locale {
   const segment = path.split('/')[1];
   return Object.hasOwn(locales, segment) ? segment as Locale : 'en';

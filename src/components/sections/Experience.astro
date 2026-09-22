@@ -187,14 +187,16 @@ function getIconName(skill: string): string | null {
 
 <style>
   .posts {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 0.85rem max-content minmax(0, 1fr);
+    column-gap: 0.75rem;
     position: relative;
   }
 
   .post {
     display: grid;
-    grid-template-columns: 0.85rem 5.5rem 1fr;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
     gap: 0.1rem 0.75rem;
     padding: 0.28rem 0;
     align-items: start;
@@ -251,6 +253,8 @@ function getIconName(skill: string): string | null {
     padding-top: 0.18rem;
     white-space: nowrap;
   }
+
+  .body, h3 { min-width: 0; overflow-wrap: anywhere; }
 
   .head {
     display: flex;
@@ -357,8 +361,8 @@ function getIconName(skill: string): string | null {
   }
 
   @media (max-width: 640px) {
-    .post {
-      grid-template-columns: 0.85rem 1fr;
+    .posts {
+      grid-template-columns: 0.85rem minmax(0, 1fr);
     }
     .when {
       grid-column: 2;
@@ -370,11 +374,16 @@ function getIconName(skill: string): string | null {
   }
 
   @media print {
+    .posts {
+      grid-template-columns: max-content minmax(0, 1fr);
+    }
+
     .post {
       padding: 0.25rem 0;
       break-inside: avoid;
-      grid-template-columns: 6rem 1fr;
     }
+
+    .when, .body { grid-column: auto; }
 
     .track {
       display: none;

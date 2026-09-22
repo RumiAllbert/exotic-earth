@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { runInNewContext } from 'node:vm';
 import ts from 'typescript';
-import { locales, localeFor, localizedPath, translator } from '../src/i18n/index.ts';
+import { locales, languageTag, localeFor, localizedPath, translator } from '../src/i18n/index.ts';
 import messages from '../src/i18n/messages.json' with { type: 'json' };
 import cv from '../cv.json' with { type: 'json' };
 import { docPages } from '../src/lib/site-content.ts';
@@ -22,8 +22,8 @@ test('every locale renders complete portfolio content and keeps navigation in th
       if (locale !== 'en') assert.ok(values[locale]?.trim());
     }
     const html = read(`dist${root}index.html`);
-    assert.ok(html.includes(`<html lang="${locale}">`));
-    assert.ok(html.includes(`value="${root}" lang="${locale}" selected`));
+    assert.ok(html.includes(`<html lang="${languageTag(locale)}">`));
+    assert.ok(html.includes(`value="${root}" lang="${languageTag(locale)}" selected`));
     assert.ok(html.includes(`href="${root}contact"`));
     assert.ok(html.includes(`href="${root}about"`));
     assert.ok(html.includes(`hreflang="zh-Hant"`));

@@ -1,13 +1,18 @@
 ---
-import { locales, localeFor, localizedPath, translator, type Locale } from '@/i18n';
+import { locales, languageTag, localeFor, localizedPath, translator, type Locale } from '@/i18n';
 const locale = localeFor(Astro.url.pathname);
 const t = translator(Astro.url.pathname);
 ---
 <label class="language">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" />
+    <ellipse cx="12" cy="12" rx="4" ry="9" />
+    <path d="M3 12h18" />
+  </svg>
   <span class="sr-only">{t('Language')}</span>
   <select id="language-select" aria-label={t('Language')}>
     {Object.entries(locales).map(([code, name]) => (
-      <option value={localizedPath(Astro.url.pathname, code as Locale)} lang={code} selected={code === locale}>{name}</option>
+      <option value={localizedPath(Astro.url.pathname, code as Locale)} lang={languageTag(code as Locale)} selected={code === locale}>{name}</option>
     ))}
   </select>
 </label>
@@ -20,11 +25,13 @@ const t = translator(Astro.url.pathname);
 <noscript>
   <style>.language { display: none; }</style>
   <details><summary>{t('Language')}</summary>
-    {Object.entries(locales).map(([code, name]) => <a href={localizedPath(Astro.url.pathname, code as Locale)} lang={code}>{name}</a>)}
+    {Object.entries(locales).map(([code, name]) => <a href={localizedPath(Astro.url.pathname, code as Locale)} lang={languageTag(code as Locale)}>{name}</a>)}
   </details>
 </noscript>
 <style>
-  select { max-width: 8.5rem; min-height: 44px; padding: .3rem .5rem; font: inherit; font-size: .88rem; color: rgb(var(--color-text-muted)); background: rgb(var(--color-fill)); border: 1px solid rgba(var(--color-rule), .15); border-radius: 4px; cursor: pointer; }
+  .language { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: rgb(var(--color-text-muted)); border-radius: 4px; }
+  .language:hover { color: rgb(var(--color-text-base)); }
+  .language:focus-within { outline: 2px solid rgb(var(--color)); outline-offset: 2px; }
+  select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
   noscript a { display: block; padding: .3rem; }
-  @media (max-width: 720px) { select { max-width: 7.5rem; } }
 </style>
