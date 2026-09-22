@@ -1,11 +1,16 @@
 ---
+import { translator, localeFor, localizedPath } from "@/i18n";
+const t = translator(Astro.url.pathname);
+const locale = localeFor(Astro.url.pathname);
+const local = (path: string) => localizedPath(path, locale);
+import LanguageSelect from "./LanguageSelect.astro";
 import ThemeSwitch from "@/components/ThemeSwitch.astro";
 import { basics } from "@cv";
 
 const { name } = basics;
 const given = name.split(" ")[0];
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isHome = path === "/";
+const isHome = localizedPath(path, "en") === "/";
 
 const links = [
   { href: isHome ? "#experience" : "/#experience", label: "Work" },
@@ -16,11 +21,11 @@ const links = [
 ---
 
 <header class="site-nav no-print">
-  <a class="mark" href="/" aria-label={name}>{given}</a>
-  <nav aria-label="Sections">
+  <a class="mark" href={local("/")} aria-label={name}>{given}</a>
+  <nav aria-label={t("Sections")}>
     {
       links.map(({ href, label }) => (
-        <a href={href}>{label}</a>
+        <a href={href.startsWith("/") ? local(href) : href}>{t(label)}</a>
       ))
     }
   </nav>
@@ -29,10 +34,11 @@ const links = [
       type="button"
       id="nav-cmdk"
       class="cmdk"
-      aria-label="Open command palette"
+      aria-label={t("Open command palette")}
     >
       <kbd>⌘</kbd><kbd>K</kbd>
     </button>
+    {Astro.props.showLanguage !== false && <LanguageSelect />}
     <ThemeSwitch />
   </div>
 </header>

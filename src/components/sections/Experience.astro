@@ -1,4 +1,6 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import Section from "../Section.astro";
 import { work } from "@cv";
 import { Icon } from "astro-icon/components";
@@ -20,9 +22,9 @@ type WorkItem = {
 };
 
 function yearOf(date: string | null): string {
-  if (!date) return "Present";
+  if (!date) return t("Present");
   const year = date.slice(0, 4);
-  return /^\d{4}$/.test(year) ? year : "Present";
+  return /^\d{4}$/.test(year) ? year : t("Present");
 }
 
 function getIconName(skill: string): string | null {
@@ -73,10 +75,10 @@ function getIconName(skill: string): string | null {
               <div class="body">
                 <div class="head">
                   <h3>
-                    <span class="role">{position}</span>
-                    <span class="at"> at </span>
+                    <span class="role">{t(position)}</span>
+                    <span class="at"> {t("at")} </span>
                     {url ? (
-                      <a href={url} title={`Visit ${name}`} target="_blank" rel="noopener noreferrer">
+                      <a href={url} title={`${t("Visit")} ${name}`} target="_blank" rel="noopener noreferrer">
                         {name}
                       </a>
                     ) : (
@@ -89,7 +91,7 @@ function getIconName(skill: string): string | null {
                       class="more no-print"
                       @click="expanded = !expanded"
                       :aria-expanded="expanded"
-                      aria-label={`Expand details: ${position} at ${name}`}
+                      aria-label={`${t("Expand details")}: ${t(position)} ${t("at")} ${name}`}
                     >
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true" :style="expanded ? 'transform: rotate(180deg)' : ''"><path d="m4 6 4 4 4-4" /></svg>
                     </button>
@@ -99,7 +101,7 @@ function getIconName(skill: string): string | null {
                   <div class="notes" x-cloak x-show="expanded" x-collapse>
                     {(location || location_type) && (
                       <p class="meta">
-                        {[location, location_type].filter(Boolean).join(", ")}
+                        {[location, location_type].filter(Boolean).map(value => ["Remote", "Traveler", "On site", "Hybrid", "Intern"].includes(value) ? t(value) : value).join(", ")}
                       </p>
                     )}
                     {hasSummary && (
@@ -107,25 +109,25 @@ function getIconName(skill: string): string | null {
                         {Array.isArray(summary) ? (
                           <ul>
                             {summary.map((item) => (
-                              <li>{item}</li>
+                              <li>{t(item)}</li>
                             ))}
                           </ul>
                         ) : (
-                          <p>{summary}</p>
+                          <p>{t(summary)}</p>
                         )}
                       </div>
                     )}
                     {highlights?.length > 0 && (
                       <ul>
                         {highlights.map((highlight) => (
-                          <li>{highlight}</li>
+                          <li>{t(highlight)}</li>
                         ))}
                       </ul>
                     )}
                     {responsibilities && responsibilities.length > 0 && (
                       <ul>
                         {responsibilities.map((item) => (
-                          <li>{item}</li>
+                          <li>{t(item)}</li>
                         ))}
                       </ul>
                     )}
@@ -138,7 +140,7 @@ function getIconName(skill: string): string | null {
                               {iconName && !iconName.startsWith("/") && (
                                 <Icon class="icon" name={iconName} />
                               )}
-                              {skill}
+                              {iconName ? skill : t(skill)}
                             </li>
                           );
                         })}

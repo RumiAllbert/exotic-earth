@@ -1,22 +1,26 @@
 ---
+import { translator, localeFor, localizedPath } from "@/i18n";
+const t = translator(Astro.url.pathname);
+const locale = localeFor(Astro.url.pathname);
+const local = (path: string) => localizedPath(path, locale);
 import { hiringDraft } from '@/lib/hiring-draft';
 const sections = ['About', 'Experience', 'Publications', 'Skills', 'Education', 'Projects', 'Contact'];
 const commands = [
-  ...sections.map(title => ({ title, group: 'Navigate', url: `/#${title.toLowerCase()}` })),
-  { title: "I'm hiring", group: 'Email draft', url: hiringDraft },
+  ...sections.map(title => ({ title: t(title), group: t("Navigate"), url: `${local("/")}#${title.toLowerCase()}` })),
+  { title: t("I'm hiring"), group: t("Email draft"), url: hiringDraft },
 ];
 ---
-<button id="floating-palette" class="no-print" aria-label="Open command palette">⌘</button>
-<dialog id="command-palette" aria-label="Command palette" class="no-print">
+<button id="floating-palette" class="no-print" aria-label={t("Open command palette")}>⌘</button>
+<dialog id="command-palette" aria-label={t("Command palette")} class="no-print">
   <header>
-    <input id="command-search" type="search" placeholder="Jump to a section…" aria-label="Search commands" autocomplete="off" />
-    <button id="close-palette" aria-label="Close command palette">Esc</button>
+    <input id="command-search" type="search" placeholder={t("Jump to a section…")} aria-label={t("Search commands")} autocomplete="off" />
+    <button id="close-palette" aria-label={t("Close command palette")}>Esc</button>
   </header>
   <ul id="command-results">
     {commands.map(({ title, group, url }) => <li><a href={url} target={url.startsWith('https:') ? '_blank' : undefined} rel={url.startsWith('https:') ? 'noopener noreferrer' : undefined}><span>{title}</span><small>{group}</small></a></li>)}
   </ul>
-  <p id="command-empty" hidden>No matches. Try a section or “hiring”.</p>
-  <footer>↑ ↓ browse · Enter open · Esc close</footer>
+  <p id="command-empty" hidden>{t("No matches. Try a section or hiring.")}</p>
+  <footer>{t("↑ ↓ browse · Enter open · Esc close")}</footer>
 </dialog>
 <script>
   const dialog = document.querySelector<HTMLDialogElement>('#command-palette')!;

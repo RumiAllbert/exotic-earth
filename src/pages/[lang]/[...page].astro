@@ -1,0 +1,16 @@
+---
+import Home from '../index.astro';
+import About from '../about.astro';
+import Contact from '../contact.astro';
+import Privacy from '../privacy.astro';
+import { locales } from '@/i18n';
+
+export function getStaticPaths() {
+  return Object.keys(locales).filter(lang => lang !== 'en').flatMap(lang =>
+    [undefined, 'about', 'contact', 'privacy'].map(page => ({ params: { lang, page } }))
+  );
+}
+const pages = { about: About, contact: Contact, privacy: Privacy };
+const Page = pages[Astro.params.page as keyof typeof pages] ?? Home;
+---
+<Page />

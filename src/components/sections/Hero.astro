@@ -1,4 +1,6 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import { basics } from "@cv";
 import Mail from "@/icons/Mail.astro";
 import Phone from "@/icons/Phone.astro";
@@ -32,27 +34,27 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     </h1>
 
 
-    <ul class="tongues" aria-label="Languages">
+    <ul class="tongues" aria-label={t("Languages")}>
       <li lang="en">English</li>
       <li lang="es">Español</li>
-      <li lang="zh">中文</li>
+      <li lang="zh-Hant">繁體中文</li>
       <li lang="it">Italiano</li>
-      <li lang="la">Latin</li>
-      <li lang="grc">Ancient Greek</li>
+      <li lang="la">Latina</li>
+      <li lang="grc">Ἑλληνική</li>
     </ul>
 
     <p class="print">{printInfo}</p>
     <p class="no-print links">
       {
         email && (
-          <a href={`mailto:${email}`} aria-label="Email">
+          <a href={`mailto:${email}`} aria-label={t("Email")}>
             <Mail />
           </a>
         )
       }
       {
         phone && (
-          <a href={`tel:${phone}`} aria-label="Phone">
+          <a href={`tel:${phone}`} aria-label={t("Phone")}>
             <Phone />
           </a>
         )

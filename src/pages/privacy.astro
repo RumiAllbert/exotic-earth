@@ -1,16 +1,18 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import DocPage from "@/layouts/DocPage.astro";
 import { docPages } from "@/lib/site-content";
 
 const page = docPages.privacy;
 ---
 
-<DocPage title={page.title} description={page.description}>
+<DocPage title={t(page.title)} description={t(page.description)}>
   {page.sections.map((section) => (
     <section>
-      <h2>{section.heading}</h2>
+      <h2>{t(section.heading)}</h2>
       {section.paragraphs.map((paragraph) => (
-        <p>{paragraph}</p>
+        <p>{t(paragraph)}</p>
       ))}
     </section>
   ))}

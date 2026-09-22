@@ -1,4 +1,6 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import Section from "../Section.astro";
 import { basics } from "@cv";
 
@@ -6,7 +8,7 @@ const { summary } = basics;
 ---
 
 <Section title="About">
-  <p class="summary">{summary}</p>
+  <p class="summary">{t(summary)}</p>
 </Section>
 
 <style>

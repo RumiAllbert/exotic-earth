@@ -1,4 +1,6 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 import Section from "../Section.astro";
 import { projects } from "@cv";
 
@@ -27,10 +29,10 @@ const rest = projects.filter((project) => !FEATURED[project.name]);
         const image = FEATURED[name];
         return (
           <a class="plate" href={url} target="_blank" rel="noopener noreferrer">
-            <img src={image.src} alt={image.alt} width="1200" height="630" loading="lazy" />
+            <img src={image.src} alt={t(image.alt)} width="1200" height="630" loading="lazy" />
             <span>
               <strong>{name}</strong>
-              {description}
+              {t(description)}
             </span>
           </a>
         );
@@ -43,21 +45,21 @@ const rest = projects.filter((project) => !FEATURED[project.name]);
         <li class="work" x-data="{ expanded: false }">
           <div class="row">
             <h3>{name}</h3>
-            <p class="deck">{description}</p>
+            <p class="deck">{t(description)}</p>
             <div class="actions">
               {isActive && url && (
                 <a href={url} target="_blank" rel="noopener noreferrer">
-                  Live
+                  {t("Live")}
                 </a>
               )}
               {github && (
                 <a
                   href={github}
-                  title={`Repository for ${name}`}
+                  title={`${t("Repository for")} ${name}`}
                   target="_blank"
                   rel="noopener"
                 >
-                  Code
+                  {t("Code")}
                 </a>
               )}
               {highlights?.length > 0 && (
@@ -67,7 +69,7 @@ const rest = projects.filter((project) => !FEATURED[project.name]);
                   @click="expanded = !expanded"
                   :aria-expanded="expanded"
                 >
-                  <span x-text="expanded ? 'Less' : 'Notes'">Notes</span>
+                  <span x-text={`expanded ? ${JSON.stringify(t("Less"))} : ${JSON.stringify(t("Notes"))}`}>{t("Notes")}</span>
                 </button>
               )}
             </div>
@@ -75,7 +77,7 @@ const rest = projects.filter((project) => !FEATURED[project.name]);
           {highlights?.length > 0 && (
             <ul class="notes" x-show="expanded" x-collapse>
               {highlights.map((highlight) => (
-                <li>{highlight}</li>
+                <li>{t(highlight)}</li>
               ))}
             </ul>
           )}

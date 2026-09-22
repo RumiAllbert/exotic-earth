@@ -1,11 +1,13 @@
 ---
+import { translator } from "@/i18n";
+const t = translator(Astro.url.pathname);
 
 ---
 
 <button
   id="themeSwitch"
   class="theme-switch"
-  aria-label="Toggle light and dark"
+  aria-label={t("Toggle light and dark")}
 >
   <svg
     class="sun"

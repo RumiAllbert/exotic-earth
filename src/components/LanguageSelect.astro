@@ -1,0 +1,30 @@
+---
+import { locales, localeFor, localizedPath, translator, type Locale } from '@/i18n';
+const locale = localeFor(Astro.url.pathname);
+const t = translator(Astro.url.pathname);
+---
+<label class="language">
+  <span class="sr-only">{t('Language')}</span>
+  <select id="language-select" aria-label={t('Language')}>
+    {Object.entries(locales).map(([code, name]) => (
+      <option value={localizedPath(Astro.url.pathname, code as Locale)} lang={code} selected={code === locale}>{name}</option>
+    ))}
+  </select>
+</label>
+<script>
+  document.querySelector<HTMLSelectElement>('#language-select')?.addEventListener('change', event => {
+    const select = event.currentTarget as HTMLSelectElement;
+    location.assign(select.value + location.search + location.hash);
+  });
+</script>
+<noscript>
+  <style>.language { display: none; }</style>
+  <details><summary>{t('Language')}</summary>
+    {Object.entries(locales).map(([code, name]) => <a href={localizedPath(Astro.url.pathname, code as Locale)} lang={code}>{name}</a>)}
+  </details>
+</noscript>
+<style>
+  select { max-width: 8.5rem; min-height: 44px; padding: .3rem .5rem; font: inherit; font-size: .88rem; color: rgb(var(--color-text-muted)); background: rgb(var(--color-fill)); border: 1px solid rgba(var(--color-rule), .15); border-radius: 4px; cursor: pointer; }
+  noscript a { display: block; padding: .3rem; }
+  @media (max-width: 720px) { select { max-width: 7.5rem; } }
+</style>

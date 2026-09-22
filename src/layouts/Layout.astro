@@ -1,4 +1,8 @@
 ---
+import { translator, localeFor, localizedPath } from "@/i18n";
+const t = translator(Astro.url.pathname);
+const locale = localeFor(Astro.url.pathname);
+import { locales, type Locale } from "@/i18n";
 import { basics } from "@cv";
 import Vengeance from "@/layouts/Vengeance.astro";
 import KeyboardManager from "../components/KeyboardManager.astro";
@@ -21,7 +25,7 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -46,19 +50,22 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl + Astro.url.pathname} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
+    <meta property="og:description" content={t(summary)} />
     <meta property="og:image" content={`${siteUrl}/og-image.png`} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content={new URL(siteUrl).hostname} />
     <meta property="twitter:url" content={siteUrl} />
     <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={summary} />
+    <meta property="twitter:description" content={t(summary)} />
     <meta property="twitter:image" content={`${siteUrl}/og-image.png`} />
 
+    {!noindex && Object.keys(locales).map(lang => <link rel="alternate" hreflang={lang} href={siteUrl + localizedPath(Astro.url.pathname, lang as Locale)} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={siteUrl + localizedPath(Astro.url.pathname, 'en')} />}
     <link rel="canonical" href={siteUrl + Astro.url.pathname} />
 
     <script
+      is:inline
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
@@ -66,8 +73,8 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
         name: basics.name,
         url: siteUrl,
         image: `${siteUrl}${basics.image.startsWith("/") ? basics.image : "/" + basics.image}`,
-        jobTitle: basics.label,
-        description: basics.summary,
+        jobTitle: t(basics.label),
+        description: t(basics.summary),
         address: {
           "@type": "PostalAddress",
           addressLocality: basics.location.city,
@@ -120,7 +127,7 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
   </head>
   <body data-theme={theme} class="relative bg-skin-fill text-skin-base">
     <div class="grain" aria-hidden="true"></div>
-    <SiteNav />
+    <SiteNav showLanguage={!noindex} />
     <slot />
     <KeyboardManager />
     <script
@@ -179,6 +186,8 @@ const siteUrl = import.meta.env.SITE || "https://rumicalles.com";
         font-family: Newsreader, Georgia, serif;
         font-weight: 500;
       }
+
+      html[lang="zh-Hant"] :is(h2, h3, .focus, .actions, .note) { font-style: normal; }
 
       p {
         color: rgb(var(--color-text-muted));
