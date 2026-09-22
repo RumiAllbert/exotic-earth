@@ -47,22 +47,39 @@ const links = [
   </div>
 </header>
 
+<script>
+  const nav = document.querySelector<HTMLElement>('.site-nav');
+  const updateNav = () => nav?.classList.toggle('is-scrolled', window.scrollY > 48);
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('pageshow', updateNav);
+</script>
+
 <style>
   .site-nav {
     position: sticky;
-    top: 0.75rem;
+    top: 0;
     z-index: 40;
     display: flex;
     align-items: center;
     gap: 1rem;
-    width: min(64rem, calc(100% - 2rem));
-    margin: 0.75rem auto 0;
+    width: 100%;
+    margin: 0 auto;
     padding: 0.25rem 0.5rem 0.25rem 1.125rem;
     background: rgba(var(--color-fill), 0.68);
     -webkit-backdrop-filter: blur(24px) saturate(140%);
     backdrop-filter: blur(24px) saturate(140%);
-    border: 1px solid rgba(var(--color-rule), 0.1);
-    border-radius: 999px;
+    border: 1px solid transparent;
+    border-bottom-color: rgba(var(--color-rule), 0.1);
+    border-radius: 0;
+    transition: width 280ms ease, top 280ms ease, border-radius 280ms ease, border-color 280ms ease, box-shadow 280ms ease;
+  }
+
+  .site-nav.is-scrolled {
+    top: 0.75rem;
+    width: min(64rem, calc(100% - 2rem));
+    border-color: rgba(var(--color-rule), 0.1);
+    border-radius: 1.75rem;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
@@ -136,6 +153,6 @@ const links = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    nav a, .tools :global(*) { transition: none; }
+    .site-nav, nav a, .tools :global(*) { transition: none; }
   }
 </style>
