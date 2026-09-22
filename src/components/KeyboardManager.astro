@@ -10,7 +10,6 @@ const commands = [
   { title: t("I'm hiring"), group: t("Email draft"), url: hiringDraft },
 ];
 ---
-<button id="floating-palette" class="no-print" aria-label={t("Open command palette")}>⌘</button>
 <dialog id="command-palette" aria-label={t("Command palette")} class="no-print">
   <header>
     <input id="command-search" type="search" placeholder={t("Jump to a section…")} aria-label={t("Search commands")} autocomplete="off" />
@@ -33,7 +32,7 @@ const commands = [
     empty.hidden = items.some(item => !item.hidden);
   };
   const open = () => { search.value = ''; filter(); dialog.showModal(); search.focus(); };
-  document.querySelectorAll('#nav-cmdk, #floating-palette').forEach(button => button.addEventListener('click', open));
+  document.querySelectorAll('#nav-cmdk').forEach(button => button.addEventListener('click', open));
   document.querySelector('#close-palette')!.addEventListener('click', () => dialog.close());
   document.addEventListener('keydown', event => {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
@@ -69,6 +68,5 @@ const commands = [
   small { flex-shrink: 0; font-size: .75rem; color: rgb(var(--color-text-muted)); }
   footer, #command-empty { padding: .8rem 1.1rem; font-size: .8rem; color: rgb(var(--color-text-muted)); }
   footer { border-top: 1px solid rgba(var(--color-rule), .18); }
-  #floating-palette { display: none; }
-  @media(max-width: 720px) { #floating-palette { display: block; position: fixed; bottom: 1rem; right: 1rem; width: 44px; height: 44px; z-index: 30; background: rgb(var(--color-fill)); } a { flex-direction: column; gap: .2rem; } }
+  @media(max-width: 720px) { a { flex-direction: column; gap: .2rem; } }
 </style>

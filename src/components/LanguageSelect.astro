@@ -4,7 +4,7 @@ const locale = localeFor(Astro.url.pathname);
 const t = translator(Astro.url.pathname);
 ---
 <label class="language">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
     <circle cx="12" cy="12" r="9" />
     <ellipse cx="12" cy="12" rx="4" ry="9" />
     <path d="M3 12h18" />
@@ -29,7 +29,7 @@ const t = translator(Astro.url.pathname);
   </details>
 </noscript>
 <style>
-  .language { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: rgb(var(--color-text-muted)); border-radius: 4px; }
+  .language { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: rgb(var(--color-text-muted)); border-radius: 50%; }
   .language:hover { color: rgb(var(--color-text-base)); }
   .language:focus-within { outline: 2px solid rgb(var(--color)); outline-offset: 2px; }
   select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
