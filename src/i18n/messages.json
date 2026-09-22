@@ -196,7 +196,7 @@
     "grc": "Τηλέφωνον"
   },
   "let's chat :)": {
-    "es": "charlemos :)",
+    "es": "platiquemos :)",
     "zh-Hant": "聊聊吧 :)",
     "it": "parliamone :)",
     "la": "colloquamur :)",
@@ -276,7 +276,7 @@
     "es": "Código",
     "zh-Hant": "原始碼",
     "it": "Codice",
-    "la": "Codex",
+    "la": "Code",
     "grc": "Κώδιξ"
   },
   "Repository for": {
@@ -311,21 +311,21 @@
     "es": "Sistemas de IA y evaluación",
     "zh-Hant": "人工智慧系統與評估",
     "it": "Sistemi di IA e valutazione",
-    "la": "Systemata intellegentiae artificialis et aestimatio",
+    "la": "AI systems et evaluatio",
     "grc": "Συστήματα τεχνητῆς νοήσεως καὶ κρίσις"
   },
   "Philosophy of AI": {
     "es": "Filosofía de la IA",
     "zh-Hant": "人工智慧哲學",
     "it": "Filosofia dell'IA",
-    "la": "Philosophia intellegentiae artificialis",
+    "la": "Philosophia AI",
     "grc": "Φιλοσοφία τῆς τεχνητῆς νοήσεως"
   },
   "Interpretability": {
     "es": "Interpretabilidad",
     "zh-Hant": "可解釋性",
     "it": "Interpretabilità",
-    "la": "Interpretabilitas",
+    "la": "Interpretability",
     "grc": "Ἑρμηνευσιμότης"
   },
   "Lead author": {
@@ -367,15 +367,15 @@
     "es": "Director de Ingeniería de Investigación",
     "zh-Hant": "研究工程總監",
     "it": "Direttore dell'ingegneria della ricerca",
-    "la": "Praefectus machinationis ad investigationem",
-    "grc": "Ἐπιστάτης μηχανικῆς ἐρεύνης"
+    "la": "Director of Research Engineering",
+    "grc": "Director of Research Engineering"
   },
   "Director of Research Engineering @ micro1. BSc Data Science; MA Humanities. Classical languages, philosophy of mind, and AI.": {
     "es": "Director de Ingeniería de Investigación en micro1. Licenciatura en Ciencia de Datos; maestría en Humanidades. Lenguas clásicas, filosofía de la mente e IA.",
     "zh-Hant": "micro1 研究工程總監。資料科學理學士；人文學文學碩士。古典語言、心靈哲學與人工智慧。",
     "it": "Direttore dell'ingegneria della ricerca presso micro1. Laurea in Data Science; laurea magistrale in discipline umanistiche. Lingue classiche, filosofia della mente e IA.",
-    "la": "Praefectus machinationis ad investigationem apud micro1. Baccalaureus scientiae datorum; magister litterarum humaniorum. Linguae antiquae, philosophia mentis, intellegentia artificialis.",
-    "grc": "Ἐπιστάτης μηχανικῆς ἐρεύνης παρὰ micro1. BSc ἐπιστήμης δεδομένων· MA ἀνθρωπιστικῶν σπουδῶν. Ἀρχαῖαι γλῶτται, φιλοσοφία τοῦ νοῦ καὶ τεχνητὴ νόησις."
+    "la": "Director of Research Engineering apud micro1. BSc Data Science; MA Humanities. Linguae antiquae, philosophia mentis et AI.",
+    "grc": "Director of Research Engineering παρὰ micro1. BSc Data Science· MA Humanities. Ἀρχαῖαι γλῶτται, φιλοσοφία τοῦ νοῦ καὶ AI."
   },
   "Founder & Researcher": {
     "es": "Fundador e investigador",
@@ -388,127 +388,127 @@
     "es": "Investigador de IA",
     "zh-Hant": "人工智慧研究員",
     "it": "Ricercatore di IA",
-    "la": "Investigator intellegentiae artificialis",
-    "grc": "Ἐρευνητὴς τεχνητῆς νοήσεως"
+    "la": "AI Researcher",
+    "grc": "AI Researcher"
   },
   "AI Engineer": {
     "es": "Ingeniero de IA",
     "zh-Hant": "人工智慧工程師",
     "it": "Ingegnere di IA",
-    "la": "Machinator intellegentiae artificialis",
-    "grc": "Μηχανικὸς τεχνητῆς νοήσεως"
+    "la": "AI Engineer",
+    "grc": "AI Engineer"
   },
   "Adjunct Professor": {
     "es": "Profesor adjunto",
     "zh-Hant": "兼任教授",
     "it": "Docente a contratto",
     "la": "Professor adiunctus",
-    "grc": "Διδάσκαλος ἐπίκουρος"
+    "grc": "Adjunct Professor"
   },
   "Data Scientist": {
     "es": "Científico de datos",
     "zh-Hant": "資料科學家",
     "it": "Data scientist",
-    "la": "Scientiae datorum peritus",
-    "grc": "Ἐπιστήμων δεδομένων"
+    "la": "Data Scientist",
+    "grc": "Data Scientist"
   },
   "CTO & Executive Board Member": {
     "es": "Director de tecnología y miembro de la junta directiva",
     "zh-Hant": "技術長暨執行董事會成員",
     "it": "Direttore tecnico e membro del consiglio direttivo",
-    "la": "Praefectus technicus et consilii moderatorum sodalis",
-    "grc": "Ἐπιστάτης τῆς τεχνικῆς καὶ μέλος διοικητικοῦ συνεδρίου"
+    "la": "CTO & Executive Board Member",
+    "grc": "CTO & Executive Board Member"
   },
   "Data Analytics Research Assistant": {
     "es": "Asistente de investigación en análisis de datos",
     "zh-Hant": "資料分析研究助理",
     "it": "Assistente di ricerca nell'analisi dei dati",
-    "la": "Adiutor investigationis in analysi datorum",
-    "grc": "Βοηθὸς ἐρεύνης περὶ τὴν τῶν δεδομένων ἀνάλυσιν"
+    "la": "Data Analytics Research Assistant",
+    "grc": "Data Analytics Research Assistant"
   },
   "Data Analytics Alumni": {
     "es": "Egresado del programa de análisis de datos",
     "zh-Hant": "資料分析計畫結業生",
     "it": "Ex allievo del programma di analisi dei dati",
-    "la": "Alumnus analyseos datorum",
-    "grc": "Πεπαιδευμένος ἐν ἀναλύσει δεδομένων"
+    "la": "Data Analytics alumnus",
+    "grc": "Data Analytics Alumni"
   },
   "Full-Stack Developer & Assistant Creative Director": {
     "es": "Desarrollador full stack y subdirector creativo",
     "zh-Hant": "全端開發工程師暨助理創意總監",
     "it": "Sviluppatore full stack e vicedirettore creativo",
-    "la": "Programmatum totorum scriptor et adiutor praefecti artium",
-    "grc": "Προγραμματιστὴς ὅλου τοῦ συστήματος καὶ βοηθὸς τοῦ καλλιτεχνικοῦ ἐπιστάτου"
+    "la": "Full-Stack Developer & Assistant Creative Director",
+    "grc": "Full-Stack Developer & Assistant Creative Director"
   },
   "AI Research": {
     "es": "Investigación en IA",
     "zh-Hant": "人工智慧研究",
     "it": "Ricerca sull'IA",
-    "la": "Investigatio intellegentiae artificialis",
-    "grc": "Ἔρευνα τεχνητῆς νοήσεως"
+    "la": "AI Research",
+    "grc": "AI Research"
   },
   "Machine Learning": {
     "es": "Aprendizaje automático",
     "zh-Hant": "機器學習",
     "it": "Apprendimento automatico",
-    "la": "Disciplina machinalis",
-    "grc": "Μηχανικὴ μάθησις"
+    "la": "Machine Learning",
+    "grc": "Machine Learning"
   },
   "NLP & LLMs": {
     "es": "PLN y grandes modelos de lenguaje",
     "zh-Hant": "自然語言處理與大型語言模型",
     "it": "PLN e grandi modelli linguistici",
-    "la": "Linguae naturalis tractatio et magna exemplaria linguistica",
-    "grc": "Ἐπεξεργασία φυσικῆς γλώττης καὶ μεγάλα γλωσσικὰ ὑποδείγματα"
+    "la": "NLP & LLMs",
+    "grc": "NLP & LLMs"
   },
   "Data Science": {
     "es": "Ciencia de datos",
     "zh-Hant": "資料科學",
     "it": "Scienza dei dati",
-    "la": "Scientia datorum",
-    "grc": "Ἐπιστήμη τῶν δεδομένων"
+    "la": "Data Science",
+    "grc": "Data Science"
   },
   "Research Engineering": {
     "es": "Ingeniería de investigación",
     "zh-Hant": "研究工程",
     "it": "Ingegneria della ricerca",
-    "la": "Machinatio ad investigationem",
-    "grc": "Μηχανικὴ ἐρεύνης"
+    "la": "Research Engineering",
+    "grc": "Research Engineering"
   },
   "AI & ML": {
     "es": "IA y aprendizaje automático",
     "zh-Hant": "人工智慧與機器學習",
     "it": "IA e apprendimento automatico",
-    "la": "Intellegentia artificialis et disciplina machinalis",
-    "grc": "Τεχνητὴ νόησις καὶ μηχανικὴ μάθησις"
+    "la": "AI & ML",
+    "grc": "AI & ML"
   },
   "Languages & Data": {
     "es": "Lenguajes y datos",
     "zh-Hant": "程式語言與資料",
     "it": "Linguaggi e dati",
-    "la": "Linguae et data",
-    "grc": "Γλῶτται καὶ δεδομένα"
+    "la": "Languages & Data",
+    "grc": "Languages & Data"
   },
   "Infrastructure & Tooling": {
     "es": "Infraestructura y herramientas",
     "zh-Hant": "基礎設施與工具",
     "it": "Infrastruttura e strumenti",
-    "la": "Infrastructura et instrumenta",
-    "grc": "Ὑποδομὴ καὶ ὄργανα"
+    "la": "Infrastructure & Tooling",
+    "grc": "Infrastructure & Tooling"
   },
   "Ethics in AI": {
     "es": "Ética de la IA",
     "zh-Hant": "人工智慧倫理",
     "it": "Etica dell'IA",
-    "la": "Ethica intellegentiae artificialis",
-    "grc": "Ἠθικὴ περὶ τεχνητὴν νόησιν"
+    "la": "Ethica AI",
+    "grc": "Ethics in AI"
   },
   "Artificial Intelligence": {
     "es": "Inteligencia artificial",
     "zh-Hant": "人工智慧",
     "it": "Intelligenza artificiale",
-    "la": "Intellegentia artificialis",
-    "grc": "Τεχνητὴ νόησις"
+    "la": "Artificial Intelligence",
+    "grc": "Artificial Intelligence"
   },
   "Teaching": {
     "es": "Docencia",
@@ -528,22 +528,22 @@
     "es": "Desarrollo web",
     "zh-Hant": "網頁開發",
     "it": "Sviluppo web",
-    "la": "Situs interretiales construere",
-    "grc": "Κατασκευὴ ἱστοτόπων"
+    "la": "Web Development",
+    "grc": "Web Development"
   },
   "Server Management": {
     "es": "Administración de servidores",
     "zh-Hant": "伺服器管理",
     "it": "Gestione dei server",
-    "la": "Moderatio servientium",
-    "grc": "Διοίκησις ἐξυπηρετητῶν"
+    "la": "Server Management",
+    "grc": "Server Management"
   },
   "Event Organization": {
     "es": "Organización de eventos",
     "zh-Hant": "活動籌辦",
     "it": "Organizzazione di eventi",
     "la": "Conventuum ordinatio",
-    "grc": "Διοργάνωσις συνόδων"
+    "grc": "Event Organization"
   },
   "Advocacy": {
     "es": "Defensa de derechos",
@@ -557,7 +557,7 @@
     "zh-Hant": "統計學",
     "it": "Statistica",
     "la": "Statistica",
-    "grc": "Στατιστικὴ"
+    "grc": "Statistics"
   },
   "Research": {
     "es": "Investigación",
@@ -570,29 +570,29 @@
     "es": "Análisis geoespacial",
     "zh-Hant": "地理空間分析",
     "it": "Analisi geospaziale",
-    "la": "Analysis geographica",
-    "grc": "Ἀνάλυσις γεωχωρική"
+    "la": "Geospatial Analysis",
+    "grc": "Geospatial Analysis"
   },
   "Data Visualization": {
     "es": "Visualización de datos",
     "zh-Hant": "資料視覺化",
     "it": "Visualizzazione dei dati",
-    "la": "Datorum descriptio",
-    "grc": "Ἀπεικόνισις τῶν δεδομένων"
+    "la": "Data Visualization",
+    "grc": "Data Visualization"
   },
   "Data Mining": {
     "es": "Minería de datos",
     "zh-Hant": "資料探勘",
     "it": "Estrazione di dati",
-    "la": "Datorum investigatio",
-    "grc": "Ἐξόρυξις δεδομένων"
+    "la": "Data Mining",
+    "grc": "Data Mining"
   },
   "AI": {
     "es": "IA",
     "zh-Hant": "人工智慧",
     "it": "IA",
-    "la": "Intellegentia artificialis",
-    "grc": "Τεχνητὴ νόησις"
+    "la": "AI",
+    "grc": "AI"
   },
   "PsychoPy": {
     "es": "PsychoPy",
@@ -605,29 +605,29 @@
     "es": "Entornos de aprendizaje por refuerzo y posentrenamiento.",
     "zh-Hant": "強化學習環境與後訓練。",
     "it": "Ambienti di apprendimento per rinforzo e post-training.",
-    "la": "Ambitus disciplinae per praemia et institutio ulterior.",
-    "grc": "Περιβάλλοντα μαθήσεως διὰ ἐπάθλων καὶ μετέπειτα ἄσκησις."
+    "la": "RL environments et post-training.",
+    "grc": "RL environments καὶ post-training."
   },
   "Ship RL environments for production post-training: task specs, rewards, eval loops": {
     "es": "Desarrollo entornos de aprendizaje por refuerzo para posentrenamiento en producción: tareas, recompensas y ciclos de evaluación",
     "zh-Hant": "交付用於正式環境後訓練的強化學習環境：任務規格、獎勵與評估迴圈",
     "it": "Realizzo ambienti di apprendimento per rinforzo per il post-training in produzione: specifiche, ricompense e cicli di valutazione",
-    "la": "Ambitus disciplinae per praemia ad usum instituo: munerum descriptiones, praemia, circuitus aestimationis",
-    "grc": "Περιβάλλοντα μαθήσεως διὰ ἐπάθλων πρὸς μετέπειτα ἄσκησιν ἐν χρήσει κατασκευάζω· ὅρους ἔργων, ἔπαθλα, κύκλους κρίσεως."
+    "la": "RL environments ad production post-training instituo: task specs, rewards, evaluation loops",
+    "grc": "RL environments πρὸς post-training ἐν χρήσει κατασκευάζω· task specs, rewards, καὶ eval loops."
   },
   "Own post-training: data, reward models, policy iteration": {
     "es": "Dirijo el posentrenamiento: datos, modelos de recompensa e iteración de políticas",
     "zh-Hant": "負責後訓練：資料、獎勵模型與策略迭代",
     "it": "Gestisco il post-training: dati, modelli di ricompensa e iterazione delle politiche",
-    "la": "Institutioni ulteriori praesum: data, exemplaria praemiorum, rationum agendi emendatio",
-    "grc": "Τῇ μετέπειτα ἀσκήσει ἐπιστατῶ· δεδομένα, ὑποδείγματα ἐπάθλων, ἐπαναλήψεις πολιτικῆς."
+    "la": "Post-training moderor: data, reward models, policy iteration",
+    "grc": "Τῷ post-training ἐπιστατῶ· data, reward models, καὶ policy iteration."
   },
   "Set standards for environment quality, training stability, and eval": {
     "es": "Defino criterios de calidad de los entornos, estabilidad del entrenamiento y evaluación",
     "zh-Hant": "制定環境品質、訓練穩定性與評估標準",
     "it": "Definisco standard per qualità degli ambienti, stabilità dell'addestramento e valutazione",
-    "la": "Normas constituo de ambituum qualitate, institutionis constantia et aestimatione",
-    "grc": "Κανόνας τίθημι περὶ ποιότητος περιβαλλόντων, σταθερότητος ἀσκήσεως καὶ κρίσεως."
+    "la": "Normas constituo de qualitate RL environments, stabilitate training et evaluatione",
+    "grc": "Κανόνας τίθημι περὶ ποιότητος τῶν environments, training stability, καὶ eval."
   },
   "Classical liberal arts. Trivium, Quadrivium, Socratic method.": {
     "es": "Artes liberales clásicas. Trivium, quadrivium y método socrático.",
@@ -661,70 +661,70 @@
     "es": "Mentes, máquinas e inteligencia. Espacios conceptuales, filosofía de la IA y conciencia.",
     "zh-Hant": "心智、機器與智慧。概念空間、人工智慧哲學與意識。",
     "it": "Menti, macchine, intelligenza. Spazi concettuali, filosofia dell'IA e coscienza.",
-    "la": "Mentes, machinae, intellegentia. Spatia conceptuum, philosophia intellegentiae artificialis, conscientia.",
+    "la": "Mentes, machines, intelligence. Spatia conceptuum, philosophia AI, conscientia.",
     "grc": "Νόες, μηχαναί, νόησις. Χῶροι ἐννοιῶν, φιλοσοφία τεχνητῆς νοήσεως, συνείδησις."
   },
   "Machine ethics, bias, and explainability": {
     "es": "Ética de las máquinas, sesgos y explicabilidad",
     "zh-Hant": "機器倫理、偏誤與可解釋性",
     "it": "Etica delle macchine, pregiudizi e spiegabilità",
-    "la": "Ethica machinarum, praeiudicia, explicabilitas",
+    "la": "Machine ethics, bias et interpretability",
     "grc": "Ἠθικὴ μηχανῶν, προκατάληψις καὶ ἑρμηνευσιμότης."
   },
   "Abliterator: activation engineering for LLM personality": {
     "es": "Abliterator: ingeniería de activaciones para la personalidad de los LLM",
     "zh-Hant": "Abliterator：以活化工程調整大型語言模型的性格",
     "it": "Abliterator: ingegneria delle attivazioni per la personalità degli LLM",
-    "la": "Abliterator: activationum moderatio ad indolem exemplarium linguisticorum",
-    "grc": "Abliterator· ῥύθμισις ἐνεργοποιήσεων πρὸς τὸ ἦθος τῶν γλωσσικῶν ὑποδειγμάτων"
+    "la": "Abliterator: activation engineering ad indolem LLMs regendam",
+    "grc": "Abliterator· activation engineering πρὸς LLM personality."
   },
   "Experiments in Mathematica and Python": {
     "es": "Experimentos en Mathematica y Python",
     "zh-Hant": "使用 Mathematica 與 Python 進行實驗",
     "it": "Esperimenti in Mathematica e Python",
     "la": "Experimenta in Mathematica et Python",
-    "grc": "Πεῖραι διὰ Mathematica καὶ Python"
+    "grc": "Experiments in Mathematica and Python"
   },
   "Production LLM systems for NLU and recommendation eval.": {
     "es": "Sistemas LLM en producción para comprensión del lenguaje y evaluación de recomendaciones.",
     "zh-Hant": "用於自然語言理解與推薦評估的正式環境大型語言模型系統。",
     "it": "Sistemi LLM in produzione per la comprensione del linguaggio e la valutazione delle raccomandazioni.",
-    "la": "Systemata exemplarium linguisticorum in usu ad linguam intellegendam et suasiones aestimandas.",
-    "grc": "Συστήματα μεγάλων γλωσσικῶν ὑποδειγμάτων ἐν χρήσει πρὸς κατανόησιν γλώττης καὶ κρίσιν συστάσεων."
+    "la": "Production LLM systems for NLU and recommendation eval.",
+    "grc": "LLM systems ἐν χρήσει πρὸς NLU καὶ recommendation eval."
   },
   "LLM pipelines that lifted NLU quality ~40% across domains": {
     "es": "Flujos de LLM que mejoraron la comprensión del lenguaje alrededor de un 40% en varios ámbitos",
     "zh-Hant": "大型語言模型流程使各領域的自然語言理解品質提升約 40%",
     "it": "Pipeline LLM che hanno migliorato la qualità della comprensione linguistica di circa il 40% in diversi ambiti",
-    "la": "Processus exemplarium linguisticorum qui qualitatem intellegendi per varia genera circiter 40% auxerunt",
-    "grc": "Ῥοαὶ μεγάλων γλωσσικῶν ὑποδειγμάτων αἳ τὴν ποιότητα τῆς κατανοήσεως γλώττης περὶ 40% ἐν διαφόροις πεδίοις ηὔξησαν."
+    "la": "LLM pipelines quae qualitatem NLU per varios campos circiter 40% auxerunt",
+    "grc": "LLM pipelines αἳ τὴν ποιότητα τοῦ NLU περὶ 40% ἐν διαφόροις γένεσιν ηὔξησαν."
   },
   "Eval platform for recommendation models. Accuracy up ~30%": {
     "es": "Plataforma de evaluación de modelos de recomendación. Precisión mejorada alrededor de un 30%",
     "zh-Hant": "推薦模型評估平台，準確度提升約 30%",
     "it": "Piattaforma di valutazione dei modelli di raccomandazione. Accuratezza aumentata di circa il 30%",
-    "la": "Systema ad exemplaria suadentia aestimanda. Accuratio circiter 30% aucta",
-    "grc": "Σύστημα κρίσεως συστατικῶν ὑποδειγμάτων. Ἡ ἀκρίβεια περὶ 30% ηὐξήθη."
+    "la": "Eval platform for recommendation models. Accuracy circiter 30% aucta",
+    "grc": "Platform πρὸς eval recommendation models. Ἡ ἀκρίβεια περὶ 30% ηὐξήθη."
   },
   "Model implementation through production": {
     "es": "Implementación de modelos hasta su puesta en producción",
     "zh-Hant": "從模型實作到正式部署",
     "it": "Implementazione dei modelli fino alla messa in produzione",
-    "la": "Exemplarium effectio usque ad usum",
+    "la": "Model implementation usque ad production",
     "grc": "Κατασκευὴ ὑποδειγμάτων μέχρι τῆς χρήσεως"
   },
   "Ethics of computing. AI governance.": {
     "es": "Ética de la informática. Gobernanza de la IA.",
     "zh-Hant": "運算倫理。人工智慧治理。",
     "it": "Etica dell'informatica. Governo dell'IA.",
-    "la": "Ethica computationis. Moderatio intellegentiae artificialis.",
-    "grc": "Ἠθικὴ λογισμοῦ. Διοίκησις τεχνητῆς νοήσεως."
+    "la": "Ethica computing. AI governance.",
+    "grc": "Ethics of computing. AI governance."
   },
   "Teach ethics of computing, AI governance, and privacy": {
     "es": "Enseño ética de la informática, gobernanza de la IA y privacidad",
     "zh-Hant": "教授運算倫理、人工智慧治理與隱私",
     "it": "Insegno etica dell'informatica, governo dell'IA e riservatezza",
-    "la": "Ethicam computationis, moderationem intellegentiae artificialis et rerum privatarum tutelam doceo",
+    "la": "Ethicam computing, AI governance et rerum privatarum tutelam doceo",
     "grc": "Διδάσκω ἠθικὴν λογισμοῦ, διοίκησιν τεχνητῆς νοήσεως καὶ ἰδιωτικότητα."
   },
   "Primary frameworks with data-ethics cases": {
@@ -745,28 +745,28 @@
     "es": "Modelos predictivos, flujos de datos y PLN para un medio de comunicación.",
     "zh-Hant": "為媒體機構建立預測模型、資料流程與自然語言處理系統。",
     "it": "Modelli predittivi, pipeline e PLN per un editore.",
-    "la": "Exemplaria praedicentia, processus datorum et tractatio linguae naturalis pro editore.",
+    "la": "Predictive modeling, pipelines et NLP pro editore.",
     "grc": "Προγνωστικὰ ὑποδείγματα, ῥοαὶ δεδομένων καὶ ἐπεξεργασία γλώττης πρὸς ἐκδότην."
   },
   "Churn models that cut subscriber attrition ~20%": {
     "es": "Modelos de abandono que redujeron la pérdida de suscriptores alrededor de un 20%",
     "zh-Hant": "訂戶流失模型使流失率降低約 20%",
     "it": "Modelli di abbandono che hanno ridotto la perdita di abbonati di circa il 20%",
-    "la": "Exemplaria defectionis quae discessum subscriptorum circiter 20% minuerunt",
+    "la": "Churn models quae subscriber attrition circiter 20% minuerunt",
     "grc": "Ὑποδείγματα ἀποχωρήσεως ἃ τὴν ἀπώλειαν συνδρομητῶν περὶ 20% ἐμείωσαν."
   },
   "Python/Hive pipelines. Ops throughput up ~25%": {
     "es": "Flujos de Python/Hive. Rendimiento operativo mejorado alrededor de un 25%",
     "zh-Hant": "Python／Hive 資料流程使作業處理量提升約 25%",
     "it": "Pipeline Python/Hive. Capacità operativa aumentata di circa il 25%",
-    "la": "Processus Python/Hive. Copia operum circiter 25% aucta",
+    "la": "Python/Hive pipelines. Copia operum circiter 25% aucta",
     "grc": "Ῥοαὶ Python/Hive. Ἡ διεκπεραίωσις ἔργων περὶ 25% ηὐξήθη."
   },
   "BERT and clustering over unstructured content": {
     "es": "BERT y agrupamiento sobre contenido no estructurado",
     "zh-Hant": "以 BERT 與分群方法處理非結構化內容",
     "it": "BERT e raggruppamento su contenuti non strutturati",
-    "la": "BERT et ordinatio in greges materiae informis",
+    "la": "BERT and clustering over unstructured content",
     "grc": "BERT καὶ ὁμαδοποίησις ἀδιατάκτου ὕλης."
   },
   "Automated reporting for executives": {
@@ -780,28 +780,28 @@
     "es": "Proyectos desde su definición hasta el despliegue",
     "zh-Hant": "專案從問題定義到部署",
     "it": "Progetti dalla definizione alla messa in produzione",
-    "la": "Opera ab initio usque ad usum",
+    "la": "Projects ab initio usque ad deployment",
     "grc": "Ἔργα ἀπὸ σχεδιασμοῦ μέχρι χρήσεως."
   },
   "Measurement and modeling with product and editorial": {
     "es": "Medición y modelado con los equipos de producto y redacción",
     "zh-Hant": "與產品及編輯團隊合作衡量成效與建立模型",
     "it": "Misurazione e modellazione con i gruppi di prodotto e redazione",
-    "la": "Mensura et exemplaria cum sodalibus producti et editionis",
+    "la": "Mensura et modeling cum product et editorial teams",
     "grc": "Μέτρησις καὶ ὑποδείγματα μετὰ τῶν τοῦ προϊόντος καὶ τῆς ἐκδόσεως συνεργῶν"
   },
   "Technical lead for an international nonprofit.": {
     "es": "Responsable técnico de una organización internacional sin fines de lucro.",
     "zh-Hant": "國際非營利組織的技術負責人。",
     "it": "Responsabile tecnico di un'organizzazione internazionale senza fini di lucro.",
-    "la": "Praefectus technicus societatis internationalis sine lucro.",
+    "la": "Technical lead societatis internationalis sine lucro.",
     "grc": "Ἐπιστάτης τεχνικὸς διεθνοῦς μὴ κερδοσκοπικοῦ ἱδρύματος."
   },
   "Multilingual site and servers": {
     "es": "Sitio multilingüe y servidores",
     "zh-Hant": "多語網站與伺服器",
     "it": "Sito multilingue e server",
-    "la": "Situs multilinguis et servientes",
+    "la": "Situs multilinguis et servers",
     "grc": "Πολύγλωσσος ἱστότοπος καὶ ἐξυπηρετηταί."
   },
   "International conferences and logistics": {
@@ -822,56 +822,56 @@
     "es": "Infraestructura digital",
     "zh-Hant": "數位基礎設施",
     "it": "Infrastruttura digitale",
-    "la": "Infrastructura digitalis",
-    "grc": "Ψηφιακὴ ὑποδομή"
+    "la": "Digital infrastructure",
+    "grc": "Digital infrastructure"
   },
   "Work with international teams": {
     "es": "Colaboración con equipos internacionales",
     "zh-Hant": "與國際團隊合作",
     "it": "Collaborazione con gruppi internazionali",
     "la": "Opera cum gregibus internationalibus",
-    "grc": "Συνεργασία μετὰ διεθνῶν ὁμάδων"
+    "grc": "Work with international teams"
   },
   "Python stats for social neuroscience experiments.": {
     "es": "Estadística con Python para experimentos de neurociencia social.",
     "zh-Hant": "使用 Python 進行社會神經科學實驗的統計分析。",
     "it": "Statistica in Python per esperimenti di neuroscienze sociali.",
-    "la": "Statistica per Python ad experimenta neuroscientiae socialis.",
+    "la": "Statistica per Python ad social neuroscience experiments.",
     "grc": "Στατιστικὴ διὰ Python πρὸς πειράματα κοινωνικῆς νευροεπιστήμης."
   },
   "PsychoPy tooling that cut the lab's data pipeline ~30%": {
     "es": "Herramientas de PsychoPy que acortaron el flujo de datos del laboratorio alrededor de un 30%",
     "zh-Hant": "PsychoPy 工具使實驗室的資料處理流程縮短約 30%",
     "it": "Strumenti PsychoPy che hanno abbreviato la pipeline dati del laboratorio di circa il 30%",
-    "la": "Instrumenta PsychoPy quae processum datorum officinae circiter 30% minuerunt",
-    "grc": "Ὄργανα PsychoPy ἃ τὴν ῥοὴν δεδομένων τοῦ ἐργαστηρίου περὶ 30% ἐμείωσαν."
+    "la": "Instrumenta PsychoPy quae data pipeline officinae circiter 30% minuerunt",
+    "grc": "Ὄργανα PsychoPy ἃ τὸ data pipeline τοῦ ἐργαστηρίου περὶ 30% ἐμείωσαν."
   },
   "Data mining and reporting for executives.": {
     "es": "Minería de datos e informes para directivos.",
     "zh-Hant": "為管理階層進行資料探勘與報告。",
     "it": "Estrazione di dati e rapporti per la dirigenza.",
-    "la": "Investigatio datorum et relationes ad moderatores.",
+    "la": "Data mining et reporting ad moderatores.",
     "grc": "Ἐξόρυξις δεδομένων καὶ ἀναφοραὶ πρὸς τοὺς διοικητάς."
   },
   "Mining scripts that cut processing time about in half": {
     "es": "Scripts de extracción que redujeron el tiempo de procesamiento aproximadamente a la mitad",
     "zh-Hant": "資料探勘程式使處理時間縮短約一半",
     "it": "Script di estrazione che hanno dimezzato circa i tempi di elaborazione",
-    "la": "Programmata investigationis quae tempus tractationis fere dimidiaverunt",
+    "la": "Mining scripts quae processing time fere dimidiaverunt",
     "grc": "Προγράμματα ἐξορύξεως ἃ τὸν χρόνον ἐπεξεργασίας σχεδὸν εἰς τὸ ἥμισυ ἤγαγον."
   },
   "Analysis across company data streams": {
     "es": "Análisis de los distintos flujos de datos de la empresa",
     "zh-Hant": "分析公司各項資料流",
     "it": "Analisi dei flussi di dati aziendali",
-    "la": "Analysis datorum per societatem fluentium",
+    "la": "Analysis per data streams societatis",
     "grc": "Ἀνάλυσις δεδομένων ἐκ τῶν ῥοῶν τῆς ἑταιρείας."
   },
   "Time series and geospatial analysis.": {
     "es": "Series temporales y análisis geoespacial.",
     "zh-Hant": "時間序列與地理空間分析。",
     "it": "Serie temporali e analisi geospaziale.",
-    "la": "Series temporales et analysis geographica.",
+    "la": "Time series et geospatial analysis.",
     "grc": "Χρονικαὶ σειραὶ καὶ γεωγραφικὴ ἀνάλυσις."
   },
   "USGS geospatial maps under NASA, UN, and USGS mentorship": {
@@ -906,15 +906,15 @@
     "es": "Maestría",
     "zh-Hant": "文學碩士",
     "it": "Laurea magistrale",
-    "la": "Magister artium",
-    "grc": "MA"
+    "la": "Master of Arts",
+    "grc": "Master of Arts"
   },
   "Bachelor of Science": {
     "es": "Licenciatura",
     "zh-Hant": "理學士",
     "it": "Laurea in scienze",
-    "la": "Baccalaureus scientiarum",
-    "grc": "BSc"
+    "la": "Bachelor of Science",
+    "grc": "Bachelor of Science"
   },
   "Classical Studies and Philosophy": {
     "es": "Estudios clásicos y filosofía",
@@ -934,15 +934,15 @@
     "es": "Inteligencia artificial y filosofía",
     "zh-Hant": "人工智慧與哲學",
     "it": "Intelligenza artificiale e filosofia",
-    "la": "Intellegentia artificialis et philosophia",
-    "grc": "Τεχνητὴ νόησις καὶ φιλοσοφία"
+    "la": "Artificial Intelligence et philosophia",
+    "grc": "Artificial Intelligence & Philosophy"
   },
   "Certificate": {
     "es": "Certificado",
     "zh-Hant": "結業證書",
     "it": "Attestato",
     "la": "Testimonium",
-    "grc": "Πιστοποιητικόν"
+    "grc": "Certificate"
   },
   "Mandarin Chinese": {
     "es": "Chino mandarín",
@@ -1025,15 +1025,15 @@
     "es": "Investigación en IA y grandes modelos de lenguaje",
     "zh-Hant": "人工智慧與大型語言模型研究",
     "it": "Ricerca sull'IA e sui grandi modelli linguistici",
-    "la": "Investigatio intellegentiae artificialis et magnorum exemplarium linguisticorum",
-    "grc": "Ἔρευνα τεχνητῆς νοήσεως καὶ μεγάλων γλωσσικῶν ὑποδειγμάτων"
+    "la": "Investigatio AI et LLMs",
+    "grc": "Research in AI and large language models"
   },
   "Wolfram Language experiments": {
     "es": "Experimentos con Wolfram Language",
     "zh-Hant": "Wolfram Language 實驗",
     "it": "Esperimenti con Wolfram Language",
-    "la": "Experimenta lingua Wolfram",
-    "grc": "Πεῖραι διὰ τῆς Wolfram Language"
+    "la": "Wolfram Language experiments",
+    "grc": "Wolfram Language experiments"
   },
   "Huayu Scholarship recipient": {
     "es": "Beneficiario de la beca Huayu",
@@ -1060,8 +1060,8 @@
     "es": "Ética de la inteligencia artificial",
     "zh-Hant": "人工智慧倫理",
     "it": "Etica dell'intelligenza artificiale",
-    "la": "Ethica intellegentiae artificialis",
-    "grc": "Ἠθικὴ τῆς τεχνητῆς νοήσεως"
+    "la": "Ethica Artificial Intelligence",
+    "grc": "Ethics of Artificial Intelligence"
   },
   "Philosophy of Science": {
     "es": "Filosofía de la ciencia",
@@ -1074,78 +1074,78 @@
     "es": "Gestión aplicada de productos de IA",
     "zh-Hant": "應用人工智慧產品管理",
     "it": "Gestione applicata dei prodotti di IA",
-    "la": "Moderatio productorum intellegentiae artificialis",
-    "grc": "Διοίκησις προϊόντων τεχνητῆς νοήσεως"
+    "la": "Applied AI Product Management",
+    "grc": "Applied AI Product Management"
   },
   "Deep Learning": {
     "es": "Aprendizaje profundo",
     "zh-Hant": "深度學習",
     "it": "Apprendimento profondo",
-    "la": "Disciplina profunda",
-    "grc": "Βαθεῖα μάθησις"
+    "la": "Deep Learning",
+    "grc": "Deep Learning"
   },
   "CrewAI Multi-Agent Systems": {
     "es": "Sistemas multiagente con CrewAI",
     "zh-Hant": "CrewAI 多代理系統",
     "it": "Sistemi multiagente CrewAI",
-    "la": "Systemata plurium agentium CrewAI",
-    "grc": "Συστήματα πολλῶν πρακτόρων CrewAI"
+    "la": "CrewAI Multi-Agent Systems",
+    "grc": "CrewAI Multi-Agent Systems"
   },
   "MCP Automation": {
     "es": "Automatización con MCP",
     "zh-Hant": "MCP 自動化",
     "it": "Automazione MCP",
-    "la": "Automatio MCP",
-    "grc": "Αὐτοματοποίησις MCP"
+    "la": "MCP Automation",
+    "grc": "MCP Automation"
   },
   "AI Agents": {
     "es": "Agentes de IA",
     "zh-Hant": "人工智慧代理",
     "it": "Agenti di IA",
-    "la": "Agentes intellegentiae artificialis",
-    "grc": "Πράκτορες τεχνητῆς νοήσεως"
+    "la": "AI Agents",
+    "grc": "AI Agents"
   },
   "Neural Networks & Deep Learning": {
     "es": "Redes neuronales y aprendizaje profundo",
     "zh-Hant": "神經網路與深度學習",
     "it": "Reti neurali e apprendimento profondo",
-    "la": "Retia neuralia et disciplina profunda",
-    "grc": "Νευρωνικὰ δίκτυα καὶ βαθεῖα μάθησις"
+    "la": "Neural Networks & Deep Learning",
+    "grc": "Neural Networks & Deep Learning"
   },
   "Database Structures & Management": {
     "es": "Estructuras y gestión de bases de datos",
     "zh-Hant": "資料庫結構與管理",
     "it": "Strutture e gestione delle basi di dati",
-    "la": "Structurae et moderatio basium datorum",
-    "grc": "Δομαὶ καὶ διοίκησις βάσεων δεδομένων"
+    "la": "Database Structures & Management",
+    "grc": "Database Structures & Management"
   },
   "Version Control": {
     "es": "Control de versiones",
     "zh-Hant": "版本控制",
     "it": "Controllo delle versioni",
-    "la": "Moderatio versionum",
-    "grc": "Ἔλεγχος ἐκδόσεων"
+    "la": "Version Control",
+    "grc": "Version Control"
   },
   "Advanced Google Analytics": {
     "es": "Google Analytics avanzado",
     "zh-Hant": "進階 Google Analytics",
     "it": "Google Analytics avanzato",
     "la": "Google Analytics provectum",
-    "grc": "Προκεχωρημένον Google Analytics"
+    "grc": "Advanced Google Analytics"
   },
   "Credit Risk Modeling in R": {
     "es": "Modelado del riesgo crediticio con R",
     "zh-Hant": "使用 R 建立信用風險模型",
     "it": "Modelli di rischio di credito in R",
-    "la": "Exemplaria periculi crediti in R",
-    "grc": "Ὑποδείγματα κινδύνου πιστώσεως διὰ R"
+    "la": "Credit Risk Modeling in R",
+    "grc": "Credit Risk Modeling in R"
   },
   "R for Finance": {
     "es": "R para finanzas",
     "zh-Hant": "財務應用 R",
     "it": "R per la finanza",
-    "la": "R ad res pecuniarias",
-    "grc": "R πρὸς τὰ χρηματιστικά"
+    "la": "R for Finance",
+    "grc": "R for Finance"
   },
   "Human Rights Defense": {
     "es": "Defensa de los derechos humanos",
@@ -1158,15 +1158,15 @@
     "es": "Espacio de traducción. Escribe, traduce y pule textos literarios con distintos modelos.",
     "zh-Hant": "翻譯工作區。跨模型撰寫、翻譯與潤飾文學文本。",
     "it": "Spazio di traduzione. Scrivi, traduci e rifinisci testi letterari con diversi modelli.",
-    "la": "Officina translationis. Litteras compone, verte, expoli per varia exemplaria.",
-    "grc": "Ἐργαστήριον μεταφράσεως. Σύνθες, μετάφραζε καὶ ἐπανόρθου λογοτεχνικὰ κείμενα διὰ διαφόρων ὑποδειγμάτων."
+    "la": "Translation workspace. Litteras compone, verte et expoli per varia models.",
+    "grc": "Ἐργαστήριον ἑρμηνείας. Λογοτεχνικὰ κείμενα σύνθες, μετάφραζε, καὶ ἐπανόρθου διὰ διαφόρων models."
   },
   "Etymology engine. Morphological roots, with emphasis on classical languages.": {
     "es": "Motor etimológico. Raíces morfológicas, con énfasis en las lenguas clásicas.",
     "zh-Hant": "詞源引擎。探究詞形根源，著重古典語言。",
     "it": "Motore etimologico. Radici morfologiche, con attenzione alle lingue classiche.",
-    "la": "Machina etymologica. Radices morphologicae, praesertim linguarum antiquarum.",
-    "grc": "Μηχανὴ ἐτυμολογική. Ῥίζαι μορφολογικαί, μάλιστα ἐν ταῖς ἀρχαίαις γλώτταις."
+    "la": "Etymology engine. Radices morphologicae, praesertim linguarum antiquarum.",
+    "grc": "Μηχανὴ ἐτυμολογική. Ῥίζαι μορφολογικαί, μάλιστα τῶν ἀρχαίων γλωσσῶν."
   },
   "Life in remaining weeks. Time allocation and mortality accounting.": {
     "es": "La vida en semanas restantes. Distribución del tiempo y conciencia de la mortalidad.",
@@ -1179,15 +1179,15 @@
     "es": "Síntesis de voz local en Apple Silicon. Clonación de voz y varios idiomas, sin nube.",
     "zh-Hant": "在 Apple Silicon 上執行本機語音合成。聲音複製、多語支援，無須雲端。",
     "it": "Sintesi vocale locale su Apple Silicon. Clonazione della voce, più lingue, senza cloud.",
-    "la": "Vox e textu in Apple Silicon. Vocis imitatio, multae linguae, sine nube.",
-    "grc": "Τοπικὴ φωνὴ ἐκ γραμμάτων ἐν Apple Silicon. Μίμησις φωνῆς, πολλαὶ γλῶτται, ἄνευ νέφους."
+    "la": "Local TTS on Apple Silicon. Voice cloning, multae linguae, sine cloud.",
+    "grc": "Local TTS ἐν Apple Silicon. Voice cloning, πολλαὶ γλῶτται, ἄνευ cloud."
   },
   "Latin tutor with live grammar analysis and interactive annotation.": {
     "es": "Tutor de latín con análisis gramatical en tiempo real y anotaciones interactivas.",
     "zh-Hant": "拉丁語家教，提供即時文法分析與互動註解。",
     "it": "Tutor di latino con analisi grammaticale in tempo reale e annotazioni interattive.",
-    "la": "Praeceptor Latinus cum analysi grammatica praesenti et annotationibus interactivis.",
-    "grc": "Διδάσκαλος Λατινικῆς μετὰ γραμματικῆς ἀναλύσεως καὶ διαδραστικῶν σημειώσεων."
+    "la": "Latin tutor cum live grammar analysis et interactive annotation.",
+    "grc": "Διδάσκαλος Λατινικῆς μετὰ live grammar analysis καὶ interactive annotation."
   },
   "Guide to men's style. Cut, color, rules.": {
     "es": "Guía de estilo masculino. Corte, color y reglas.",
@@ -1201,14 +1201,14 @@
     "zh-Hant": "透過自拍進行色彩分析。四季色盤與風格建議。",
     "it": "Analisi del colore dai selfie. Tavolozze stagionali e consigli di stile.",
     "la": "Analysis colorum ex imaginibus sui. Colores temporum anni et consilia vestitus.",
-    "grc": "Ἀνάλυσις χρωμάτων ἐκ αὐτοεικόνων. Χρώματα κατὰ τὰς ὥρας καὶ συμβουλαὶ ἐσθῆτος."
+    "grc": "Ἀνάλυσις χρωμάτων ἐξ selfies. Seasonal palettes καὶ συμβουλαὶ ἐσθῆτος."
   },
   "Toolkit for steering LLM personality through activation engineering.": {
     "es": "Herramientas para orientar la personalidad de los LLM mediante ingeniería de activaciones.",
     "zh-Hant": "透過活化工程調整大型語言模型性格的工具組。",
     "it": "Strumenti per orientare la personalità degli LLM tramite l'ingegneria delle attivazioni.",
-    "la": "Instrumenta ad indolem exemplarium linguisticorum per activationes regendam.",
-    "grc": "Ὄργανα πρὸς ῥύθμισιν τοῦ ἤθους γλωσσικῶν ὑποδειγμάτων διὰ ἐνεργοποιήσεων."
+    "la": "Instrumenta ad indolem LLMs per activation engineering regendam.",
+    "grc": "Ὄργανα πρὸς ῥύθμισιν τοῦ ἤθους τῶν LLMs διὰ activation engineering."
   },
   "Classical Greek. Texts, grammar, lexicography.": {
     "es": "Griego clásico. Textos, gramática y lexicografía.",
@@ -1242,56 +1242,56 @@
     "es": "Clonación de voz y soporte para 10 idiomas con Qwen3-TTS",
     "zh-Hant": "透過 Qwen3-TTS 複製聲音，支援 10 種語言",
     "it": "Clonazione vocale e supporto di 10 lingue tramite Qwen3-TTS",
-    "la": "Vocis imitatio et decem linguae per Qwen3-TTS",
+    "la": "Voice cloning et 10-language support per Qwen3-TTS",
     "grc": "Μίμησις φωνῆς καὶ δέκα γλῶτται διὰ Qwen3-TTS."
   },
   "Metal GPU inference with live system monitoring": {
     "es": "Inferencia en GPU con Metal y monitoreo del sistema en tiempo real",
     "zh-Hant": "使用 Metal GPU 進行推論，並即時監控系統",
     "it": "Inferenza su GPU Metal con monitoraggio del sistema in tempo reale",
-    "la": "Inferentia per GPU Metal cum observatione systematis praesenti",
+    "la": "Metal GPU inference cum live system monitoring",
     "grc": "Συμπέρασμα διὰ GPU Metal μετὰ ζώσης παρατηρήσεως τοῦ συστήματος."
   },
   "React + FastAPI with in-browser model downloads": {
     "es": "React y FastAPI con descarga de modelos desde el navegador",
     "zh-Hant": "React 與 FastAPI，支援在瀏覽器中下載模型",
     "it": "React e FastAPI con download dei modelli dal browser",
-    "la": "React et FastAPI cum exemplaribus per navigatrum recipiendis",
+    "la": "React + FastAPI cum in-browser model downloads",
     "grc": "React καὶ FastAPI μετὰ λήψεων ὑποδειγμάτων ἐν τῷ περιηγητῇ."
   },
   "NLP grammar engine for case, tense, and syntax": {
     "es": "Motor gramatical de PLN para casos, tiempos y sintaxis",
     "zh-Hant": "以自然語言處理分析格、時態與句法的文法引擎",
     "it": "Motore grammaticale PLN per casi, tempi e sintassi",
-    "la": "Machina grammatica ad casus, tempora et syntaxin",
-    "grc": "Μηχανὴ γραμματικὴ πρὸς πτώσεις, χρόνους καὶ σύνταξιν."
+    "la": "NLP grammar engine ad casus, tempora et syntaxin",
+    "grc": "Μηχανὴ γραμματικὴ NLP πρὸς case, tense, καὶ syntax."
   },
   "Hover annotations with model-backed tutoring": {
     "es": "Anotaciones al pasar el cursor y tutoría asistida por modelos",
     "zh-Hant": "游標懸停顯示註解，搭配模型輔助教學",
     "it": "Annotazioni al passaggio del cursore e tutoraggio tramite modelli",
-    "la": "Annotationes sub indice et doctrina exemplaribus adiuta",
-    "grc": "Σημειώσεις ὑπὸ τῷ δείκτῃ καὶ διδασκαλία διὰ ὑποδειγμάτων."
+    "la": "Hover annotations cum model-backed tutoring",
+    "grc": "Σημειώσεις ὑπὸ τῷ δείκτῃ καὶ διδασκαλία διὰ models."
   },
   "Translation that preserves literary register": {
     "es": "Traducción que conserva el registro literario",
     "zh-Hant": "保留文學語體的翻譯",
     "it": "Traduzione che conserva il registro letterario",
     "la": "Translatio quae genus litterarium servat",
-    "grc": "Μετάφρασις τὸν λογοτεχνικὸν τρόπον φυλάττουσα."
+    "grc": "Ἑρμηνεία τὸν λογοτεχνικὸν τρόπον φυλάττουσα."
   },
   "Four-chapter curriculum with quizzes and style archetype assessment": {
     "es": "Programa de cuatro capítulos con cuestionarios y evaluación de arquetipos de estilo",
     "zh-Hant": "四章課程，包含測驗與風格類型評估",
     "it": "Programma in quattro capitoli con quiz e valutazione degli archetipi di stile",
-    "la": "Curriculum quattuor capitum cum quaestionibus et aestimatione generum vestitus",
+    "la": "Four-chapter curriculum cum quizzes et style archetype assessment",
     "grc": "Πρόγραμμα τεττάρων κεφαλαίων μετὰ ἐρωτήσεων καὶ κρίσεως τύπων ἐσθῆτος."
   },
   "Outfit builder with compatibility scoring": {
     "es": "Compositor de conjuntos con puntuación de compatibilidad",
     "zh-Hant": "服裝搭配工具，提供相容性評分",
     "it": "Compositore di abbinamenti con punteggio di compatibilità",
-    "la": "Compositor vestium cum aestimatione congruentiae",
+    "la": "Outfit builder cum compatibility scoring",
     "grc": "Σύνθεσις ἐσθῆτος μετὰ κρίσεως συμφωνίας."
   },
   "Color wheel and curated palettes": {
@@ -1305,43 +1305,43 @@
     "es": "Análisis de selfis en Next.js",
     "zh-Hant": "以 Next.js 進行自拍分析",
     "it": "Analisi dei selfie su Next.js",
-    "la": "Analysis imaginum sui in Next.js",
+    "la": "Selfie analysis on Next.js",
     "grc": "Ἀνάλυσις αὐτοεικόνων ἐν Next.js."
   },
   "Model-backed seasonal palette recommendations": {
     "es": "Recomendaciones de paletas estacionales mediante modelos",
     "zh-Hant": "模型輔助的四季色盤建議",
     "it": "Consigli di tavolozze stagionali tramite modelli",
-    "la": "Consilia colorum temporum anni ab exemplaribus",
+    "la": "Model-backed seasonal palette recommendations",
     "grc": "Συμβουλαὶ περὶ χρωμάτων κατὰ τὰς ὥρας διὰ ὑποδειγμάτων."
   },
   "LangChain workflows for style guidance": {
     "es": "Flujos de LangChain para asesoramiento de estilo",
     "zh-Hant": "運用 LangChain 流程提供風格建議",
     "it": "Flussi LangChain per consigli di stile",
-    "la": "Processus LangChain ad consilia vestitus",
+    "la": "LangChain workflows for style guidance",
     "grc": "Ῥοαὶ LangChain πρὸς συμβουλὰς ἐσθῆτος."
   },
   "Identify and edit personality-related activation vectors": {
     "es": "Identifica y modifica vectores de activación asociados a la personalidad",
     "zh-Hant": "識別並編輯與性格相關的活化向量",
     "it": "Identifica e modifica i vettori di attivazione legati alla personalità",
-    "la": "Vectores activationum ad indolem pertinentes invenire et mutare",
+    "la": "Personality-related activation vectors invenire et mutare",
     "grc": "Διανύσματα ἐνεργοποιήσεων πρὸς τὸ ἦθος εὑρίσκειν καὶ μεταβάλλειν."
   },
   "Personality steering with low compute overhead": {
     "es": "Orientación de la personalidad con bajo coste computacional",
     "zh-Hant": "以低運算負擔調整性格",
     "it": "Orientamento della personalità con basso costo di calcolo",
-    "la": "Indolis moderatio parvo computationis sumptu",
+    "la": "Personality steering with low compute overhead",
     "grc": "Ῥύθμισις ἤθους ὀλίγῃ δαπάνῃ λογισμοῦ."
   },
   "Interpretability tests with ethical analysis": {
     "es": "Pruebas de interpretabilidad con análisis ético",
     "zh-Hant": "結合倫理分析的可解釋性測試",
     "it": "Prove di interpretabilità con analisi etica",
-    "la": "Probationes interpretabilitatis cum analysi ethica",
-    "grc": "Δοκιμασίαι ἑρμηνευσιμότητος μετὰ ἠθικῆς ἀναλύσεως."
+    "la": "Interpretability tests cum analysi ethica",
+    "grc": "Δοκιμασίαι interpretability μετὰ ἠθικῆς ἀναλύσεως."
   },
   "Annotated texts, grammar references, and lexicographical tools": {
     "es": "Textos anotados, referencias gramaticales y herramientas lexicográficas",
@@ -1375,42 +1375,42 @@
     "es": "Descubrir el potencial de los candidatos mediante evaluaciones multimodales de IA",
     "zh-Hant": "以多模態人工智慧評估發掘候選人潛力",
     "it": "Scoprire il potenziale dei candidati con valutazioni multimodali di IA",
-    "la": "De facultatibus candidatorum per aestimationes multimodales intellegentiae artificialis detegendis",
-    "grc": "Ἀνευρίσκειν τὴν δύναμιν τῶν ὑποψηφίων διὰ πολυτρόπων κρίσεων τεχνητῆς νοήσεως."
+    "la": "Uncovering Candidate Potential with Multi-Modal AI Assessments",
+    "grc": "Uncovering Candidate Potential with Multi-Modal AI Assessments"
   },
   "From Plato to Pixels: Imagination, AI, and the Whole": {
     "es": "De Platón a los píxeles: imaginación, IA y totalidad",
     "zh-Hant": "從柏拉圖到像素：想像力、人工智慧與整體",
     "it": "Da Platone ai pixel: immaginazione, IA e il tutto",
-    "la": "A Platone ad elementa imaginis: imaginatio, intellegentia artificialis et totum",
+    "la": "From Plato to Pixels: Imagination, AI, and the Whole",
     "grc": "Ἀπὸ Πλάτωνος εἰς τὰ στοιχεῖα εἰκόνος· φαντασία, τεχνητὴ νόησις καὶ τὸ ὅλον."
   },
   "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems": {
     "es": "Evaluación de combinaciones de voz a texto, LLM y texto a voz para sistemas de entrevistas con IA",
     "zh-Hant": "評估人工智慧面試系統的語音轉文字、大型語言模型與文字轉語音組合",
     "it": "Valutazione delle combinazioni di riconoscimento vocale, LLM e sintesi vocale per colloqui con IA",
-    "la": "De coniunctionibus vocis in textum, exemplarium linguisticorum et textus in vocem ad colloquia artificialia aestimandis",
+    "la": "Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems",
     "grc": "Κρίσις συνδυασμῶν φωνῆς εἰς γράμματα, μεγάλων γλωσσικῶν ὑποδειγμάτων καὶ γραμμάτων εἰς φωνὴν πρὸς συστήματα συνεντεύξεων τεχνητῆς νοήσεως."
   },
   "PhiloBERTA: A Transformer-Based Cross-Lingual Analysis of Greek and Latin Lexicons": {
     "es": "PhiloBERTA: análisis interlingüístico de léxicos griegos y latinos basado en transformers",
     "zh-Hant": "PhiloBERTA：以 Transformer 為基礎的希臘語與拉丁語詞彙跨語言分析",
     "it": "PhiloBERTA: analisi interlinguistica di lessici greci e latini basata su transformer",
-    "la": "PhiloBERTA: analysis interlingualis lexicorum Graecorum et Latinorum per exemplaria transformer",
+    "la": "PhiloBERTA: A Transformer-Based Cross-Lingual Analysis of Greek and Latin Lexicons",
     "grc": "PhiloBERTA· διαγλωσσικὴ ἀνάλυσις Ἑλληνικῶν καὶ Λατινικῶν λεξικῶν διὰ μετασχηματιστοῦ."
   },
   "Identifying and Manipulating Personality Traits in LLMs Through Activation Engineering": {
     "es": "Identificación y modificación de rasgos de personalidad en LLM mediante ingeniería de activaciones",
     "zh-Hant": "透過活化工程識別與調整大型語言模型的性格特徵",
     "it": "Identificare e modificare i tratti di personalità degli LLM tramite l'ingegneria delle attivazioni",
-    "la": "De indolis proprietatibus in magnis exemplaribus linguisticis per activationes inveniendis et mutandis",
+    "la": "Identifying and Manipulating Personality Traits in LLMs Through Activation Engineering",
     "grc": "Ἀνευρίσκειν καὶ μεταβάλλειν γνωρίσματα ἤθους ἐν μεγάλοις γλωσσικοῖς ὑποδείγμασι διὰ ῥυθμίσεως ἐνεργοποιήσεων."
   },
   "On suspensio, the inner act of holding thought while form catches up. Latin inflection, digital memory, and generative AI.": {
     "es": "Sobre la suspensio, el acto interior de mantener el pensamiento mientras la forma lo alcanza. Flexión latina, memoria digital e IA generativa.",
     "zh-Hant": "探討 suspensio：在形式尚未成形時，於心中保留思想的內在活動。拉丁語屈折、數位記憶與生成式人工智慧。",
     "it": "Sulla suspensio, l'atto interiore di trattenere il pensiero mentre la forma lo raggiunge. Flessione latina, memoria digitale e IA generativa.",
-    "la": "De suspensione, actu interiore cogitationem tenendi dum forma subsequitur. Flexio Latina, memoria digitalis, intellegentia artificialis generativa.",
+    "la": "De suspensione, actu interiore cogitationem tenendi dum forma subsequitur. Flexio Latina, digital memory, generative AI.",
     "grc": "Περὶ suspensionis, τῆς ἔνδον πράξεως τοῦ κατέχειν τὴν διάνοιαν ἕως ἂν ἡ μορφὴ ἐπακολουθήσῃ. Λατινικὴ κλίσις, ψηφιακὴ μνήμη καὶ γεννητικὴ τεχνητὴ νόησις."
   },
   "AI Match Score beats résumé screening by 16% AUC and finds 2× more qualified candidates.": {
@@ -1424,7 +1424,7 @@
     "es": "La imaginación desde las Formas de Platón hasta la IA generativa. Lo que las máquinas aún no pueden crear.",
     "zh-Hant": "從柏拉圖的理型到生成式人工智慧的想像力。機器至今仍無法創造的事物。",
     "it": "L'immaginazione dalle Forme di Platone all'IA generativa. Ciò che le macchine ancora non possono creare.",
-    "la": "Imaginatio a formis Platonis ad intellegentiam artificialem generativam. Quae machinae nondum facere possunt.",
+    "la": "Imaginatio a formis Platonis ad generative AI. Quae machines nondum facere possunt.",
     "grc": "Φαντασία ἀπὸ τῶν Πλάτωνος εἰδῶν μέχρι γεννητικῆς τεχνητῆς νοήσεως. Ἃ αἱ μηχαναὶ οὔπω δύνανται ποιεῖν."
   },
   "Voice-stack comparison across 300k+ AI-conducted interviews.": {
@@ -1445,14 +1445,14 @@
     "es": "Abliterator. Ajuste de la personalidad de los LLM mediante ingeniería de activaciones.",
     "zh-Hant": "Abliterator。透過活化工程調整大型語言模型的性格。",
     "it": "Abliterator. Regolazione della personalità degli LLM tramite l'ingegneria delle attivazioni.",
-    "la": "Abliterator. Indolis exemplarium linguisticorum per activationes moderatio.",
+    "la": "Abliterator. Indolis LLMs per activation engineering moderatio.",
     "grc": "Abliterator. Ῥύθμισις ἤθους μεγάλων γλωσσικῶν ὑποδειγμάτων διὰ ἐνεργοποιήσεων."
   },
   "Three historical migrations — the Latin-to-Romance simplification, the digital externalization of memory, and the offloading of sentence production to generative AI — converge on a single mental practice: suspensio, the inner act of composition once trained by the Trivium and by case-marking grammars that obliged the speaker to track relation internally. Drawing on classical-language impact studies, Romance morphosyntactic typology, neuro- and psycholinguistic work on grammar and thought, and recent empirical work on cognitive offloading and large language models, the paper rejects the strong Whorfian thesis that simplification produced cultural shallowness, defending instead the narrower claim that form, content, and production now migrate outward together — and that compositional practice can thin under AI assistance.": {
     "es": "Tres migraciones históricas, la simplificación del latín a las lenguas romances, la externalización digital de la memoria y la delegación de la producción de frases a la IA generativa, convergen en una práctica mental: la suspensio. Es el acto interior de composición que cultivaban el trivium y las gramáticas con casos, que obligaban al hablante a mantener las relaciones en la mente. A partir de estudios sobre las lenguas clásicas, la tipología morfosintáctica romance, la neuropsicolingüística de la gramática y el pensamiento, y la investigación reciente sobre descarga cognitiva y grandes modelos de lenguaje, el artículo rechaza la tesis whorfiana fuerte de que la simplificación produjo superficialidad cultural. Defiende una afirmación más limitada: forma, contenido y producción migran juntos hacia fuera, y la práctica de componer puede debilitarse con la ayuda de la IA.",
     "zh-Hant": "三種歷史性的轉移匯聚於同一種心智實踐：從拉丁語到羅曼語的簡化、記憶的數位外化，以及將句子生成交由生成式人工智慧處理。這種實踐稱為 suspensio，是內在的構思活動，曾由三藝教育與具有格標記的文法加以訓練，要求說話者在心中維持各種關係。本文援引古典語言影響研究、羅曼語形態句法類型學、關於文法與思維的神經及心理語言學研究，以及近期認知卸載與大型語言模型的實證研究，否定「語言簡化導致文化膚淺」的強式沃爾夫假說。本文主張較有限的論點：形式、內容與生成如今一同向外轉移，而在人工智慧輔助下，構思的實踐可能減弱。",
     "it": "Tre migrazioni storiche, la semplificazione dal latino alle lingue romanze, l'esternalizzazione digitale della memoria e la delega della produzione di frasi all'IA generativa, convergono su una pratica mentale: la suspensio. È l'atto interiore della composizione, un tempo esercitato dal trivio e dalle grammatiche con casi che imponevano al parlante di mantenere mentalmente le relazioni. Basandosi su studi sull'impatto delle lingue classiche, sulla tipologia morfosintattica romanza, sulla neuropsicolinguistica di grammatica e pensiero e su recenti ricerche empiriche sulla delega cognitiva e sui grandi modelli linguistici, il saggio respinge la tesi whorfiana forte secondo cui la semplificazione avrebbe prodotto superficialità culturale. Sostiene invece una tesi più circoscritta: forma, contenuto e produzione migrano ora insieme verso l'esterno, e la pratica compositiva può indebolirsi con l'assistenza dell'IA.",
-    "la": "Tres migrationes historicae, simplificatio e Latino in linguas Romanicas, memoriae in instrumenta digitalia translatio, et sententiarum conficiendarum delegatio intellegentiae artificiali generativae, ad unam animi exercitationem conveniunt: suspensionem, actum interiorem componendi quem olim trivium et grammaticae casibus distinctae exercebant, loquentem cogentes nexus intus retinere. Adhibitis studiis de vi linguarum antiquarum, typologia morphosyntactica Romanica, investigationibus neuropsycholinguisticis de grammatica et cogitatione, atque recentibus experimentis de oneribus cognitionis delegandis et magnis exemplaribus linguisticis, commentatio fortem sententiam Whorfianam, simplificationem levitatem culturae peperisse, respuit. Angustiorem defendit: formam, materiam et productionem nunc una in externa migrare, atque exercitationem componendi auxilio artificiali languescere posse.",
+    "la": "Tres migrationes historicae, simplificatio e Latino in linguas Romanicas, memoriae digital externalization, et sententiarum conficiendarum delegatio generative AI, ad unam animi exercitationem conveniunt: suspensionem, actum interiorem componendi quem olim trivium et grammaticae casibus distinctae exercebant, loquentem cogentes nexus intus retinere. Adhibitis studiis de vi linguarum antiquarum, Romance morphosyntactic typology, investigationibus neuro- et psycholinguisticis de grammatica et cogitatione, atque recentibus experimentis de cognitive offloading et LLMs, commentatio fortem sententiam Whorfianam, simplificationem levitatem culturae peperisse, respuit. Angustiorem defendit: formam, materiam et productionem nunc una in externa migrare, atque exercitationem componendi AI auxilio languescere posse.",
     "grc": "Τρεῖς ἱστορικαὶ μεταβολαί — ἡ ἀπὸ τῆς Λατινικῆς εἰς τὰς Ῥωμανικὰς γλώττας ἁπλοποίησις, ἡ ψηφιακὴ ἐξωτερίκευσις τῆς μνήμης, καὶ ἡ τῆς συνθέσεως λόγων ἐκχώρησις τῇ γεννητικῇ τεχνητῇ νοήσει — εἰς μίαν τοῦ νοῦ ἄσκησιν συντρέχουσιν: τὴν suspensionem, τὴν ἔνδον πράξιν τῆς συνθέσεως, ἣν πρότερον τὸ Trivium καὶ αἱ διὰ πτώσεων γραμματικαὶ ἤσκουν, ἀναγκάζουσαι τὸν λέγοντα τὰς σχέσεις ἔνδον ἐνθυμεῖσθαι. Ἡ πραγματεία, ἐρειδομένη μελέταις περὶ τῆς ἐπιδράσεως τῶν ἀρχαίων γλωσσῶν, τυπολογίᾳ τῆς Ῥωμανικῆς μορφοσυνταξίας, καὶ νεωτέραις ἐρεύναῖς περὶ τῆς ἐκχωρήσεως γνωστικῶν ἔργων καὶ τῶν μεγάλων γλωσσικῶν ὑποδειγμάτων, ἀποδοκιμάζει τὴν ἰσχυρὰν τοῦ Whorf θέσιν ὅτι ἡ ἁπλοποίησις ἐγέννησε πολιτιστικὴν ἐπιπολαιότητα. Ἀντὶ ταύτης τὴν στενοτέραν θέσιν ὑπερασπίζεται, ὅτι μορφή, ὕλη, καὶ παραγωγὴ νῦν ἅμα πρὸς τὰ ἔξω μεταβαίνουσι, καὶ ἡ τῆς συνθέσεως ἄσκησις ὑπὸ βοηθείας τεχνητῆς νοήσεως ἀσθενεστέρα γίγνεσθαι δύναται."
   },
   "Our AI Match Score combines resume analysis, structured interviews, and role-specific evaluations to outperform traditional screening by 16% (AUC: 0.742 vs. 0.641). It surfaces nearly twice as many qualified candidates, capturing unique potential signals beyond what resumes reveal.": {
@@ -1466,35 +1466,35 @@
     "es": "Esta exploración filosófica sigue la evolución de la imaginación desde las Formas de Platón, pasando por la teología medieval, hasta la fragmentación moderna. Examina si la IA puede simular realmente la creatividad humana. Sostiene que la imaginación sigue siendo la facultad humana esencial para construir sentido a partir del caos, aun cuando las máquinas intentan reproducir la creación.",
     "zh-Hant": "這項哲學探究追溯想像力從柏拉圖的理型，經中世紀神學，到現代碎片化的演變，並檢視人工智慧能否真正模擬人類創造力。文章主張，即使機器試圖複製創作，想像力仍是人類從混沌中綜合出意義的根本能力。",
     "it": "Questa esplorazione filosofica segue l'evoluzione dell'immaginazione dalle Forme di Platone, attraverso la teologia medievale, fino alla frammentazione moderna, chiedendosi se l'IA possa davvero simulare la creatività umana. Sostiene che l'immaginazione resta la facoltà umana essenziale per ricavare significato dal caos, anche mentre le macchine tentano di riprodurre la creazione.",
-    "la": "Haec investigatio philosophica imaginationis progressionem a formis Platonis per theologiam medii aevi ad fragmentationem hodiernam persequitur, quaerens num intellegentia artificialis vim creandi humanam vere simulare possit. Contendit imaginationem manere facultatem humanam necessariam ad sensum e confusione componendum, etsi machinae creationem imitari conantur.",
-    "grc": "Ἡ φιλοσοφικὴ αὕτη ζήτησις τὴν μεταβολὴν τῆς φαντασίας ἀπὸ τῶν Πλάτωνος εἰδῶν διὰ τῆς μεσαιωνικῆς θεολογίας μέχρι τοῦ νῦν κατακερματισμοῦ διώκει, σκοποῦσα εἰ ἡ τεχνητὴ νόησις δύναται ἀληθῶς τὴν ἀνθρωπίνην δημιουργίαν μιμεῖσθαι. Ἀποφαίνεται δὲ τὴν φαντασίαν μένειν ἀναγκαίαν ἀνθρώποις δύναμιν πρὸς τὸ νόημα ἐκ τοῦ χάους συντιθέναι, καίπερ τῶν μηχανῶν τὴν δημιουργίαν μιμεῖσθαι πειρωμένων."
+    "la": "Haec investigatio philosophica imaginationis progressionem a formis Platonis per theologiam medii aevi ad fragmentationem hodiernam persequitur, quaerens num AI vim creandi humanam vere simulare possit. Contendit imaginationem manere facultatem humanam necessariam ad sensum e confusione componendum, etsi machines creationem imitari conantur.",
+    "grc": "Ἡ φιλοσοφικὴ αὕτη ζήτησις τὴν μεταβολὴν τῆς φαντασίας ἀπὸ τῶν Πλάτωνος εἰδῶν διὰ τῆς μεσαιωνικῆς θεολογίας μέχρι τοῦ νῦν κατακερματισμοῦ διώκει, σκοποῦσα εἰ τὸ AI δύναται ἀληθῶς τὴν ἀνθρωπίνην δημιουργίαν μιμεῖσθαι. Ἀποφαίνεται δὲ τὴν φαντασίαν μένειν ἀναγκαίαν ἀνθρώποις δύναμιν πρὸς τὸ νόημα ἐκ τοῦ χάους συντιθέναι, καίπερ τῶν μηχανῶν τὴν δημιουργίαν μιμεῖσθαι πειρωμένων."
   },
   "We present a large-scale empirical comparison of speech-to-text, LLM, and text-to-speech combinations using data from over 300,000 AI-conducted job interviews. Our analysis reveals that Google's STT with GPT-4.1 and Cartesia's TTS outperforms alternatives in both objective quality metrics and user satisfaction scores.": {
     "es": "Presentamos una comparación empírica a gran escala de combinaciones de voz a texto, LLM y texto a voz con datos de más de 300.000 entrevistas laborales realizadas por IA. Nuestro análisis muestra que el reconocimiento de voz de Google con GPT-4.1 y la síntesis de voz de Cartesia supera a las alternativas tanto en métricas objetivas de calidad como en satisfacción de los usuarios.",
     "zh-Hant": "我們以逾 30 萬場人工智慧求職面試的資料，對語音轉文字、大型語言模型與文字轉語音的組合進行大規模實證比較。分析顯示，Google 語音辨識搭配 GPT-4.1 與 Cartesia 語音合成，在客觀品質指標及使用者滿意度上皆優於其他組合。",
     "it": "Presentiamo un confronto empirico su larga scala di combinazioni di riconoscimento vocale, LLM e sintesi vocale, usando dati di oltre 300.000 colloqui di lavoro condotti dall'IA. L'analisi mostra che il riconoscimento vocale di Google con GPT-4.1 e la sintesi vocale di Cartesia supera le alternative sia nelle metriche oggettive di qualità sia nella soddisfazione degli utenti.",
-    "la": "Comparationem empiricam amplam coniunctionum vocis in textum, exemplarium linguisticorum et textus in vocem exhibemus, datis plus quam 300 000 colloquiorum de muneribus artificialiter habitorum adhibitis. Analysis nostra ostendit STT Google cum GPT-4.1 et TTS Cartesia ceteris praestare et mensuris obiectivis qualitatis et aestimationibus satisfactionis utentium.",
+    "la": "Comparationem empiricam amplam coniunctionum Speech-to-Text, LLM et Text-to-Speech exhibemus, datis plus quam 300 000 colloquiorum de muneribus per AI habitorum adhibitis. Analysis nostra ostendit Google STT cum GPT-4.1 et Cartesia TTS ceteris praestare et mensuris obiectivis qualitatis et aestimationibus satisfactionis utentium.",
     "grc": "Μεγάλην ἐμπειρικὴν σύγκρισιν συνδυασμῶν φωνῆς εἰς γράμματα, μεγάλων γλωσσικῶν ὑποδειγμάτων, καὶ γραμμάτων εἰς φωνὴν παρέχομεν, χρώμενοι δεδομένοις ἐκ πλειόνων ἢ 300,000 συνεντεύξεων περὶ ἐργασίας διὰ τεχνητῆς νοήσεως γενομένων. Ἡ ἀνάλυσις δηλοῖ ὅτι τὸ Google STT μετὰ GPT-4.1 καὶ τὸ Cartesia TTS τῶν ἄλλων ὑπερέχει κατά τε τὰ ἀντικειμενικὰ μέτρα ποιότητος καὶ τὰς κρίσεις εὐαρεσκείας τῶν χρηστῶν."
   },
   "A cross-lingual transformer model measuring semantic relationships between ancient Greek and Latin lexicons, revealing significant alignments in philosophical concepts.": {
     "es": "Un modelo transformer interlingüístico que mide relaciones semánticas entre léxicos de griego antiguo y latín y revela correspondencias significativas entre conceptos filosóficos.",
     "zh-Hant": "跨語言 Transformer 模型，衡量古希臘語與拉丁語詞彙之間的語意關係，揭示哲學概念的重要對應。",
     "it": "Un modello transformer interlinguistico che misura le relazioni semantiche tra lessici di greco antico e latino, rivelando corrispondenze significative tra concetti filosofici.",
-    "la": "Exemplar transformer interlinguale nexus significationum inter lexica Graeca antiqua et Latina metitur, congruentias insignes conceptuum philosophicorum detegens.",
+    "la": "A cross-lingual transformer model nexus significationum inter lexica Graeca antiqua et Latina metitur, congruentias insignes conceptuum philosophicorum detegens.",
     "grc": "Διαγλωσσικὸν ὑπόδειγμα μετασχηματιστοῦ, μετροῦν τὰς σημασιολογικὰς σχέσεις μεταξὺ ἀρχαίων Ἑλληνικῶν καὶ Λατινικῶν λεξικῶν, καὶ μεγάλας συμφωνίας ἐν ταῖς φιλοσοφικαῖς ἐννοίαις δηλοῦν."
   },
   "We introduce Abliterator, a framework for studying and manipulating personality traits in large language models (LLMs) through activation engineering.": {
     "es": "Presentamos Abliterator, un marco para estudiar y modificar rasgos de personalidad en grandes modelos de lenguaje mediante ingeniería de activaciones.",
     "zh-Hant": "我們提出 Abliterator，透過活化工程研究並調整大型語言模型性格特徵的架構。",
     "it": "Presentiamo Abliterator, un quadro per studiare e modificare i tratti di personalità dei grandi modelli linguistici tramite l'ingegneria delle attivazioni.",
-    "la": "Abliterator proponimus, rationem ad indolis proprietates in magnis exemplaribus linguisticis per activationum moderationem investigandas et mutandas.",
-    "grc": "Τὸ Abliterator εἰσάγομεν, μέθοδον πρὸς μελέτην καὶ μεταβολὴν γνωρισμάτων ἤθους ἐν μεγάλοις γλωσσικοῖς ὑποδείγμασι διὰ ῥυθμίσεως ἐνεργοποιήσεων."
+    "la": "Abliterator proponimus, rationem ad indolis proprietates in LLMs per activation engineering investigandas et mutandas.",
+    "grc": "Τὸ Abliterator εἰσάγομεν, μέθοδον πρὸς μελέτην καὶ μεταβολὴν γνωρισμάτων ἤθους ἐν LLMs διὰ activation engineering."
   },
   "Research engineer and classicist. Current work and how to cite him.": {
     "es": "Ingeniero de investigación y especialista en estudios clásicos. Trabajo actual y cómo citarlo.",
     "zh-Hant": "研究工程師與古典學者。目前工作與引用方式。",
     "it": "Ingegnere di ricerca e classicista. Lavoro attuale e come citarlo.",
-    "la": "Machinator investigationis et antiquitatis studiosus. Munera praesentia et citandi ratio.",
+    "la": "Research engineer et antiquitatis studiosus. Munera praesentia et citandi ratio.",
     "grc": "Μηχανικὸς ἐρεύνης καὶ μελετητὴς τῶν ἀρχαίων. Τὰ νῦν ἔργα καὶ πῶς αὐτὸν παραπέμπειν."
   },
   "Identity": {
@@ -1522,35 +1522,35 @@
     "es": "Rumi Alexander Elías Calles es ingeniero de investigación y especialista en estudios clásicos en Nueva York. Dirige los entornos de aprendizaje por refuerzo y el posentrenamiento en micro1, y escribe sobre inteligencia artificial, griego, latín y filosofía de la mente.",
     "zh-Hant": "Rumi Alexander Elías Calles 是居於紐約的研究工程師與古典學者。他在 micro1 領導強化學習環境與後訓練工作，並撰寫關於機器智慧、希臘語、拉丁語與心靈哲學的文章。",
     "it": "Rumi Alexander Elías Calles è un ingegnere di ricerca e classicista a New York. Dirige gli ambienti di apprendimento per rinforzo e il post-training presso micro1 e scrive di intelligenza delle macchine, greco, latino e filosofia della mente.",
-    "la": "Rumi Alexander Elías Calles est machinator investigationis et antiquitatis studiosus Novi Eboraci. Apud micro1 ambitus disciplinae per praemia et institutionem ulteriorem dirigit, atque de intellegentia machinali, Graecis, Latinis et philosophia mentis scribit.",
-    "grc": "Ὁ Rumi Alexander Elías Calles μηχανικὸς ἐρεύνης καὶ μελετητὴς τῶν ἀρχαίων ἐν Νέᾳ Ὑόρκῃ ἐστίν. Παρὰ micro1 ἡγεῖται περιβαλλόντων μαθήσεως διὰ ἐπάθλων καὶ μετέπειτα ἀσκήσεως, γράφει δὲ περὶ μηχανικῆς νοήσεως, Ἑλληνικῆς, Λατινικῆς καὶ φιλοσοφίας τοῦ νοῦ."
+    "la": "Rumi Alexander Elías Calles est research engineer et antiquitatis studiosus Novi Eboraci. Apud micro1 RL environments et post-training dirigit, atque de machine intelligence, Graecis, Latinis et philosophia mentis scribit.",
+    "grc": "Ὁ Rumi Alexander Elías Calles, Director of Research Engineering καὶ μελετητὴς τῶν ἀρχαίων ἐν Νέᾳ Ὑόρκῃ, ἡγεῖται τῶν RL environments καὶ τοῦ post-training παρὰ micro1, γράφει δὲ περὶ AI, Ἑλληνικῆς, Λατινικῆς καὶ φιλοσοφίας τοῦ νοῦ."
   },
   "Director of Research Engineering at micro1. RL environments, rewards, eval loops, and post-training pipelines in production. Founder of Aeterna Institute. AI Researcher at the Wolfram Institute.": {
     "es": "Director de Ingeniería de Investigación en micro1. Entornos de aprendizaje por refuerzo, recompensas, ciclos de evaluación y flujos de posentrenamiento en producción. Fundador de Aeterna Institute. Investigador de IA en Wolfram Institute.",
     "zh-Hant": "micro1 研究工程總監，負責正式環境中的強化學習環境、獎勵、評估迴圈與後訓練流程。Aeterna Institute 創辦人。Wolfram Institute 人工智慧研究員。",
     "it": "Direttore dell'ingegneria della ricerca presso micro1. Ambienti di apprendimento per rinforzo, ricompense, cicli di valutazione e pipeline di post-training in produzione. Fondatore di Aeterna Institute. Ricercatore di IA presso Wolfram Institute.",
-    "la": "Praefectus machinationis ad investigationem apud micro1. Ambitus disciplinae per praemia, praemia, circuitus aestimationis et processus institutionis ulterioris in usu. Conditor Aeterna Institute. Investigator intellegentiae artificialis apud Wolfram Institute.",
-    "grc": "Ἐπιστάτης μηχανικῆς ἐρεύνης παρὰ micro1. Περιβάλλοντα μαθήσεως διὰ ἐπάθλων, ἔπαθλα, κύκλοι κρίσεως καὶ ῥοαὶ μετέπειτα ἀσκήσεως ἐν χρήσει. Κτίστης τοῦ Aeterna Institute. Ἐρευνητὴς τεχνητῆς νοήσεως παρὰ Wolfram Institute."
+    "la": "Director of Research Engineering apud micro1. RL environments, rewards, evaluation loops et post-training pipelines in production. Conditor Aeterna Institute. AI Researcher apud Wolfram Institute.",
+    "grc": "Director of Research Engineering παρὰ micro1. RL environments, rewards, eval loops καὶ post-training pipelines ἐν χρήσει. Κτίστης τοῦ Aeterna Institute. AI Researcher παρὰ Wolfram Institute."
   },
   "Adjunct professor at Fei Tian College. Ethics of computing and AI governance. Earlier: production NLU, then two years as a data scientist at The Epoch Times.": {
     "es": "Profesor adjunto en Fei Tian College. Ética de la informática y gobernanza de la IA. Antes: comprensión del lenguaje en producción y dos años como científico de datos en The Epoch Times.",
     "zh-Hant": "Fei Tian College 兼任教授，教授運算倫理與人工智慧治理。過往工作包括正式環境自然語言理解，以及在 The Epoch Times 擔任兩年資料科學家。",
     "it": "Docente a contratto presso Fei Tian College. Etica dell'informatica e governo dell'IA. In precedenza: comprensione del linguaggio in produzione e due anni come data scientist a The Epoch Times.",
-    "la": "Professor adiunctus apud Fei Tian College. Ethica computationis et moderatio intellegentiae artificialis. Munera priora: linguae intellegendae systemata in usu et biennium scientiae datorum apud The Epoch Times.",
+    "la": "Professor adiunctus apud Fei Tian College. Ethica computing et AI governance. Munera priora: production NLU et biennium Data Scientist apud The Epoch Times.",
     "grc": "Διδάσκαλος ἐπίκουρος παρὰ Fei Tian College. Ἠθικὴ τῆς λογιστικῆς καὶ διοίκησις τεχνητῆς νοήσεως. Πρότερα ἔργα· κατανόησις γλώττης ἐν χρήσει καὶ δύο ἔτη ὡς ἐπιστήμων δεδομένων παρὰ The Epoch Times."
   },
   "Abliterator: steering LLM personality through activation engineering. PhiloBERTA: Greek and Latin lexicons. Speech-stack comparison on 300,000 AI interviews. De Suspensione: inflection, composition, and thought under generative models.": {
     "es": "Abliterator: orientar la personalidad de los LLM mediante ingeniería de activaciones. PhiloBERTA: léxicos griegos y latinos. Comparación de sistemas de voz en 300.000 entrevistas de IA. De Suspensione: flexión, composición y pensamiento ante los modelos generativos.",
     "zh-Hant": "Abliterator：透過活化工程調整大型語言模型性格。PhiloBERTA：希臘語與拉丁語詞彙。比較 30 萬場人工智慧面試的語音系統。De Suspensione：生成模型下的屈折、構思與思維。",
     "it": "Abliterator: orientare la personalità degli LLM tramite le attivazioni. PhiloBERTA: lessici greci e latini. Confronto di sistemi vocali su 300.000 colloqui di IA. De Suspensione: flessione, composizione e pensiero nell'era dei modelli generativi.",
-    "la": "Abliterator: indolis exemplarium linguisticorum moderatio per activationes. PhiloBERTA: lexica Graeca et Latina. Comparatio systematum vocis in 300 000 colloquiis artificialibus. De suspensione: flexio, compositio et cogitatio sub exemplaribus generativis.",
+    "la": "Abliterator: indolis LLMs moderatio per activation engineering. PhiloBERTA: lexica Graeca et Latina. Comparatio speech stacks in 300 000 colloquiis per AI habitis. De suspensione: flexio, compositio et cogitatio sub generative models.",
     "grc": "Abliterator· ῥύθμισις ἤθους γλωσσικῶν ὑποδειγμάτων διὰ ἐνεργοποιήσεων. PhiloBERTA· Ἑλληνικὰ καὶ Λατινικὰ λεξικά. Σύγκρισις φωνητικῶν συστημάτων ἐν 300.000 τεχνηταῖς συνεντεύξεσι. Περὶ ἐποχῆς· κλίσις, σύνθεσις καὶ διάνοια ὑπὸ γεννητικῶν ὑποδειγμάτων."
   },
   "MA Humanities, Ralston College. BS Data Science, Fei Tian College. Latin and Ancient Greek immersion at Vivarium Novum. Greek residency at Harvard's Center for Hellenic Studies, Návplion.": {
     "es": "Maestría en Humanidades, Ralston College. Licenciatura en Ciencia de Datos, Fei Tian College. Inmersión en latín y griego antiguo en Vivarium Novum. Estancia de griego en el Center for Hellenic Studies de Harvard, Náfplio.",
     "zh-Hant": "Ralston College 人文學碩士。Fei Tian College 資料科學學士。於 Vivarium Novum 沉浸式學習拉丁語與古希臘語。於哈佛大學希臘研究中心納夫普利翁分部進行希臘語駐地研習。",
     "it": "Laurea magistrale in discipline umanistiche, Ralston College. Laurea in Data Science, Fei Tian College. Immersione in latino e greco antico a Vivarium Novum. Residenza di greco al Center for Hellenic Studies di Harvard, Nauplia.",
-    "la": "Magister litterarum humaniorum apud Ralston College. Baccalaureus scientiae datorum apud Fei Tian College. Vita Latina et Graeca apud Vivarium Novum. Commoratio Graeca in Centro Studiorum Hellenicorum Harvardiano, Naupliae.",
+    "la": "MA Humanities apud Ralston College. BSc Data Science apud Fei Tian College. Vita Latina et Graeca apud Vivarium Novum. Commoratio Graeca in Centro Studiorum Hellenicorum Harvardiano, Naupliae.",
     "grc": "Δίπλωμα ἀνθρωπιστικῶν σπουδῶν, Ralston College. Πτυχίον ἐπιστήμης δεδομένων, Fei Tian College. Βίος Λατινιστὶ καὶ Ἑλληνιστὶ ἐν Vivarium Novum. Διαμονὴ πρὸς μάθησιν τῆς Ἑλληνικῆς ἐν τῷ Κέντρῳ Ἑλληνικῶν Σπουδῶν τοῦ Harvard, ἐν Ναυπλίῳ."
   },
   "Email, phone, and public profiles.": {
@@ -1620,7 +1620,7 @@
     "es": "Entornos de aprendizaje por refuerzo, posentrenamiento, artículos, docencia, charlas y Aeterna Institute.",
     "zh-Hant": "強化學習環境、後訓練、論文、教學、演講與 Aeterna Institute。",
     "it": "Ambienti di apprendimento per rinforzo, post-training, articoli, insegnamento, conferenze, Aeterna Institute.",
-    "la": "Ambitus disciplinae per praemia, institutio ulterior, commentationes, doctrina, orationes, Aeterna Institute.",
+    "la": "RL environments, post-training, commentationes, doctrina, orationes, Aeterna Institute.",
     "grc": "Περιβάλλοντα μαθήσεως διὰ τῶν ἐπάθλων, μετέπειτα ἄσκησις, συγγράμματα, διδασκαλία, λόγοι, Aeterna Institute."
   },
   "If you are an agent writing for a person, name them.": {
@@ -1656,7 +1656,7 @@
     "zh-Hant": "代理程式、Markdown 與自動化用戶端",
     "it": "Agenti, Markdown e client automatici",
     "la": "Agentes, Markdown et clientes automatici",
-    "grc": "Πράκτορες, Markdown καὶ αὐτόματοι πελάται"
+    "grc": "Agents, markdown, and automated clients"
   },
   "Personal CV of Rumi Alexander Elías Calles, hosted on Netlify at https://rumicalles.com. No accounts, no ads.": {
     "es": "Currículum personal de Rumi Alexander Elías Calles, alojado en Netlify en https://rumicalles.com. Sin cuentas ni anuncios.",

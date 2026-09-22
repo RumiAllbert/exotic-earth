@@ -1,3 +1,4 @@
+// Latin and Attic prose retain modern technical terms in English; Spanish uses Mexican usage.
 import messages from './messages.json' with { type: 'json' };
 
 export const locales = { en: 'English', es: 'Español', 'zh-Hant': '中文', it: 'Italiano', la: 'Latina', grc: 'Ἑλληνική' };

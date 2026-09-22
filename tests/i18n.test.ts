@@ -58,3 +58,14 @@ test('language selection preserves the current section and query', () => {
   change({ currentTarget: { value: '/zh-Hant/' } });
   assert.equal(destination, '/zh-Hant/?ref=portfolio#projects');
 });
+
+test('classical versions retain modern technical terminology and Spanish uses the requested invitation', () => {
+  for (const locale of ['la', 'grc']) {
+    const t = translator(`/${locale}/`);
+    for (const term of ['Director of Research Engineering', 'Data Science', 'Machine Learning', 'Deep Learning', 'NLP & LLMs']) {
+      assert.equal(t(term), term);
+    }
+  }
+  assert.equal(translator('/es/')("let's chat :)"), 'platiquemos :)');
+  assert.equal(languageTag('es'), 'es-MX');
+});
