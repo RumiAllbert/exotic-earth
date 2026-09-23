@@ -88,6 +88,10 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
     border-bottom: 1px solid rgba(var(--color-rule), 0.1);
   }
 
+  .copy {
+    min-width: 0;
+  }
+
   h1 {
     font-size: clamp(2.2rem, 5.5vw, 3.6rem);
     font-weight: 500;
@@ -106,12 +110,18 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" · ");
 
   .tongues {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem 1.1rem;
+    gap: 1.1rem;
     margin: 1.05rem 0 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
     font-style: italic;
     font-size: 0.95rem;
     color: rgb(var(--color-text-muted));
+  }
+
+  .tongues::-webkit-scrollbar {
+    display: none;
   }
 
   .links {
