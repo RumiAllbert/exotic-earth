@@ -1,0 +1,22 @@
+<div class="work-film no-print" aria-hidden="true">
+  <canvas></canvas>
+</div>
+
+<script>
+  import { mount } from "../scripts/work-film.js";
+  const canvas = document.querySelector<HTMLCanvasElement>(".work-film canvas");
+  if (canvas) mount(canvas);
+</script>
+
+<style>
+  .work-film {
+    width: min(18rem, 100%);
+    margin: 0 auto;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+</style>

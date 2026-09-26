@@ -12,6 +12,7 @@ import Hero from "@/components/sections/Hero.astro";
 import Projects from "@/components/sections/Projects.astro";
 import Publications from "@/components/sections/Publications.astro";
 import Skills from "@/components/sections/Skills.astro";
+import WorkFilm from "@/components/WorkFilm.astro";
 import Layout from "@/layouts/Layout.astro";
 import { basics } from "@cv";
 
@@ -42,6 +43,7 @@ const { name, label, email, profiles } = basics;
     <section id="projects">
       <Projects />
     </section>
+    <WorkFilm />
   </main>
 
   <footer id="contact" class="close no-print">
