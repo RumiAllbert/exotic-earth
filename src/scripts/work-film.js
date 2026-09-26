@@ -1,9 +1,9 @@
-// A live, transparent film drawn in line: a point → a tesseract turning through the fourth dimension (Plato's cave,
-// one dimension up) → its edges bend into the linked circles of a Hopf torus (the shape of the brain's grid-cell code)
-// → the circles unwind into the Lorenz attractor (determinism and chaos) → everything gathers to the point → the
+// A live, transparent film drawn in line: a point → a neural network wires itself layer by layer, its rings of neurons
+// turning against each other while signals take paths through it → the linked circles of a Hopf torus (the shape of the
+// brain's grid-cell code) → the Lorenz attractor (determinism and chaos) → everything gathers to the point → the
 // calligraphic R is written outward from its heart in ink → it retracts to the point, and the loop begins again.
 //
-// Every figure is K curves of M samples. Each new figure draws itself on curve by curve while the last one shrinks
+// Every figure is a set of curves sampled along their length. Each new figure draws itself on curve by curve while the last one shrinks
 // and fades; the attractor is traced out as its trajectory unfolds. Every figure is bounded (|p| ≤ 1.1 before
 // framing, well inside the frame), so nothing is ever cropped. Line weight and opacity follow depth. The accent is one
 // continuous thing per figure (signals on the edges, one fibre, the present state, the wet tip of the ink).
@@ -20,13 +20,35 @@ const rot4 = ([x, y, z, w], a1, a2) => { // turn in the XW and YZ planes
   return [x, y, z, w];
 };
 
-/* ---------- the tesseract: 16 vertices, 32 edges, seen from w = 2.2 ---------- */
-const TV = [...Array(16)].map((_, i) => [i & 1, i & 2, i & 4, i & 8].map((b) => (b ? 0.5 : -0.5)));
-const TE = [];
-for (let i = 0; i < 16; i++) for (let b = 0; b < 4; b++) { const j = i ^ (1 << b); if (j > i) TE.push([i, j]); }
-function tesseract(k, f, t) {
-  const [a, b] = TE[k], [x, y, z, w] = rot4(TV[a].map((v, n) => lerp(v, TV[b][n], f)), t * 0.35, t * 0.22), s = 1.3 / (2.2 - w);
-  return [x * s, y * s, z * s]; // |v| ≤ 1 and w ≤ 1, so |p| ≤ 1.08
+/* ---------- the network: five layers left to right, each a slim column of neurons turning in a narrow ellipse,
+   alternate layers turning opposite ways; each neuron wired to its receptive field in the next layer ---------- */
+const NL = [4, 7, 9, 7, 4], NX = [-0.9, -0.45, 0, 0.45, 0.9], NR = [0.38, 0.6, 0.78, 0.6, 0.38], DEPTH = 0.2; // |p| ≤ 1.01
+const NOFF = NL.map((_, l) => NL.slice(0, l).reduce((a, b) => a + b, 0)); // first neuron of each ring
+const NE = []; // edges, ring pair by ring pair, so drawing them on in order wires the net layer by layer
+const arc = (l, j) => (j / NL[l]) * 6.2832 + l * 0.5, near = (a, b) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b))) < 1.25;
+for (let l = 0; l < NL.length - 1; l++) for (let a = 0; a < NL[l]; a++) for (let b = 0; b < NL[l + 1]; b++) if (near(arc(l, a), arc(l + 1, b))) NE.push([NOFF[l] + a, NOFF[l + 1] + b]);
+const RING = NL.flatMap((n, l) => Array(n).fill(l)), SLOT = NL.flatMap((n) => [...Array(n).keys()]);
+function neuron(i, t) {
+  const l = RING[i], a = arc(l, SLOT[i]) + t * 0.3 * (l % 2 ? -1 : 1), wob = 0.35 * Math.sin(t * 0.35);
+  const x = NX[l], y = NR[l] * Math.cos(a), z = DEPTH * Math.sin(a);
+  return [x * Math.cos(wob) + z * Math.sin(wob), y, -x * Math.sin(wob) + z * Math.cos(wob)];
+}
+function network(k, f, t) {
+  const [a, b] = NE[k];
+  return mix3(neuron(a, t), neuron(b, t), f);
+}
+const netDots = (t) => NL.flatMap((n, l) => [...Array(n)].map((_, j) => [neuron(NOFF[l] + j, t), P(t, FIGS[0].in + l * 0.4, FIGS[0].in + 0.25 + l * 0.4)]));
+const hash = (x) => { const s = Math.sin(x * 127.1) * 43758.5453; return s - Math.floor(s); };
+function netSignals(t) { // a forward pass: each signal takes one path, a neuron per ring, easing through each synapse
+  const out = [];
+  for (let b = 0; b < 8; b++) {
+    const L = NL.length - 1, ph = t * 0.9 + b * 0.53, cycle = Math.floor(ph / L), seg = Math.floor(ph % L), f = (ph % L) - seg;
+    const step = (l, j) => { const outs = NE.filter(([a]) => a === NOFF[l] + j); return outs[Math.floor(hash(b * 31 + cycle * 17 + l * 5 + j) * outs.length)][1] - NOFF[l + 1]; };
+    let j = Math.floor(hash(b * 13 + cycle * 7) * NL[0]);
+    for (let l = 0; l < seg; l++) j = step(l, j);
+    out.push(mix3(neuron(NOFF[seg] + j, t), neuron(NOFF[seg + 1] + step(seg, j), t), ease(f)));
+  }
+  return out;
 }
 
 /* ---------- the Hopf torus: fibres of the Clifford torus turning in 4D ---------- */
@@ -59,9 +81,9 @@ function lorenz(k, f, t) {
 // in/out: when a figure appears and when it has faded; draw/stag: seconds each curve takes to draw on, spread across curves.
 const GATHER = [18, 19], INK_T = [19.2, 23], RETRACT = [24.6, 25.5], STILL_AT = 24;
 const FIGS = [
-  { fn: tesseract, in: 1, out: 6, born: 1 },
-  { fn: torus, in: 5.6, out: 12.2, draw: 1.2, stag: 0.8, hot: 3 },
-  { fn: lorenz, in: 11.8, out: GATHER[1], draw: 0.25, stag: 1.6, hot: K - 1, last: true },
+  { fn: network, n: NE.length, m: 10, in: 1, out: 6, draw: 0.35, stag: 1.6, alpha: 0.7, dots: netDots, signals: netSignals },
+  { fn: torus, n: K, m: M, in: 5.6, out: 12.2, draw: 1.2, stag: 0.8, hot: 3 },
+  { fn: lorenz, n: K, m: M, in: 11.8, out: GATHER[1], draw: 0.25, stag: 1.6, hot: K - 1, last: true },
 ];
 
 /* ---------- the R, written outward from its heart ---------- */
@@ -115,24 +137,24 @@ export async function mount(canvas) {
     const t = time % LOOP, S = W * 0.42, ox = W / 2, oy = W / 2;
     g.clearRect(0, 0, W, W);
     // camera: a slow turn and a gentle tilt
-    const yaw = t * 0.08, tilt = 0.35, cyw = Math.cos(yaw), syw = Math.sin(yaw), ct = Math.cos(tilt), st = Math.sin(tilt);
+    const turn = ease(P(t, 5.3, 6.6)), yaw = t * 0.08 * turn, tilt = lerp(0.06, 0.35, turn), cyw = Math.cos(yaw), syw = Math.sin(yaw), ct = Math.cos(tilt), st = Math.sin(tilt);
     const proj = ([x, y, z]) => { [x, z] = [x * cyw + z * syw, -x * syw + z * cyw]; [y, z] = [y * ct - z * st, y * st + z * ct]; return [ox + x * S, oy - y * S, z]; };
     const beads = [];
     for (const F of FIGS) {
       if (t < F.in || t > F.out) continue;
       const exit = F.last ? ease(P(t, ...GATHER)) : ease(P(t, F.out - 0.7, F.out));
-      const scale = (F.born ? ease(P(t, F.in, F.in + 1)) : 1) * (F.last ? 1 - exit : 1 - 0.15 * exit), fade = F.last ? 1 - P(t, GATHER[0] + 0.4, GATHER[1]) : 1 - exit;
-      const settled = F.draw ? t > F.in + F.stag + F.draw : true;
+      const scale = F.last ? 1 - exit : 1 - 0.15 * exit, fade = F.last ? 1 - P(t, GATHER[0] + 0.4, GATHER[1]) : 1 - exit;
+      const settled = t > F.in + F.stag + F.draw;
       bins.forEach((b) => (b.length = 0));
       let tip = null;
-      for (let k = 0; k < K; k++) {
-        const drawn = F.draw ? ease(P(t, F.in + (k / K) * F.stag, F.in + (k / K) * F.stag + F.draw)) : 1;
+      for (let k = 0; k < F.n; k++) {
+        const drawn = ease(P(t, F.in + (k / F.n) * F.stag, F.in + (k / F.n) * F.stag + F.draw));
         if (drawn <= 0) continue;
-        if (drawn < 1 || k === K - 1) tip = [k, drawn];
+        if (drawn < 1 || k === F.n - 1) tip = [k, drawn];
         const hot = settled && k === F.hot;
         let prev = null;
-        for (let j = 0; j <= M; j++) {
-          const f = Math.min(j / M, drawn), p = proj(F.fn(k, f, t).map((v) => v * scale));
+        for (let j = 0; j <= F.m; j++) {
+          const f = Math.min(j / F.m, drawn), p = proj(F.fn(k, f, t).map((v) => v * scale));
           if (prev) bins[(hot ? BINS : 0) + Math.floor(clamp((prev[2] + p[2]) / 4 + 0.5, 0, 0.999) * BINS)].push(prev[0], prev[1], p[0], p[1]);
           prev = p;
           if (f >= drawn) break;
@@ -143,13 +165,18 @@ export async function mount(canvas) {
           if (!b.length) return;
           const d = ((i % BINS) + 1) / BINS, hot = i >= BINS, w = dpr * (0.5 + 1.2 * d * d) * (hot ? 1.3 : 1);
           g.lineWidth = glow ? w * 4 : w;
-          g.strokeStyle = rgba(hot ? ACC : INK, (0.14 + 0.8 * d) * fade * (glow ? 0.1 : 1));
+          g.strokeStyle = rgba(hot ? ACC : INK, (0.14 + 0.8 * d) * fade * (F.alpha ?? 1) * (glow ? 0.1 : 1));
           g.beginPath();
           for (let j = 0; j < b.length; j += 4) { g.moveTo(b[j], b[j + 1]); g.lineTo(b[j + 2], b[j + 3]); }
           g.stroke();
         });
-      // signals: beads moving at constant speed along the edges and fibres; the attractor's present state at its tip
-      if (F.fn === tesseract && t > F.in + 1) for (let n = 0; n < 6; n++) beads.push([tesseract((n * 5 + 2) % K, (t * 0.55 + n * 0.37) % 1, t), scale, fade]);
+      if (F.dots) for (const [v, a] of F.dots(t)) { // neurons
+        const p = proj(v.map((c) => c * scale));
+        g.fillStyle = rgba(INK, a * fade * clamp(p[2] / 2 + 0.7));
+        g.beginPath(); g.arc(p[0], p[1], 2 * dpr, 0, 6.2832); g.fill();
+      }
+      // signals: along the network's paths and the torus's fibres; the attractor's present state at its tip
+      if (F.signals && settled) for (const v of F.signals(t)) beads.push([v, scale, fade]);
       if (F.fn === torus && settled) for (let n = 0; n < 5; n++) beads.push([torus((n * 7 + 1) % K, (t * 0.14 + n * 0.21) % 1, t), scale, fade]);
       if (F.fn === lorenz && tip) beads.push([lorenz(tip[0], tip[1], t), scale, fade]);
     }
