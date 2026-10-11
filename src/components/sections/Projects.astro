@@ -5,6 +5,10 @@ import Section from "../Section.astro";
 import { projects } from "@cv";
 
 const FEATURED: Record<string, { src: string; alt: string }> = {
+  Interlinea: {
+    src: "/projects/interlinea.webp",
+    alt: "Interlinea — Latin and Ancient Greek, word by word",
+  },
   "Etymon.ai": {
     src: "/projects/etymon.webp",
     alt: "Etymon — Discover the origin of words",
@@ -15,7 +19,7 @@ const FEATURED: Record<string, { src: string; alt: string }> = {
   },
 };
 
-const featuredNames = ["Etymon.ai", "Vertor"];
+const featuredNames = ["Interlinea", "Etymon.ai", "Vertor"];
 const featured = featuredNames
   .map((name) => projects.find((project) => project.name === name))
   .filter((project): project is NonNullable<typeof project> => Boolean(project));
@@ -131,7 +135,8 @@ const rest = projects.filter((project) => !FEATURED[project.name]);
 
   @media (min-width: 720px) {
     .plates {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
   }
 
