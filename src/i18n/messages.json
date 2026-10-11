@@ -1707,6 +1707,41 @@
     "la": "Ad emendationes aut remotionem petendam, ad inscriptionem supra scriptam mitte cum URL. Situs paginas canonicas renovabit. Exploratores cogere non potest ut exemplar prius obliviscantur.",
     "grc": "Πρὸς διορθώσεις ἢ αἰτήσεις ἀφαιρέσεως πέμπε ἐπιστολὴν πρὸς τὴν ἄνω διεύθυνσιν μετὰ τοῦ URL. Ὁ ἱστότοπος τὰς κυρίας σελίδας ἀνακαινιεῖ. Οὐ δύναται τοὺς ἀνιχνευτὰς ἀναγκάζειν πρότερον ἀντίγραφον ἐπιλανθάνεσθαι."
   },
+  "Interlinea — Latin and Ancient Greek, word by word": {
+    "es": "Interlinea: latín y griego antiguo, palabra por palabra",
+    "zh-Hant": "Interlinea：逐字閱讀拉丁文與古希臘文",
+    "it": "Interlinea: latino e greco antico, parola per parola",
+    "la": "Interlinea: Latine et Graece, verbum de verbo",
+    "grc": "Interlinea· Ῥωμαϊστὶ καὶ Ἑλληνιστί, κατὰ λέξιν"
+  },
+  "Reading companion for Latin and Ancient Greek. Every word glossed, parsed, and linked to its sentence.": {
+    "es": "Compañero de lectura para latín y griego antiguo. Cada palabra glosada, analizada y enlazada con su oración.",
+    "zh-Hant": "拉丁文與古希臘文閱讀助手。每個字都有釋義、語法分析，並與所在句子相連。",
+    "it": "Compagno di lettura per latino e greco antico. Ogni parola glossata, analizzata e collegata alla sua frase.",
+    "la": "Comes legendi Latine et Graece. Omne verbum explanatum, resolutum, sententiae suae conexum.",
+    "grc": "Σύντροφος ἀναγνώσεως Ῥωμαϊστὶ καὶ Ἑλληνιστί. Πᾶσα λέξις ἑρμηνευμένη, ἀναλελυμένη, καὶ τῷ λόγῳ αὑτῆς συνημμένη."
+  },
+  "Homer, Plato, Virgil and Caesar in the original, word by word": {
+    "es": "Homero, Platón, Virgilio y César en el original, palabra por palabra",
+    "zh-Hant": "逐字閱讀荷馬、柏拉圖、維吉爾與凱撒的原文",
+    "it": "Omero, Platone, Virgilio e Cesare in originale, parola per parola",
+    "la": "Homerus, Plato, Vergilius, Caesar sermone suo, verbum de verbo",
+    "grc": "Ὅμηρος, Πλάτων, Οὐεργίλιος, Καῖσαρ ἐν τῇ ἰδίᾳ φωνῇ, κατὰ λέξιν"
+  },
+  "Case-colored grammar and syntax links that rejoin scattered Latin word order": {
+    "es": "Gramática coloreada por caso y enlaces sintácticos que reúnen el orden disperso del latín",
+    "zh-Hant": "以顏色標示格位，並以句法連線重組拉丁文分散的語序",
+    "it": "Grammatica colorata per caso e legami sintattici che ricompongono l'ordine sparso del latino",
+    "la": "Grammatica casibus colorata et nexus syntactici qui ordinem verborum dispersum Latinum reconiungunt",
+    "grc": "Γραμματικὴ κατὰ πτώσεις κεχρωσμένη καὶ συντακτικοὶ δεσμοὶ οἳ τὴν διεσπαρμένην Ῥωμαϊκὴν τάξιν συνάπτουσιν"
+  },
+  "Glaux, a step-by-step tutor that translates only when asked": {
+    "es": "Glaux, un tutor paso a paso que solo traduce cuando se le pide",
+    "zh-Hant": "Glaux：循序引導的導師，只在你要求時才翻譯",
+    "it": "Glaux, un tutor passo dopo passo che traduce solo su richiesta",
+    "la": "Glaux, magister gradatim docens, qui non vertit nisi rogatus",
+    "grc": "Γλαύξ, διδάσκαλος κατὰ βῆμα, ὃς οὐ μεταφράζει εἰ μὴ αἰτηθείς"
+  },
   "Etymon — Discover the origin of words": {
     "es": "Etymon: descubre el origen de las palabras",
     "zh-Hant": "Etymon：探索詞語的起源",

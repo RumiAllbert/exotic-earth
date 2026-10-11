@@ -569,6 +569,18 @@
 
   "projects": [
     {
+      "name": "Interlinea",
+      "isActive": true,
+      "description": "Reading companion for Latin and Ancient Greek. Every word glossed, parsed, and linked to its sentence.",
+      "highlights": [
+        "Homer, Plato, Virgil and Caesar in the original, word by word",
+        "Case-colored grammar and syntax links that rejoin scattered Latin word order",
+        "Glaux, a step-by-step tutor that translates only when asked"
+      ],
+      "url": "https://interlinea.aeterna-institute.org/",
+      "github": ""
+    },
+    {
       "name": "Vertor",
       "isActive": true,
       "description": "Translation workspace. Compose, translate, and refine literary text across models.",
